@@ -1,4 +1,4 @@
-package rules;
+package logic;
 
 // Import required functionalities
 import java.io.IOException;

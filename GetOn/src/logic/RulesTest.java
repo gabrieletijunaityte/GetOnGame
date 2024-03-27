@@ -1,4 +1,4 @@
-package rules;
+package logic;
 
 import junit.framework.TestCase;
 
