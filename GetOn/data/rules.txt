@@ -1,0 +1,26 @@
+You have to bike a 100 km total:
+
+* 8x a 5km card
+* 4x an 6km card
+* 2x an 8km card (only possible with tailwind)
+* 2x a 10km card (only possible with tailwind)
+
+If this is reached, player wins the game. 
+
+There are 3 players in the game
+
+Each round, every player plays 1 card and draw 1 card from the deck. You can choose to propel yourself forward during your turn, or make life difficult for your fellow players by playing one of the bully cards. 
+
+Get on your bike: 
+* Get-on-your-bike-card (Step Up) (You cannot bike if you’re not physically on you’re bike, right?) 
+
+Bully cards;: 
+* Flat tire
+* Closed railway crossing
+* Youth Hostel
+* Headwind (wind against, can no longer bike 8 and 10 km)
+
+Repair cards: 
+* Bicycle repair ( need to play after a flat tire, and then you need to play a Step Up also play a Step Up card before you can bike again. )
+* Railway crossing opens (need to play after Closed Railway crossing, and then you need to also play a Step Up card before you can bike again).
+
