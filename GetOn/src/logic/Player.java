@@ -42,6 +42,16 @@ public class Player {
 			this.isTurn = true;
 		}
 	}
+
+
+	public ArrayList<Card> createHand(ArrayList<Card> stack) {
+		// Create a dummy hand
+		// Get five cards
+		for (int i = 0; i < 5; i++){
+			hand.add(stack.get(stack.size()-1));
+		}
+		return hand;
+	}
 	
 
 
