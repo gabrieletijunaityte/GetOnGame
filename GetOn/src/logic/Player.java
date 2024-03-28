@@ -49,8 +49,20 @@ public class Player {
 		// Get five cards
 		for (int i = 0; i < 5; i++){
 			hand.add(stack.get(stack.size()-1));
+			stack.remove(stack.get(stack.size()-1));
 		}
 		return hand;
+	}
+
+
+	public String viewHand() {
+		ArrayList<String> handCards = new ArrayList<>();
+		for (Card card : hand) {
+			handCards.add(card.getCardName()); 
+		}
+		String handCardsString = handCards.toString();
+		System.out.println(handCardsString); 
+		return handCardsString; 
 	}
 	
 
