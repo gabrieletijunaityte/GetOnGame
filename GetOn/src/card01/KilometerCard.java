@@ -8,8 +8,10 @@ public class KilometerCard implements Card {
 	}
 
 	public int getDistance() {return distance;}
+	
+	
 	public static void main(String[] args) {
-		
+	
 		
 	}
 }
