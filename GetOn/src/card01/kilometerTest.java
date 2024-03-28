@@ -4,13 +4,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-class kilometerTest {
-
+class kilometerTest{
 	@Test
-	void test() {
-		KilometerCard kaart = new KilometerCard(5);
-		kaart.getDistance();
+	public void test() {
+		KilometerCard card = new KilometerCard(5);
+		card.playCard(5);
 	}
 
-
 }
+
