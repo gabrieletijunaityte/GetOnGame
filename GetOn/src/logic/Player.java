@@ -1,4 +1,4 @@
-package Player;
+package logic;
 import java.util.ArrayList;
 
 

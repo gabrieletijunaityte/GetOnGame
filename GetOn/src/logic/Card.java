@@ -1,4 +1,4 @@
-package Player;
+package logic;
 
 public class Card {
 	
