@@ -4,37 +4,39 @@ import java.util.ArrayList;
 
 public class Player {
 	
-	private ArrayList<Card> hand = new ArrayList<>();
+	private ArrayList<Card> hand;
 	private Boolean isTurn;
 	private String name;
 	
 	public Player(String name, Boolean isTurn) {
 		this.name = name;
-		
 		this.isTurn = true;
+		this.hand = new ArrayList<>();
 	}
 	
 
 	public void drawCard(ArrayList<Card> stack) {
-		// TODO Auto-generated method stub
+	
+		// Add a card to the hand	
+		this.hand.add(stack.get(stack.size()-1));
 		
-		System.out.print(stack.get(stack.size()-1).getCardName());
 		
-//		System.out.print(stack[stack.length-1].getCardName());
-		hand.add(stack.get(stack.size()-1));
-		System.out.print(hand.get(hand.size()-1).getCardName());
-		
+		// Remove the added card from the stack
 		stack.remove(stack.get(stack.size()-1));
 		
-		System.out.print(stack.get(stack.size()-1).getCardName());
+		// change turn after drawing a card
+		changeTurn();
 	}
 
 	public String getName() {
 		return name;
 	}
 	
-	public void changeTurn() {
-		
+	public Boolean getTurn() {
+		return this.isTurn;
+	}
+	
+	private void changeTurn() {
 		if (isTurn) {
 			this.isTurn = false;
 		}
@@ -44,30 +46,32 @@ public class Player {
 	}
 
 
-	public ArrayList<Card> createHand(ArrayList<Card> stack) {
+	public void drawCard(ArrayList<Card> stack, int amount) {
 		// Create a dummy hand
 		// Get five cards
-		for (int i = 0; i < 5; i++){
-			hand.add(stack.get(stack.size()-1));
+		ArrayList<Card> temp_hand = new ArrayList<>();
+		
+		for (int i = 0; i < amount; i++){
+			temp_hand.add(stack.get(stack.size()-1));
 			stack.remove(stack.get(stack.size()-1));
 		}
-		return hand;
+		this.hand = temp_hand;
 	}
 
 
 	public String viewHand() {
 		ArrayList<String> handCards = new ArrayList<>();
-		for (Card card : hand) {
+		for (Card card : this.hand) {
 			handCards.add(card.getCardName()); 
 		}
 		String handCardsString = handCards.toString();
-		System.out.println(handCardsString); 
+//		System.out.println(handCardsString); 
 		return handCardsString; 
 	}
 	
+	public ArrayList<Card> getHand() {
+		return this.hand;
+	}
 
-
-	
-	// Dummy Class for Player
 
 }

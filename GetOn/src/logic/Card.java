@@ -6,7 +6,6 @@ public class Card {
 	
 	//Dummy Cards
 	public Card(String name) {
-		
 		this.name = name;
 		
 	}

@@ -14,47 +14,21 @@ public class DrawCardPassTurn extends TestCase {
 	private ArrayList<Player> players = new ArrayList<>();
 	private ArrayList<Card> stack = new ArrayList<>();
 	
+	// Create a player that holds the hand
+	private Player myPlayer = new Player("Jan", true);
+	
 	
 	public void testPlayerCreation() {
 		
-		ArrayList<Player> players = new ArrayList<>();
+		// Create players array
+		ArrayList<Player> players = new ArrayList<>();	
+		
+		// assert that the array was created
 		assertNotNull(players);
-		
 	}
 	
-	
-	public void testDrawCard() {
-		
 
-		Player player1 = new Player("Player1", true);
-		
-		stack.add(new Card("test1"));
-		stack.add(new Card("test2"));
-		player1.drawCard(stack);
-		
-	}
-	
-	
-	public void testPassTrun() {
-		
-
-		players.add(new Player("abc", true));
-		players.add(new Player("dfa", false));
-		
-		stack.add(new Card("test1"));
-		stack.add(new Card("test2"));
-		
-		players.get(0).drawCard(stack);
-		players.get(0).changeTurn();
-		players.get(1).changeTurn();
-		
-		
-	}
-	
 	public void testCreateHand() {
-		// Create a player that holds the hand
-		Player myPlayer = new Player("Jan", true);
-		
 		// Create 5 cards to test the set up
 		stack.add(new Card("1"));
 		stack.add(new Card("2"));
@@ -63,10 +37,52 @@ public class DrawCardPassTurn extends TestCase {
 		stack.add(new Card("5"));
 		
 		// Create a hand
-		ArrayList<Card> hand = myPlayer.createHand(stack);
-		assertEquals(5, hand.size());
+		myPlayer.drawCard(stack, 5);
+		
+		assertEquals(5, myPlayer.getHand().size());
 
 	}
+
+	public void testDrawCard() {	
+		// initiate stack
+		stack.add(new Card("1"));
+		stack.add(new Card("2"));
+		stack.add(new Card("3"));
+		stack.add(new Card("4"));
+		stack.add(new Card("5"));
+		stack.add(new Card("6"));
+		stack.add(new Card("7"));
+		
+		// Create a hand
+		myPlayer.drawCard(stack, 5);
+
+		
+		// make player draw a card from the stack
+		myPlayer.drawCard(stack);
+		
+		assertEquals(6, myPlayer.getHand().size());
+		
+	}
+	
+	public void testPassTrun() {
+		
+		// initiate stack
+		stack.add(new Card("1"));
+		stack.add(new Card("2"));
+		stack.add(new Card("3"));
+		stack.add(new Card("4"));
+		stack.add(new Card("5"));
+		stack.add(new Card("6"));
+		stack.add(new Card("7"));
+	
+		
+		// Draw a card and change turn (implemented inside drawcard)
+		myPlayer.drawCard(stack);
+		boolean ret = myPlayer.getTurn();
+		
+		assertEquals(false, ret);		
+	}
+	
 
 	public void testViewHand() {
 		// Create a player that holds the hand
@@ -80,7 +96,7 @@ public class DrawCardPassTurn extends TestCase {
 		stack.add(new Card("5"));
 				
 		// Create a hand
-		ArrayList<Card> hand = myPlayer.createHand(stack);
+		myPlayer.drawCard(stack, 5);
 		
 		//Print Cards on hand
 		myPlayer.viewHand();
