@@ -1,6 +1,7 @@
-package logic;
+package test;
 
 import junit.framework.TestCase;
+import logic.Rules;
 
 public class RulesTest extends TestCase {
 

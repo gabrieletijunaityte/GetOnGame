@@ -1,9 +1,13 @@
-package logic;
+package test;
 
 
 import java.util.ArrayList;
 
+
+
 import junit.framework.TestCase;
+import logic.Card;
+import logic.Player;
 
 public class DrawCardPassTurn extends TestCase {
 	

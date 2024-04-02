@@ -1,6 +1,7 @@
-package logic;
+package test;
 
 import junit.framework.TestCase;
+import logic.KilometerCard;
 
 public class KilometerTest extends TestCase {
 

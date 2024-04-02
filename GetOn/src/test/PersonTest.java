@@ -1,6 +1,7 @@
-package logic;
+package test;
 
 import junit.framework.TestCase;
+import logic.Person;
 import logic.Person.GameMaster;
 import logic.Person.Player;
 import logic.Person.Spectator;

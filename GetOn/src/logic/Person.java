@@ -23,7 +23,7 @@ public class Person {
 	}
 	
 	// create player subclass
-	class Player extends Person{
+	public class Player extends Person{
 		
 		// constructor for the player subclass that takes parameters from the superclass
 		public Player(Person person) {
@@ -33,7 +33,7 @@ public class Person {
 	}
 	
 	// create Spectator subclass
-	class Spectator extends Person{
+	public class Spectator extends Person{
 		
 		// constructor for the spectator subclass that takes parameters from the superclass
 		public Spectator(Person person) {
@@ -43,7 +43,7 @@ public class Person {
 	}
 	
 	// create GameMaster subclass
-	class GameMaster extends Person{
+	public class GameMaster extends Person{
 		
 		// constructor for the gamemaster subclass that takes parameters from the superclass
 		public GameMaster(Person person) {
