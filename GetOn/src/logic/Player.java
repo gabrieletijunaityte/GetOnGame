@@ -77,6 +77,8 @@ public class Player {
 		if (i<0 || i >= 5) {
 			throw new IllegalArgumentException("The index must be cannot be lower than 0 and higher than 4");
 		} else {
+			// TODO: REMOVE THE PRINTS 
+			
 			// Set discarded card to the parameter index of the hand.
 			Card discardedCard = hand.get(i);
 			// Add the discarded card to the discardPile

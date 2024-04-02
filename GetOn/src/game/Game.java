@@ -18,10 +18,8 @@ public class Game {
 		Player firstPlayer = new Player(playerName, true);
 		
 		// Dummy stack
-		
 		ArrayList<Card> stack = new ArrayList<>();
-		
-		// Create 5 cards to test the set up
+			// Create 5 cards to test the set up
 		stack.add(new Card(Type.getType(0), Value.getValue(0)));
 		stack.add(new Card(Type.getType(1), Value.getValue(1)));
 		stack.add(new Card(Type.getType(2), Value.getValue(0)));
@@ -34,6 +32,22 @@ public class Game {
 		System.out.print("The player's hand contains: ");
 		System.out.print(firstPlayer.viewHand());
 		
+		
+		// Dummy discard pile:
+		ArrayList<Card> discardPile = new ArrayList<>();
+		
+		// Discard a chosen card:
+		System.out.print("\n\nEnter which card (1-5) you want to discard: ");
+		int discardIndex = input.nextInt() - 1;
+		firstPlayer.discardCard(discardIndex, discardPile);
+		
+		// Draw card
+		System.out.print("\nA new card was drawn from the pile:\n");
+		firstPlayer.drawCard(stack);
+		System.out.print(firstPlayer.getHand().get(4));
+		System.out.print("\nThe player's hand now contains:\n");
+		System.out.print(firstPlayer.viewHand());
+
 
 	}
 
