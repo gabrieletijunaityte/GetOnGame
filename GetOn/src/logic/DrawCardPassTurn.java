@@ -46,5 +46,40 @@ public class DrawCardPassTurn extends TestCase {
 		
 		
 	}
+	
+	public void testCreateHand() {
+		// Create a player that holds the hand
+		Player myPlayer = new Player("Jan", true);
+		
+		// Create 5 cards to test the set up
+		stack.add(new Card("1"));
+		stack.add(new Card("2"));
+		stack.add(new Card("3"));
+		stack.add(new Card("4"));
+		stack.add(new Card("5"));
+		
+		// Create a hand
+		ArrayList<Card> hand = myPlayer.createHand(stack);
+		assertEquals(5, hand.size());
 
+	}
+
+	public void testViewHand() {
+		// Create a player that holds the hand
+		Player myPlayer = new Player("Jan", true);
+				
+		// Create 5 cards to test the set up
+		stack.add(new Card("1"));
+		stack.add(new Card("2"));
+		stack.add(new Card("3"));
+		stack.add(new Card("4"));
+		stack.add(new Card("5"));
+				
+		// Create a hand
+		ArrayList<Card> hand = myPlayer.createHand(stack);
+		
+		//Print Cards on hand
+		myPlayer.viewHand();
+		assertEquals("[5, 4, 3, 2, 1]", myPlayer.viewHand());
+			}
 }
