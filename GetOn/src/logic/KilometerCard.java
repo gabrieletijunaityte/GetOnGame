@@ -1,6 +1,6 @@
-package card01;
+package logic;
 
-public class KilometerCard implements Card {
+public class KilometerCard implements CardInterface {
 	// Create the variables that keep track of the number of cards played and Km value per card.
 	// For testing, these random values have been chosen. They should be retrieved from the player's input.
 	public int fiveKmCardsPlayed = 4;
