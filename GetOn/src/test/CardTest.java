@@ -5,7 +5,7 @@ import logic.Type;
 import logic.Value;
 import junit.framework.TestCase;
 
-public class cardTest extends TestCase {
+public class CardTest extends TestCase {
 	
 	public void testCardCreation () {
 		// Creating Card class
