@@ -47,9 +47,7 @@ public class KilometerCard implements CardInterface {
 			else {System.out.println("ten km card cannot be played");
 			}}
 		}
-	public static void main(String[] args) {
-		
-	}
+
 }
 
 
