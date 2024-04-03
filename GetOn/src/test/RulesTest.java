@@ -19,7 +19,6 @@ public class RulesTest extends TestCase {
 		Rules defaultRule = new Rules();
 		String returned = defaultRule.getRules();
 		assertNotNull(returned);
-		System.out.println(returned);
 		
 	}
 	

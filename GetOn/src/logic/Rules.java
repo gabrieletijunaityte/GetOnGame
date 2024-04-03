@@ -8,7 +8,6 @@ import java.nio.file.Paths;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
-
 // Create rule class
 public class Rules {
 	
@@ -16,7 +15,7 @@ public class Rules {
 	private String rules = readRules();
 	
 	// Method to load the rules from the data folder
-	private static String readRules() {
+	private String readRules() {
 		
 		String defaultRules = "";
 		
