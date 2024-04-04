@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
 import logic.Rules;
@@ -16,7 +17,7 @@ import java.awt.event.ActionEvent;
 public class RulesFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
+	private JPanel contentPanel;
 	private JTextPane textRules;
 
 	/**
@@ -27,7 +28,12 @@ public class RulesFrame extends JFrame {
 			public void run() {
 				try {
 					RulesFrame frame = new RulesFrame();
+					frame.setSize(781, 410);
 					frame.setVisible(true);
+					
+					// Do not allow to resize the frame
+					frame.setResizable(false);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -40,13 +46,14 @@ public class RulesFrame extends JFrame {
 	 */
 	public RulesFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 781, 410);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPanel = new JPanel();
+		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		setContentPane(contentPanel);
+		contentPanel.setLayout(null);
 		
+		
+		// Add button that print the rules
 		JButton btnShowRules = new JButton("Show rules");
 		btnShowRules.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -56,11 +63,19 @@ public class RulesFrame extends JFrame {
 			}
 		});
 		btnShowRules.setBounds(10, 11, 197, 23);
-		contentPane.add(btnShowRules);
+		contentPanel.add(btnShowRules);
 		
 		textRules = new JTextPane();
-		textRules.setBounds(10, 47, 757, 315);
-		contentPane.add(textRules);
+		
+		// Make sure the shown text is not editable by the spectator
+		textRules.setEditable(false);
+		
+		// Add scroll to view the full rules
+		JScrollPane verticalScroll = new JScrollPane(textRules, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		verticalScroll.setBounds(10, 47, 747, 315);
+		contentPanel.add(verticalScroll);
+		
+	
 	}
 
 	protected void handleShowRules() {
