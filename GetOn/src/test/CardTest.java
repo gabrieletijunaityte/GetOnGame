@@ -69,7 +69,18 @@ public class CardTest extends TestCase {
 		assertEquals(target1 + "_" + target2, test);		
 	}
 	
-	
-	
-
+	// Test getPossibleValues
+	public void testGetPossibleValues() {
+		// Setting the target
+		String target1 = "Sample";
+		String target2 = "Sample";
+		
+		// Creating Card class
+		Card card = new Card(target1, target2);
+		
+		// Testing getPossibleValues() method
+		String [] test = card.getPossibleValues();
+		
+		assertEquals(null, test);		
+	}
 }

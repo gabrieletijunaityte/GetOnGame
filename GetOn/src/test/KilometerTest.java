@@ -1,7 +1,8 @@
 package test;
 
+import java.util.Arrays;
+
 import junit.framework.TestCase;
-import logic.Card;
 import logic.KilometerCard;
 
 public class KilometerTest extends TestCase {
@@ -58,6 +59,17 @@ public class KilometerTest extends TestCase {
 		String test = kmCard.getCardName();
 
 		assertEquals(target1, test);
+	}
+	
+	// Test getPossibleValues
+	public void testGetPossibleValues() {
+		// Creating Card class
+		KilometerCard kmCard = new KilometerCard("FIVE");
+		
+		// Testing getCardNameMethod
+		String test = Arrays.toString(kmCard.getPossibleValues());
+		
+		assertEquals("[FIVE, SIX, EIGHT, TEN]", test);		
 	}
 
 }

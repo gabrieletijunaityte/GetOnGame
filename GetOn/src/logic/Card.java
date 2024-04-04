@@ -4,6 +4,7 @@ public class Card {
 	
 	private String type;
 	private String value;
+	protected String [] pos_values;
 	
 	// Constructor
 	public Card (String type, String value) {
@@ -29,6 +30,11 @@ public class Card {
 	// getting the representation of the card by combining the type and value
 	public String getCardName() {
 		return toString();
+	}
+	
+	// Method to retrieve possible values
+	public String[] getPossibleValues() {        
+        return this.pos_values;
 	}
 	
 }
