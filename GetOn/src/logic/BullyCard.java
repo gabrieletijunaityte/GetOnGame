@@ -1,17 +1,12 @@
 package logic;
 
-public class BullyCard extends Card{
-	
+public class BullyCard extends Card {
+
 	// Constructor
-	public BullyCard (String value) {
+	public BullyCard(String value) {
 		super("BULLY", value);
-		
+
 		// Assign possible Bully values
-		this.pos_values = new String[]{"TAVERN", "CROSSWIND", "FLAT_TIRE", "CRISS_CROSS"};
-}
-
-	
-	
-	
-
+		this.pos_values = new String[] { "TAVERN", "CROSSWIND", "FLAT_TIRE", "CRISS_CROSS" };
+	}
 }
