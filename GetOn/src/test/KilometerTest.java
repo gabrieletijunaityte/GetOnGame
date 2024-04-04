@@ -1,28 +1,63 @@
 package test;
 
 import junit.framework.TestCase;
+import logic.Card;
 import logic.KilometerCard;
 
 public class KilometerTest extends TestCase {
 
-			public void testfive() {
-				KilometerCard card5 = new KilometerCard(5);
-				card5.playCard();
-			}
+	// Test km card creation
+	public void testCreationOfKmCard() {
+		// Creating a km card
+		KilometerCard kmCard = new KilometerCard("FIVE");
 
-			public void testsix() {
-				KilometerCard card6 = new KilometerCard(6);
-				card6.playCard();
-			}
+		assertNotNull(kmCard);
+	}
 
-			public void testeight() {
-				KilometerCard card8 = new KilometerCard(8);
-				card8.playCard();
-			}
+	// Test the type retrieval method
+	public void testgetType() {
+		// Setting the target
+		String target = "KILOMETER";
 
-			public void testten() {
-				KilometerCard card10 = new KilometerCard(10);
-				card10.playCard();
-			}
+		// Creating a km card
+		KilometerCard kmCard = new KilometerCard("FIVE");
 
-		}
+		// Getting the type
+		String test = kmCard.getType();
+
+		// Asserting if it is right type
+		assertEquals(target, test);
+	}
+
+	// Test the value retrieval method
+	public void testgetValue() {
+		// Setting the target
+		String target = "FIVE";
+
+		// Creating a km card
+		KilometerCard kmCard = new KilometerCard(target);
+
+		// Getting the type
+		String test = kmCard.getValue();
+
+		// Asserting if it is right type
+		assertEquals(target, test);
+	}
+
+// Test the getCardName() method
+	public void testgetCardName() {
+		// Setting the target
+		String target = "FIVE";
+		String target1 = "KILOMETER_" + target;
+
+		// Creating a km card
+		KilometerCard kmCard = new KilometerCard(target);
+
+
+		// Testing getCardNameMethod
+		String test = kmCard.getCardName();
+
+		assertEquals(target1, test);
+	}
+
+}

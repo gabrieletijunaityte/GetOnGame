@@ -1,8 +1,7 @@
 package game;
 import logic.Card;
 import logic.Player;
-import logic.Type;
-import logic.Value;
+import logic.KilometerCard;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -20,12 +19,12 @@ public class Game {
 		// Dummy stack
 		ArrayList<Card> stack = new ArrayList<>();
 			// Create 5 cards to test the set up
-		stack.add(new Card(Type.getType(0), Value.getValue(0)));
-		stack.add(new Card(Type.getType(1), Value.getValue(1)));
-		stack.add(new Card(Type.getType(2), Value.getValue(0)));
-		stack.add(new Card(Type.getType(0), Value.getValue(1)));
-		stack.add(new Card(Type.getType(0), Value.getValue(1)));
-		stack.add(new Card(Type.getType(1), Value.getValue(0)));
+		stack.add(new KilometerCard("FIVE"));
+		stack.add(new KilometerCard("SIX"));
+		stack.add(new KilometerCard("TEN"));
+		stack.add(new KilometerCard("EIGHT"));
+		stack.add(new KilometerCard("SIX"));
+		stack.add(new KilometerCard("FIVE"));
 		
 		// See players hand:
 		firstPlayer.drawCard(stack, 5);

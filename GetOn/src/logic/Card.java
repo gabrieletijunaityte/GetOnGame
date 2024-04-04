@@ -1,34 +1,34 @@
 package logic;
 
-public class Card {
-	// Card attributes
-	private final Type type;
-	private final Value value;
+public class Card {	
+	
+	private String type;
+	private String value;
 	
 	// Constructor
-	public Card(Type type, Value value) {
+	public Card (String type, String value) {
 		this.type = type;
 		this.value = value;
 	}
 	
-	// Getting the type of the card
-	public Type getType() {
+	// getting the type of the card
+	public String getType() {
 		return this.type;
 	}
 	
-	// Getting the value of the card
-	public Value getValue() {
+	// getting the value of the card
+	public String getValue() {
 		return this.value;
 	}
 	
 	// Adjust default toString function
 	public String toString() {
-		return type + "_" + value;
+		return this.type + "_" + this.value;
 	}
 	
 	// getting the representation of the card by combining the type and value
 	public String getCardName() {
 		return toString();
 	}
-
+	
 }
