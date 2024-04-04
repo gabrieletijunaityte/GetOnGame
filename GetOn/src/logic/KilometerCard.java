@@ -8,5 +8,6 @@ public class KilometerCard extends Card {
 
 		// Assign possible km values
 		this.pos_values = new String[]{"FIVE","SIX","EIGHT","TEN"};
+		validateValue(value);
 	}
 }

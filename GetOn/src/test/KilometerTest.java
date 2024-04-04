@@ -3,6 +3,7 @@ package test;
 import java.util.Arrays;
 
 import junit.framework.TestCase;
+import logic.BullyCard;
 import logic.KilometerCard;
 
 public class KilometerTest extends TestCase {
@@ -13,6 +14,18 @@ public class KilometerTest extends TestCase {
 		KilometerCard kmCard = new KilometerCard("FIVE");
 
 		assertNotNull(kmCard);
+	}
+	
+	// Test bully card creation with invalid value
+	public void testBadCreationOfKilometerCard() {
+		
+		try {
+			// Creating a bully card
+			KilometerCard kmCard = new KilometerCard("BAD_VALUE");
+			fail();
+		}
+		catch (IllegalArgumentException e) {
+		}
 	}
 
 	// Test the type retrieval method

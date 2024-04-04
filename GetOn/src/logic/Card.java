@@ -37,4 +37,14 @@ public class Card {
         return this.pos_values;
 	}
 	
+	// Method to check if value is in pos_values
+	protected void validateValue(String value) {
+		for (String validValue : pos_values) {
+			if (validValue.equals(value)) {
+				return;
+			}
+		}
+		throw new IllegalArgumentException("Entered value is not in possible values list");
+	}
+	
 }

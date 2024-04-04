@@ -3,6 +3,7 @@ package test;
 import java.util.Arrays;
 
 import junit.framework.TestCase;
+import logic.RepairCard;
 import logic.StatusCard;
 
 public class StatusCardTest extends TestCase {
@@ -11,10 +12,25 @@ public class StatusCardTest extends TestCase {
 	// Test status card creation
 	public void testCreationOfstatusCard() {
 		// Creating a status card
-		StatusCard statusCard = new StatusCard("HOSTEL");
+		StatusCard statusCard = new StatusCard("GET_ON");
 
 		assertNotNull(statusCard);
 	}
+	
+	// Test status card creation with invalid value
+	public void testBadCreationOfStatusCard() {
+		
+		try {
+			// Creating a repair card
+			StatusCard statusCard = new StatusCard("BAD_VALUE");
+			fail();
+		}
+		catch (IllegalArgumentException e) {
+		}
+	}
+
+	
+	
 
 	// Test the type retrieval method
 	public void testgetType() {

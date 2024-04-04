@@ -8,5 +8,6 @@ public class StatusCard extends Card {
 
 		// Assign possible status values
 		this.pos_values = new String[] { "GET_ON", "TAIL_WIND" };
+		validateValue(value);
 	}
 }

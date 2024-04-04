@@ -11,9 +11,21 @@ public class BullyCardTest extends TestCase {
 	// Test bully card creation
 	public void testCreationOfbullyCard() {
 		// Creating a bully card
-		BullyCard bullyCard = new BullyCard("HOSTEL");
+		BullyCard bullyCard = new BullyCard("TAVERN");
 
 		assertNotNull(bullyCard);
+	}
+	
+	// Test bully card creation with invalid value
+	public void testBadCreationOfbullyCard() {
+		
+		try {
+			// Creating a bully card
+			BullyCard bullyCard = new BullyCard("BAD_VALUE");
+			fail();
+		}
+		catch (IllegalArgumentException e) {
+		}
 	}
 
 	// Test the type retrieval method
