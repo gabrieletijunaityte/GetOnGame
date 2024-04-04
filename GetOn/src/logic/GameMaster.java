@@ -10,7 +10,7 @@ public class GameMaster {
 	 * and asks to enter a valid name using a do while loop
 	 * source: https://www.digitalocean.com/community/tutorials/java-do-while-loop
 	 */
-	public void changeName(Player player) {
+	public static void changeName(Player player) {
 		
 		Scanner input = new Scanner(System.in);
 		
