@@ -28,6 +28,11 @@ public class Player {
 		// change turn after drawing a card
 		changeTurn();
 	}
+	
+	// method to change the player name
+	public void changeName(String name) {
+		this.name = name;
+	}
 
 	public String getName() {
 		return name;
