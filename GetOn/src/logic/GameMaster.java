@@ -6,7 +6,9 @@ public class GameMaster {
 	
 	/* Method which calls the changeName method in Player
 	 * All the empty spaces before and after the entered name are removed
-	 * The method won't accept an empty string as a new name for a player and asks to enter a valid name
+	 * The method won't accept an empty string as a new name for a player 
+	 * and asks to enter a valid name using a do while loop
+	 * source: https://www.digitalocean.com/community/tutorials/java-do-while-loop
 	 */
 	public void changeName(Player player) {
 		
