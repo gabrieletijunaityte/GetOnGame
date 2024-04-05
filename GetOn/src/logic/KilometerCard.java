@@ -9,5 +9,9 @@ public class KilometerCard extends Card {
 		// Assign possible km values
 		this.pos_values = new String[]{"FIVE","SIX","EIGHT","TEN"};
 		validateValue(value);
+	
+		// Assign amount per card
+		this.amount = new int [] {24, 12, 8, 8};
 	}
+	
 }

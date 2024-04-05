@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 import junit.framework.TestCase;
 import logic.BullyCard;
+import logic.KilometerCard;
 import logic.RepairCard;
 
 public class RepairCardTest extends TestCase {
@@ -82,6 +83,18 @@ public class RepairCardTest extends TestCase {
 		System.out.print(Arrays.toString(repairCard.getPossibleValues()));
 
 		assertEquals("[BIKE_REPAIR, BARRIER_OPEN]", test);
+	}
+	
+	// Test getAmounts
+	public void testGetAmounts() {
+		// Creating Card class
+		RepairCard card = new RepairCard("BIKE_REPAIR");
+		
+		// Testing getAmounts
+		String test = Arrays.toString(card.getAmounts());
+		
+		
+		assertEquals("[8, 8]", test);		
 	}
 
 }

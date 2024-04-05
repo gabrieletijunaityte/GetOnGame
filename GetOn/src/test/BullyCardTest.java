@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 import junit.framework.TestCase;
 import logic.BullyCard;
+import logic.KilometerCard;
 
 public class BullyCardTest extends TestCase {
 
@@ -84,6 +85,18 @@ public class BullyCardTest extends TestCase {
 		System.out.print(Arrays.toString(bullyCard.getPossibleValues()));
 		
 		assertEquals("[TAVERN, CROSSWIND, FLAT_TIRE, CRISS_CROSS]", test);		
+	}
+	
+	// Test getAmounts
+	public void testGetAmounts() {
+		// Creating Card class
+		BullyCard card = new BullyCard("TAVERN");
+		
+		// Testing getAmounts
+		String test = Arrays.toString(card.getAmounts());
+		
+		
+		assertEquals("[2, 4, 3, 3]", test);		
 	}
 
 }

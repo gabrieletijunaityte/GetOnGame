@@ -84,5 +84,17 @@ public class KilometerTest extends TestCase {
 		
 		assertEquals("[FIVE, SIX, EIGHT, TEN]", test);		
 	}
+	
+	// Test getAmounts
+	public void testGetAmounts() {
+		// Creating Card class
+		KilometerCard kmCard = new KilometerCard("FIVE");
+		
+		// Testing getAmounts
+		String test = Arrays.toString(kmCard.getAmounts());
+		
+		
+		assertEquals("[24, 12, 8, 8]", test);		
+	}
 
 }

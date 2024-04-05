@@ -3,6 +3,7 @@ package test;
 import java.util.Arrays;
 
 import junit.framework.TestCase;
+import logic.KilometerCard;
 import logic.RepairCard;
 import logic.StatusCard;
 
@@ -88,6 +89,18 @@ public class StatusCardTest extends TestCase {
 		System.out.print(Arrays.toString(statusCard.getPossibleValues()));
 		
 		assertEquals("[GET_ON, TAIL_WIND]", test);		
+	}
+	
+	// Test getAmounts
+	public void testGetAmounts() {
+		// Creating Card class
+		StatusCard card = new StatusCard("GET_ON");
+		
+		// Testing getAmounts
+		String test = Arrays.toString(card.getAmounts());
+		
+		
+		assertEquals("[14, 5]", test);		
 	}
 
 }

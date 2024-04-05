@@ -5,6 +5,7 @@ public class Card {
 	private String type;
 	private String value;
 	protected String [] pos_values;
+	protected int [] amount;
 	
 	// Constructor
 	public Card (String type, String value) {
@@ -35,6 +36,10 @@ public class Card {
 	// Method to retrieve possible values
 	public String[] getPossibleValues() {        
         return this.pos_values;
+	}
+	
+	public int[] getAmounts() {
+		return this.amount;
 	}
 	
 	// Method to check if value is in pos_values
