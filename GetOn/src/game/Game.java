@@ -8,6 +8,8 @@ import logic.Value;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import graphics.PlayerHand;
+
 public class Game {
 
 	public static void main(String[] args) {
@@ -31,7 +33,6 @@ public class Game {
 		System.out.print("The player's hand contains: ");
 		System.out.print(firstPlayer.viewHand());
 		
-		
 		// Dummy discard pile:
 		ArrayList<Card> discardPile = new ArrayList<>();
 		
@@ -41,14 +42,16 @@ public class Game {
 		int discardIndex = input.nextInt() - 1;
 		firstPlayer.discardCard(discardIndex, discardPile);
 		
+		
 		// Draw card
 		System.out.print("\nA new card was drawn from the pile:\n");
 		firstPlayer.drawCard(stack);
 		System.out.print(firstPlayer.getHand().get(4));
 		System.out.print("\nThe player's hand now contains:\n");
-		System.out.print(firstPlayer.viewHand());
 
-
+		// Test PlayerHand GUI, to be removed later
+		PlayerHand.main(args, firstPlayer.getHand());
+		
 	}
 
 }
