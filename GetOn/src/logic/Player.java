@@ -7,12 +7,18 @@ public class Player {
 	private ArrayList<Card> hand;
 	private Boolean isTurn;
 	private String name;
+	private Boolean onBikeStatus;
+	private Boolean bulliedStatus; 
+	private Boolean hasWind;
 
 	
 	public Player(String name, Boolean isTurn) {
 		this.name = name;
 		this.isTurn = true;
 		this.hand = new ArrayList<>();
+		this.onBikeStatus = false;
+		this.bulliedStatus = false; 
+		this.hasWind = false;
 	}
 	
 
@@ -42,7 +48,7 @@ public class Player {
 		return this.isTurn;
 	}
 	
-	private void changeTurn() {
+	public void changeTurn() {
 		if (isTurn) {
 			this.isTurn = false;
 		}
@@ -100,5 +106,33 @@ public class Player {
 	public ArrayList<Card> getHand() {
 		return this.hand;
 	}
-	
+
+	public Boolean getOnBikeStatus() {
+		return this.onBikeStatus;
+	}
+
+
+	private void setOnBikeStatus(Boolean onBikeStatus) {
+		this.onBikeStatus = onBikeStatus;
+	}
+
+
+	public Boolean getBulliedStatus() {
+		return this.bulliedStatus;
+	}
+
+
+	private void setBulliedStatus(Boolean bulliedStatus) {
+		this.bulliedStatus = bulliedStatus;
+	}
+
+
+	public Boolean getHasWind() {
+		return this.hasWind;
+	}
+
+
+	private void setHasWind(Boolean hasWind) {
+		this.hasWind = hasWind;
+	}
 }
