@@ -1,5 +1,6 @@
 package game;
 import logic.Card;
+import logic.GameMaster;
 import logic.Player;
 import logic.Type;
 import logic.Value;
@@ -11,11 +12,9 @@ public class Game {
 
 	public static void main(String[] args) {
 		
-		Scanner input = new Scanner(System.in); 
-		System.out.print("Enter player name: ");
-		String playerName = input.next(); 
-		
-		Player firstPlayer = new Player(playerName, true);
+		// Create firstplayer with default name and change it with changeName method
+		Player firstPlayer = new Player("Player1", true);
+		GameMaster.changeName(firstPlayer);
 		
 		// Dummy stack
 		ArrayList<Card> stack = new ArrayList<>();
@@ -37,6 +36,7 @@ public class Game {
 		ArrayList<Card> discardPile = new ArrayList<>();
 		
 		// Discard a chosen card:
+		Scanner input = new Scanner(System.in); 
 		System.out.print("\n\nEnter which card (1-5) you want to discard: ");
 		int discardIndex = input.nextInt() - 1;
 		firstPlayer.discardCard(discardIndex, discardPile);
