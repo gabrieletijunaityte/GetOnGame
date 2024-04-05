@@ -90,6 +90,8 @@ public class DrawCardPassTurn extends TestCase {
 	
 
 	public void testViewHand() {
+		Player myPlayer = new Player("Jan", true);
+		ArrayList<Card> stack = new ArrayList<>();
 		// Create 5 cards to test the set up
 		stack.add(new Card(Type.getType(0), Value.getValue(0)));
 		stack.add(new Card(Type.getType(1), Value.getValue(1)));
@@ -125,4 +127,18 @@ public class DrawCardPassTurn extends TestCase {
 		assertEquals("defense_five", discardPile.get(discardPile.size()-1).getCardName());
 		
 	}
+	
+		
+	// Test to get statuses methods
+		public void getPlayerStatuses() {
+			// Creating variables for the test
+			Player testPlayer = new Player("Jan", true);
+			Boolean target = false;
+			// assert the methods
+			assertEquals(target, testPlayer.getBulliedStatus());
+			assertEquals(target, testPlayer.getHasWind());
+			assertEquals(target, testPlayer.getOnBikeStatus());
+
+		}		
+			
 }
