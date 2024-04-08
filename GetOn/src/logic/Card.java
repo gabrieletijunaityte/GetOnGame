@@ -51,5 +51,8 @@ public class Card {
 		}
 		throw new IllegalArgumentException("Entered value is not in possible values list");
 	}
+	public boolean isPlayable() {
+		return false;
+	}
 	
 }
