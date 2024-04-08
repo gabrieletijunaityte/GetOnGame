@@ -1,6 +1,7 @@
 package test;
 
 import logic.Card;
+import logic.KilometerCard;
 import logic.Stack;
 
 import static org.junit.Assert.assertNotEquals;
@@ -48,5 +49,17 @@ public class StackTest extends TestCase {
 		// Check if the stacks are not equals
 		assertFalse(stack.equals(stack2));
 	}
-
+	
+	// Test drawCard from the stack
+	public void drawTopCard() {
+		// Create a stack
+		Stack stack = new Stack();
+		stack.initializeStack();
+		
+		// Draw a card from the stack
+		Card card = stack.drawTopCard();
+		Card topCard = new KilometerCard("FIVE");
+		
+		assertEquals(topCard, card);
+	}
 }

@@ -99,6 +99,15 @@ public class Stack {
  	        stack.set(second, temp);
  	    }
  	}
+
+	public Card drawTopCard() {
+		// Draw the top card from the stack
+		Card topCard = stack.get(0);
+		// Remove the topCard from the stack
+		stack.remove(stack.get(0));
+		// Return the topCard
+		return topCard;
+	}
  	
     
 }
