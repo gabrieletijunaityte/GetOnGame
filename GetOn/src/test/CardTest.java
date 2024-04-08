@@ -81,4 +81,19 @@ public class CardTest extends TestCase {
 		
 		assertEquals(null, test);		
 	}
+	// Test isPlayable
+	public void testIsPlayable() {
+		// Setting the target
+		String typeSample = "Sample";
+		String valueSample = "Sample";
+		boolean target = false;
+		
+		// Creating Card class
+		Card card = new Card(typeSample, valueSample);
+		
+		// Testing getPossibleValues() method
+		boolean test = card.isPlayable();
+		
+		assertEquals(target, test);		
+	}
 }

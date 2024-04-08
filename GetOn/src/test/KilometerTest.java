@@ -5,6 +5,7 @@ import java.util.Arrays;
 import junit.framework.TestCase;
 import logic.BullyCard;
 import logic.KilometerCard;
+import logic.Player;
 
 public class KilometerTest extends TestCase {
 
@@ -95,6 +96,24 @@ public class KilometerTest extends TestCase {
 		
 		
 		assertEquals("[24, 12, 8, 8]", test);		
+	}
+	
+	// Test isPlayable
+	public void testIsPlayable() {
+		// Creating Card class
+		KilometerCard kmCard = new KilometerCard("EIGHT");
+		// Create player
+		Player testPlayer = new Player("Jan", true);
+		
+		testPlayer.getPlayedCards().addCard(kmCard);
+		testPlayer.getPlayedCards().addCard(kmCard);
+		
+		// Testing getAmounts
+		boolean test = false;
+		
+		boolean target = kmCard.isPlayable(testPlayer);
+				
+		assertEquals(target, test);		
 	}
 
 }

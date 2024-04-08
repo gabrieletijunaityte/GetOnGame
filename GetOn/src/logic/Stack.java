@@ -99,6 +99,25 @@ public class Stack {
  	        stack.set(second, temp);
  	    }
  	}
+
+	public Card drawTopCard() {
+		// Draw the top card from the stack
+		Card topCard = stack.get(0);
+		// Remove the topCard from the stack
+		stack.remove(stack.get(0));
+		// Return the topCard
+		return topCard;
+	}
+
+	public void addDiscardedCard(Card discardedCard) {
+		// add a discardedCard to the discardPile
+		stack.add(discardedCard);
+	}
+
+	public Card get(int i) {
+		// add method to get a card at a specific index
+		return stack.get(i);
+	}
  	
     
 }

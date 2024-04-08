@@ -2,6 +2,7 @@ package game;
 import logic.Card;
 import logic.GameMaster;
 import logic.Player;
+import logic.Stack;
 import logic.KilometerCard;
 
 import java.util.ArrayList;
@@ -21,15 +22,10 @@ public class Game {
 		// Launch the main menu
 		MainMenu.main(args, firstPlayer, secondPlayer, thirdPlayer);
 		
-		// Dummy stack
-		ArrayList<Card> stack = new ArrayList<>();
-			// Create 5 cards to test the set up
-		stack.add(new KilometerCard("FIVE"));
-		stack.add(new KilometerCard("SIX"));
-		stack.add(new KilometerCard("TEN"));
-		stack.add(new KilometerCard("EIGHT"));
-		stack.add(new KilometerCard("SIX"));
-		stack.add(new KilometerCard("FIVE"));
+		// Initialize the stack
+		Stack stack = new Stack();
+		// Create 5 cards to test the set up
+		stack.initializeStack();
 
 		
 		// See players hand:
@@ -38,7 +34,7 @@ public class Game {
 		System.out.print(firstPlayer.viewHand());
 		
 		// Dummy discard pile:
-		ArrayList<Card> discardPile = new ArrayList<>();
+		Stack discardPile = new Stack();
 		
 		// Discard a chosen card:
 		Scanner input = new Scanner(System.in); 
