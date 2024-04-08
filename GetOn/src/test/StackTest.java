@@ -14,6 +14,7 @@ public class StackTest extends TestCase {
 	public void testStackCreation() {
 		// Create deck 
 		Stack stack = new Stack();
+		stack.initializeStack();
 		
 		// Assert if the deck is created
 		assertNotNull(stack);
@@ -23,6 +24,7 @@ public class StackTest extends TestCase {
 	public void testStackSize() {
 		// Create a stack
 		Stack stack = new Stack();
+		stack.initializeStack();
 	        
 		// Check if the size of the stack is 99
 		assertEquals(99, stack.getStackSize());

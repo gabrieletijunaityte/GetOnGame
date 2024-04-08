@@ -17,13 +17,13 @@ import java.util.ArrayList;
 
 public class Stack {
 	private ArrayList<Card> stack;
+	private static final SecureRandom randomNumbers = new SecureRandom();
 
     public Stack() {
-        stack = new ArrayList<>();
-        initializeStack();
+        this.stack = new ArrayList<>();
     }
     
-    private void initializeStack() {
+    public void initializeStack() {
     	// initialize KilometerCard to get its methods
         KilometerCard kilometerCard = new KilometerCard("FIVE"); 
         String[] valuesKM = kilometerCard.getPossibleValues(); 
