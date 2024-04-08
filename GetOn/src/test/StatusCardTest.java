@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 import junit.framework.TestCase;
 import logic.KilometerCard;
+import logic.Player;
 import logic.RepairCard;
 import logic.StatusCard;
 
@@ -102,5 +103,24 @@ public class StatusCardTest extends TestCase {
 		
 		assertEquals("[14, 5]", test);		
 	}
+	// Test isPlayable
+	public void testIsPlayable() {
+		// Creating Card class
+		StatusCard card = new StatusCard("GET_ON");
+		
+		// Create test player
+		Player testPlayer = new Player("Jan", true);
+		
+		testPlayer.setBulliedStatus(true);
+		
+		// Test boolean
+		boolean target = false;
+		
+		boolean test = card.isPlayable(testPlayer);
+		
+		
+		assertEquals(target, test);		
+	}
+
 
 }

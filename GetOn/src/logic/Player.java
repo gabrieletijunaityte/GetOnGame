@@ -106,7 +106,7 @@ public class Player {
 		return this.onBikeStatus;
 	}
 
-	private void setOnBikeStatus(Boolean onBikeStatus) {
+	public void setOnBikeStatus(Boolean onBikeStatus) {
 		this.onBikeStatus = onBikeStatus;
 	}
 
@@ -114,7 +114,7 @@ public class Player {
 		return this.bulliedStatus;
 	}
 
-	private void setBulliedStatus(Boolean bulliedStatus) {
+	public void setBulliedStatus(Boolean bulliedStatus) {
 		this.bulliedStatus = bulliedStatus;
 	}
 
@@ -122,7 +122,7 @@ public class Player {
 		return this.hasWind;
 	}
 
-	private void setHasWind(Boolean hasWind) {
+	public void setHasWind(Boolean hasWind) {
 		this.hasWind = hasWind;
 	}
 
