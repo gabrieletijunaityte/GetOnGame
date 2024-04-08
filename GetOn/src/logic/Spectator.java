@@ -1,6 +1,5 @@
 package logic;
 
-
 // Create spectator class
 public class Spectator {
 
@@ -10,6 +9,10 @@ public class Spectator {
 		Rules rules = new Rules();
 		String rulesOut = rules.getRules();
 		return rulesOut;
+	}
+	
+	public int viewStackSize(Stack stack) {
+		return stack.getStackSize();
 	}
 
 }
