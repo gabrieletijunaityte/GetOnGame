@@ -1,51 +1,84 @@
 package test;
 
 import logic.Card;
-import logic.Type;
-import logic.Value;
 import junit.framework.TestCase;
 
 public class CardTest extends TestCase {
 	
+	// Testing card creation
 	public void testCardCreation () {
+		// Setting the target
+		String target1 = "Sample";
+		String target2 = "Sample";
+		
 		// Creating Card class
-		Card card1 = new Card(Type.getType(0), Value.getValue(0));
+		Card card = new Card(target1, target2);
 		
-		// asserting if it was created
-		assertNotNull(card1);
+		// Asserting if it was created
+		assertNotNull(card);
 	}
-	
-	Card card1 = new Card(Type.getType(0), Value.getValue(0));
-	
-	public void testgetValue() {
-		// Testing getValue method
-		Value test = card1.getValue();
-		Value test1 = Value.getValue(0);
-		
-		assertEquals(test, test1);
-	}
-	
+
+	// Test the type retrieval method
 	public void testgetType() {
-		// Testing getType method
-		Type test = card1.getType();
-		Type test1 = Type.getType(0);
 		
-		assertEquals(test, test1);
+		// Setting the target
+		String target1 = "Sample";
+		String target2 = "Sample";
+		
+		// Creating Card class
+		Card card = new Card(target1, target2);
+		
+		// Getting the type
+		String test = card.getType();
+		
+		// Asserting if it is right type
+		assertEquals(target1, test);
 	}
 	
+		// Test the value retrieval method
+		public void testgetValue() {
+			
+			// Setting the target
+			String target1 = "Sample";
+			String target2 = "Sample";
+			
+			// Creating Card class
+			Card card = new Card(target1, target2);
+			
+			// Getting the type
+			String test = card.getValue();
+			
+			// Asserting if it is right type
+			assertEquals(target2, test);
+	}
+	
+	// Test the getCardName() method
 	public void testgetCardName() {
-		// Testing getCardNameMethod
-		String test = card1.getCardName();
-		String test1 = Type.getType(0) + "_" + Value.getValue(0);
+		// Setting the target
+		String target1 = "Sample";
+		String target2 = "Sample";
 		
-		assertEquals(test, test1);		
+		// Creating Card class
+		Card card = new Card(target1, target2);
+		
+		// Testing getCardNameMethod
+		String test = card.getCardName();
+		
+		assertEquals(target1 + "_" + target2, test);		
 	}
 	
-	
-	
-	
-	
-	
-
-
+	// Test getPossibleValues
+	public void testGetPossibleValues() {
+		// Setting the target
+		String target1 = "Sample";
+		String target2 = "Sample";
+		
+		// Creating Card class
+		Card card = new Card(target1, target2);
+		
+		// Testing getPossibleValues() method
+		String [] test = card.getPossibleValues();
+		
+		assertEquals(null, test);		
+	}
 }

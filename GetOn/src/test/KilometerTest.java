@@ -1,28 +1,100 @@
 package test;
 
+import java.util.Arrays;
+
 import junit.framework.TestCase;
+import logic.BullyCard;
 import logic.KilometerCard;
 
 public class KilometerTest extends TestCase {
 
-			public void testfive() {
-				KilometerCard card5 = new KilometerCard(5);
-				card5.playCard();
-			}
+	// Test km card creation
+	public void testCreationOfKmCard() {
+		// Creating a km card
+		KilometerCard kmCard = new KilometerCard("FIVE");
 
-			public void testsix() {
-				KilometerCard card6 = new KilometerCard(6);
-				card6.playCard();
-			}
-
-			public void testeight() {
-				KilometerCard card8 = new KilometerCard(8);
-				card8.playCard();
-			}
-
-			public void testten() {
-				KilometerCard card10 = new KilometerCard(10);
-				card10.playCard();
-			}
-
+		assertNotNull(kmCard);
+	}
+	
+	// Test bully card creation with invalid value
+	public void testBadCreationOfKilometerCard() {
+		
+		try {
+			// Creating a bully card
+			KilometerCard kmCard = new KilometerCard("BAD_VALUE");
+			fail();
 		}
+		catch (IllegalArgumentException e) {
+		}
+	}
+
+	// Test the type retrieval method
+	public void testgetType() {
+		// Setting the target
+		String target = "KILOMETER";
+
+		// Creating a km card
+		KilometerCard kmCard = new KilometerCard("FIVE");
+
+		// Getting the type
+		String test = kmCard.getType();
+
+		// Asserting if it is right type
+		assertEquals(target, test);
+	}
+
+	// Test the value retrieval method
+	public void testgetValue() {
+		// Setting the target
+		String target = "FIVE";
+
+		// Creating a km card
+		KilometerCard kmCard = new KilometerCard(target);
+
+		// Getting the type
+		String test = kmCard.getValue();
+
+		// Asserting if it is right type
+		assertEquals(target, test);
+	}
+
+// Test the getCardName() method
+	public void testgetCardName() {
+		// Setting the target
+		String target = "FIVE";
+		String target1 = "KILOMETER_" + target;
+
+		// Creating a km card
+		KilometerCard kmCard = new KilometerCard(target);
+
+
+		// Testing getCardNameMethod
+		String test = kmCard.getCardName();
+
+		assertEquals(target1, test);
+	}
+	
+	// Test getPossibleValues
+	public void testGetPossibleValues() {
+		// Creating Card class
+		KilometerCard kmCard = new KilometerCard("FIVE");
+		
+		// Testing getCardNameMethod
+		String test = Arrays.toString(kmCard.getPossibleValues());
+		
+		assertEquals("[FIVE, SIX, EIGHT, TEN]", test);		
+	}
+	
+	// Test getAmounts
+	public void testGetAmounts() {
+		// Creating Card class
+		KilometerCard kmCard = new KilometerCard("FIVE");
+		
+		// Testing getAmounts
+		String test = Arrays.toString(kmCard.getAmounts());
+		
+		
+		assertEquals("[24, 12, 8, 8]", test);		
+	}
+
+}
