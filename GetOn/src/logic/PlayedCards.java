@@ -7,16 +7,17 @@ public class PlayedCards {
 
 	public PlayedCards(Card card) {
 		getPlayedCards().add(card);
+//		isPlayable(card, player);
 	}
-	
+
 	// Count how many of a specific cards have been played
 	public int countCards(Card card) {
 		// initiate count
 		int i = 0;
-		
+
 		// iterate over the played cards
 		for (Card playedCard : this.getPlayedCards()) {
-			
+
 			// check how many of the given specific cards are in the played pile
 			if (playedCard.getCardName().equals(playedCard.getCardName())) {
 				i++;
@@ -35,10 +36,8 @@ public class PlayedCards {
 	public ArrayList<Card> getPlayedCards() {
 		return this.playedCards;
 	}
-	
-	
 
-////	Is still in work
+//	Is still in work
 //
 //	// Method to play a selected card
 //	private void isPlayable(Card card, Player currentPlayer) {
@@ -62,7 +61,7 @@ public class PlayedCards {
 //					// if selected card is bully card, play it
 ////					currentPlayer.playBullyCard(bulliedPlayer);
 //						}
-//				else if(card.getType() == "STATUS" && card.getValue() == "TAIL_WIND") {
+//				else if(card.getValue() == "TAIL_WIND") {
 //					
 //					// if selected card is "TAIL_WIND", play it
 //					playedCards.add(card);
@@ -89,6 +88,42 @@ public class PlayedCards {
 //				// if given card is none of above throw an error
 //				throw new IllegalArgumentException("Card cannot be played");
 //			}
-//		}	
-//	}
+//		}
+//		// Player is on the bike
+//		else {
+//			// To play 5 Km card
+//			if (card.getValue() == "FIVE" && playedCards.countCards(card) < 8) {
+//					playedCards.add(card);
+//			}
+//				else {
+//					throw new IllegalArgumentException("Card cannot be played");
+//				}
+//			// To play 6 Km card
+//			else if (card.getValue() == "SIX" && playedCards.countCards(card) < 4) {
+//				playedCards.add(card);
+//		}
+//			else {
+//				throw new IllegalArgumentException("Card cannot be played");
+//			}
+//			else if (card.getValue() == "EIGHT" || card.getValue() == "TEN") {
+//				if (currentPlayer.getHasWind() && playedCards.countCards(card) < 2) {
+//					playedCards.add(card);
+//				}
+//				else {
+//					throw new IllegalArgumentException("Card cannot be played");
+//				}
+//			}
+//			else if (card.getType() == "REPAIR" || card.getValue() == "GET_ON") {
+//				throw new IllegalArgumentException("Card cannot be played");
+//			}
+//			else if (card.getType() == "BULLY") {
+//				// play any bully card
+////				currentPlayer.playBullyCard(bulliedPlayer);
+//			}
+//			else {
+//				playedCards.add(card);
+//			}
+//			}
+//			
+//		}
 }
