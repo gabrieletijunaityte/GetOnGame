@@ -3,12 +3,8 @@ package logic;
 import java.util.ArrayList;
 
 public class PlayedCards {
-	private ArrayList<Card> playedCards = new ArrayList<>();
+	private ArrayList<Card> playedCards;
 
-	public PlayedCards(Card card) {
-		getPlayedCards().add(card);
-//		isPlayable(card, player);
-	}
 	
 	// Return empty playedCards list
 	public PlayedCards() {
@@ -43,7 +39,7 @@ public class PlayedCards {
 	}
 
 //	Is still in work
-//
+
 //	// Method to play a selected card
 //	private void isPlayable(Card card, Player currentPlayer) {
 // 		// Card card - selected card
@@ -95,28 +91,6 @@ public class PlayedCards {
 //			}
 //		}
 //		// Player is on the bike
-//		else {
-//			// To play 5 Km card
-//			if (card.getValue() == "FIVE" && playedCards.countCards(card) < 8) {
-//					playedCards.add(card);
-//			}
-//				else {
-//					throw new IllegalArgumentException("Card cannot be played");
-//				}
-//			// To play 6 Km card
-//			else if (card.getValue() == "SIX" && playedCards.countCards(card) < 4) {
-//				playedCards.add(card);
-//		}
-//			else {
-//				throw new IllegalArgumentException("Card cannot be played");
-//			}
-//			else if (card.getValue() == "EIGHT" || card.getValue() == "TEN") {
-//				if (currentPlayer.getHasWind() && playedCards.countCards(card) < 2) {
-//					playedCards.add(card);
-//				}
-//				else {
-//					throw new IllegalArgumentException("Card cannot be played");
-//				}
 //			}
 //			else if (card.getType() == "REPAIR" || card.getValue() == "GET_ON") {
 //				throw new IllegalArgumentException("Card cannot be played");

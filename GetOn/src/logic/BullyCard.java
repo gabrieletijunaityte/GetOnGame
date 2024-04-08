@@ -13,4 +13,9 @@ public class BullyCard extends Card {
 		// Assign amount per card
 		this.amount = new int [] {2, 4, 3, 3};
 	}
+
+	// IsPlayable method
+	public boolean isPlayable() {
+		return true;
+	}
 }

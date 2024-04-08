@@ -13,7 +13,7 @@ public class PlayedCardsTest extends TestCase {
 		KilometerCard card = new KilometerCard("FIVE");
 		
 		// creating played card pile by playing a first card
-		PlayedCards playedCards = new PlayedCards(card);
+		PlayedCards playedCards = new PlayedCards();
 		
 		// Assert if playCards instance was created
 		assertNotNull(playedCards);
@@ -23,14 +23,13 @@ public class PlayedCardsTest extends TestCase {
 	public void testAddCardToPlayedCards() {
 		// Create fake cards
 		KilometerCard card = new KilometerCard("FIVE");
-		KilometerCard card1 = new KilometerCard("SIX");
 		
 		// Create the played cards
-		PlayedCards playedCards = new PlayedCards(card);
+		PlayedCards playedCards = new PlayedCards();
 		// Add card
-		playedCards.addCard(card1);
+		playedCards.addCard(card);
 		
-		assertEquals(2, playedCards.getPlayedCards().size());
+		assertEquals(1, playedCards.getPlayedCards().size());
 	}
 	
 	// Test countCards method
@@ -40,7 +39,8 @@ public class PlayedCardsTest extends TestCase {
 		KilometerCard card1 = new KilometerCard("SIX");
 		
 		// Create the played cards
-		PlayedCards playedCards = new PlayedCards(card);
+		PlayedCards playedCards = new PlayedCards();
+		playedCards.addCard(card);
 		playedCards.addCard(card1);
 		
 		assertEquals(2, playedCards.countCards(card));		
@@ -53,7 +53,8 @@ public class PlayedCardsTest extends TestCase {
 		KilometerCard card1 = new KilometerCard("SIX");
 		
 		// Create the played cards
-		PlayedCards playedCards = new PlayedCards(card);
+		PlayedCards playedCards = new PlayedCards();
+		playedCards.addCard(card);
 		playedCards.addCard(card1);
 		
 		// Assert if returned card list is as expected

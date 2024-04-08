@@ -7,6 +7,7 @@ import logic.Card;
 import logic.KilometerCard;
 import logic.PlayedCards;
 import logic.Player;
+import logic.Stack;
 
 public class PlayerTest extends TestCase {
 
@@ -23,15 +24,10 @@ public class PlayerTest extends TestCase {
 	public void testCreateHand() {
 		// Creating variables for the test
 		Player myPlayer = new Player("Jan", true);
-		ArrayList<Card> stack = new ArrayList<>();
+		Stack stack = new Stack();
 
 		// Create stack of cards to test the set up
-		stack.add(new KilometerCard("FIVE"));
-		stack.add(new KilometerCard("SIX"));
-		stack.add(new KilometerCard("TEN"));
-		stack.add(new KilometerCard("EIGHT"));
-		stack.add(new KilometerCard("SIX"));
-		stack.add(new KilometerCard("FIVE"));
+		stack.initializeStack();
 
 		// Create a hand
 		myPlayer.drawCard(stack, 5);
@@ -45,15 +41,10 @@ public class PlayerTest extends TestCase {
 	public void testDrawCard() {		
 		// Creating variables for the test
 		Player myPlayer = new Player("Jan", true);
-		ArrayList<Card> stack = new ArrayList<>();
+		Stack stack = new Stack();
 
 		// Create stack of cards to test the set up
-		stack.add(new KilometerCard("FIVE"));
-		stack.add(new KilometerCard("SIX"));
-		stack.add(new KilometerCard("TEN"));
-		stack.add(new KilometerCard("EIGHT"));
-		stack.add(new KilometerCard("SIX"));
-		stack.add(new KilometerCard("FIVE"));
+		stack.initializeStack();
 
 		// Create a hand
 		myPlayer.drawCard(stack, 5);
@@ -64,23 +55,18 @@ public class PlayerTest extends TestCase {
 		// Test if now player has 6 cards
 		assertEquals(6, myPlayer.getHand().size());
 
-		// Test if stack is now empty
-		assertEquals(0, stack.size());
+		// Test if stack now has 93 card
+		assertEquals(93, stack.getStackSize());
 
 	}
 
 	public void testPassTrun() {
 		// Creating variables for the test
 		Player myPlayer = new Player("Jan", true);
-		ArrayList<Card> stack = new ArrayList<>();
+		Stack stack = new Stack();
 
 		// Create stack of cards to test the set up
-		stack.add(new KilometerCard("FIVE"));
-		stack.add(new KilometerCard("SIX"));
-		stack.add(new KilometerCard("TEN"));
-		stack.add(new KilometerCard("EIGHT"));
-		stack.add(new KilometerCard("SIX"));
-		stack.add(new KilometerCard("FIVE"));
+		stack.initializeStack();
 
 		// Draw a card and change turn (implemented inside drawCard)
 		myPlayer.drawCard(stack);
@@ -93,36 +79,26 @@ public class PlayerTest extends TestCase {
 	public void testViewHand() {
 		// Creating variables for the test
 		Player myPlayer = new Player("Jan", true);
-		ArrayList<Card> stack = new ArrayList<>();
+		Stack stack = new Stack();
 
 		// Create stack of cards to test the set up
-		stack.add(new KilometerCard("FIVE"));
-		stack.add(new KilometerCard("SIX"));
-		stack.add(new KilometerCard("TEN"));
-		stack.add(new KilometerCard("EIGHT"));
-		stack.add(new KilometerCard("SIX"));
-		stack.add(new KilometerCard("FIVE"));
+		stack.initializeStack();
 
 		// Create a hand
 		myPlayer.drawCard(stack, 5);
 
 		// Print Cards on hand
-		assertEquals("[KILOMETER_FIVE, KILOMETER_SIX, KILOMETER_EIGHT, KILOMETER_TEN, KILOMETER_SIX]", myPlayer.viewHand());
+		assertEquals("[KILOMETER_FIVE, KILOMETER_FIVE, KILOMETER_FIVE, KILOMETER_FIVE, KILOMETER_FIVE]", myPlayer.viewHand());
 	}
 
 	public void testAddDiscardPile() {
 		// Creating variables for the test
 		Player myPlayer = new Player("Jan", true);
-		ArrayList<Card> stack = new ArrayList<>();
-		ArrayList<Card> discardPile = new ArrayList<>();
+		Stack stack = new Stack();
+		Stack discardPile = new Stack();
 
 		// Create stack of cards to test the set up
-		stack.add(new KilometerCard("FIVE"));
-		stack.add(new KilometerCard("SIX"));
-		stack.add(new KilometerCard("TEN"));
-		stack.add(new KilometerCard("EIGHT"));
-		stack.add(new KilometerCard("SIX"));
-		stack.add(new KilometerCard("FIVE"));
+		stack.initializeStack();
 
 		// Create a hand
 		myPlayer.drawCard(stack, 5);
@@ -132,7 +108,7 @@ public class PlayerTest extends TestCase {
 		myPlayer.discardCard(3, discardPile);
 
 		// test if the card is added to the discardPile
-		assertEquals("KILOMETER_TEN", discardPile.get(discardPile.size() - 1).getCardName());
+		assertEquals("KILOMETER_FIVE", discardPile.get(discardPile.getStackSize() - 1).getCardName());
 	}
 	
 	// Test to get statuses methods
