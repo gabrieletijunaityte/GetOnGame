@@ -108,6 +108,16 @@ public class Stack {
 		// Return the topCard
 		return topCard;
 	}
+
+	public void addDiscardedCard(Card discardedCard) {
+		// add a discardedCard to the discardPile
+		stack.add(discardedCard);
+	}
+
+	public Card get(int i) {
+		// add method to get a card at a specific index
+		return stack.get(i);
+	}
  	
     
 }

@@ -7,7 +7,7 @@ import logic.Stack;
 
 /* Create test spectator object
  * use its viewRules() method and store the rules into a test return object
- * print out the return object to visualize thge rules
+ * print out the return object to visualize the rules
  */
 public class SpectatorTest extends TestCase {
 	

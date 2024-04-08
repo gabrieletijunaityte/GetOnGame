@@ -22,14 +22,10 @@ public class Player {
 	}
 	
 
-	public void drawCard(ArrayList<Card> stack) {
+	public void drawCard(Stack stack) {
 	
 		// Add a card to the hand	
-		this.hand.add(stack.get(stack.size()-1));
-		
-		
-		// Remove the added card from the stack
-		stack.remove(stack.get(stack.size()-1));
+		this.hand.add(stack.drawTopCard());
 		
 		// change turn after drawing a card
 		changeTurn();
@@ -58,14 +54,13 @@ public class Player {
 	}
 
 
-	public void drawCard(ArrayList<Card> stack, int amount) {
+	public void drawCard(Stack stack, int amount) {
 		// Create a dummy hand
 		// Get five cards
 		ArrayList<Card> temp_hand = new ArrayList<>();
 		
 		for (int i = 0; i < amount; i++){
-			temp_hand.add(stack.get(stack.size()-1));
-			stack.remove(stack.get(stack.size()-1));
+			temp_hand.add(stack.drawTopCard());
 		}
 		this.hand = temp_hand;
 	}
@@ -82,7 +77,7 @@ public class Player {
 	}
 
 
-	public void discardCard(int i, ArrayList<Card> discardPile) {
+	public void discardCard(int i, Stack discardPile) {
 		// Add the discarded card to the discardPile and remove the card from the hand
 		// Check if the index is possible, if not, throw exception
 		if (i<0 || i >= 5) {
@@ -93,7 +88,7 @@ public class Player {
 			// Set discarded card to the parameter index of the hand.
 			Card discardedCard = hand.get(i);
 			// Add the discarded card to the discardPile
-			discardPile.add(discardedCard);
+			discardPile.addDiscardedCard(discardedCard);
 			// Remove the card from the hand
 			hand.remove(i);
 			// Show which card is removed
