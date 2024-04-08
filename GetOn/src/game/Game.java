@@ -8,6 +8,7 @@ import logic.Value;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import graphics.GameFrame;
 import graphics.PlayerHand;
 
 public class Game {
@@ -50,7 +51,10 @@ public class Game {
 		System.out.print("\nThe player's hand now contains:\n");
 
 		// Test PlayerHand GUI, to be removed later
-		PlayerHand.main(args, firstPlayer.getHand());
+		//PlayerHand.main(args, firstPlayer.getHand());
+		
+		// Launch GameFrame GUI (Test)
+		GameFrame.main(args);
 		
 	}
 
