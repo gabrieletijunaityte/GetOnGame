@@ -24,16 +24,18 @@ import java.util.ArrayList;
 import javax.swing.JTextField;
 import java.awt.Color;
 import javax.swing.SwingConstants;
+import javax.swing.JLabel;
+import java.awt.SystemColor;
 
 public class PlayerHand extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField card1;
-	private JTextField card2;
-	private JTextField card3;
-	private JTextField card4;
-	private JTextField card5;
+	private JLabel card1;
+	private JLabel card2;
+	private JLabel card3;
+	private JLabel card4;
+	private JLabel card5;
 	
 	/**
 	 * Launch the application.
@@ -76,61 +78,41 @@ public class PlayerHand extends JFrame {
 		gbl_contentPane.rowWeights = new double[]{1.0, Double.MIN_VALUE};
 		contentPane.setLayout(gbl_contentPane);
 		
-		card1 = new JTextField();
-		card1.setBackground(Color.WHITE);
-		card1.setEditable(false);
+		card1 = new JLabel("");
+		card1.setBackground(SystemColor.text);
 		GridBagConstraints gbc_card1 = new GridBagConstraints();
 		gbc_card1.insets = new Insets(0, 0, 0, 5);
-		gbc_card1.fill = GridBagConstraints.BOTH;
 		gbc_card1.gridx = 0;
 		gbc_card1.gridy = 0;
 		contentPane.add(card1, gbc_card1);
-		card1.setColumns(10);
-		card1.setHorizontalAlignment(JTextField.CENTER);
 		
-		card2 = new JTextField();
-		card2.setHorizontalAlignment(SwingConstants.CENTER);
-		card2.setEditable(false);
-		card2.setColumns(10);
-		card2.setBackground(Color.WHITE);
+		card2 = new JLabel("");
+		card2.setBackground(SystemColor.text);
 		GridBagConstraints gbc_card2 = new GridBagConstraints();
 		gbc_card2.insets = new Insets(0, 0, 0, 5);
-		gbc_card2.fill = GridBagConstraints.BOTH;
 		gbc_card2.gridx = 1;
 		gbc_card2.gridy = 0;
 		contentPane.add(card2, gbc_card2);
 		
-		card3 = new JTextField();
-		card3.setHorizontalAlignment(SwingConstants.CENTER);
-		card3.setEditable(false);
-		card3.setColumns(10);
-		card3.setBackground(Color.WHITE);
+		card3 = new JLabel("");
+		card3.setBackground(SystemColor.text);
 		GridBagConstraints gbc_card3 = new GridBagConstraints();
 		gbc_card3.insets = new Insets(0, 0, 0, 5);
-		gbc_card3.fill = GridBagConstraints.BOTH;
 		gbc_card3.gridx = 2;
 		gbc_card3.gridy = 0;
 		contentPane.add(card3, gbc_card3);
 		
-		card4 = new JTextField();
-		card4.setHorizontalAlignment(SwingConstants.CENTER);
-		card4.setEditable(false);
-		card4.setColumns(10);
-		card4.setBackground(Color.WHITE);
+		card4 = new JLabel("");
+		card4.setBackground(SystemColor.text);
 		GridBagConstraints gbc_card4 = new GridBagConstraints();
 		gbc_card4.insets = new Insets(0, 0, 0, 5);
-		gbc_card4.fill = GridBagConstraints.BOTH;
 		gbc_card4.gridx = 3;
 		gbc_card4.gridy = 0;
 		contentPane.add(card4, gbc_card4);
 		
-		card5 = new JTextField();
-		card5.setHorizontalAlignment(SwingConstants.CENTER);
-		card5.setEditable(false);
-		card5.setColumns(10);
-		card5.setBackground(Color.WHITE);
+		card5 = new JLabel("");
+		card5.setBackground(SystemColor.text);
 		GridBagConstraints gbc_card5 = new GridBagConstraints();
-		gbc_card5.fill = GridBagConstraints.BOTH;
 		gbc_card5.gridx = 4;
 		gbc_card5.gridy = 0;
 		contentPane.add(card5, gbc_card5);
@@ -147,10 +129,14 @@ public class PlayerHand extends JFrame {
 	// Method to display the cards in the GUI
 	public void updateHand(ArrayList<Card> hand) {
 		
-		JTextField[] cards = {card1, card2, card3, card4, card5};
+		JLabel[] cards = {card1, card2, card3, card4, card5};
 		
 		for (int i = 0; i < hand.size(); i++) {
-			cards[i].setText(hand.get(i).toString());
+			
+			String filePath = "data/cards/" + hand.get(i).toString() + ".png";
+			ImageIcon cardImg = new ImageIcon(filePath);
+			cards[i].setIcon(cardImg);
+					
 		}
 		
 	}

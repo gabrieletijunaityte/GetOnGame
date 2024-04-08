@@ -22,11 +22,11 @@ public class Game {
 		ArrayList<Card> stack = new ArrayList<>();
 			// Create 5 cards to test the set up
 		stack.add(new Card(Type.getType(0), Value.getValue(0)));
-		stack.add(new Card(Type.getType(1), Value.getValue(1)));
-		stack.add(new Card(Type.getType(2), Value.getValue(0)));
-		stack.add(new Card(Type.getType(0), Value.getValue(1)));
-		stack.add(new Card(Type.getType(0), Value.getValue(1)));
-		stack.add(new Card(Type.getType(1), Value.getValue(0)));
+		stack.add(new Card(Type.getType(1), Value.getValue(4)));
+		stack.add(new Card(Type.getType(2), Value.getValue(9)));
+		stack.add(new Card(Type.getType(0), Value.getValue(2)));
+		stack.add(new Card(Type.getType(0), Value.getValue(3)));
+		stack.add(new Card(Type.getType(1), Value.getValue(6)));
 		
 		// See players hand:
 		firstPlayer.drawCard(stack, 5);
