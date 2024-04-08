@@ -1,7 +1,6 @@
 package logic;
 import java.util.ArrayList;
 
-
 public class Player {
 	
 	private ArrayList<Card> hand;
@@ -135,4 +134,35 @@ public class Player {
 	private void setHasWind(Boolean hasWind) {
 		this.hasWind = hasWind;
 	}
+	
+	// This method returns the player's kilometer progress
+	public int playerProgress(PlayedCards playedCards) {
+	    int totalKilometers = 0;
+	    // Iterate through played cards
+	    for (Card card : playedCards.getPlayedCards()) {
+	    	// Check if the object is of KilometerCard
+	        if (card instanceof KilometerCard) {
+	            String value = card.getValue();
+	            switch (value) {
+	                case "FIVE":
+	                    totalKilometers += 5;
+	                    break;
+	                case "SIX":
+	                    totalKilometers += 6;
+	                    break;
+	                case "EIGHT":
+	                    totalKilometers += 8;
+	                    break;
+	                case "TEN":
+	                    totalKilometers += 10;
+	                    break;
+	                //	If the card is not one of these four cards, nothing "default" is triggered and nothing happens
+	                default:
+	                    break;
+	            }
+	        }
+	    }
+	    return totalKilometers;
+	}
+
 }

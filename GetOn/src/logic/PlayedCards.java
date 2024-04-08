@@ -9,6 +9,11 @@ public class PlayedCards {
 		getPlayedCards().add(card);
 //		isPlayable(card, player);
 	}
+	
+	// Return empty playedCards list
+	public PlayedCards() {
+		playedCards = new ArrayList<>();
+	}
 
 	// Count how many of a specific cards have been played
 	public int countCards(Card card) {

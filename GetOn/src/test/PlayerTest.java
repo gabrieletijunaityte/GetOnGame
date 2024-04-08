@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import junit.framework.TestCase;
 import logic.Card;
 import logic.KilometerCard;
+import logic.PlayedCards;
 import logic.Player;
 
 public class PlayerTest extends TestCase {
@@ -145,4 +146,25 @@ public class PlayerTest extends TestCase {
 		assertEquals(target, testPlayer.getOnBikeStatus());
 
 	}	
+	
+	// Test to get the player progress
+	public void testPlayerProgress() {
+	    // Creating variables for the test
+	    Player myPlayer = new Player("Jan", true);
+	    PlayedCards playedCards = new PlayedCards();
+
+	    // Add Kilometer cards to played cards. Added two SIX to see that duplicates also work
+	    playedCards.addCard(new KilometerCard("FIVE"));
+	    playedCards.addCard(new KilometerCard("SIX"));
+	    playedCards.addCard(new KilometerCard("SIX"));
+	    playedCards.addCard(new KilometerCard("EIGHT"));
+	    playedCards.addCard(new KilometerCard("TEN"));
+
+	    // Calculate player progress
+	    int totalKilometers = myPlayer.playerProgress(playedCards);
+
+	    // Test total kilometers
+	    assertEquals(5 + 6 + 6 + 8 + 10, totalKilometers);
+	}
+
 }
