@@ -11,7 +11,7 @@ import java.util.ArrayList;
 * - 16 defense cards (8 barrierOpen, 8 bikeRepair)
 * - 19 status cards (14 getOn, 5 tailwind)
 * Credits for inspiration on stack creation: https://stackoverflow.com/questions/70086453/create-a-stack-of-cards
-* Credits for shuffle method:  
+* Credits for shuffle method: java how to program Paul Deitel & Harvey Deitel
 */
 
 
@@ -86,5 +86,19 @@ public class Stack {
     	return stack.size();
     }
     
+    // shuffle cards
+    /* This method takes a random index with randomNumbers in the range of the stack size 
+     * it then iterates through the original stack based on its index.
+     * The card is swapped with the random index*/
+   
+ 	public void shuffle() {
+ 	    for (int first = 0; first < stack.size(); first++) {
+ 	        int second = randomNumbers.nextInt(stack.size());
+ 	        Card temp = stack.get(first);
+ 	        stack.set(first, stack.get(second));
+ 	        stack.set(second, temp);
+ 	    }
+ 	}
+ 	
     
 }
