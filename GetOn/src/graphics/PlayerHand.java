@@ -11,12 +11,16 @@ import javax.swing.border.EmptyBorder;
 import logic.Card;
 
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.GridBagLayout;
 import javax.swing.JTextPane;
 import java.awt.GridBagConstraints;
 import javax.swing.BoxLayout;
 import java.awt.Insets;
 import javax.swing.JTextArea;
+
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
@@ -122,21 +126,42 @@ public class PlayerHand extends JFrame {
 		ImageIcon img = new ImageIcon("data/hand_icon.png");
 		this.setIconImage(img.getImage());		
 		
-		updateHand(hand);
+		// Update Hand Icons
+		this.addComponentListener(new ComponentAdapter() {
+			
+			@Override
+			public void componentResized(ComponentEvent e) {
+				int width = getWidth();
+				
+				int cardWidth = width/5;
+				
+				// fill the cards with icons
+				updateHand(hand, cardWidth);
+				
+			}
+
+		});
 		
 	}
 	
 	// Method to display the cards in the GUI
-	public void updateHand(ArrayList<Card> hand) {
+	public void updateHand(ArrayList<Card> hand, int width) {
 		
 		JLabel[] cards = {card1, card2, card3, card4, card5};
 		
+		// Calculate height based on scale
+		int height = (int) (width * 2.28);
+		
+		
+		// Inspired from https://stackoverflow.com/questions/6444042/java-resize-image-dynamically-to-fit-grids-in-gridlayout
 		for (int i = 0; i < hand.size(); i++) {
 			
 			String filePath = "data/cards/" + hand.get(i).toString() + ".png";
 			ImageIcon cardImg = new ImageIcon(filePath);
-			cards[i].setIcon(cardImg);
-					
+			Image orignalImg = cardImg.getImage();
+			Image resizedImg = orignalImg.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+			cards[i].setIcon(new ImageIcon(resizedImg));
+			
 		}
 		
 	}

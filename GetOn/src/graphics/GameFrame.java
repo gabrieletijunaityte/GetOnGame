@@ -46,13 +46,13 @@ public class GameFrame extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args, Stack stack, String discardedCardName) {
+	public static void main(String[] args, Stack stack, String discardedCardName, ArrayList<Card> hand) {
 
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					GameFrame frame = new GameFrame(stack, discardedCardName);
+					GameFrame frame = new GameFrame(stack, discardedCardName, hand);
 					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 					frame.setVisible(true);
 					frame.setAlwaysOnTop(true); // Makes sure frame always is on top
@@ -66,7 +66,7 @@ public class GameFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public GameFrame(Stack stack, String discardedCardName) {
+	public GameFrame(Stack stack, String discardedCardName, ArrayList<Card> hand) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -218,9 +218,11 @@ public class GameFrame extends JFrame {
         addCardWithCounter(player3, createCardLabel("| 10 Km cards: "), numberof10cards);
         
         JButton btnViewHand = new JButton("View Hand");
-        btnViewHand.addMouseListener(new MouseAdapter() {
-        	public void mouseClicked(MouseEvent e, ArrayList<Card> hand) {
-				PlayerHand.main(null, hand);				
+        btnViewHand.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		
+        		PlayerHand.main(null, hand);
+        		
         	}
         });
 
