@@ -61,5 +61,14 @@ public class PlayedCardsTest extends TestCase {
 		assertEquals("[KILOMETER_FIVE, KILOMETER_SIX]", playedCards.getPlayedCards().toString());		
 		
 	}
+	
+	// Test playedCard creation thats empty
+	public void testCreationEmptyPlayedCards() {
+		// creating played card pile by playing a first card
+		PlayedCards playedCards = new PlayedCards();
+		
+		// Assert if playCards instance was created
+		assertNotNull(playedCards);
+		}
 
 }

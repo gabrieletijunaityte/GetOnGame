@@ -5,9 +5,10 @@ import java.util.ArrayList;
 public class PlayedCards {
 	private ArrayList<Card> playedCards;
 
-	// Constructor
+	
+	// Return empty playedCards list
 	public PlayedCards() {
-		this.playedCards = new ArrayList<>();
+		playedCards = new ArrayList<>();
 	}
 
 	// Count how many of a specific cards have been played
