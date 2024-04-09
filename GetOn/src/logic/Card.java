@@ -2,10 +2,10 @@ package logic;
 
 public class Card {	
 	
-	private String type;
-	private String value;
-	protected String [] pos_values;
-	protected int [] amount;
+	private String type; 				// type of the card e.g. BULLY
+	private String value; 				// value of the card e.g. TAVERN
+	protected String [] pos_values; 	// array of possible values for each type
+	protected int [] amount; 			// array of amounts of each card for stack generation
 	
 	// Constructor
 	public Card (String type, String value) {
@@ -13,12 +13,12 @@ public class Card {
 		this.value = value;
 	}
 	
-	// getting the type of the card
+	// Getting the type of the card
 	public String getType() {
 		return this.type;
 	}
 	
-	// getting the value of the card
+	// Getting the value of the card
 	public String getValue() {
 		return this.value;
 	}
@@ -28,21 +28,22 @@ public class Card {
 		return this.type + "_" + this.value;
 	}
 	
-	// getting the representation of the card by combining the type and value
+	// Getting the representation of the card by combining the type and value
 	public String getCardName() {
 		return toString();
 	}
 	
-	// Method to retrieve possible values
+	// Method to retrieve possible values for the specific type
 	public String[] getPossibleValues() {        
         return this.pos_values;
 	}
 	
+	// Method to get amounts of the specific card
 	public int[] getAmounts() {
 		return this.amount;
 	}
 	
-	// Method to check if value is in pos_values
+	// Method to check if value is in pos_values for deck building
 	protected void validateValue(String value) {
 		for (String validValue : pos_values) {
 			if (validValue.equals(value)) {
@@ -51,8 +52,12 @@ public class Card {
 		}
 		throw new IllegalArgumentException("Entered value is not in possible values list");
 	}
+	
+	// Method to check if the card is playable, specified subclasses
 	public boolean isPlayable() {
 		return false;
 	}
 	
+	public void playCard() {
+	}
 }

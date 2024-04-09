@@ -5,6 +5,7 @@ import java.util.Arrays;
 import junit.framework.TestCase;
 import logic.BullyCard;
 import logic.KilometerCard;
+import logic.Player;
 
 public class BullyCardTest extends TestCase {
 
@@ -97,6 +98,27 @@ public class BullyCardTest extends TestCase {
 		
 		
 		assertEquals("[2, 4, 3, 3]", test);		
+	}
+	
+	// Test playing bully card
+	public void testPlayCard() {
+		// creating dummy players
+		Player bulliedPlayer = new Player("Gabby", false);
+		
+		// Creating a bully card
+		BullyCard bullyCard = new BullyCard("TAVERN");
+		
+		// Test playing bully card to Gabby
+		bullyCard.playCard(bulliedPlayer);
+		
+		boolean target = true;
+		boolean test = bulliedPlayer.getBulliedStatus();
+		
+		assertEquals(target, test);
+		
+		String test1 = bulliedPlayer.getPlayedCards().toString();
+		assertNotNull(test1);
+		
 	}
 
 }

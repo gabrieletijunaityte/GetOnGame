@@ -3,6 +3,7 @@ package test;
 import java.util.ArrayList;
 
 import junit.framework.TestCase;
+import logic.BullyCard;
 import logic.Card;
 import logic.KilometerCard;
 import logic.PlayedCards;
@@ -142,6 +143,53 @@ public class PlayerTest extends TestCase {
 
 	    // Test total kilometers
 	    assertEquals(5 + 6, totalKilometers);
+	}
+	
+
+	// Test bullying process
+	public void testSelectCard() {
+		// creating dummy players
+		Player bullyPlayer = new Player("Jan", true);
+		Player bulliedPlayer = new Player("Gabby", false);
+		
+		// Dummy stack
+		Stack stack = new Stack();
+		stack.initializeStack();
+		
+		// Creating a bully card
+		BullyCard bullyCard = new BullyCard("TAVERN");
+		
+		// Giving the bully card to Jan
+		bullyPlayer.addCard(bullyCard);
+		
+		// Test Jan playing bully to Gabby
+		bullyPlayer.selectCard(bullyCard, bulliedPlayer, stack);
+		
+		// Testing if Gabby's bully status has changed
+		boolean target = true;
+		boolean test = bulliedPlayer.getBulliedStatus();
+		
+		assertEquals(target, test);
+		
+		// Testing if Gabby has now a card on the table
+		String test1 = bulliedPlayer.getPlayedCards().toString();
+		assertNotNull(test1);
+		
+		// Check if Jan passed turn
+		boolean target1 = false;
+		boolean test2 = bullyPlayer.getTurn();
+		
+		assertEquals(target1, test2);
+	}
+	
+	// Test the setBulliedType and getBulliedType
+	public void testSetBulliedType() {
+	    Player myPlayer = new Player("Jan", true);
+		myPlayer.setBulliedType("TAVERN");
+		String bulliedTest = "TAVERN";
+		
+		assertEquals(myPlayer.getBulliedType(), bulliedTest);
+
 	}
 
 }

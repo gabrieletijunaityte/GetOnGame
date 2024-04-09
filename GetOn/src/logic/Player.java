@@ -16,6 +16,7 @@ public class Player {
 	private Boolean hasWind;
 	private PlayedCards playedCards;
 	private int kmProgress;
+	private String bulliedType;
 
 	// Constructor
 	public Player(String name, Boolean isTurn) {
@@ -27,14 +28,22 @@ public class Player {
 		this.hasWind = false;
 		this.playedCards = new PlayedCards();
 		this.kmProgress = 0;
+		this.bulliedType = null;
 	}
 
-	// Method to draw a signle card
-	public void drawCard(Stack stack) {
-
+	// Add card to the hand (only needed for testing)
+	public void addCard(Card card) {
 		// Add a card to the hand
-		this.hand.add(stack.drawTopCard());
-
+		this.hand.add(card);
+	}
+	
+	// Method to draw a single card
+	public void drawCard(Stack stack) {
+		
+		// Add a card to the hand
+		Card topCard = stack.drawTopCard();
+		addCard(topCard);
+		
 		// Change turn after drawing a card
 		changeTurn();
 	}
@@ -91,6 +100,7 @@ public class Player {
 			// Remove the card from the hand
 			hand.remove(i);
 			// Show which card is removed
+
 			System.out.println(discardedCard.getCardName() + ": has been discarded from your hand");
 			
 			// Show the hand after the removal
@@ -100,7 +110,11 @@ public class Player {
 			return discardedCard.getCardName();
 		}
 		
-	}
+
+
+		}
+
+
 
 	// Get the hand as array list
 	public ArrayList<Card> getHand() {
@@ -182,5 +196,22 @@ public class Player {
 
 	public int getKmProgress() {
 		return this.kmProgress;
+	}
+	
+//	public void selectCard(Card card, Stack stack) {
+//		card.playCard();
+//	}
+	
+	public void selectCard(BullyCard card, Player bulliedPlayer, Stack stack) {
+		card.playCard(bulliedPlayer);
+		this.hand.remove(card);
+		this.drawCard(stack);
+	}
+	
+	public String getBulliedType() {
+		return this.bulliedType;
+	}
+	public void setBulliedType(String bulliedType) {
+		this.bulliedType = bulliedType;
 	}
 }

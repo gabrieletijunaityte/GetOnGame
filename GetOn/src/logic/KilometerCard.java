@@ -16,16 +16,18 @@ public class KilometerCard extends Card {
 
 	// IsPlayable method
 	public boolean isPlayable(Player currentPlayer) {
-		if (this.getValue() == "FIVE" && currentPlayer.getPlayedCards().countCards(this) < 8) {
-			return true;
-		}
-		else if (this.getValue() == "SIX" && currentPlayer.getPlayedCards().countCards(this) < 4) {
-			return true;
-		}
-		else if ((this.getValue() == "EIGHT" || this.getValue()  == "TEN") && currentPlayer.getPlayedCards().countCards(this) < 2 && currentPlayer.getHasWind()) {
-			return true;
-		}
-		else {
+		if (currentPlayer.getOnBikeStatus()) {
+			if (this.getValue() == "FIVE" && currentPlayer.getPlayedCards().countCards(this) < 8) {
+				return true;
+			} else if (this.getValue() == "SIX" && currentPlayer.getPlayedCards().countCards(this) < 4) {
+				return true;
+			} else if ((this.getValue() == "EIGHT" || this.getValue() == "TEN")
+					&& currentPlayer.getPlayedCards().countCards(this) < 2 && currentPlayer.getHasWind()) {
+				return true;
+			} else {
+				return false;
+			}
+		} else {
 			return false;
 		}
 	}
