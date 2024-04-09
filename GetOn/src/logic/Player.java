@@ -12,6 +12,7 @@ public class Player {
 	private Boolean hasWind;
 	private PlayedCards playedCards;
 	private int kmProgress;
+	private String bulliedType;
 
 	// Constructor
 	public Player(String name, Boolean isTurn) {
@@ -23,6 +24,7 @@ public class Player {
 		this.hasWind = false;
 		this.playedCards = new PlayedCards();
 		this.kmProgress = 0;
+		this.bulliedType = null;
 	}
 
 	// Method to draw a signle card
@@ -173,5 +175,12 @@ public class Player {
 
 	public int getKmProgress() {
 		return this.kmProgress;
+	}
+
+	public String getBulliedType() {
+		return this.bulliedType;
+	}
+	public void setBulliedType(String bulliedType) {
+		this.bulliedType = bulliedType;
 	}
 }

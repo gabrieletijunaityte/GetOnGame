@@ -143,5 +143,14 @@ public class PlayerTest extends TestCase {
 	    // Test total kilometers
 	    assertEquals(5 + 6, totalKilometers);
 	}
+	
+	// Test the setBulliedType and getBulliedType
+	public void testSetBulliedType() {
+	    Player myPlayer = new Player("Jan", true);
+		myPlayer.setBulliedType("TAVERN");
+		String bulliedTest = "TAVERN";
+		
+		assertEquals(myPlayer.getBulliedType(), bulliedTest);
+	}
 
 }
