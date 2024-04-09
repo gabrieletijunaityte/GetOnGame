@@ -18,15 +18,14 @@ public class Game {
 		
 		Player firstPlayer = new Player("", true), secondPlayer = new Player("", false), thirdPlayer = new Player("", false);
 		
-		
-		// Launch the main menu
-		MainMenu.main(args, firstPlayer, secondPlayer, thirdPlayer);
-		
 		// Initialize the stack
 		Stack stack = new Stack();
 		// Create 5 cards to test the set up
 		stack.initializeStack();
-
+		
+		// Launch the main menu
+		MainMenu.main(args, firstPlayer, secondPlayer, thirdPlayer, stack);
+		
 		
 		// See players hand:
 		firstPlayer.drawCard(stack, 5);
@@ -53,7 +52,7 @@ public class Game {
 		//PlayerHand.main(args, firstPlayer.getHand());
 		
 		// Launch GameFrame GUI (Test)
-		GameFrame.main(args);
+		//GameFrame.main(args);
 		
 	}
 

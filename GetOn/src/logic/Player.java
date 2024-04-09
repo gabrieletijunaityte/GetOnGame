@@ -2,6 +2,10 @@ package logic;
 
 import java.util.ArrayList;
 
+import javax.swing.JLabel;
+
+import graphics.GameFrame;
+
 public class Player {
 
 	private ArrayList<Card> hand;

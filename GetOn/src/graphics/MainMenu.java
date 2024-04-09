@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import logic.Player;
+import logic.Stack;
 
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -32,11 +33,11 @@ public class MainMenu extends JFrame {
 	 * @param firstPlayer 
 	 * @return 
 	 */
-	public static void  main(String[] args, Player firstPlayer, Player secondPlayer, Player thirdPlayer) {
+	public static void  main(String[] args, Player firstPlayer, Player secondPlayer, Player thirdPlayer, Stack stack) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainMenu frame = new MainMenu(firstPlayer, secondPlayer, thirdPlayer);
+					MainMenu frame = new MainMenu(firstPlayer, secondPlayer, thirdPlayer, stack);
 					frame.setVisible(true);
 					frame.setAlwaysOnTop(true);
 				} catch (Exception e) {
@@ -53,7 +54,7 @@ public class MainMenu extends JFrame {
 	 * @param secondPlayer 
 	 * @param firstPlayer 
 	 */
-	public MainMenu(Player firstPlayer, Player secondPlayer, Player thirdPlayer) {
+	public MainMenu(Player firstPlayer, Player secondPlayer, Player thirdPlayer, Stack stack) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 738, 397);
 		contentPane = new JPanel();
@@ -117,6 +118,8 @@ public class MainMenu extends JFrame {
 		JButton btnStartGame = new JButton("Start Game");
 		btnStartGame.addActionListener(new ActionListener() {
 
+		
+
 			public void actionPerformed(ActionEvent e) {
 				
 				// Allows the user to start the game whilst initializing players
@@ -142,13 +145,15 @@ public class MainMenu extends JFrame {
 				
 				if (canStart == true) {
 					
+					
 					// Launches the GameFrame and closes main menu
-					GameFrame.main(null);
+					GameFrame.main(null, stack);
 					dispose();
 					
 				}
 				
 			}
+
 		});
 		
 		btnStartGame.setBounds(305, 263, 128, 38);
