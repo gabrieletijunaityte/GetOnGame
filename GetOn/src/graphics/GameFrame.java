@@ -10,6 +10,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import logic.Card;
+import logic.Stack;
 
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
@@ -24,6 +25,7 @@ import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JTextField;
 
 public class GameFrame extends JFrame {
 
@@ -44,13 +46,13 @@ public class GameFrame extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args, Stack stack) {
 
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					GameFrame frame = new GameFrame();
+					GameFrame frame = new GameFrame(stack);
 					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 					frame.setVisible(true);
 					frame.setAlwaysOnTop(true); // Makes sure frame always is on top
@@ -64,7 +66,7 @@ public class GameFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public GameFrame() {
+	public GameFrame(Stack stack) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -93,6 +95,13 @@ public class GameFrame extends JFrame {
         ImageIcon stackIcon = new ImageIcon("data/stack_of_cards.png");
         JLabel stackOfCards = new JLabel(stackIcon);
         panelStack.add(stackOfCards);
+        
+        JLabel lblStackLabel = new JLabel("Stack Label");
+        panelStack.add(lblStackLabel);
+        
+        int stackSize = stack.getStackSize();
+        
+        lblStackLabel.setText("Remaining Cards = " + stackSize);
 		
 		JPanel panelDiscard = new JPanel();
 		
@@ -231,4 +240,5 @@ public class GameFrame extends JFrame {
     	JLabel label = new JLabel(labelText);
     	return label;
     }
+    
 }
