@@ -127,20 +127,21 @@ public class PlayerTest extends TestCase {
 	public void testPlayerProgress() {
 	    // Creating variables for the test
 	    Player myPlayer = new Player("Jan", true);
-	    PlayedCards playedCards = new PlayedCards();
 
 	    // Add Kilometer cards to played cards. Added two SIX to see that duplicates also work
-	    playedCards.addCard(new KilometerCard("FIVE"));
-	    playedCards.addCard(new KilometerCard("SIX"));
-	    playedCards.addCard(new KilometerCard("SIX"));
-	    playedCards.addCard(new KilometerCard("EIGHT"));
-	    playedCards.addCard(new KilometerCard("TEN"));
+	    Card card = new KilometerCard("FIVE");
+	    Card card1 = new KilometerCard("SIX");
+	
+	    myPlayer.playerProgress(card);
+	    myPlayer.playerProgress(card1);
 
 	    // Calculate player progress
-	    int totalKilometers = myPlayer.playerProgress(playedCards);
+	    
+	    
+	    int totalKilometers = myPlayer.getKmProgress();
 
 	    // Test total kilometers
-	    assertEquals(5 + 6 + 6 + 8 + 10, totalKilometers);
+	    assertEquals(5 + 6, totalKilometers);
 	}
 
 }

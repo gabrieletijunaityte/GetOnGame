@@ -11,7 +11,9 @@ public class Player {
 	private Boolean bulliedStatus;
 	private Boolean hasWind;
 	private PlayedCards playedCards;
+	private int kmProgress;
 
+	// Constructor
 	public Player(String name, Boolean isTurn) {
 		this.name = name;
 		this.isTurn = true;
@@ -20,31 +22,35 @@ public class Player {
 		this.bulliedStatus = false;
 		this.hasWind = false;
 		this.playedCards = new PlayedCards();
+		this.kmProgress = 0;
 	}
 
-
+	// Method to draw a signle card
 	public void drawCard(Stack stack) {
-	
-		// Add a card to the hand	
+
+		// Add a card to the hand
 		this.hand.add(stack.drawTopCard());
-		
-		// change turn after drawing a card
+
+		// Change turn after drawing a card
 		changeTurn();
 	}
 
-	// method to change the player name
+	// Method to change the player name
 	public void changeName(String name) {
 		this.name = name;
 	}
 
+	// Get player's name
 	public String getName() {
 		return name;
 	}
 
+	// Get the player game status (if it's their turn)
 	public Boolean getTurn() {
 		return this.isTurn;
 	}
 
+	// Change the player game status
 	public void changeTurn() {
 		if (isTurn) {
 			this.isTurn = false;
@@ -53,28 +59,19 @@ public class Player {
 		}
 	}
 
-
+	// Method to draw a specific amount of cards
 	public void drawCard(Stack stack, int amount) {
 		// Create a dummy hand
 		// Get five cards
 		ArrayList<Card> temp_hand = new ArrayList<>();
-		
-		for (int i = 0; i < amount; i++){
+
+		for (int i = 0; i < amount; i++) {
 			temp_hand.add(stack.drawTopCard());
 		}
 		this.hand = temp_hand;
 	}
 
-	public String viewHand() {
-		ArrayList<String> handCards = new ArrayList<>();
-		for (Card card : this.hand) {
-			handCards.add(card.getCardName());
-		}
-		String handCardsString = handCards.toString();
-//		System.out.println(handCardsString); 
-		return handCardsString;
-	}
-
+	// Method to discard a card
 	public void discardCard(int i, Stack discardPile) {
 		// Add the discarded card to the discardPile and remove the card from the hand
 		// Check if the index is possible, if not, throw exception
@@ -96,65 +93,85 @@ public class Player {
 		System.out.println("Current hand: " + viewHand());
 	}
 
+	// Get the hand as array list
 	public ArrayList<Card> getHand() {
 		return this.hand;
 	}
 
+	// View the cards player has in their hand (as a string)
+	public String viewHand() {
+		ArrayList<String> handCards = new ArrayList<>();
+		for (Card card : this.hand) {
+			handCards.add(card.getCardName());
+		}
+		String handCardsString = handCards.toString();
+		return handCardsString;
+	}
+
+	// Get status if the player is on bike
 	public Boolean getOnBikeStatus() {
 		return this.onBikeStatus;
 	}
 
+	// Change the player "isOnBike" status
 	public void setOnBikeStatus(Boolean onBikeStatus) {
 		this.onBikeStatus = onBikeStatus;
 	}
 
+	// Get the player "bullied" status
 	public Boolean getBulliedStatus() {
 		return this.bulliedStatus;
 	}
 
+	// Change the player "bullied" status
 	public void setBulliedStatus(Boolean bulliedStatus) {
 		this.bulliedStatus = bulliedStatus;
 	}
 
+	// Get the player "hasWind" status
 	public Boolean getHasWind() {
 		return this.hasWind;
 	}
 
+	// Get the player "bullied" status
 	public void setHasWind(Boolean hasWind) {
 		this.hasWind = hasWind;
 	}
-	
-	// This method returns the player's kilometer progress
-	public int playerProgress(PlayedCards playedCards) {
-	    int totalKilometers = 0;
-	    // Iterate through played cards
-	    for (Card card : playedCards.getPlayedCards()) {
-	    	// Check if the object is of KilometerCard
-	        if (card instanceof KilometerCard) {
-	            String value = card.getValue();
-	            switch (value) {
-	                case "FIVE":
-	                    totalKilometers += 5;
-	                    break;
-	                case "SIX":
-	                    totalKilometers += 6;
-	                    break;
-	                case "EIGHT":
-	                    totalKilometers += 8;
-	                    break;
-	                case "TEN":
-	                    totalKilometers += 10;
-	                    break;
-	                //	If the card is not one of these four cards, nothing "default" is triggered and nothing happens
-	                default:
-	                    break;
-	            }
-	        }
-	    }
-	    return totalKilometers;
+
+	// This method updates the player's kilometer progress
+	public void playerProgress(Card card) {
+		// Check if the object is of KilometerCard
+		if (card instanceof KilometerCard) {
+			// Obtain the kilometer value
+			String value = card.getValue();
+			switch (value) {
+			case "FIVE":
+				this.kmProgress += 5;
+				break;
+			case "SIX":
+				this.kmProgress += 6;
+				break;
+			case "EIGHT":
+				this.kmProgress += 8;
+				break;
+			case "TEN":
+				this.kmProgress += 10;
+				break;
+			// If the card is not one of these four cards, nothing "default" is triggered
+			// and nothing happens
+			default:
+				break;
+			}
+		} else {
+			throw new IllegalArgumentException("Method works with Kilometer cards only");
+		}
 	}
 
 	public PlayedCards getPlayedCards() {
 		return playedCards;
+	}
+
+	public int getKmProgress() {
+		return this.kmProgress;
 	}
 }
