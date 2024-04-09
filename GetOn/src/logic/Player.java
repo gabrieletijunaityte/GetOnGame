@@ -2,6 +2,10 @@ package logic;
 
 import java.util.ArrayList;
 
+import javax.swing.JLabel;
+
+import graphics.GameFrame;
+
 public class Player {
 
 	private ArrayList<Card> hand;
@@ -12,6 +16,7 @@ public class Player {
 	private Boolean hasWind;
 	private PlayedCards playedCards;
 	private int kmProgress;
+	private String bulliedType;
 
 	// Constructor
 	public Player(String name, Boolean isTurn) {
@@ -23,6 +28,7 @@ public class Player {
 		this.hasWind = false;
 		this.playedCards = new PlayedCards();
 		this.kmProgress = 0;
+		this.bulliedType = null;
 	}
 
 	// Add card to the hand (only needed for testing)
@@ -192,4 +198,10 @@ public class Player {
 		this.drawCard(stack);
 	}
 	
+	public String getBulliedType() {
+		return this.bulliedType;
+	}
+	public void setBulliedType(String bulliedType) {
+		this.bulliedType = bulliedType;
+	}
 }

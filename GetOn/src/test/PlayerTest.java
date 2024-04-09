@@ -145,6 +145,7 @@ public class PlayerTest extends TestCase {
 	    assertEquals(5 + 6, totalKilometers);
 	}
 	
+
 	// Test bullying process
 	public void testSelectCard() {
 		// creating dummy players
@@ -179,7 +180,16 @@ public class PlayerTest extends TestCase {
 		boolean test2 = bullyPlayer.getTurn();
 		
 		assertEquals(target1, test2);
+	}
+	
+	// Test the setBulliedType and getBulliedType
+	public void testSetBulliedType() {
+	    Player myPlayer = new Player("Jan", true);
+		myPlayer.setBulliedType("TAVERN");
+		String bulliedTest = "TAVERN";
 		
+		assertEquals(myPlayer.getBulliedType(), bulliedTest);
+
 	}
 
 }

@@ -98,21 +98,41 @@ public class KilometerTest extends TestCase {
 		assertEquals("[24, 12, 8, 8]", test);		
 	}
 	
-	// Test isPlayable
-	public void testIsPlayable() {
+	// Test isPlayable for false
+	public void testIsPlayableFalse() {
+		// Creating Card class
+		KilometerCard kmCard = new KilometerCard("EIGHT");
+		// Create player
+		Player testPlayer = new Player("Jan", true);
+		testPlayer.setOnBikeStatus(true);
+		testPlayer.setHasWind(true);
+		testPlayer.getPlayedCards().addCard(kmCard);
+		testPlayer.getPlayedCards().addCard(kmCard);
+		
+		// Testing isPlayable
+		boolean test = false;
+		
+		boolean target = kmCard.isPlayable(testPlayer);
+				
+		assertEquals(target, test);		
+	}
+	
+	//Test isPlayable for true
+	public void testIsPlayableTrue() {
 		// Creating Card class
 		KilometerCard kmCard = new KilometerCard("EIGHT");
 		// Create player
 		Player testPlayer = new Player("Jan", true);
 		
-		testPlayer.getPlayedCards().addCard(kmCard);
+		testPlayer.setOnBikeStatus(true);
+		testPlayer.setHasWind(true);
 		testPlayer.getPlayedCards().addCard(kmCard);
 		
-		// Testing getAmounts
-		boolean test = false;
+		// Testing isPlayable
+		boolean test = true;
 		
 		boolean target = kmCard.isPlayable(testPlayer);
-				
+		
 		assertEquals(target, test);		
 	}
 
