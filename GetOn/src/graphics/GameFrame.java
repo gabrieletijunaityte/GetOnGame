@@ -34,7 +34,7 @@ public class GameFrame extends JFrame {
 	private JPanel player1;
 	private JPanel player2;
 	private JPanel player3;
-	private String discardCard = "Dummy Discard";
+	//private String discardCard = "Dummy Discard";
 	
     protected int numberof5cards = 1;
     protected int numberof6cards = 2;
@@ -46,13 +46,13 @@ public class GameFrame extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args, Stack stack) {
+	public static void main(String[] args, Stack stack, String discardedCardName) {
 
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					GameFrame frame = new GameFrame(stack);
+					GameFrame frame = new GameFrame(stack, discardedCardName);
 					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 					frame.setVisible(true);
 					frame.setAlwaysOnTop(true); // Makes sure frame always is on top
@@ -66,7 +66,7 @@ public class GameFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public GameFrame(Stack stack) {
+	public GameFrame(Stack stack, String discardedCardName) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -105,7 +105,13 @@ public class GameFrame extends JFrame {
 		
 		JPanel panelDiscard = new JPanel();
 		
-		JLabel discardLabel = new JLabel(discardCard);
+		JLabel discardLabel = new JLabel();
+		
+	
+		// Create visual for discard pile
+		discardLabel.setText("Discarded Card is: " + discardedCardName );
+		
+		
 		
 		GridBagConstraints gbc_panelDiscard = new GridBagConstraints();
 		gbc_panelDiscard.insets = new Insets(0, 0, 5, 5);

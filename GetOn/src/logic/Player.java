@@ -76,7 +76,7 @@ public class Player {
 	}
 
 	// Method to discard a card
-	public void discardCard(int i, Stack discardPile) {
+	public String discardCard(int i, Stack discardPile) {
 		// Add the discarded card to the discardPile and remove the card from the hand
 		// Check if the index is possible, if not, throw exception
 		if (i < 0 || i >= 5) {
@@ -92,9 +92,14 @@ public class Player {
 			hand.remove(i);
 			// Show which card is removed
 			System.out.println(discardedCard.getCardName() + ": has been discarded from your hand");
+			
+			// Show the hand after the removal
+			System.out.println("Current hand: " + viewHand());
+			
+			// return discard card to visualize in GUI
+			return discardedCard.getCardName();
 		}
-		// Show the hand after the removal
-		System.out.println("Current hand: " + viewHand());
+		
 	}
 
 	// Get the hand as array list

@@ -33,11 +33,11 @@ public class MainMenu extends JFrame {
 	 * @param firstPlayer 
 	 * @return 
 	 */
-	public static void  main(String[] args, Player firstPlayer, Player secondPlayer, Player thirdPlayer, Stack stack) {
+	public static void  main(String[] args, Player firstPlayer, Player secondPlayer, Player thirdPlayer, Stack stack, String discardedCardName) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainMenu frame = new MainMenu(firstPlayer, secondPlayer, thirdPlayer, stack);
+					MainMenu frame = new MainMenu(firstPlayer, secondPlayer, thirdPlayer, stack, discardedCardName);
 					frame.setVisible(true);
 					frame.setAlwaysOnTop(true);
 				} catch (Exception e) {
@@ -54,7 +54,7 @@ public class MainMenu extends JFrame {
 	 * @param secondPlayer 
 	 * @param firstPlayer 
 	 */
-	public MainMenu(Player firstPlayer, Player secondPlayer, Player thirdPlayer, Stack stack) {
+	public MainMenu(Player firstPlayer, Player secondPlayer, Player thirdPlayer, Stack stack, String discardedCardName) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 738, 397);
 		contentPane = new JPanel();
@@ -147,7 +147,7 @@ public class MainMenu extends JFrame {
 					
 					
 					// Launches the GameFrame and closes main menu
-					GameFrame.main(null, stack);
+					GameFrame.main(null, stack, discardedCardName);
 					dispose();
 					
 				}
