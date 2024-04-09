@@ -18,4 +18,16 @@ public class BullyCard extends Card {
 	public boolean isPlayable() {
 		return true;
 	}
+	
+	public void playCard(Player bulliedPlayer) {
+		// Adding bully card to the bullied person
+		bulliedPlayer.getPlayedCards().addCard(this);
+		
+		// Updating bullied status
+		bulliedPlayer.setBulliedStatus(true);
+		
+		// Updating bullied type of the player
+//		bulliedPlayer.setBulliedType(this.getValue());
+	}
+	
 }
