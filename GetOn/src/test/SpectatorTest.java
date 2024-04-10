@@ -1,6 +1,8 @@
 package test;
 
 import junit.framework.TestCase;
+import logic.KilometerCard;
+import logic.Player;
 import logic.Spectator;
 import logic.Stack;
 
@@ -15,10 +17,9 @@ public class SpectatorTest extends TestCase {
 		Spectator testspectator = new Spectator();
 		String testReturn = testspectator.viewRules();
 		assertNotNull(testReturn);
-		System.out.println(testReturn);
 	}
 	
-	public void testViewStackSize() {
+	public void testGetStackSize() {
 		// Create a spectator
 		Spectator testspectator = new Spectator();
 		// Create a current stack
@@ -26,7 +27,28 @@ public class SpectatorTest extends TestCase {
 		stackTest.initializeStack();
 		
 		// Check if the stack is 99
-		assertEquals(99, testspectator.viewStackSize(stackTest));
-		
+		assertEquals(99, testspectator.getStackSize(stackTest));
 	}
+	
+	public void testGetProgress() {
+	    Spectator testspectator = new Spectator();
+	    // Null, because it is not supposed to be the spectator's turn
+	    Player playerProgress = new Player("John Marston", null);
+	    // Set player and "true" which means you are on a bike
+	    playerProgress.setOnBikeStatus(true);
+	    KilometerCard fiveKilometerCard = new KilometerCard("FIVE");
+	    // Call the five kilometer card
+	    playerProgress.playerProgress(fiveKilometerCard);
+	    
+	    int expected = 5;
+	    int found = testspectator.getProgress(playerProgress);
+	    assertEquals(expected, found);
+	}
+	
+	
+	
+	
+	
+	
+	
 }

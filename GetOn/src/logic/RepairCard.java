@@ -25,4 +25,16 @@ public class RepairCard extends Card {
 
 		}
 	}
+	
+	// Implementing game logic by playing the card
+	public void playCard(Player targetPlayer, Stack discard) {
+		// Change bulliedstatus to false
+		targetPlayer.setBulliedStatus(false);
+		
+		// Set bullied type string back to empty
+		targetPlayer.setBulliedType("");
+		
+		// add card to the discard pile
+		discard.addDiscardedCard(this);
+	}
 }

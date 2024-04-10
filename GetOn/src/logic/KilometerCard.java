@@ -32,23 +32,23 @@ public class KilometerCard extends Card {
 		}
 	}
 	
-//	// Implementing game logic by playing the card
-//	public playCard(Player currentPlayer, Stack discard) {
-//		if (isPlayable(currentPlayer)){
-//			// Add the card to the playedCards
-//			currentPlayer.getPlayedCards().addCard(this);
-//			System.out.println(currentPlayer.getPlayedCards());
-//
-//			
-//			// Update the progress
-//			currentPlayer.playerProgress(this);
-//			System.out.println(currentPlayer.getKmProgress());
-//		}
-//		// If not playable, discard the card
-//		else {
-//			discard.addDiscardedCard(this);
-//		}
-//	}
+	// Implementing game logic by playing the card
+	public void playCard(Player currentPlayer, Stack discard) {
+		if (isPlayable(currentPlayer)){
+			// Add the card to the playedCards
+			currentPlayer.getPlayedCards().addCard(this);
+			System.out.println(currentPlayer.getPlayedCards());
+
+			
+			// Update the progress
+			currentPlayer.playerProgress(this);
+			System.out.println(currentPlayer.getKmProgress());
+		}
+		// If not playable, discard the card
+		else {
+			discard.addDiscardedCard(this);
+		}
+	}
 	
 
 }

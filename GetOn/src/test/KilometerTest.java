@@ -137,28 +137,27 @@ public class KilometerTest extends TestCase {
 		assertEquals(target, test);		
 	}
 
-//	// test playCard method
-//	public void testPlayCard() {
-//		// Create player
-//		Player testPlayer = new Player("Jan", true);
-//		
-//		// Create discard pile
-//		Stack discard = new Stack();
-//		
-//		// create km card
-//		KilometerCard kmCard = new KilometerCard("EIGHT");
-//		
-//		kmCard.playCard(testPlayer, discard);
-//		System.out.println(testPlayer.getKmProgress());
-//		
-//		// This line is analogous to one in kmCard.playCard but it does
-//		// not update the progress
-////		testPlayer.playerProgress(kmCard);
-//		
-//		int totalKilometers = testPlayer.getKmProgress();
-//		
-//		
-//		assertEquals(8, totalKilometers);	
-//		
-//	}
+	// test playCard method
+	public void testPlayCard() {
+		// Create player
+		Player testPlayer = new Player("Jan", true);
+		
+		// Set bikestatus to true so conditions for playing KM card are met
+		testPlayer.setOnBikeStatus(true);
+		
+		// Create discard pile
+		Stack discard = new Stack();
+		
+		// create km card
+		KilometerCard kmCard = new KilometerCard("FIVE");
+		
+		// Play the km card
+		kmCard.playCard(testPlayer, discard);
+		
+		// retrieve km Progress
+		int totalKilometers = testPlayer.getKmProgress();
+		
+		assertEquals(5, totalKilometers);	
+		
+	}
 }
