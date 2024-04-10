@@ -6,6 +6,7 @@ import junit.framework.TestCase;
 import logic.BullyCard;
 import logic.KilometerCard;
 import logic.Player;
+import logic.Stack;
 
 public class KilometerTest extends TestCase {
 
@@ -136,4 +137,28 @@ public class KilometerTest extends TestCase {
 		assertEquals(target, test);		
 	}
 
+//	// test playCard method
+//	public void testPlayCard() {
+//		// Create player
+//		Player testPlayer = new Player("Jan", true);
+//		
+//		// Create discard pile
+//		Stack discard = new Stack();
+//		
+//		// create km card
+//		KilometerCard kmCard = new KilometerCard("EIGHT");
+//		
+//		kmCard.playCard(testPlayer, discard);
+//		System.out.println(testPlayer.getKmProgress());
+//		
+//		// This line is analogous to one in kmCard.playCard but it does
+//		// not update the progress
+////		testPlayer.playerProgress(kmCard);
+//		
+//		int totalKilometers = testPlayer.getKmProgress();
+//		
+//		
+//		assertEquals(8, totalKilometers);	
+//		
+//	}
 }

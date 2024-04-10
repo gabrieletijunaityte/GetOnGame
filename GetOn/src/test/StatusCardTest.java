@@ -103,6 +103,7 @@ public class StatusCardTest extends TestCase {
 		
 		assertEquals("[14, 5]", test);		
 	}
+	
 	// Test isPlayable
 	public void testIsPlayable() {
 		// Creating Card class
@@ -118,9 +119,10 @@ public class StatusCardTest extends TestCase {
 		
 		boolean test = card.isPlayable(testPlayer);
 		
-		
 		assertEquals(target, test);		
 	}
+	
+	// ADD TEST FOR playCard()
 
 
 }

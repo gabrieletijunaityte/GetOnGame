@@ -188,12 +188,19 @@ public class Player {
 		return this.kmProgress;
 	}
 	
-//	public void selectCard(Card card, Stack stack) {
-//		card.playCard();
-//	}
-	
-	public void selectCard(BullyCard card, Player bulliedPlayer, Stack stack) {
-		card.playCard(bulliedPlayer);
+	public void selectCard(Card card, Stack stack, Stack discard) {
+		// play the selected card
+		card.playCard(this, discard);
+		
+		// remove the card from the hand
+		this.hand.remove(card);
+		
+		// draw a card from a pile and change turn
+		drawCard(stack);
+	}
+
+	public void selectCard(BullyCard card, Player bulliedPlayer, Stack stack, Stack discard) {
+		card.playCard(bulliedPlayer, discard);
 		this.hand.remove(card);
 		this.drawCard(stack);
 	}

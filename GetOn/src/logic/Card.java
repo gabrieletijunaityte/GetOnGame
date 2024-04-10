@@ -58,6 +58,6 @@ public class Card {
 		return false;
 	}
 	
-	public void playCard() {
+	public void playCard(Player currentPlayer, Stack discard) {
 	}
 }

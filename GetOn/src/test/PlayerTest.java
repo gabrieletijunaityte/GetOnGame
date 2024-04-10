@@ -156,6 +156,9 @@ public class PlayerTest extends TestCase {
 		Stack stack = new Stack();
 		stack.initializeStack();
 		
+		// Dummy discard stack
+		Stack discard = new Stack();
+		
 		// Creating a bully card
 		BullyCard bullyCard = new BullyCard("TAVERN");
 		
@@ -163,7 +166,7 @@ public class PlayerTest extends TestCase {
 		bullyPlayer.addCard(bullyCard);
 		
 		// Test Jan playing bully to Gabby
-		bullyPlayer.selectCard(bullyCard, bulliedPlayer, stack);
+		bullyPlayer.selectCard(bullyCard, bulliedPlayer, stack, discard);
 		
 		// Testing if Gabby's bully status has changed
 		boolean target = true;

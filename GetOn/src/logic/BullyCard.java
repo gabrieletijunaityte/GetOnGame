@@ -7,27 +7,28 @@ public class BullyCard extends Card {
 		super("BULLY", value);
 
 		// Assign possible Bully values
-		this.pos_values = new String[] {"TAVERN", "CROSSWIND", "FLAT_TIRE", "CRISS_CROSS"};
+		this.pos_values = new String[] { "TAVERN", "CROSSWIND", "FLAT_TIRE", "CRISS_CROSS" };
 		validateValue(value);
-		
+
 		// Assign amount per card
-		this.amount = new int [] {2, 4, 3, 3};
+		this.amount = new int[] { 2, 4, 3, 3 };
 	}
 
 	// IsPlayable method
 	public boolean isPlayable() {
 		return true;
 	}
-	
-	public void playCard(Player bulliedPlayer) {
-		// Adding bully card to the bullied person
-		bulliedPlayer.getPlayedCards().addCard(this);
-		
+
+	// Implementing game logic by playing the card
+	public void playCard(Player bulliedPlayer, Stack discard) {
 		// Updating bullied status
 		bulliedPlayer.setBulliedStatus(true);
 		
 		// Updating bullied type of the player
-//		bulliedPlayer.setBulliedType(this.getValue());
+		bulliedPlayer.setBulliedType(this.getValue());
+
+		// add card to the discard pile
+		discard.addDiscardedCard(this);
 	}
-	
+
 }
