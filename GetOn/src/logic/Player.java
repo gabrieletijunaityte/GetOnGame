@@ -210,27 +210,35 @@ public class Player {
 		// draw a card from a pile and change turn
 		drawCard(stack);
 	}
-
+	
+	// Select a card from the players hand, innitiate the play card method and remove the card from the players hand
 	public void selectCard(Card card, Player bulliedPlayer, Stack stack, Stack discard) {
 		card.playCard(bulliedPlayer, discard);
 		this.hand.remove(card);
 		this.drawCard(stack);
 	}
 	
+	// get the players "Bully type" string
 	public String getBulliedType() {
 		return this.bulliedType;
 	}
+	
+	// Set the "Bully Type" to a string
 	public void setBulliedType(String bulliedType) {
 		this.bulliedType = bulliedType;
 	}
 	
+	// Get the players "hasWind" status
 	public Boolean getWindStatus() {
 		return this.hasWind;
 	}
 	
+	// Get the players "WindType" string
 	public String getWindType() {
 		return this.windType;
 	}
+	
+	// Set the players "WindType" string
 	public void setWindType(String windType) {
 		this.windType = windType;
 	}
