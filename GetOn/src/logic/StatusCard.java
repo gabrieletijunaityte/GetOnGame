@@ -31,8 +31,9 @@ public class StatusCard extends Card {
 		if (isPlayable(currentPlayer)) {
 			// Add the card to the playedCards
 			if (this.getValue() == "TAIL_WIND") {	
-				// Change
+				// Change haswind and windtype
 				currentPlayer.setHasWind(true);
+				currentPlayer.setWindType(this.getValue());
 				
 				// Put the "TAIL_WIND" card into discard pile
 				discard.addDiscardedCard(this);
