@@ -17,6 +17,7 @@ public class Player {
 	private PlayedCards playedCards;
 	private int kmProgress;
 	private String bulliedType;
+	private String windType;
 
 	// Constructor
 	public Player(String name, Boolean isTurn) {
@@ -29,6 +30,7 @@ public class Player {
 		this.playedCards = new PlayedCards();
 		this.kmProgress = 0;
 		this.bulliedType = null;
+		this.windType = null;
 	}
 
 	// Add card to the hand (only needed for testing)
@@ -45,7 +47,7 @@ public class Player {
 		addCard(topCard);
 		
 		// Change turn after drawing a card
-		// changeTurn();
+		changeTurn();
 	}
 
 	// Method to change the player name
@@ -220,5 +222,16 @@ public class Player {
 	}
 	public void setBulliedType(String bulliedType) {
 		this.bulliedType = bulliedType;
+	}
+	
+	public Boolean getWindStatus() {
+		return this.hasWind;
+	}
+	
+	public String getWindType() {
+		return this.windType;
+	}
+	public void setWindType(String windType) {
+		this.windType = windType;
 	}
 }
