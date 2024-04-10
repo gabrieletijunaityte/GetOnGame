@@ -10,9 +10,15 @@ public class Spectator {
 		String rulesOut = rules.getRules();
 		return rulesOut;
 	}
-	
-	public int viewStackSize(Stack stack) {
-		return stack.getStackSize();
-	}
 
+	// Get the stack size from the Stack class
+	public int getStackSize(Stack stack) {
+	    return stack.getStackSize();
+	}
+	
+	// View the player's progress from the Spectator class
+	public int getProgress(Player player) {
+        return player.getKmProgress();
+    }
+	
 }
