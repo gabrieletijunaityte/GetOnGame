@@ -62,4 +62,20 @@ public class StackTest extends TestCase {
 		
 		assertEquals(topCard, card);
 	}
+	
+	
+	
+	// Test clear()
+	public void clearTest() {
+		// Create a stack
+		Stack stack = new Stack();
+		stack.initializeStack();
+		
+		// clear the stack
+		stack.clear();
+		
+		//check if length is zero
+		assertEquals(0,stack.getStackSize());
+	}
+
 }

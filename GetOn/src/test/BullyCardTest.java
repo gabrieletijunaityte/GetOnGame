@@ -119,10 +119,15 @@ public class BullyCardTest extends TestCase {
 		boolean target = true;
 		boolean test = bulliedPlayer.getBulliedStatus();
 		
-		assertEquals(target, test);
+		boolean target2= false;
+		boolean test2 = bulliedPlayer.getOnBikeStatus();
 		
+		// Check bully status
+		assertEquals(target, test);
 		assertEquals("TAVERN", bulliedPlayer.getBulliedType());
-
+		
+		// Check onbike status
+		assertEquals(target2, test2);
 	}
 
 }

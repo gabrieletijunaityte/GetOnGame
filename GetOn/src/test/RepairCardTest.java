@@ -7,6 +7,7 @@ import logic.BullyCard;
 import logic.KilometerCard;
 import logic.Player;
 import logic.RepairCard;
+import logic.Stack;
 
 public class RepairCardTest extends TestCase {
 	// Test repair card creation
@@ -114,5 +115,37 @@ public class RepairCardTest extends TestCase {
 		assertEquals(target, test);
 
 	}
+	
+	// Test playing repair card
+		public void testPlayCard() {
+			// creating dummy players
+			Player targetPlayer = new Player("Gabby", false);
+			
+			// Creating a bully card
+			BullyCard bullyCard = new BullyCard("FLAT_TIRE");
+			
+			// Create discard pile
+			Stack discard = new Stack();
+			
+			// Test playing bully card to Gabby
+			bullyCard.playCard(targetPlayer, discard);
+			
+			// Creating a repair card
+			RepairCard repairCard = new RepairCard("BIKE_REPAIR");
+			
+			// Test playing bully card to Gabby
+			repairCard.playCard(targetPlayer, discard);
+			
+			boolean target = false;
+			boolean test = targetPlayer.getBulliedStatus();
+			
+			String target2 = "";
+			String test2 = targetPlayer.getBulliedType();
+			
+			assertEquals(target, test);
+			assertEquals(target2, test2);
+			
+
+		}
 
 }
