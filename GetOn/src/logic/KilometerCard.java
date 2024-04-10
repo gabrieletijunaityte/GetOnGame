@@ -42,8 +42,7 @@ public class KilometerCard extends Card {
 			
 			// Update the progress
 			currentPlayer.playerProgress(this);
-			System.out.println(currentPlayer.getKmProgress());
-		}
+					}
 		// If not playable, discard the card
 		else {
 			discard.addDiscardedCard(this);
