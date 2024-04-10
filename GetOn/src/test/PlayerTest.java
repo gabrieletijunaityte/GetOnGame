@@ -61,7 +61,7 @@ public class PlayerTest extends TestCase {
 
 	}
 
-	public void testPassTrun() {
+	public void testPassTurn() {
 		// Creating variables for the test
 		Player myPlayer = new Player("Jan", true);
 		Stack stack = new Stack();
@@ -160,7 +160,7 @@ public class PlayerTest extends TestCase {
 		Stack discard = new Stack();
 		
 		// Creating a bully card
-		BullyCard bullyCard = new BullyCard("TAVERN");
+		Card bullyCard = new BullyCard("TAVERN");
 		
 		// Giving the bully card to Jan
 		bullyPlayer.addCard(bullyCard);

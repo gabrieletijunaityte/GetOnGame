@@ -60,42 +60,49 @@ public class Game {
 		// Initialize input listener
 		Scanner input = new Scanner(System.in); 
 		
+		
 		// Game loop
 		while (gameContinue) {
 			currentPlayer = players.get(playerIndex);
-			System.out.println(currentPlayer.getName());
+			System.out.println("Current player is: " + currentPlayer.getName());
+			System.out.println("OnBikeStatus is: " +currentPlayer.getOnBikeStatus());
+			System.out.println("HasWind status is: " + currentPlayer.getHasWind());
+			System.out.println("BulliedStatus is: " + currentPlayer.getBulliedType());
+			System.out.println("The traveld distance is: " + currentPlayer.getKmProgress());
+			
+					
 			
 			// See players hand:
-			System.out.print("The player's hand contains: ");
-			System.out.print(currentPlayer.viewHand());
+			System.out.println("The player's hand contains: " + currentPlayer.viewHand());
 			
 			// Discard a chosen card:
-			System.out.print("\n\nEnter which card (1-5) you want to discard: ");
+			System.out.println("Enter which card (1-5) you want to play or discard: ");
 			int discardIndex = input.nextInt() - 1;
 			
 			selectedCard = currentPlayer.getHand().get(discardIndex);
-			System.out.println("Selected card is ");	
-			System.out.print(selectedCard);
+			System.out.println("Selected card is " + selectedCard);
 			
 			// Check card type and play it accordingly 
 			if (selectedCard.getType() != "BULLY") {
 				currentPlayer.selectCard(selectedCard, stack, discardPile);
-			}
+							}
 			else {
 				// Create a dummy player to bully
-				playerToBully = players.get(2);
+				System.out.print("\n\nEnter which player (1-3) to bully: ");
+				int bullyIndex = input.nextInt() - 1;
+				playerToBully = players.get(bullyIndex);
 				currentPlayer.selectCard(selectedCard, playerToBully, stack, discardPile);
 			}
 
-			System.out.print("\nThe player's hand now contains:\n");
-			System.out.print(currentPlayer.viewHand());
+			//System.out.print("\nThe player's hand now contains:\n");
+			//System.out.print(currentPlayer.viewHand());
 			
-			//System.out.println(discardPile.getStackSize());
+			System.out.println("Discard pile size is: " + discardPile.getStackSize()+ "\n\n");
 			
 			// Passing turn to next player or first player
 			if (playerIndex == 2) {
 				playerIndex = 0;
-				gameContinue = false;
+			
 			}
 			else {
 				playerIndex ++;
@@ -107,6 +114,10 @@ public class Game {
 				stack.shuffle();
 				discardPile.clear();
 			}
+			
+			if (currentPlayer.getKmProgress() == 100) {
+				gameContinue = false;
+			}
 		}
 		
 		
@@ -116,7 +127,8 @@ public class Game {
 		ArrayList<Card> hand = firstPlayer.getHand();
 		
 		// Launch the main menu
-		//MainMenu.main(args, firstPlayer, secondPlayer, thirdPlayer, stack, discardedCardName, hand);
+		// to realy lunch it you need to win the game first (reach 100km)
+		MainMenu.main(args, firstPlayer, secondPlayer, thirdPlayer, stack, discardedCardName, hand);
 			
 		
 		

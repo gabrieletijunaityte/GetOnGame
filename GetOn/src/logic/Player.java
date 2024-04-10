@@ -45,7 +45,7 @@ public class Player {
 		addCard(topCard);
 		
 		// Change turn after drawing a card
-		// changeTurn();
+		 changeTurn();
 	}
 
 	// Method to change the player name
