@@ -209,7 +209,7 @@ public class Player {
 		drawCard(stack);
 	}
 
-	public void selectCard(BullyCard card, Player bulliedPlayer, Stack stack, Stack discard) {
+	public void selectCard(Card card, Player bulliedPlayer, Stack stack, Stack discard) {
 		card.playCard(bulliedPlayer, discard);
 		this.hand.remove(card);
 		this.drawCard(stack);

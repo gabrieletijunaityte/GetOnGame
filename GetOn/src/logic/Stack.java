@@ -119,6 +119,12 @@ public class Stack {
 		// add method to get a card at a specific index
 		return stack.get(i);
 	}
+
+	// clear a stack
+	public void clear() {
+		this.stack.clear();
+	}
+	
  	
     
 }
