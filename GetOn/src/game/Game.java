@@ -22,15 +22,22 @@ public class Game {
 		Stack stack = new Stack();
 		// Create 5 cards to test the set up
 		stack.initializeStack();
+		// Shuffle the stack
+		stack.shuffle();
 		
-		// Launch the main menu
-		MainMenu.main(args, firstPlayer, secondPlayer, thirdPlayer, stack);
-		
+		// Initialize discardCardName for GUI
+		String discardedCardName = null;
 		
 		// See players hand:
 		firstPlayer.drawCard(stack, 5);
 		System.out.print("The player's hand contains: ");
 		System.out.print(firstPlayer.viewHand());
+		
+		// Get hand from player for GUI
+		ArrayList<Card> hand = firstPlayer.getHand();
+		
+		// Launch the main menu
+		MainMenu.main(args, firstPlayer, secondPlayer, thirdPlayer, stack, discardedCardName, hand);
 		
 		// Dummy discard pile:
 		Stack discardPile = new Stack();
@@ -39,8 +46,9 @@ public class Game {
 		Scanner input = new Scanner(System.in); 
 		System.out.print("\n\nEnter which card (1-5) you want to discard: ");
 		int discardIndex = input.nextInt() - 1;
-		firstPlayer.discardCard(discardIndex, discardPile);
 		
+		// Add dicardCardName for GUI
+		discardedCardName = firstPlayer.discardCard(discardIndex, discardPile);
 		
 		// Draw card
 		System.out.print("\nA new card was drawn from the pile:\n");
