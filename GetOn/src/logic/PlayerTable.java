@@ -2,12 +2,12 @@ package logic;
 
 import java.util.ArrayList;
 
-public class PlayedCards {
+public class PlayerTable {
 	private ArrayList<Card> playedCards;
 
 	
 	// Return empty playedCards list
-	public PlayedCards() {
+	public PlayerTable() {
 		playedCards = new ArrayList<>();
 	}
 

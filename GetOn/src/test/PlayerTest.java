@@ -6,7 +6,7 @@ import junit.framework.TestCase;
 import logic.BullyCard;
 import logic.Card;
 import logic.KilometerCard;
-import logic.PlayedCards;
+import logic.PlayerTable;
 import logic.Player;
 import logic.Stack;
 

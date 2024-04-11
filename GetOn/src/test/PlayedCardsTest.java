@@ -2,7 +2,7 @@ package test;
 
 import junit.framework.TestCase;
 import logic.Card;
-import logic.PlayedCards;
+import logic.PlayerTable;
 import logic.KilometerCard;
 
 public class PlayedCardsTest extends TestCase {
@@ -13,10 +13,10 @@ public class PlayedCardsTest extends TestCase {
 		KilometerCard card = new KilometerCard("FIVE");
 		
 		// creating played card pile by playing a first card
-		PlayedCards playedCards = new PlayedCards();
+		PlayerTable playerTable = new PlayerTable();
 		
 		// Assert if playCards instance was created
-		assertNotNull(playedCards);
+		assertNotNull(playerTable);
 	}
 	
 	// Test addCard method
@@ -25,11 +25,11 @@ public class PlayedCardsTest extends TestCase {
 		KilometerCard card = new KilometerCard("FIVE");
 		
 		// Create the played cards
-		PlayedCards playedCards = new PlayedCards();
+		PlayerTable playerTable = new PlayerTable();
 		// Add card
-		playedCards.addCard(card);
+		playerTable.addCard(card);
 		
-		assertEquals(1, playedCards.getPlayedCards().size());
+		assertEquals(1, playerTable.getPlayedCards().size());
 	}
 	
 	// Test countCards method
@@ -39,11 +39,11 @@ public class PlayedCardsTest extends TestCase {
 		KilometerCard card1 = new KilometerCard("SIX");
 		
 		// Create the played cards
-		PlayedCards playedCards = new PlayedCards();
-		playedCards.addCard(card);
-		playedCards.addCard(card1);
+		PlayerTable playerTable = new PlayerTable();
+		playerTable.addCard(card);
+		playerTable.addCard(card1);
 		
-		assertEquals(2, playedCards.countCards(card));		
+		assertEquals(2, playerTable.countCards(card));		
 	}
 	
 	// Test getPlayedCards method
@@ -53,22 +53,22 @@ public class PlayedCardsTest extends TestCase {
 		KilometerCard card1 = new KilometerCard("SIX");
 		
 		// Create the played cards
-		PlayedCards playedCards = new PlayedCards();
-		playedCards.addCard(card);
-		playedCards.addCard(card1);
+		PlayerTable playerTable = new PlayerTable();
+		playerTable.addCard(card);
+		playerTable.addCard(card1);
 		
 		// Assert if returned card list is as expected
-		assertEquals("[KILOMETER_FIVE, KILOMETER_SIX]", playedCards.getPlayedCards().toString());		
+		assertEquals("[KILOMETER_FIVE, KILOMETER_SIX]", playerTable.getPlayedCards().toString());		
 		
 	}
 	
 	// Test playedCard creation thats empty
 	public void testCreationEmptyPlayedCards() {
 		// creating played card pile by playing a first card
-		PlayedCards playedCards = new PlayedCards();
+		PlayerTable playerTable = new PlayerTable();
 		
 		// Assert if playCards instance was created
-		assertNotNull(playedCards);
+		assertNotNull(playerTable);
 		}
 
 }

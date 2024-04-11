@@ -14,7 +14,7 @@ public class Player {
 	private Boolean onBikeStatus;
 	private Boolean bulliedStatus;
 	private Boolean hasWind;
-	private PlayedCards playedCards;
+	private PlayerTable playerTable;
 	private int kmProgress;
 	private String bulliedType;
 	private String windType;
@@ -27,7 +27,7 @@ public class Player {
 		this.onBikeStatus = false;
 		this.bulliedStatus = false;
 		this.hasWind = false;
-		this.playedCards = new PlayedCards();
+		this.playerTable = new PlayerTable();
 		this.kmProgress = 0;
 		this.bulliedType = null;
 		this.windType = null;
@@ -192,8 +192,8 @@ public class Player {
 		}
 	}
 
-	public PlayedCards getPlayedCards() {
-		return playedCards;
+	public PlayerTable getPlayedCards() {
+		return playerTable;
 	}
 
 	public int getKmProgress() {
