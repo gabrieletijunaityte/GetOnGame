@@ -53,9 +53,16 @@ public class Card {
 		throw new IllegalArgumentException("Entered value is not in possible values list");
 	}
 	
-	// Method to check if the card is playable, specified subclasses
-	public boolean isPlayable() {
-		return false;
+	// Method to check if the card is playable
+	public String[] getRequirements() {
+		// Requirements for (-1 to ignore)
+		// GetOnStatus
+		// BulliedStatus
+		// hasWindStatus
+		// Maximum number of the same cards played 
+		// Bullied type 
+		String [] requirements = {};
+		return requirements;
 	}
 	
 	public void playCard(Player currentPlayer, Stack discard) {

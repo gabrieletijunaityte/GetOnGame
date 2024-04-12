@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 import junit.framework.TestCase;
 import logic.BullyCard;
+import logic.Card;
 import logic.KilometerCard;
 import logic.Player;
 import logic.Stack;
@@ -128,6 +129,18 @@ public class BullyCardTest extends TestCase {
 		
 		// Check onbike status
 		assertEquals(target2, test2);
+	}
+	
+	// Test getRequirements
+	public void testGetRequirements() {
+		// Creating a bullyCard 
+		BullyCard bullyCard = new BullyCard("TAVERN");
+		String [] target = {"-1", "-1", "-1", "-1", "-1"};
+		
+		// Testing getPossibleValues() method
+		String [] test = bullyCard.getRequirements();
+		
+		assertTrue(Arrays.equals(target, test));		
 	}
 
 }

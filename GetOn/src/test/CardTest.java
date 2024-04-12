@@ -1,6 +1,9 @@
 package test;
 
 import logic.Card;
+
+import java.util.Arrays;
+
 import junit.framework.TestCase;
 
 public class CardTest extends TestCase {
@@ -81,19 +84,22 @@ public class CardTest extends TestCase {
 		
 		assertEquals(null, test);		
 	}
-	// Test isPlayable
-	public void testIsPlayable() {
-		// Setting the target
+	
+	// Test getRequirements
+	public void testGetRequirements() {
+		// Creating Card class
 		String typeSample = "Sample";
 		String valueSample = "Sample";
-		boolean target = false;
-		
-		// Creating Card class
 		Card card = new Card(typeSample, valueSample);
 		
-		// Testing getPossibleValues() method
-		boolean test = card.isPlayable();
+		// Setting the target
+		String [] target = {};
 		
-		assertEquals(target, test);		
+		// Testing getPossibleValues() method
+		String [] test = card.getRequirements();
+		
+		assertTrue(Arrays.equals(target, test));		
 	}
+	
+	
 }

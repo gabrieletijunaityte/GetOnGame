@@ -14,9 +14,17 @@ public class BullyCard extends Card {
 		this.amount = new int[] { 2, 4, 3, 3 };
 	}
 
-	// IsPlayable method
-	public boolean isPlayable() {
-		return true;
+	// getRequirements method
+	public String[] getRequirements() {
+		// Requirements for (-1 to ignore)
+			// GetOnStatus
+			// BulliedStatus
+			// hasWindStatus
+			// Maximum number of the same cards played 
+			// Bullied type 
+		// None of the statuses must be active to play a bully card
+		String[] requirements = {"-1", "-1", "-1", "-1", "-1"};
+		return requirements;
 	}
 
 	// Implementing game logic by playing the card
@@ -31,5 +39,4 @@ public class BullyCard extends Card {
 		// add card to the discard pile
 		discard.addDiscardedCard(this);
 	}
-
 }
