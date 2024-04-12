@@ -171,4 +171,17 @@ public class KilometerCardTest extends TestCase {
 		
 		assertTrue(Arrays.equals(target, test));		
 	}
+	
+	
+	// Test getConsequences
+	public void testGetConsequences() {
+		// Creating a kmCard
+		Card kmCard = new KilometerCard("FIVE");
+		String [] target = {"-1", "-1", "-1", "-1", "FIVE"};
+		
+		// Testing getPossibleValues() method
+		String [] test = kmCard.getConsequences();
+		
+		assertTrue(Arrays.equals(target, test));		
+	}
 }

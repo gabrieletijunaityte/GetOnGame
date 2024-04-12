@@ -59,12 +59,26 @@ public class Card {
 		// GetOnStatus
 		// BulliedStatus
 		// hasWindStatus
-		// Maximum number of the same cards played 
 		// Bullied type 
+		// Maximum number of the same cards played 
+
 		String [] requirements = {};
 		return requirements;
 	}
 	
 	public void playCard(Player currentPlayer, Stack discard) {
 	}
+	
+	public String[] getConsequences() {
+		// Changes for (-1 to ignore)
+		// GetOnStatus
+		// BulliedStatus
+		// hasWindStatus		
+		// Bullied type 
+		// Kilometer increase
+		String [] consequences = {};
+		return consequences;
+		
+	}
+	
 }

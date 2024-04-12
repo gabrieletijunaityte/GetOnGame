@@ -10,6 +10,7 @@ import logic.KilometerCard;
 import logic.PlayerTable;
 import logic.Player;
 import logic.Stack;
+import logic.StatusCard;
 
 public class PlayerTest extends TestCase {
 
@@ -134,8 +135,8 @@ public class PlayerTest extends TestCase {
 	    Card card = new KilometerCard("FIVE");
 	    Card card1 = new KilometerCard("SIX");
 	
-	    myPlayer.playerProgress(card);
-	    myPlayer.playerProgress(card1);
+	    myPlayer.playerProgress(card.getValue());
+	    myPlayer.playerProgress(card1.getValue());
 
 	    // Calculate player progress
 	    
@@ -212,5 +213,49 @@ public class PlayerTest extends TestCase {
 
 		assertTrue(Arrays.equals(target, test));
 	}
+	
+	// Broken Tests 
+//	// Test getConsequences Implementation for Get On
+//	public void testSetConsequencesCaseA() {
+//		
+//		Card testCard = new StatusCard("GET_ON");
+//		
+//		String[] consequences = testCard.getConsequences();
+//		
+//		Player testPlayer = new Player("Jan", true);
+//		
+//		testPlayer.setConsequences(consequences);
+//		
+//		// Define the target
+//		String [] target = {"true", "false", "false", null};
+//		
+//		String[] test = testPlayer.getStatuses();
+//		
+//		assertTrue(Arrays.equals(target, test));
+//		
+//	}
+//	
+//	// Test getConsequences Implementation for Bully
+//	public void testSetConsequencesCaseB() {
+//		
+//		Card testCard = new BullyCard("TAVERN");
+//		
+//		String[] consequences = testCard.getConsequences();
+//		
+//		Player testPlayer = new Player("Jan", true);
+//		
+//		testPlayer.setOnBikeStatus(true);
+//		testPlayer.setConsequences(consequences);
+//		
+//		// Define the target
+//		String [] target = {"false", "true", "false", "TAVERN"};
+//		
+//		String[] test = testPlayer.getStatuses();
+//		
+//		System.out.println(Arrays.toString(test));
+//		
+//		assertTrue(Arrays.equals(target, test));
+//		
+//	}
 
 }

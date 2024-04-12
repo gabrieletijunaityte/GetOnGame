@@ -181,4 +181,30 @@ public class StatusCardTest extends TestCase {
 		
 		assertTrue(Arrays.equals(target, test));		
 	}
+	
+	
+	// Test getConsequences for GET_ON
+	public void testGetConsequencesCaseA() {
+		// Creating a statusCard 
+		Card statusCard = new StatusCard("GET_ON");
+		String [] target = {"true", "-1", "-1", "-1", "-1"};
+		
+		// Testing getPossibleValues() method
+		String [] test = statusCard.getConsequences();
+		
+		assertTrue(Arrays.equals(target, test));		
+	}
+	
+	
+	// Test getConsequences for TAIL_WIND
+	public void testGetConsequencesCaseB() {
+		// Creating a statusCard 
+		Card statusCard = new StatusCard("TAIL_WIND");
+		String [] target = {"-1", "-1", "true", "-1", "-1"};
+		
+		// Testing getPossibleValues() method
+		String [] test = statusCard.getConsequences();
+		
+		assertTrue(Arrays.equals(target, test));		
+	}
 }
