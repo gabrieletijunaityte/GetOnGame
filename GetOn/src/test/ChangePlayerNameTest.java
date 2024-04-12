@@ -14,13 +14,12 @@ public class ChangePlayerNameTest extends TestCase {
 	public void testPlayerNameChange() {
 		Player player = new Player("Peter", true);
 		
-		GameMaster gameMaster = new GameMaster();
-		
-		gameMaster.changeName(player);
+		String newName = "Marcus";
+		player.changeName(newName);
 		
 		String testValue = player.getName();
-		assertNotNull(testValue);
-		assertFalse(testValue.isEmpty());
+		
+		assertEquals(newName, testValue);
 	}
 }
 	
