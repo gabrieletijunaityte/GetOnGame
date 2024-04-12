@@ -8,7 +8,7 @@ import logic.Player;
 import logic.Card;
 import logic.Stack;
 
-public class KilometerTest extends TestCase {
+public class KilometerCardTest extends TestCase {
 
 	// Test km card creation
 	public void testCreationOfKmCard() {
