@@ -242,4 +242,19 @@ public class Player {
 	public void setWindType(String windType) {
 		this.windType = windType;
 	}
+	
+	// Method to retrieve all player statuses for card
+	// playability check in rules
+	public String[] getStatuses() {
+		// In order:
+			// GetOnStatus
+			// BulliedStatus
+			// hasWindStatus
+			// Bullied type 
+		String [] statuses = {String.valueOf(this.getOnBikeStatus()),
+				String.valueOf(this.getBulliedStatus()),
+				String.valueOf(this.getHasWind()),
+				getBulliedType()};
+		return statuses;
+	}
 }
