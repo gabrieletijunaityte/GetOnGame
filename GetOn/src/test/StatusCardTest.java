@@ -7,6 +7,7 @@ import logic.KilometerCard;
 import logic.Player;
 import logic.RepairCard;
 import logic.Stack;
+import logic.Card;
 import logic.StatusCard;
 
 public class StatusCardTest extends TestCase {
@@ -167,5 +168,17 @@ public class StatusCardTest extends TestCase {
 		String test2 = targetPlayer.getWindType();
 		
 		assertEquals(target2, test2);
+	}
+	
+	// Test getRequirements
+	public void testGetRequirements() {
+		// Creating a statusCard 
+		Card statusCard = new StatusCard("TAIL_WIND");
+		String [] target = {"-1", "-1", "-1", "-1", "-1"};
+		
+		// Testing getPossibleValues() method
+		String [] test = statusCard.getRequirements();
+		
+		assertTrue(Arrays.equals(target, test));		
 	}
 }
