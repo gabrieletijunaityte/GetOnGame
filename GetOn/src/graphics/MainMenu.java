@@ -23,6 +23,7 @@ import java.awt.Color;
 public class MainMenu extends JFrame {
 
 	private static final long serialVersionUID = 1L;
+	public static boolean receivedNames = false;
 	private JPanel contentPane;
 	private JTextField player1Name;
 	private JTextField player2Name;
@@ -30,17 +31,13 @@ public class MainMenu extends JFrame {
 
 	/**
 	 * Launch the application.
-	 * @param thirdPlayer 
-	 * @param secondPlayer 
-	 * @param firstPlayer 
 	 * @return 
 	 */
-	public static void  main(String[] args, Player firstPlayer, Player secondPlayer, Player thirdPlayer, Stack stack, String discardedCardName, 
-			ArrayList<Card> hand) {
+	public static void main(String[] args, ArrayList<String> names) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainMenu frame = new MainMenu(firstPlayer, secondPlayer, thirdPlayer, stack, discardedCardName, hand);
+					MainMenu frame = new MainMenu(names);
 					frame.setVisible(true);
 					frame.setAlwaysOnTop(true);
 				} catch (Exception e) {
@@ -57,7 +54,7 @@ public class MainMenu extends JFrame {
 	 * @param secondPlayer 
 	 * @param firstPlayer 
 	 */
-	public MainMenu(Player firstPlayer, Player secondPlayer, Player thirdPlayer, Stack stack, String discardedCardName, ArrayList<Card> hand) {
+	public MainMenu(ArrayList<String> names) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 738, 397);
 		contentPane = new JPanel();
@@ -67,8 +64,9 @@ public class MainMenu extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("GET ON");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 36));
-		lblNewLabel.setBounds(285, 29, 137, 63);
+		lblNewLabel.setBounds(279, 31, 171, 63);
 		contentPane.add(lblNewLabel);
 		
 		player1Name = new JTextField();
@@ -120,23 +118,21 @@ public class MainMenu extends JFrame {
 		
 		JButton btnStartGame = new JButton("Start Game");
 		btnStartGame.addActionListener(new ActionListener() {
-
-		
-
 			public void actionPerformed(ActionEvent e) {
-				
-				// Allows the user to start the game whilst initializing players
-				Boolean canStart = false;
-				
+				handleStartGame();
+			}
+
+			private void handleStartGame() {
 				if (!player1Name.getText().isBlank() && !player2Name.getText().isBlank()){
 
-					firstPlayer.changeName(player1Name.getText());
-					secondPlayer.changeName(player2Name.getText());
-					canStart = true;
+					names.add(player1Name.getText());
+					names.add(player2Name.getText());
 					
-				} else if (!player3Name.getText().isBlank()) {
-					
-					thirdPlayer.changeName(player3Name.getText());
+					if (!player3Name.getText().isBlank()) {
+						
+						names.add(player3Name.getText());
+						
+					} 
 					
 				} else {
 					
@@ -144,25 +140,28 @@ public class MainMenu extends JFrame {
 					playerLabel.setText("Enter at least two player names to start!");
 					playerLabel.setForeground(Color.RED);
 					
+				}			
+				
+				if (names.size() != 0) {
+					receivedNames = true;
+					dispose();
 				}
 				
-				if (canStart == true) {
-					
-					
-					// Launches the GameFrame and closes main menu
-					GameFrame.main(null, stack, discardedCardName, hand);
-					dispose();
-					
-				}
+				
 				
 			}
-
 		});
 		
 		btnStartGame.setBounds(305, 263, 128, 38);
 		contentPane.add(btnStartGame);
 		
 		this.setTitle("Get On - The Classic Cycling game");
-		
+
 	}
+
+	public static boolean getReceivedNames() {
+		return receivedNames;
+	}
+	
 }
+	

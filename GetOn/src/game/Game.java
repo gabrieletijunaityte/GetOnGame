@@ -15,10 +15,34 @@ import graphics.PlayerHand;
 
 public class Game {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		
-		Player firstPlayer = new Player("Player1", true), secondPlayer = new Player("Player2", false), thirdPlayer = new Player("Player3", false);
+		// Declares the names list
+		ArrayList<String> names = new ArrayList<>();
 		
+		// Launches the main menu gui
+		MainMenu.main(args, names);
+		
+		// Waits for GUI to return some input for the names
+		while (!MainMenu.getReceivedNames()) {
+			Thread.sleep(100);
+		}
+		
+		// Intializes players
+		Player firstPlayer = new Player("Player1", true), secondPlayer = new Player("Player2", false), thirdPlayer = new Player("Player3", false); 
+		
+		// Create an Array list with the players
+		ArrayList <Player> players = new ArrayList<>(Arrays.asList(firstPlayer, secondPlayer, thirdPlayer));
+		
+		// Changes player names based on GUI input
+		for (int i = 1; i <= names.size(); i++) {
+			players.get(i-1).changeName(names.get(i-1));	
+		}
+		
+		// Sets the amount of players in the game
+		if (names.size() == 2) {
+		    players.remove(thirdPlayer);
+		}
 		
 		// Initialize the stack
 		Stack stack = new Stack();
@@ -34,13 +58,10 @@ public class Game {
 		// Initialize discardCardName for GUI
 		String discardedCardName = null;
 		
-		// Deal cards
-		firstPlayer.drawCard(stack, 5);
-		secondPlayer.drawCard(stack, 5);
-		thirdPlayer.drawCard(stack, 5);
-		
-		// Create an Array list with the players
-		ArrayList <Player> players = new ArrayList<>(Arrays.asList(firstPlayer, secondPlayer, thirdPlayer));
+		// Deal initial cards
+		for (int i = 0; i <= players.size() - 1; i++) {
+			players.get(i).drawCard(stack, 5);
+		}
 		
 		// Create gameContinue variable
 		Boolean gameContinue = true;
@@ -56,6 +77,8 @@ public class Game {
 		
 		// Initiate selected card
 		Card selectedCard;
+		
+		GameFrame.main(args, stack, discardedCardName, players.get(playerIndex).getHand());
 		
 		// Initialize input listener
 		Scanner input = new Scanner(System.in); 
@@ -99,8 +122,9 @@ public class Game {
 			
 			System.out.println("Discard pile size is: " + discardPile.getStackSize()+ "\n\n");
 			
+			
 			// Passing turn to next player or first player
-			if (playerIndex == 2) {
+			if (playerIndex == players.size() - 1) {
 				playerIndex = 0;
 			
 			}
@@ -118,30 +142,7 @@ public class Game {
 			if (currentPlayer.getKmProgress() == 100) {
 				gameContinue = false;
 			}
-		}
-		
-		
-		
-		
-		// Get hand from player for GUI
-		ArrayList<Card> hand = firstPlayer.getHand();
-		
-		// Launch the main menu
-		// to realy lunch it you need to win the game first (reach 100km)
-		MainMenu.main(args, firstPlayer, secondPlayer, thirdPlayer, stack, discardedCardName, hand);
-			
-		
-		
-		// Add dicardCardName for GUI
-//		discardedCardName = firstPlayer.discardCard(discardIndex, discardPile);
-		
-		// Test PlayerHand GUI, to be removed later
-		//PlayerHand.main(args, firstPlayer.getHand());
-		
-		// Launch GameFrame GUI (Test)
-		//GameFrame.main(args);
-	
-		
+		}		
 		
 	}
 
