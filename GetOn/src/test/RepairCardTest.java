@@ -7,6 +7,7 @@ import logic.BullyCard;
 import logic.KilometerCard;
 import logic.Player;
 import logic.RepairCard;
+import logic.Card;
 import logic.Stack;
 
 public class RepairCardTest extends TestCase {
@@ -144,8 +145,19 @@ public class RepairCardTest extends TestCase {
 			
 			assertEquals(target, test);
 			assertEquals(target2, test2);
-			
-
 		}
+		
+		// Test getRequirements
+		public void testGetRequirements() {
+			// Creating a statusCard 
+			Card repairCard = new RepairCard("BIKE_REPAIR");
+			String [] target =  {"-1", "true", "-1", "FLAT_TIRE", "-1"};
+			
+			// Testing getPossibleValues() method
+			String [] test = repairCard.getRequirements();
+			
+			assertTrue(Arrays.equals(target, test));		
+		}
+
 
 }

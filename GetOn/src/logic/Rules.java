@@ -48,4 +48,26 @@ public class Rules {
 		return rules;
 	}
 	
+	public Boolean isPlayble(Card card, Player player) {
+		String[] requirements = card.getRequirements();
+//		String[] playerStatus = { "false", "true", "true", "-1", "-1" };
+		String[] playerStatus = player.getStatuses();
+
+		for (int i = 0; i < playerStatus.length; i++) {
+			if (!requirements[i].equals("-1")) {
+				if (!requirements[i].equals(playerStatus[i])) {
+					return false;
+				}
+			}
+		}
+		
+		// check if max amount of cards is not reached
+		int maxNum = Integer.parseInt(requirements[4]);
+		
+		if (maxNum != -1 && player.getPlayedCards().countCards(card) > maxNum) {
+			return false;
+		}
+		return true;
+	}
+	
 }

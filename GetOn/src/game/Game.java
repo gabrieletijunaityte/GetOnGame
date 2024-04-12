@@ -2,6 +2,7 @@ package game;
 import logic.Card;
 import logic.GameMaster;
 import logic.Player;
+import logic.Rules;
 import logic.Stack;
 import logic.KilometerCard;
 
@@ -16,9 +17,12 @@ import graphics.PlayerHand;
 public class Game {
 
 	public static void main(String[] args) throws InterruptedException {
-		
+	
 		// Declares the names list
 		ArrayList<String> names = new ArrayList<>();
+
+		// Intialize rules
+		Rules rules = new Rules();
 		
 		// Launches the main menu gui
 		MainMenu.main(args, names);
@@ -83,6 +87,9 @@ public class Game {
 		// Initialize input listener
 		Scanner input = new Scanner(System.in); 
 		
+		// Intialize drawn cards
+		Card drawnCard;
+		
 		
 		// Game loop
 		while (gameContinue) {
@@ -91,13 +98,14 @@ public class Game {
 			System.out.println("OnBikeStatus is: " +currentPlayer.getOnBikeStatus());
 			System.out.println("HasWind status is: " + currentPlayer.getHasWind());
 			System.out.println("BulliedStatus is: " + currentPlayer.getBulliedType());
-			System.out.println("The traveld distance is: " + currentPlayer.getKmProgress());
+			System.out.println("The traveled distance is: " + currentPlayer.getKmProgress());
 			
 					
 			
 			// See players hand:
 			System.out.println("The player's hand contains: " + currentPlayer.viewHand());
 			
+		
 			// Discard a chosen card:
 			System.out.println("Enter which card (1-5) you want to play or discard: ");
 			int discardIndex = input.nextInt() - 1;
@@ -105,17 +113,55 @@ public class Game {
 			selectedCard = currentPlayer.getHand().get(discardIndex);
 			System.out.println("Selected card is " + selectedCard);
 			
-			// Check card type and play it accordingly 
-			if (selectedCard.getType() != "BULLY") {
-				currentPlayer.selectCard(selectedCard, stack, discardPile);
-							}
-			else {
-				// Create a dummy player to bully
-				System.out.print("\n\nEnter which player (1-3) to bully: ");
-				int bullyIndex = input.nextInt() - 1;
-				playerToBully = players.get(bullyIndex);
-				currentPlayer.selectCard(selectedCard, playerToBully, stack, discardPile);
+			// Ask player to play or discard the selected card
+			System.out.println("Enter 1 to Play or 0 to discard the card: ");
+			int methodIndex = input.nextInt();
+			
+			System.out.println(Arrays.toString(selectedCard.getRequirements()));
+			
+			System.out.println(rules.isPlayble(selectedCard, currentPlayer));
+			
+			// Check for playability or discard the selected  card
+			if (methodIndex == 1 && rules.isPlayble(selectedCard, currentPlayer)) {
+				
+				System.out.println(rules.isPlayble(selectedCard, currentPlayer));
+				
+				// Check card type and play it accordingly 
+				if (!selectedCard.getType().equals("BULLY")) {
+					currentPlayer.selectCard(selectedCard, stack, discardPile);
+					
+					
+					}
+				else {
+					// Create a dummy player to bully
+					System.out.print("\n\nEnter which player (1-3) to bully: ");
+					int bullyIndex = input.nextInt() - 1;
+					playerToBully = players.get(bullyIndex);
+					currentPlayer.selectCard(selectedCard, playerToBully, stack, discardPile);
+				}
+
+				
 			}
+			else { 
+				
+				if (!rules.isPlayble(selectedCard, currentPlayer)) {
+					
+					System.out.println("Selected card cannot be played, card is discarded");
+				}
+				
+				currentPlayer.discardCard(selectedCard, discardPile);
+				
+			}
+			
+
+			drawnCard = stack.drawTopCard();
+			currentPlayer.addCard(drawnCard);
+			
+			System.out.println("Current player is: " + currentPlayer.getName());
+			System.out.println("OnBikeStatus is: " +currentPlayer.getOnBikeStatus());
+			System.out.println("HasWind status is: " + currentPlayer.getHasWind());
+			System.out.println("BulliedStatus is: " + currentPlayer.getBulliedType());
+			System.out.println("The traveled distance is: " + currentPlayer.getKmProgress());
 
 			//System.out.print("\nThe player's hand now contains:\n");
 			//System.out.print(currentPlayer.viewHand());

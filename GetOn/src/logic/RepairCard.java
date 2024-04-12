@@ -37,4 +37,26 @@ public class RepairCard extends Card {
 		// add card to the discard pile
 		discard.addDiscardedCard(this);
 	}
+	
+	// getRequirements method
+	public String[] getRequirements() {
+		// Requirements for (-1 to ignore)
+			// GetOnStatus
+			// BulliedStatus
+			// hasWindStatus
+			// Bullied type (-1 - ignore)
+			// Maximum number of the same cards played (-1 for no limit)
+		String value = this.getValue();
+		
+		// To play BIKE_REPAIR: be bullied with FLAT_TIRE
+		if (value.equals("BIKE_REPAIR")) {
+			String [] requirements = {"-1", "true", "-1", "FLAT_TIRE", "-1"};
+			return requirements;
+		}
+		// To play BARRIER_OPEN: be bullied with CRISS_CROSS
+		else {
+			String [] requirements = {"-1", "true", "-1", "CRISS_CROSS", "-1"};
+			return requirements;
+		}
+	}
 }

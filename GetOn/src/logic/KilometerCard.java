@@ -49,5 +49,30 @@ public class KilometerCard extends Card {
 		}
 	}
 	
-
+	// getRequirements method
+	public String[] getRequirements() {
+		// Requirements for (-1 to ignore)
+			// GetOnStatus
+			// BulliedStatus
+			// hasWindStatus
+			// Bullied type (-1 - ignore)
+			// Maximum number of the same cards played (-1 for no limit)
+		String value = this.getValue();
+		
+		// To play 5 km: (to be on bike, not bullied and 8 cards max)
+		if (value.equals("FIVE")) {
+			String [] requirements = {"true", "false", "-1", "-1", "8"};
+			return requirements;
+		}
+		// To play 6 km: (to be on bike, not bullied and 4 cards max)
+		else if (value.equals("SIX")) {
+			String [] requirements = {"true", "false", "-1", "-1", "4"};
+			return requirements;
+		}
+		// To play 8 or 10 km: (to be on bike, not bullied, to have wind and 2 cards max)
+		else {
+			String [] requirements = {"true", "false", "true", "-1", "2"};
+			return requirements;
+		}
+	}
 }

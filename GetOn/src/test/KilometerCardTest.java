@@ -3,12 +3,12 @@ package test;
 import java.util.Arrays;
 
 import junit.framework.TestCase;
-import logic.BullyCard;
 import logic.KilometerCard;
 import logic.Player;
+import logic.Card;
 import logic.Stack;
 
-public class KilometerTest extends TestCase {
+public class KilometerCardTest extends TestCase {
 
 	// Test km card creation
 	public void testCreationOfKmCard() {
@@ -158,6 +158,17 @@ public class KilometerTest extends TestCase {
 		int totalKilometers = testPlayer.getKmProgress();
 		
 		assertEquals(5, totalKilometers);	
+	}
+	
+	// Test getRequirements
+	public void testGetRequirements() {
+		// Creating a kmCard
+		Card kmCard = new KilometerCard("FIVE");
+		String [] target = {"true", "false", "-1", "-1", "8"};
 		
+		// Testing getPossibleValues() method
+		String [] test = kmCard.getRequirements();
+		
+		assertTrue(Arrays.equals(target, test));		
 	}
 }

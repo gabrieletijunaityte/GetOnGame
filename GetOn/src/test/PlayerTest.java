@@ -1,6 +1,7 @@
 package test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import junit.framework.TestCase;
 import logic.BullyCard;
@@ -106,7 +107,7 @@ public class PlayerTest extends TestCase {
 
 		// Discard a card, parameter indicates the index of the card to be removed. this
 		// is a dummy parameter.
-		myPlayer.discardCard(3, discardPile);
+		myPlayer.discardCard(myPlayer.getHand().get(1), discardPile);
 
 		// test if the card is added to the discardPile
 		assertEquals("KILOMETER_FIVE", discardPile.get(discardPile.getStackSize() - 1).getCardName());
@@ -193,6 +194,23 @@ public class PlayerTest extends TestCase {
 		
 		assertEquals(myPlayer.getBulliedType(), bulliedTest);
 
+	}
+	
+	// Test getStatuses method
+	public void testGetStatuses() {
+		// Create a player
+		Player testPlayer = new Player("Jan", true);
+		
+		// Change their statuses
+		testPlayer.setHasWind(true);
+		testPlayer.setOnBikeStatus(true);
+		
+		// Define the target
+		String [] target = {"true", "false", "true", null};
+		
+		String [] test = testPlayer.getStatuses();
+
+		assertTrue(Arrays.equals(target, test));
 	}
 
 }
