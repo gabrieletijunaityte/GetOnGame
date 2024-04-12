@@ -107,7 +107,7 @@ public class PlayerTest extends TestCase {
 
 		// Discard a card, parameter indicates the index of the card to be removed. this
 		// is a dummy parameter.
-		myPlayer.discardCard(3, discardPile);
+		myPlayer.discardCard(myPlayer.getHand().get(1), discardPile);
 
 		// test if the card is added to the discardPile
 		assertEquals("KILOMETER_FIVE", discardPile.get(discardPile.getStackSize() - 1).getCardName());
