@@ -39,9 +39,9 @@ public class Game {
 		String discardedCardName = null;
 		
 		// Deal cards
-		firstPlayer.drawCard(stack, 5);
-		secondPlayer.drawCard(stack, 5);
-		thirdPlayer.drawCard(stack, 5);
+		firstPlayer.hand.fillHand(stack, 5);
+		secondPlayer.hand.fillHand(stack, 5);
+		thirdPlayer.hand.fillHand(stack, 5);
 		
 		// Create an Array list with the players
 		ArrayList <Player> players = new ArrayList<>(Arrays.asList(firstPlayer, secondPlayer, thirdPlayer));
@@ -87,7 +87,7 @@ public class Game {
 			System.out.println("Enter which card (1-5) you want to play or discard: ");
 			int discardIndex = input.nextInt() - 1;
 			
-			selectedCard = currentPlayer.getHand().get(discardIndex);
+			selectedCard = currentPlayer.hand.getHand().get(discardIndex);
 			System.out.println("Selected card is " + selectedCard);
 			
 			// Ask player to play or discard the selected card
@@ -105,7 +105,7 @@ public class Game {
 				
 				// Check card type and play it accordingly 
 				if (!selectedCard.getType().equals("BULLY")) {
-					currentPlayer.selectCard(selectedCard, stack, discardPile);
+					//currentPlayer.hand.getHand().getHand(this).selectCard(this, selectedCard, stack, discardPile);
 					
 					
 					}
@@ -114,7 +114,7 @@ public class Game {
 					System.out.print("\n\nEnter which player (1-3) to bully: ");
 					int bullyIndex = input.nextInt() - 1;
 					playerToBully = players.get(bullyIndex);
-					currentPlayer.selectCard(selectedCard, playerToBully, stack, discardPile);
+					//currentPlayer.selectCard(selectedCard, playerToBully, stack, discardPile);
 				}
 
 				
@@ -126,13 +126,13 @@ public class Game {
 					System.out.println("Selected card cannot be played, card is discarded");
 				}
 				
-				currentPlayer.discardCard(selectedCard, discardPile);
+				currentPlayer.hand.discardedCard(selectedCard, discardPile);
 				
 			}
 			
 
 			drawnCard = stack.drawTopCard();
-			currentPlayer.addCard(drawnCard);
+			currentPlayer.hand.addCard(drawnCard);
 			
 			System.out.println("Current player is: " + currentPlayer.getName());
 			System.out.println("OnBikeStatus is: " +currentPlayer.getOnBikeStatus());
@@ -170,7 +170,7 @@ public class Game {
 		
 		
 		// Get hand from player for GUI
-		ArrayList<Card> hand = firstPlayer.getHand();
+		ArrayList<Card> hand = firstPlayer.hand.getHand();
 		
 		// Launch the main menu
 		// to realy lunch it you need to win the game first (reach 100km)
