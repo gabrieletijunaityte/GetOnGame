@@ -30,6 +30,8 @@ import java.awt.Color;
 import javax.swing.SwingConstants;
 import javax.swing.JLabel;
 import java.awt.SystemColor;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class PlayerHand extends JFrame {
 
@@ -68,10 +70,36 @@ public class PlayerHand extends JFrame {
 	 * Create the frame.
 	 */
 	public PlayerHand(ArrayList<Card> hand) {
-		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 986, 484);
-		contentPane = new JPanel();
+	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    setBounds(100, 100, 986, 484);
+	    contentPane = new JPanel();
+	    
+	    // Add mouse listener to select a card based on where the mouse is clicked
+	    contentPane.addMouseListener(new MouseAdapter() {
+	        @Override
+	        public void mouseClicked(MouseEvent e) {
+	            // Get location of the click to calculate the card that's selected
+	        	int clickLocation = e.getX();
+	            int cardWidth = contentPane.getWidth() / hand.size();
+	            int clickedCardIndex = clickLocation / cardWidth;
+
+	            // If the card width is greater than 0 and less than the hand size
+	            if (clickedCardIndex >= 0 && clickedCardIndex < hand.size()) {
+	                Card clickedCard = hand.get(clickedCardIndex);
+	                System.out.println("Mouse clicked on card " + clickedCardIndex);
+	                // Get card type and card value for subsequent steps, catch the error if not possible
+	                try {
+	                    String cardType = clickedCard.getType();
+	                    String cardValue = clickedCard.getValue();
+	                    System.out.println("Clicked card type: " + cardType + ", card value: " + cardValue);
+	                } 
+	                catch (Exception ex) {
+	                    ex.printStackTrace();
+	                }
+	            }
+	        }
+	    });
+	    
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
@@ -83,7 +111,7 @@ public class PlayerHand extends JFrame {
 		contentPane.setLayout(gbl_contentPane);
 		
 		card1 = new JLabel("");
-		card1.setBackground(SystemColor.text);
+        card1.setBackground(SystemColor.text);
 		GridBagConstraints gbc_card1 = new GridBagConstraints();
 		gbc_card1.insets = new Insets(0, 0, 0, 5);
 		gbc_card1.gridx = 0;
