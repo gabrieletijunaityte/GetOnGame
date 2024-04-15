@@ -54,7 +54,16 @@ public class BullyCard extends Card {
 			String[] consequences = { "-1", "-1", "false", "-1", "-1" };
 
 			return consequences;
-		} else {
+			
+		} 
+		
+		else if (this.getValue().equals("TAVERN")) {
+
+			String[] consequences = { "false", "-1", "-1", "-1", "-1" };
+
+			return consequences;
+		} 
+		else {
 
 			String[] consequences = { "false", "true", "-1", this.getValue(), "-1" };
 			return consequences;

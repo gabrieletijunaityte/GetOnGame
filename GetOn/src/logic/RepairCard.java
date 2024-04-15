@@ -57,7 +57,8 @@ public class RepairCard extends Card {
 		else {
 			String [] requirements = {"-1", "true", "-1", "CRISS_CROSS", "-1"};
 			return requirements;
-		}
+		} 
+		
 	}
 	
 	
