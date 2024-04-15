@@ -31,6 +31,7 @@ public class RulesFrame extends JFrame {
 					RulesFrame frame = new RulesFrame();
 					frame.setSize(781, 410);
 					frame.setVisible(true);
+					frame.setAlwaysOnTop(true);
 					
 					// Do not allow to resize the frame
 					frame.setResizable(false);

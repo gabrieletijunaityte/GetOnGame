@@ -17,13 +17,13 @@ public class BullyCard extends Card {
 	// getRequirements method
 	public String[] getRequirements() {
 		// Requirements for (-1 to ignore)
-			// GetOnStatus
-			// BulliedStatus
-			// hasWindStatus
-			// Maximum number of the same cards played 
-			// Bullied type 
+		// GetOnStatus
+		// BulliedStatus
+		// hasWindStatus
+		// Maximum number of the same cards played
+		// Bullied type
 		// None of the statuses must be active to play a bully card
-		String[] requirements = {"-1", "-1", "-1", "-1", "-1"};
+		String[] requirements = { "-1", "-1", "-1", "-1", "-1" };
 		return requirements;
 	}
 
@@ -32,11 +32,34 @@ public class BullyCard extends Card {
 		// Updating bullied status and onbike status
 		bulliedPlayer.setBulliedStatus(true);
 		bulliedPlayer.setOnBikeStatus(false);
-		
+
 		// Updating bullied type of the player
 		bulliedPlayer.setBulliedType(this.getValue());
 
 		// add card to the discard pile
 		discard.addDiscardedCard(this);
+	}
+
+	// Implement method for getConsequences
+	public String[] getConsequences() {
+		// Changes for (-1 to ignore)
+		// GetOnStatus
+		// BulliedStatus
+		// hasWindStatus
+		// Bullied type
+		// Kilometer increase
+
+		if (this.getValue().equals("CROSSWIND")) {
+
+			String[] consequences = { "-1", "-1", "false", "-1", "-1" };
+
+			return consequences;
+		} else {
+
+			String[] consequences = { "false", "true", "-1", this.getValue(), "-1" };
+			return consequences;
+
+		}
+
 	}
 }

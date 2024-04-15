@@ -158,6 +158,18 @@ public class RepairCardTest extends TestCase {
 			
 			assertTrue(Arrays.equals(target, test));		
 		}
+		
+		// Test getConsequences
+		public void testGetConsequences() {
+			// Creating a statusCard 
+			Card repairCard = new RepairCard("BIKE_REPAIR");
+			String [] target =  {"-1", "false", "-1", null, "-1"};
+			
+			// Testing getPossibleValues() method
+			String [] test = repairCard.getConsequences();
+			
+			assertTrue(Arrays.equals(target, test));		
+		}
 
 
 }

@@ -101,5 +101,20 @@ public class CardTest extends TestCase {
 		assertTrue(Arrays.equals(target, test));		
 	}
 	
+	// Test getConsequences
+	public void testGetConsequences() {
+		// Creating Card class
+		String typeSample = "Sample";
+		String valueSample = "Sample";
+		Card card = new Card(typeSample, valueSample);
+		
+		// Setting the target
+		String [] target = {};
+		
+		// Testing getPossibleValues() method
+		String [] test = card.getConsequences();
+		
+		assertTrue(Arrays.equals(target, test));		
+	}
 	
 }

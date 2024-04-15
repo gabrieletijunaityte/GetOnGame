@@ -59,4 +59,19 @@ public class RepairCard extends Card {
 			return requirements;
 		}
 	}
+	
+	
+	// Implement method for getConsequences
+	public String[] getConsequences() {
+		// Changes for (-1 to ignore)
+		// GetOnStatus
+		// BulliedStatus
+		// hasWindStatus
+		// Bullied type
+		// Kilometer increase
+
+		String[] consequences = { "-1", "false", "-1", null, "-1" };
+		return consequences;
+
+	}
 }

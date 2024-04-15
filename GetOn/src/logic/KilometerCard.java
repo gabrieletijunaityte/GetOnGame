@@ -41,7 +41,7 @@ public class KilometerCard extends Card {
 
 			
 			// Update the progress
-			currentPlayer.playerProgress(this);
+			currentPlayer.playerProgress(this.getValue());
 					}
 		// If not playable, discard the card
 		else {
@@ -74,5 +74,20 @@ public class KilometerCard extends Card {
 			String [] requirements = {"true", "false", "true", "-1", "2"};
 			return requirements;
 		}
+	}
+	
+	// Implement method for getConsequences
+	public String[] getConsequences() {
+		// Changes for (-1 to ignore)
+		// GetOnStatus
+		// BulliedStatus
+		// hasWindStatus
+		// Bullied type
+		// Kilometer increase
+
+		String[] consequences = { "-1", "-1", "-1", "-1", this.getValue() };
+		return consequences;
+
+
 	}
 }

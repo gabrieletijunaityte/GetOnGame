@@ -73,4 +73,28 @@ public class StatusCard extends Card {
 			return requirements;
 		}
 	}
+	
+	
+	// Implement method for getConsequences
+	public String[] getConsequences() {
+		// Changes for (-1 to ignore)
+		// GetOnStatus
+		// BulliedStatus
+		// hasWindStatus
+		// Bullied type
+		// Kilometer increase
+
+		if (this.getValue().equals("GET_ON")) {
+
+			String[] consequences = { "true", "-1", "-1", "-1", "-1" };
+
+			return consequences;
+		} else {
+
+			String[] consequences = { "-1", "-1", "true", "-1", "-1" };
+			return consequences;
+
+		}
+
+	}
 }

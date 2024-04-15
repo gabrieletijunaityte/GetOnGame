@@ -51,22 +51,24 @@ public class StackTest extends TestCase {
 	}
 	
 	// Test drawCard from the stack
-	public void drawTopCard() {
+	public void testDrawTopCard() {
 		// Create a stack
 		Stack stack = new Stack();
 		stack.initializeStack();
 		
 		// Draw a card from the stack
 		Card card = stack.drawTopCard();
+		// topCard is kilometer five because stack is not shuffled
 		Card topCard = new KilometerCard("FIVE");
 		
-		assertEquals(topCard, card);
+		// Assert drawn card is equal to topCard
+		assertEquals(topCard.getCardName(), card.getCardName());
 	}
 	
 	
 	
 	// Test clear()
-	public void clearTest() {
+	public void testClear() {
 		// Create a stack
 		Stack stack = new Stack();
 		stack.initializeStack();

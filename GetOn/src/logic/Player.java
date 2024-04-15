@@ -38,16 +38,16 @@ public class Player {
 		// Add a card to the hand
 		this.hand.add(card);
 	}
-	
+
 	// Method to draw a single card
 	public void drawCard(Stack stack) {
-		
+
 		// Add a card to the hand
 		Card topCard = stack.drawTopCard();
 		addCard(topCard);
-		
+
 		// Change turn after drawing a card
-		 changeTurn();
+		changeTurn();
 	}
 
 	// Method to change the player name
@@ -87,36 +87,15 @@ public class Player {
 	}
 
 	// Method to discard a card
-	public String discardCard(int i, Stack discardPile) {
+	public void discardCard(Card discardedCard, Stack discardPile) {
 		// Add the discarded card to the discardPile and remove the card from the hand
-		// Check if the index is possible, if not, throw exception
-		if (i < 0 || i >= 5) {
-			throw new IllegalArgumentException("The index must be cannot be lower than 0 and higher than 4");
-		} else {
-			// TODO: REMOVE THE PRINTS
 
-			// Set discarded card to the parameter index of the hand.
-			Card discardedCard = hand.get(i);
-			// Add the discarded card to the discardPile
-			discardPile.addDiscardedCard(discardedCard);
-			// Remove the card from the hand
-			hand.remove(i);
-			// Show which card is removed
+		// Add the discarded card to the discardPile
+		discardPile.addDiscardedCard(discardedCard);
+		// Remove the card from the hand
+		hand.remove(discardedCard);
 
-			System.out.println(discardedCard.getCardName() + ": has been discarded from your hand");
-			
-			// Show the hand after the removal
-			System.out.println("Current hand: " + viewHand());
-			
-			// return discard card to visualize in GUI
-			return discardedCard.getCardName();
-		}
-		
-
-
-		}
-
-
+	}
 
 	// Get the hand as array list
 	public ArrayList<Card> getHand() {
@@ -164,11 +143,8 @@ public class Player {
 	}
 
 	// This method updates the player's kilometer progress
-	public void playerProgress(Card card) {
-		// Check if the object is of KilometerCard
-		if (card instanceof KilometerCard) {
-			// Obtain the kilometer value
-			String value = card.getValue();
+	public void playerProgress(String value) {
+
 			switch (value) {
 			case "FIVE":
 				this.kmProgress += 5;
@@ -187,10 +163,8 @@ public class Player {
 			default:
 				break;
 			}
-		} else {
-			throw new IllegalArgumentException("Method works with Kilometer cards only");
-		}
-	}
+		} 
+	
 
 	public PlayerTable getPlayedCards() {
 		return playerTable;
@@ -199,62 +173,84 @@ public class Player {
 	public int getKmProgress() {
 		return this.kmProgress;
 	}
-	
+
 	public void selectCard(Card card, Stack stack, Stack discard) {
 		// play the selected card
 		card.playCard(this, discard);
-		
+
 		// remove the card from the hand
 		this.hand.remove(card);
-		
+
 		// draw a card from a pile and change turn
 		drawCard(stack);
 	}
-	
-	// Select a card from the players hand, innitiate the play card method and remove the card from the players hand
+
+	// Select a card from the players hand, innitiate the play card method and
+	// remove the card from the players hand
 	public void selectCard(Card card, Player bulliedPlayer, Stack stack, Stack discard) {
 		card.playCard(bulliedPlayer, discard);
 		this.hand.remove(card);
 		this.drawCard(stack);
 	}
-	
+
 	// get the players "Bully type" string
 	public String getBulliedType() {
 		return this.bulliedType;
 	}
-	
+
 	// Set the "Bully Type" to a string
 	public void setBulliedType(String bulliedType) {
 		this.bulliedType = bulliedType;
 	}
-	
+
 	// Get the players "hasWind" status
 	public Boolean getWindStatus() {
 		return this.hasWind;
 	}
-	
+
 	// Get the players "WindType" string
 	public String getWindType() {
 		return this.windType;
 	}
-	
+
 	// Set the players "WindType" string
 	public void setWindType(String windType) {
 		this.windType = windType;
 	}
-	
+
 	// Method to retrieve all player statuses for card
 	// playability check in rules
 	public String[] getStatuses() {
 		// In order:
-			// GetOnStatus
-			// BulliedStatus
-			// hasWindStatus
-			// Bullied type 
-		String [] statuses = {String.valueOf(this.getOnBikeStatus()),
-				String.valueOf(this.getBulliedStatus()),
-				String.valueOf(this.getHasWind()),
-				getBulliedType()};
+		// GetOnStatus
+		// BulliedStatus
+		// hasWindStatus
+		// Bullied type
+		String[] statuses = { String.valueOf(this.getOnBikeStatus()), String.valueOf(this.getBulliedStatus()),
+				String.valueOf(this.getHasWind()), getBulliedType() };
 		return statuses;
 	}
+
+	// Broken Methods
+//	// Implement set Consequences method
+//	public void setConsequences(String[] consequences) {
+//
+//		if (!consequences[0].equals("-1")) {
+//
+//			setOnBikeStatus(Boolean.valueOf(consequences[0]));
+//		}
+//		else if (!consequences[1].equals("-1")) {
+//			setBulliedStatus(Boolean.valueOf(consequences[1]));
+//		}
+//		else if (!consequences[2].equals("-1")) {
+//			setHasWind(Boolean.valueOf(consequences[2]));
+//		}
+//		else if (!consequences[3].equals("-1")) {
+//			setBulliedType(consequences[3]);
+//		}
+//		else if (!consequences[4].equals("-1")) {
+//			playerProgress(consequences[4]);
+//		}
+//
+//	}
 }
