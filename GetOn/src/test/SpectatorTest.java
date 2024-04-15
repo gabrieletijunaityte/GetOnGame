@@ -38,7 +38,7 @@ public class SpectatorTest extends TestCase {
 	    playerProgress.setOnBikeStatus(true);
 	    KilometerCard fiveKilometerCard = new KilometerCard("FIVE");
 	    // Call the five kilometer card
-	    playerProgress.playerProgress(fiveKilometerCard);
+	    playerProgress.playerProgress(fiveKilometerCard.getValue());
 	    
 	    int expected = 5;
 	    int found = testspectator.getProgress(playerProgress);

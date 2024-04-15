@@ -85,11 +85,8 @@ public class Player {
 	}
 
 	// This method updates the player's kilometer progress
-	public void playerProgress(Card card) {
-		// Check if the object is of KilometerCard
-		if (card instanceof KilometerCard) {
-			// Obtain the kilometer value
-			String value = card.getValue();
+	public void playerProgress(String value) {
+
 			switch (value) {
 			case "FIVE":
 				this.kmProgress += 5;
@@ -108,10 +105,8 @@ public class Player {
 			default:
 				break;
 			}
-		} else {
-			throw new IllegalArgumentException("Method works with Kilometer cards only");
-		}
-	}
+		} 
+	
 
 	public PlayerTable getPlayedCards() {
 		return playerTable;
@@ -120,45 +115,71 @@ public class Player {
 	public int getKmProgress() {
 		return this.kmProgress;
 	}
-	
-	
+
 	// get the players "Bully type" string
 	public String getBulliedType() {
 		return this.bulliedType;
 	}
-	
+
 	// Set the "Bully Type" to a string
 	public void setBulliedType(String bulliedType) {
 		this.bulliedType = bulliedType;
 	}
-	
+
 	// Get the players "hasWind" status
 	public Boolean getWindStatus() {
 		return this.hasWind;
 	}
-	
+
 	// Get the players "WindType" string
 	public String getWindType() {
 		return this.windType;
 	}
-	
+
 	// Set the players "WindType" string
 	public void setWindType(String windType) {
 		this.windType = windType;
 	}
-	
+
 	// Method to retrieve all player statuses for card
 	// playability check in rules
 	public String[] getStatuses() {
 		// In order:
-			// GetOnStatus
-			// BulliedStatus
-			// hasWindStatus
-			// Bullied type 
-		String [] statuses = {String.valueOf(this.getOnBikeStatus()),
-				String.valueOf(this.getBulliedStatus()),
-				String.valueOf(this.getHasWind()),
-				getBulliedType()};
+		// GetOnStatus
+		// BulliedStatus
+		// hasWindStatus
+		// Bullied type
+		String[] statuses = { String.valueOf(this.getOnBikeStatus()), String.valueOf(this.getBulliedStatus()),
+				String.valueOf(this.getHasWind()), getBulliedType() };
 		return statuses;
+	}
+
+	// Implement set Consequences method
+	public void setConsequences(String[] consequences) {
+		for (int i = 0; i< consequences.length; i++) {
+			switch (i) {
+			case 0:
+				if (!consequences[0].equals("-1")) {
+
+					setOnBikeStatus(Boolean.valueOf(consequences[0]));
+				}
+				break;
+			case 1:
+				if (!consequences[1].equals("-1")) {
+					setBulliedStatus(Boolean.valueOf(consequences[1]));
+				}
+				break;
+			case 2:
+				if (!consequences[2].equals("-1")) {
+					setHasWind(Boolean.valueOf(consequences[2]));
+				}
+				break;
+			case 3:
+				if (!consequences[3].equals("-1")) {
+					setBulliedType(consequences[3]);
+				}
+				break;
+			}
+		}
 	}
 }
