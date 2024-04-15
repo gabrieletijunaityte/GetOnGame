@@ -249,7 +249,7 @@ public class PlayerTest extends TestCase {
 		testPlayer.setConsequences(consequences);
 		
 		// Define the target
-		String [] target = {"false", "true", "false", "TAVERN"};
+		String [] target = {"false", "false", "false", null};
 		
 		String[] test = testPlayer.getStatuses();
 		

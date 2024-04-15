@@ -129,8 +129,8 @@ public class Game {
 
 				// Check card type and play it accordingly
 				if (!selectedCard.getType().equals("BULLY")) {
+					currentPlayer.setConsequences(selectedCard.getConsequences());
 
-					currentPlayer.selectCard(selectedCard, stack, discardPile);
 
 				} else {
 					// Create a dummy player to bully
@@ -138,7 +138,7 @@ public class Game {
 					int bullyIndex = input.nextInt() - 1;
 					playerToBully = players.get(bullyIndex);
 					playerToBully.setConsequences(selectedCard.getConsequences());
-					currentPlayer.selectCard(selectedCard, playerToBully, stack, discardPile);
+					
 				}
 
 			} else {
@@ -175,6 +175,8 @@ public class Game {
 				playerIndex++;
 			}
 			gameContinue = false;
+			
+			
 
 			// Check if card stack is empty and if so reshuffle discardPile
 			if (stack.getStackSize() == 0) {

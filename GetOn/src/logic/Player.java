@@ -244,6 +244,10 @@ public class Player {
 			case 1:
 				if (!consequences[1].equals("-1")) {
 					setBulliedStatus(Boolean.valueOf(consequences[1]));
+					// Reset bullied type to null if bullied status is set to false
+                    if (!Boolean.valueOf(consequences[1])) {
+                        setBulliedType(null);
+                    }
 				}
 				break;
 			case 2:
@@ -252,9 +256,9 @@ public class Player {
 				}
 				break;
 			case 3:
-				if (!consequences[3].equals("-1")) {
-					setBulliedType(consequences[3]);
-				}
+				if (consequences[3] != null && !consequences[3].equals("-1")) {
+                    setBulliedType(consequences[3]);
+                }				
 				break;
 			}
 		}
