@@ -61,6 +61,21 @@ public class Game {
 		Scanner input = new Scanner(System.in); 
 		
 		
+		
+		
+		
+		// Create a GUI game loop
+		Card cardToPlay = new Card(discardedCardName, discardedCardName);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		// Game loop
 		while (gameContinue) {
 			currentPlayer = players.get(playerIndex);
@@ -107,7 +122,8 @@ public class Game {
 			else {
 				playerIndex ++;
 			}
-			
+			gameContinue = false;
+
 			// Check if card stack is empty and if so reshuffle discardPile
 			if (stack.getStackSize() == 0) {
 				stack = discardPile;
