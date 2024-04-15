@@ -256,13 +256,6 @@ public class Player {
 					setBulliedType(consequences[3]);
 				}
 				break;
-			case 4:
-				if (!consequences[4].equals("-1")) {
-					playerProgress(consequences[4]);
-				}
-				break;
-				
-			
 			}
 		}
 	}
