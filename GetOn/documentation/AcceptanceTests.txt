@@ -1,0 +1,218 @@
+ID #1
+Title: Show Hand
+
+Acceptance test:
+1. Do all the steps from AcceptanceTest_ID_11
+2. In the bottom right corner click on the button "View Hand" to see your cards.
+
+-------------------------------------------------------------------------------------
+
+ID #2
+Title: 
+
+Acceptance test:
+
+-------------------------------------------------------------------------------------
+
+ID #3
+Title: 
+
+Acceptance test:
+
+-------------------------------------------------------------------------------------
+
+ID #4
+Title: Enter the player names
+
+Acceptance test:
+1. Click on "GET_ON" file.
+2. Enter the first player name in the "Player 1" field (e.g., enter "Gabriele"), the second - in the "Player 2" (e.g., enter "Niels"), and the third - in the "Player 3" (e.g., "Jan").
+
+-------------------------------------------------------------------------------------
+
+ID #5
+Title: View Progress
+
+Acceptance test:
+1. Do all the steps from AcceptanceTest_ID_11
+2. The score of each player is visualised at the bottom of the screen as a count of each kilometer card played.
+3. In the beginning of the game the scores are 0. 
+4. As games 
+
+-------------------------------------------------------------------------------------
+
+ID #6
+Title: Play a kilometer Card
+
+Acceptance test:
+1. Do all the steps from AcceptanceTest_ID_12
+2. As a player 1 select to play a "FIVE" kilometer card.
+
+
+-------------------------------------------------------------------------------------
+
+ID #7
+Title: 
+
+Acceptance test:
+1. Do all the steps from AcceptanceTest_ID_1
+2. Select a "TEN" kilometer card.
+3. Select "Discard card".
+
+-------------------------------------------------------------------------------------
+
+ID #8
+Title: View rules
+
+Acceptance test:
+1. Click on "GET_ON" file.
+2. On the bottom right corner click "View Rules".
+
+-------------------------------------------------------------------------------------
+
+ID #9
+Title: Play a bully card
+
+Acceptance test:
+1. Do all the steps from AcceptanceTest_ID_13
+2. Click "View my hand" button.
+3. As Player 2, select to play a bully card "FLAT_TIRE".
+4. Select Player 3 as a player to bully.
+
+-------------------------------------------------------------------------------------
+
+ID #10
+Title: Draw card and Pass turn
+
+Acceptance test:
+1. Do all the steps from AcceptanceTest_ID_13
+2. No further action needed.
+
+-------------------------------------------------------------------------------------
+
+ID #11
+Title: Start game
+
+Acceptance test:
+1. Do all the steps from AcceptanceTest_ID_4
+2. Click on "Start Test Game" button.
+
+
+-------------------------------------------------------------------------------------
+
+ID #12
+Title: Play a repair card
+
+Acceptance test:
+1. Do all the steps from AcceptanceTest_ID_9
+2. As a player 3 select to play a repair card "REPAIR_BIKE".
+
+-------------------------------------------------------------------------------------
+
+ID #13
+Title: Play Get-On card
+
+Acceptance test:
+1. Do all the steps from AcceptanceTest_ID_1
+2. Select "GET_ON" card.
+3. Select "Play card".
+
+-------------------------------------------------------------------------------------
+
+ID #14
+Title: 
+
+Acceptance test:
+
+-------------------------------------------------------------------------------------
+
+ID #15
+Title: Shuffle the card stack
+
+Acceptance test:
+1. ????
+
+-------------------------------------------------------------------------------------
+
+ID #16
+Title: Pass turn
+
+Acceptance test:
+1. Do all the steps from AcceptanceTest_ID_13
+2. Click "Pass turn" button.
+
+-------------------------------------------------------------------------------------
+
+ID #17
+Title: View hand graphically
+
+Acceptance test:
+1. Do all the steps from AcceptanceTest_ID_1
+2. No further steps needed.
+
+-------------------------------------------------------------------------------------
+
+ID #18
+Title: 
+
+Acceptance test:
+1. Do all the steps from AcceptanceTest_ID_6
+2. No further action needed.
+
+-------------------------------------------------------------------------------------
+
+ID #19
+Title: View Formatted rules
+
+Acceptance test:
+1. Click on "GET_ON" file.
+2. On the bottom right corner click "View Rules".
+
+-------------------------------------------------------------------------------------
+
+ID #20
+Title: 
+
+Acceptance test:
+
+-------------------------------------------------------------------------------------
+
+ID #21
+Title: 
+
+Acceptance test:
+
+-------------------------------------------------------------------------------------
+
+ID #22
+Title: 
+
+Acceptance test:
+
+-------------------------------------------------------------------------------------
+
+ID #23
+Title: 
+
+Acceptance test:
+
+-------------------------------------------------------------------------------------
+
+ID #24
+Title: 
+
+Acceptance test:
+
+-------------------------------------------------------------------------------------
+
+ID #25
+Title: 
+
+Acceptance test:
+
+-------------------------------------------------------------------------------------
+
+ID #26
+Title: 
+
+Acceptance test:
