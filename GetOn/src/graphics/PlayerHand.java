@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
 // Importing for testing purposes
@@ -15,6 +16,8 @@ import java.awt.Image;
 import java.awt.GridBagLayout;
 import javax.swing.JTextPane;
 import java.awt.GridBagConstraints;
+
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import java.awt.Insets;
 import javax.swing.JTextArea;
@@ -65,6 +68,12 @@ public class PlayerHand extends JFrame {
 		});
 				
 	}
+	 // Border object with colour for the cards
+	Border customBorder = BorderFactory.createLineBorder(Color.red, 10, true);
+
+	public void setBorderColor(Color color) {
+		customBorder = BorderFactory.createLineBorder(color);
+	}
 
 	/**
 	 * Create the frame.
@@ -100,6 +109,8 @@ public class PlayerHand extends JFrame {
 	        }
 	    });
 	    
+	
+		
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
@@ -112,6 +123,7 @@ public class PlayerHand extends JFrame {
 		
 		card1 = new JLabel("");
         card1.setBackground(SystemColor.text);
+        card1.setBorder(customBorder);
 		GridBagConstraints gbc_card1 = new GridBagConstraints();
 		gbc_card1.insets = new Insets(0, 0, 0, 5);
 		gbc_card1.gridx = 0;
@@ -120,6 +132,7 @@ public class PlayerHand extends JFrame {
 		
 		card2 = new JLabel("");
 		card2.setBackground(SystemColor.text);
+		card2.setBorder(customBorder);
 		GridBagConstraints gbc_card2 = new GridBagConstraints();
 		gbc_card2.insets = new Insets(0, 0, 0, 5);
 		gbc_card2.gridx = 1;
@@ -128,6 +141,7 @@ public class PlayerHand extends JFrame {
 		
 		card3 = new JLabel("");
 		card3.setBackground(SystemColor.text);
+		card3.setBorder(customBorder);
 		GridBagConstraints gbc_card3 = new GridBagConstraints();
 		gbc_card3.insets = new Insets(0, 0, 0, 5);
 		gbc_card3.gridx = 2;
@@ -136,6 +150,7 @@ public class PlayerHand extends JFrame {
 		
 		card4 = new JLabel("");
 		card4.setBackground(SystemColor.text);
+		card4.setBorder(customBorder);
 		GridBagConstraints gbc_card4 = new GridBagConstraints();
 		gbc_card4.insets = new Insets(0, 0, 0, 5);
 		gbc_card4.gridx = 3;
@@ -144,6 +159,7 @@ public class PlayerHand extends JFrame {
 		
 		card5 = new JLabel("");
 		card5.setBackground(SystemColor.text);
+		card5.setBorder(customBorder);
 		GridBagConstraints gbc_card5 = new GridBagConstraints();
 		gbc_card5.gridx = 4;
 		gbc_card5.gridy = 0;

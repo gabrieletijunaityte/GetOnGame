@@ -2,11 +2,13 @@ package game;
 
 import logic.Card;
 import logic.GameMaster;
+import logic.Hand;
 import logic.Player;
 import logic.Rules;
 import logic.Stack;
 import logic.KilometerCard;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -94,7 +96,10 @@ public class Game {
 
 		// Create a GUI game loop
 		Card cardToPlay = new Card(discardedCardName, discardedCardName);
-
+		
+		//
+		ArrayList<Card> currentHandPlayStatus;
+		ArrayList<Color> colorList;
 		// Game loop
 		while (gameContinue) {
 			currentPlayer = players.get(playerIndex);
@@ -103,7 +108,22 @@ public class Game {
 			System.out.println("HasWind status is: " + currentPlayer.getHasWind());
 			System.out.println("BulliedStatus is: " + currentPlayer.getBulliedType());
 			System.out.println("The traveled distance is: " + currentPlayer.getKmProgress());
-
+			
+			
+			
+			// Initialize current hand
+			currentHandPlayStatus = currentPlayer.hand.getHand();
+			colorList = new ArrayList<Color>();
+			for (int i = 0; i < currentHandPlayStatus.size(); i++) {
+				if (rules.isPlayble(currentPlayer.hand.getHand().get(i), currentPlayer));{
+					Color color = Color.green;
+					colorList.add(color);
+				} {
+					Color color = Color.red;
+					colorList.add(color);
+				}
+			}
+				
 			// See players hand:
 			System.out.println("The player's hand contains: " + currentPlayer.viewHand());
 
