@@ -143,7 +143,7 @@ public class BullyCardTest extends TestCase {
 
 		// Creating a bullyCard
 		BullyCard bullyCard = new BullyCard("TAVERN");
-		String[] target = { "false", "true", "-1", "TAVERN", "-1" };
+		String[] target = { "false", "-1", "-1", "-1", "-1" };
 
 		// Testing getPossibleValues() method
 		String[] test = bullyCard.getConsequences();

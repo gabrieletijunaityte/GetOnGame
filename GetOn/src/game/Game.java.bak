@@ -132,8 +132,13 @@ public class Game {
 				if (!selectedCard.getType().equals("BULLY")) {
 					currentPlayer.setConsequences(selectedCard.getConsequences());
 
-
+<<<<<<< HEAD
+=======
+					//currentPlayer.hand.getHand().getHand(this).selectCard(this, selectedCard, stack, discardPile);
+					
+					
 					}else {
+>>>>>>> e6a79ed7794878f53856e4ac3acbc86077c5bd9b
 
 					// Create a dummy player to bully
 					System.out.print("\n\nEnter which player (1-3) to bully: ");
@@ -141,6 +146,12 @@ public class Game {
 					playerToBully = players.get(bullyIndex);
 
 					playerToBully.setConsequences(selectedCard.getConsequences());
+<<<<<<< HEAD
+					
+=======
+					//currentPlayer.selectCard(selectedCard, playerToBully, stack, discardPile);
+
+>>>>>>> e6a79ed7794878f53856e4ac3acbc86077c5bd9b
 				}
 
 			} else {
