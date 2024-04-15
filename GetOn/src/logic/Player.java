@@ -231,26 +231,39 @@ public class Player {
 		return statuses;
 	}
 
-	// Broken Methods
-//	// Implement set Consequences method
-//	public void setConsequences(String[] consequences) {
-//
-//		if (!consequences[0].equals("-1")) {
-//
-//			setOnBikeStatus(Boolean.valueOf(consequences[0]));
-//		}
-//		else if (!consequences[1].equals("-1")) {
-//			setBulliedStatus(Boolean.valueOf(consequences[1]));
-//		}
-//		else if (!consequences[2].equals("-1")) {
-//			setHasWind(Boolean.valueOf(consequences[2]));
-//		}
-//		else if (!consequences[3].equals("-1")) {
-//			setBulliedType(consequences[3]);
-//		}
-//		else if (!consequences[4].equals("-1")) {
-//			playerProgress(consequences[4]);
-//		}
-//
-//	}
+	// Implement set Consequences method
+	public void setConsequences(String[] consequences) {
+		for (int i = 0; i< consequences.length; i++) {
+			switch (i) {
+			case 0:
+				if (!consequences[0].equals("-1")) {
+
+					setOnBikeStatus(Boolean.valueOf(consequences[0]));
+				}
+				break;
+			case 1:
+				if (!consequences[1].equals("-1")) {
+					setBulliedStatus(Boolean.valueOf(consequences[1]));
+				}
+				break;
+			case 2:
+				if (!consequences[2].equals("-1")) {
+					setHasWind(Boolean.valueOf(consequences[2]));
+				}
+				break;
+			case 3:
+				if (!consequences[3].equals("-1")) {
+					setBulliedType(consequences[3]);
+				}
+				break;
+			case 4:
+				if (!consequences[4].equals("-1")) {
+					playerProgress(consequences[4]);
+				}
+				break;
+				
+			
+			}
+		}
+	}
 }
