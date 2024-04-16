@@ -86,7 +86,7 @@ public class Game {
 		// Initiate selected card
 		Card selectedCard;
 
-		GameFrame.main(args, stack, discardedCardName, players.get(playerIndex).hand.getHand());
+		GameFrame.main(args, stack, discardedCardName, players.get(playerIndex).hand.getHand(), players.get(playerIndex), rules);
 
 		// Initialize input listener
 		Scanner input = new Scanner(System.in);
@@ -97,9 +97,7 @@ public class Game {
 		// Create a GUI game loop
 		Card cardToPlay = new Card(discardedCardName, discardedCardName);
 		
-		//
-		ArrayList<Card> currentHandPlayStatus;
-		ArrayList<Color> colorList;
+		
 		// Game loop
 		while (gameContinue) {
 			currentPlayer = players.get(playerIndex);
@@ -109,20 +107,7 @@ public class Game {
 			System.out.println("BulliedStatus is: " + currentPlayer.getBulliedType());
 			System.out.println("The traveled distance is: " + currentPlayer.getKmProgress());
 			
-			
-			
-			// Initialize current hand
-			currentHandPlayStatus = currentPlayer.hand.getHand();
-			colorList = new ArrayList<Color>();
-			for (int i = 0; i < currentHandPlayStatus.size(); i++) {
-				if (rules.isPlayble(currentPlayer.hand.getHand().get(i), currentPlayer));{
-					Color color = Color.green;
-					colorList.add(color);
-				} {
-					Color color = Color.red;
-					colorList.add(color);
-				}
-			}
+									
 				
 			// See players hand:
 			System.out.println("The player's hand contains: " + currentPlayer.viewHand());

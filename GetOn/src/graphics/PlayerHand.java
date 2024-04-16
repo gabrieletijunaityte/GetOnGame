@@ -10,6 +10,8 @@ import javax.swing.border.EmptyBorder;
 
 // Importing for testing purposes
 import logic.Card;
+import logic.Player;
+import logic.Rules;
 
 import java.awt.GridLayout;
 import java.awt.Image;
@@ -50,7 +52,7 @@ public class PlayerHand extends JFrame {
 	 * Launch the application.
 	 * @param hand 
 	 */
-	public static void main(String[] args, ArrayList<Card> hand) {
+	public static void main(String[] args, ArrayList<Card> hand, Player player, Rules rules) {
 		
 		// Information passed by game of the current player's hand
 		ArrayList<Card> currentPlayerHand = hand;
@@ -58,9 +60,10 @@ public class PlayerHand extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					PlayerHand frame = new PlayerHand(currentPlayerHand);
+					PlayerHand frame = new PlayerHand(currentPlayerHand, player, rules);
 					frame.setVisible(true);
 					frame.setAlwaysOnTop(true);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -68,17 +71,12 @@ public class PlayerHand extends JFrame {
 		});
 				
 	}
-	 // Border object with colour for the cards
-	Border customBorder = BorderFactory.createLineBorder(Color.red, 10, true);
-
-	public void setBorderColor(Color color) {
-		customBorder = BorderFactory.createLineBorder(color);
-	}
-
+	
+	
 	/**
 	 * Create the frame.
 	 */
-	public PlayerHand(ArrayList<Card> hand) {
+	public PlayerHand(ArrayList<Card> hand, Player player, Rules rules) {
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    setBounds(100, 100, 986, 484);
 	    contentPane = new JPanel();
@@ -123,8 +121,7 @@ public class PlayerHand extends JFrame {
 		
 		card1 = new JLabel("");
         card1.setBackground(SystemColor.text);
-        card1.setBorder(customBorder);
-		GridBagConstraints gbc_card1 = new GridBagConstraints();
+        GridBagConstraints gbc_card1 = new GridBagConstraints();
 		gbc_card1.insets = new Insets(0, 0, 0, 5);
 		gbc_card1.gridx = 0;
 		gbc_card1.gridy = 0;
@@ -132,7 +129,6 @@ public class PlayerHand extends JFrame {
 		
 		card2 = new JLabel("");
 		card2.setBackground(SystemColor.text);
-		card2.setBorder(customBorder);
 		GridBagConstraints gbc_card2 = new GridBagConstraints();
 		gbc_card2.insets = new Insets(0, 0, 0, 5);
 		gbc_card2.gridx = 1;
@@ -141,7 +137,6 @@ public class PlayerHand extends JFrame {
 		
 		card3 = new JLabel("");
 		card3.setBackground(SystemColor.text);
-		card3.setBorder(customBorder);
 		GridBagConstraints gbc_card3 = new GridBagConstraints();
 		gbc_card3.insets = new Insets(0, 0, 0, 5);
 		gbc_card3.gridx = 2;
@@ -150,7 +145,6 @@ public class PlayerHand extends JFrame {
 		
 		card4 = new JLabel("");
 		card4.setBackground(SystemColor.text);
-		card4.setBorder(customBorder);
 		GridBagConstraints gbc_card4 = new GridBagConstraints();
 		gbc_card4.insets = new Insets(0, 0, 0, 5);
 		gbc_card4.gridx = 3;
@@ -159,7 +153,6 @@ public class PlayerHand extends JFrame {
 		
 		card5 = new JLabel("");
 		card5.setBackground(SystemColor.text);
-		card5.setBorder(customBorder);
 		GridBagConstraints gbc_card5 = new GridBagConstraints();
 		gbc_card5.gridx = 4;
 		gbc_card5.gridy = 0;
@@ -180,7 +173,7 @@ public class PlayerHand extends JFrame {
 				int cardWidth = width/5;
 				
 				// fill the cards with icons
-				updateHand(hand, cardWidth);
+				updateHand(hand, cardWidth, player, rules);
 				
 			}
 
@@ -189,7 +182,7 @@ public class PlayerHand extends JFrame {
 	}
 	
 	// Method to display the cards in the GUI
-	public void updateHand(ArrayList<Card> hand, int width) {
+	public void updateHand(ArrayList<Card> hand, int width, Player currentPlayer, Rules rules) {
 		
 		JLabel[] cards = {card1, card2, card3, card4, card5};
 		
@@ -199,16 +192,27 @@ public class PlayerHand extends JFrame {
 		
 		// Inspired from https://stackoverflow.com/questions/6444042/java-resize-image-dynamically-to-fit-grids-in-gridlayout
 		for (int i = 0; i < hand.size(); i++) {
+			Border border;
 			
 			String filePath = "data/cards/" + hand.get(i).toString() + ".png";
 			ImageIcon cardImg = new ImageIcon(filePath);
 			Image orignalImg = cardImg.getImage();
 			Image resizedImg = orignalImg.getScaledInstance(width, height, Image.SCALE_SMOOTH);
 			cards[i].setIcon(new ImageIcon(resizedImg));
+			Card card = hand.get(i);
 			
+			// Check if card is playable and set corresponding border color
+			if (rules.isPlayble(card, currentPlayer)) {
+				border = BorderFactory.createLineBorder(Color.green, 10, true);
+			}
+			else {
+			    border = BorderFactory.createLineBorder(Color.red, 10, true);
+			}
+			cards[i].setBorder(border);
 		}
 		
 	}
 		
-	
+		
+
 }
