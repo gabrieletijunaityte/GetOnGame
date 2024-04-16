@@ -10,28 +10,24 @@ import javax.swing.border.EmptyBorder;
 // Importing for testing purposes
 import logic.Card;
 
-import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.GridBagLayout;
-import javax.swing.JTextPane;
 import java.awt.GridBagConstraints;
-import javax.swing.BoxLayout;
 import java.awt.Insets;
-import javax.swing.JTextArea;
+
 
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.util.ArrayList;
-
-import javax.swing.JTextField;
-import java.awt.Color;
-import javax.swing.SwingConstants;
 import javax.swing.JLabel;
 import java.awt.SystemColor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
+//import AtomicInteger in order to be able to override selectedCardIndex
+//https://stackoverflow.com/questions/51686465/local-variable-count-defined-in-an-enclosing-scope-must-be-final-or-effectively
+//https://stackoverflow.com/questions/38402493/local-variable-log-defined-in-an-enclosing-scope-must-be-final-or-effectively-fi
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class PlayerHand extends JFrame {
 
@@ -42,12 +38,16 @@ public class PlayerHand extends JFrame {
 	private JLabel card3;
 	private JLabel card4;
 	private JLabel card5;
+	// initialise receivedSelectedCard boolean which indicates if a card is chosen from the hand
+	public static boolean receivedSelectedCard = false;
+	// initialise selectedCardIndex as an AtomicInteger
+	private static AtomicInteger selectedCardIndex = new AtomicInteger(0);
 	
 	/**
 	 * Launch the application.
 	 * @param hand 
 	 */
-	public static void main(String[] args, ArrayList<Card> hand) {
+	public static void main(String[] args, ArrayList<Card> hand, int selectedCardIndex) {
 		
 		// Information passed by game of the current player's hand
 		ArrayList<Card> currentPlayerHand = hand;
@@ -74,31 +74,31 @@ public class PlayerHand extends JFrame {
 	    setBounds(100, 100, 986, 484);
 	    contentPane = new JPanel();
 	    
-	    // Add mouse listener to select a card based on where the mouse is clicked
-	    contentPane.addMouseListener(new MouseAdapter() {
-	        @Override
-	        public void mouseClicked(MouseEvent e) {
-	            // Get location of the click to calculate the card that's selected
-	        	int clickLocation = e.getX();
-	            int cardWidth = contentPane.getWidth() / hand.size();
-	            int clickedCardIndex = clickLocation / cardWidth;
-
-	            // If the card width is greater than 0 and less than the hand size
-	            if (clickedCardIndex >= 0 && clickedCardIndex < hand.size()) {
-	                Card clickedCard = hand.get(clickedCardIndex);
-	                System.out.println("Mouse clicked on card " + clickedCardIndex);
-	                // Get card type and card value for subsequent steps, catch the error if not possible
-	                try {
-	                    String cardType = clickedCard.getType();
-	                    String cardValue = clickedCard.getValue();
-	                    System.out.println("Clicked card type: " + cardType + ", card value: " + cardValue);
-	                } 
-	                catch (Exception ex) {
-	                    ex.printStackTrace();
-	                }
-	            }
-	        }
-	    });
+//	    // Add mouse listener to select a card based on where the mouse is clicked
+//	    contentPane.addMouseListener(new MouseAdapter() {
+//	        @Override
+//	        public void mouseClicked(MouseEvent e) {
+//	            // Get location of the click to calculate the card that's selected
+//	        	int clickLocation = e.getX();
+//	            int cardWidth = contentPane.getWidth() / hand.size();
+//	            int clickedCardIndex = clickLocation / cardWidth;
+//
+//	            // If the card width is greater than 0 and less than the hand size
+//	            if (clickedCardIndex >= 0 && clickedCardIndex < hand.size()) {
+//	                Card clickedCard = hand.get(clickedCardIndex);
+//	                System.out.println("Mouse clicked on card " + clickedCardIndex);
+//	                // Get card type and card value for subsequent steps, catch the error if not possible
+//	                try {
+//	                    String cardType = clickedCard.getType();
+//	                    String cardValue = clickedCard.getValue();
+//	                    System.out.println("Clicked card type: " + cardType + ", card value: " + cardValue);
+//	                } 
+//	                catch (Exception ex) {
+//	                    ex.printStackTrace();
+//	                }
+//	            }
+//	        }
+//	    });
 	    
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -109,8 +109,15 @@ public class PlayerHand extends JFrame {
 		gbl_contentPane.columnWeights = new double[]{1.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
 		gbl_contentPane.rowWeights = new double[]{1.0, Double.MIN_VALUE};
 		contentPane.setLayout(gbl_contentPane);
-		
 		card1 = new JLabel("");
+		// change the selectedCardIndex to which card is clicked.
+		card1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				selectedCardIndex.set(0);
+				receivedSelectedCard = true;
+			}
+		});
         card1.setBackground(SystemColor.text);
 		GridBagConstraints gbc_card1 = new GridBagConstraints();
 		gbc_card1.insets = new Insets(0, 0, 0, 5);
@@ -119,6 +126,14 @@ public class PlayerHand extends JFrame {
 		contentPane.add(card1, gbc_card1);
 		
 		card2 = new JLabel("");
+		// change the selectedCardIndex to which card is clicked.
+		card2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				selectedCardIndex.set(1);
+				receivedSelectedCard = true;
+			}
+		});
 		card2.setBackground(SystemColor.text);
 		GridBagConstraints gbc_card2 = new GridBagConstraints();
 		gbc_card2.insets = new Insets(0, 0, 0, 5);
@@ -127,6 +142,14 @@ public class PlayerHand extends JFrame {
 		contentPane.add(card2, gbc_card2);
 		
 		card3 = new JLabel("");
+		// change the selectedCardIndex to which card is clicked.
+		card3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				selectedCardIndex.set(2);
+				receivedSelectedCard = true;
+			}
+		});
 		card3.setBackground(SystemColor.text);
 		GridBagConstraints gbc_card3 = new GridBagConstraints();
 		gbc_card3.insets = new Insets(0, 0, 0, 5);
@@ -135,6 +158,14 @@ public class PlayerHand extends JFrame {
 		contentPane.add(card3, gbc_card3);
 		
 		card4 = new JLabel("");
+		// change the selectedCardIndex to which card is clicked.
+		card4.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				selectedCardIndex.set(3);
+				receivedSelectedCard = true;
+			}
+		});
 		card4.setBackground(SystemColor.text);
 		GridBagConstraints gbc_card4 = new GridBagConstraints();
 		gbc_card4.insets = new Insets(0, 0, 0, 5);
@@ -143,6 +174,14 @@ public class PlayerHand extends JFrame {
 		contentPane.add(card4, gbc_card4);
 		
 		card5 = new JLabel("");
+		// change the selectedCardIndex to which card is clicked.
+		card5.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				selectedCardIndex.set(4);
+				receivedSelectedCard = true;
+			}
+		});
 		card5.setBackground(SystemColor.text);
 		GridBagConstraints gbc_card5 = new GridBagConstraints();
 		gbc_card5.gridx = 4;
@@ -193,6 +232,17 @@ public class PlayerHand extends JFrame {
 		}
 		
 	}
+	
+	// method for getting boolean that indicates if a card is clicked
+	public static boolean getReceivedSelectedCard() {
+		return receivedSelectedCard;
+	}
+	
+	// method for getting selectedCardIndex
+	public static AtomicInteger getSelectedCardIndex() {
+		return selectedCardIndex;
+	}
+	
 		
 	
 }

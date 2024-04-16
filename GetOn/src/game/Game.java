@@ -22,6 +22,9 @@ public class Game {
 		// Declares the names list
 		ArrayList<String> names = new ArrayList<>();
 
+		// Declare the selected card
+		int selectedCardIndex = 0;
+
 		// Intialize rules
 		Rules rules = new Rules();
 
@@ -56,7 +59,7 @@ public class Game {
 		// Initialize discardPile
 		Stack discardPile = new Stack();
 
-		// Create 5 cards to test the set up
+		// Create the initial stack filled with all cards that are used in the game
 		stack.initializeStack();
 		// Shuffle the stack
 		stack.shuffle();
@@ -81,10 +84,7 @@ public class Game {
 		// Initiate playerToBully
 		Player playerToBully;
 
-		// Initiate selected card
-		Card selectedCard;
-
-		GameFrame.main(args, stack, discardedCardName, players.get(playerIndex).hand.getHand());
+		GameFrame.main(args, stack, discardedCardName, players.get(playerIndex).hand.getHand(), selectedCardIndex);
 
 		// Initialize input listener
 		Scanner input = new Scanner(System.in);
@@ -109,9 +109,16 @@ public class Game {
 
 			// Discard a chosen card:
 			System.out.println("Enter which card (1-5) you want to play or discard: ");
-			int discardIndex = input.nextInt() - 1;
-			
-			selectedCard = currentPlayer.hand.getHand().get(discardIndex);
+
+			// Waits for GUI to return the index of the selected Card
+			while (!PlayerHand.getReceivedSelectedCard()) {
+				Thread.sleep(50);
+			}
+
+			// get the index of the selected card from the PlayerHand
+			selectedCardIndex = PlayerHand.getSelectedCardIndex().get();
+			// get the selected Card based on the retrieved index
+			Card selectedCard = currentPlayer.hand.getHand().get(selectedCardIndex);
 
 			System.out.println("Selected card is " + selectedCard);
 
@@ -132,8 +139,7 @@ public class Game {
 				if (!selectedCard.getType().equals("BULLY")) {
 					currentPlayer.setConsequences(selectedCard.getConsequences());
 
-
-					}else {
+				} else {
 
 					// Create a dummy player to bully
 					System.out.print("\n\nEnter which player (1-3) to bully: ");
@@ -150,10 +156,7 @@ public class Game {
 					System.out.println("Selected card cannot be played, card is discarded");
 				}
 
-				
 				currentPlayer.hand.discardedCard(selectedCard, discardPile);
-				
-
 
 				currentPlayer.setConsequences(selectedCard.getConsequences());
 
@@ -164,7 +167,7 @@ public class Game {
 			drawnCard = stack.drawTopCard();
 
 			currentPlayer.hand.addCard(drawnCard);
-			
+
 			System.out.println("Current player is: " + currentPlayer.getName());
 			System.out.println("OnBikeStatus is: " + currentPlayer.getOnBikeStatus());
 			System.out.println("HasWind status is: " + currentPlayer.getHasWind());
@@ -184,8 +187,6 @@ public class Game {
 				playerIndex++;
 			}
 			gameContinue = false;
-			
-			
 
 			// Check if card stack is empty and if so reshuffle discardPile
 			if (stack.getStackSize() == 0) {
@@ -197,15 +198,15 @@ public class Game {
 			if (currentPlayer.getKmProgress() == 100) {
 				gameContinue = false;
 			}
-		}	
+		}
 		// Add dicardCardName for GUI
 //		discardedCardName = firstPlayer.discardCard(discardIndex, discardPile);
-		
+
 		// Test PlayerHand GUI, to be removed later
-		//PlayerHand.main(args, firstPlayer.getHand());
-		
+		// PlayerHand.main(args, firstPlayer.getHand());
+
 		// Launch GameFrame GUI (Test)
-		//GameFrame.main(args);
+		// GameFrame.main(args);
 
 	}
 
