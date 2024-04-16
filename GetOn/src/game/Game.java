@@ -84,12 +84,8 @@ public class Game {
 		// Initiate playerToBully
 		Player playerToBully;
 
-
-		// Initiate selected card
-		Card selectedCard;
-
-		GameFrame.main(args, stack, discardedCardName, players.get(playerIndex).hand.getHand(), players.get(playerIndex), rules);
-
+		// Launch GameFrame
+		GameFrame.main(args, stack, discardedCardName, players.get(playerIndex).hand.getHand(), names, playerIndex, players.get(playerIndex), rules);
 
 		// Initialize input listener
 		Scanner input = new Scanner(System.in);
