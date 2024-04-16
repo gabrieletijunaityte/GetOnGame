@@ -141,6 +141,7 @@ public class StatusCardTest extends TestCase {
 		
 		boolean target = true;
 		boolean test = targetPlayer.getOnBikeStatus();
+		System.out.println(test);
 		
 		assertEquals(target, test);
 	}
