@@ -84,7 +84,12 @@ public class Game {
 		// Initiate playerToBully
 		Player playerToBully;
 
-		GameFrame.main(args, stack, discardedCardName, players.get(playerIndex).hand.getHand(), names, selectedCardIndex);
+
+		// Initiate selected card
+		Card selectedCard;
+
+		GameFrame.main(args, stack, discardedCardName, players.get(playerIndex).hand.getHand(), players.get(playerIndex), rules);
+
 
 		// Initialize input listener
 		Scanner input = new Scanner(System.in);
@@ -94,7 +99,8 @@ public class Game {
 
 		// Create a GUI game loop
 		Card cardToPlay = new Card(discardedCardName, discardedCardName);
-
+		
+		
 		// Game loop
 		while (gameContinue) {
 			currentPlayer = players.get(playerIndex);
@@ -103,7 +109,9 @@ public class Game {
 			System.out.println("HasWind status is: " + currentPlayer.getHasWind());
 			System.out.println("BulliedStatus is: " + currentPlayer.getBulliedType());
 			System.out.println("The traveled distance is: " + currentPlayer.getKmProgress());
-
+			
+									
+				
 			// See players hand:
 			System.out.println("The player's hand contains: " + currentPlayer.viewHand());
 
