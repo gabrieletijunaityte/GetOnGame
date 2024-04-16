@@ -9,6 +9,8 @@ import javax.swing.border.EmptyBorder;
 
 // Importing for testing purposes
 import logic.Card;
+// Importing Game Frame
+import graphics.GameFrame;
 
 import java.awt.Image;
 import java.awt.GridBagLayout;
@@ -20,6 +22,8 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.util.ArrayList;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.SystemColor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -42,6 +46,10 @@ public class PlayerHand extends JFrame {
 	public static boolean receivedSelectedCard = false;
 	// initialise selectedCardIndex as an AtomicInteger
 	private static AtomicInteger selectedCardIndex = new AtomicInteger(0);
+	// initialize playedCard
+	private static boolean isPlayedCard = false;
+	// initialize methodIndex to play the card
+	private static int methodIndex;
 	
 	/**
 	 * Launch the application.
@@ -116,6 +124,7 @@ public class PlayerHand extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				selectedCardIndex.set(0);
 				receivedSelectedCard = true;
+				showPopupDialog();
 			}
 		});
         card1.setBackground(SystemColor.text);
@@ -132,6 +141,7 @@ public class PlayerHand extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				selectedCardIndex.set(1);
 				receivedSelectedCard = true;
+				showPopupDialog();
 			}
 		});
 		card2.setBackground(SystemColor.text);
@@ -148,6 +158,7 @@ public class PlayerHand extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				selectedCardIndex.set(2);
 				receivedSelectedCard = true;
+				showPopupDialog();
 			}
 		});
 		card3.setBackground(SystemColor.text);
@@ -164,6 +175,7 @@ public class PlayerHand extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				selectedCardIndex.set(3);
 				receivedSelectedCard = true;
+				showPopupDialog();
 			}
 		});
 		card4.setBackground(SystemColor.text);
@@ -180,6 +192,7 @@ public class PlayerHand extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				selectedCardIndex.set(4);
 				receivedSelectedCard = true;
+				showPopupDialog();
 			}
 		});
 		card5.setBackground(SystemColor.text);
@@ -238,11 +251,53 @@ public class PlayerHand extends JFrame {
 		return receivedSelectedCard;
 	}
 	
+	
 	// method for getting selectedCardIndex
 	public static AtomicInteger getSelectedCardIndex() {
 		return selectedCardIndex;
 	}
 	
+	// method for showing a pop-up message, to play or discard the selected card
+    public void showPopupDialog() {
+    	
+    	// create options to either "Play" or "Discard" card
+    	Object[] options = {"Play", "Discard"};
+    
+    	int choice = JOptionPane.showOptionDialog(this, "Choose an action for this card:", "Card Action",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+    	
+        // Check for the option selected
+        if (choice == 0) {
+        	isPlayedCard = true;
+        	methodIndex = 0;
+            JOptionPane.showMessageDialog(this, "Card is Played.");
+        } else if (choice == 1) {
+        	isPlayedCard = true;
+        	methodIndex = 1;
+            JOptionPane.showMessageDialog(this, "Card is Discared.");
+        }
+        
+        // Close hand after playing
+        dispose();
+        
+    }
+    
+    //method to return isPlayedCard boolean
+    public static boolean getIsPlayedCard() {
+    	return isPlayedCard;
+    }
+    
+    
+    //method to return getMethodIndex int
+    public static int getMethodIndex() {
+    	return methodIndex;
+    }
+    
+	// method to reset selectedCardIndex to false
+	public static void resetBooleans() {
+		receivedSelectedCard = false;
+		isPlayedCard = false;
+	}
 		
 	
 }
