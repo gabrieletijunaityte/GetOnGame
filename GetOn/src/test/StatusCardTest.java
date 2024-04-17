@@ -89,7 +89,6 @@ public class StatusCardTest extends TestCase {
 		
 		// Testing getCardNameMethod
 		String test = Arrays.toString(statusCard.getPossibleValues());
-		System.out.print(Arrays.toString(statusCard.getPossibleValues()));
 		
 		assertEquals("[GET_ON, TAIL_WIND]", test);		
 	}
@@ -141,7 +140,6 @@ public class StatusCardTest extends TestCase {
 		
 		boolean target = true;
 		boolean test = targetPlayer.getOnBikeStatus();
-		System.out.println(test);
 		
 		assertEquals(target, test);
 	}
