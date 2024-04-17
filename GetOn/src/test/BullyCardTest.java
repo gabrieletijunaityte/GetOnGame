@@ -82,7 +82,6 @@ public class BullyCardTest extends TestCase {
 
 		// Testing getCardNameMethod
 		String test = Arrays.toString(bullyCard.getPossibleValues());
-		System.out.print(Arrays.toString(bullyCard.getPossibleValues()));
 
 		assertEquals("[TAVERN, CROSSWIND, FLAT_TIRE, CRISS_CROSS]", test);
 	}

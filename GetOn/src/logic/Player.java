@@ -206,5 +206,9 @@ public class Player {
 	
 	public void discardCard(Card card) {
 		this.hand.discardCard(card);
+	}
+
+	public void addToTable(Card selectedCard) {
+		this.playerTable.addCard(selectedCard);		
 	}	
 }
