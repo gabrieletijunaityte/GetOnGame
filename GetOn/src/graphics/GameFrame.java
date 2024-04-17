@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import logic.KilometerCard;
 import logic.Player;
 import logic.Rules;
 import logic.Stack;
@@ -58,9 +59,10 @@ public class GameFrame extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @param currentPlayerIndex TODO
 	 * @param player 
 	 */
-	public GameFrame(Stack stack, Stack discardPile, ArrayList<String> names, int selectedCardIndex, Player currentPlayer, Rules rules) {
+	public GameFrame(Stack stack, Stack discardPile, ArrayList<Player> players, int selectedCardIndex, Rules rules, int currentPlayerIndex) {
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1238, 625);
@@ -77,10 +79,10 @@ public class GameFrame extends JFrame {
 		JSplitPane splitPane = new JSplitPane();
 		player1Status.add(splitPane);
 		
-		JLabel lblP1BikeStatus = new JLabel(names.get(0) + " Bike Status");
+		JLabel lblP1BikeStatus = new JLabel(players.get(0).getName() + " Bike Status");
 		splitPane.setLeftComponent(lblP1BikeStatus);
 		
-		JLabel lblP1WindStatus = new JLabel(names.get(0) + " Wind Status");
+		JLabel lblP1WindStatus = new JLabel(players.get(0).getName() + " Wind Status");
 		splitPane.setRightComponent(lblP1WindStatus);
 		
 		JPanel player2Status = new JPanel();
@@ -90,10 +92,10 @@ public class GameFrame extends JFrame {
 		JSplitPane splitPane_1 = new JSplitPane();
 		player2Status.add(splitPane_1);
 		
-		JLabel lblP2BikeStatus = new JLabel(names.get(1) + " Bike Status");
+		JLabel lblP2BikeStatus = new JLabel(players.get(1).getName() + " Bike Status");
 		splitPane_1.setLeftComponent(lblP2BikeStatus);
 		
-		JLabel lblP2WindStatus = new JLabel(names.get(1) + " Wind Status");
+		JLabel lblP2WindStatus = new JLabel(players.get(1).getName() + " Wind Status");
 		splitPane_1.setRightComponent(lblP2WindStatus);
 		
 		JPanel panel_3 = new JPanel();
@@ -103,11 +105,11 @@ public class GameFrame extends JFrame {
 		JSplitPane splitPane_2 = new JSplitPane();
 		panel_3.add(splitPane_2);
 		
-		if (names.size() == 3) {
-			JLabel lblP3BikeStatus = new JLabel(names.get(2) + " Bike Status");
+		if (players.size() == 3) {
+			JLabel lblP3BikeStatus = new JLabel(players.get(2).getName() + " Bike Status");
 			splitPane_2.setLeftComponent(lblP3BikeStatus);
 			
-			JLabel lblP3Windstatus = new JLabel(names.get(2) + " Wind Status");
+			JLabel lblP3Windstatus = new JLabel(players.get(2).getName() + " Wind Status");
 			splitPane_2.setRightComponent(lblP3Windstatus);
 		
 		} else {
@@ -122,10 +124,10 @@ public class GameFrame extends JFrame {
 		player1.setBounds(5, 430, 306, 152);
 		contentPane.add(player1);
 		
-		addCardWithCounter(player1 ,createCardLabel("| 5 Km cards: "), numberof5cards);
-        addCardWithCounter(player1, createCardLabel("| 6 Km cards: "), numberof6cards);
-        addCardWithCounter(player1, createCardLabel("| 8 Km cards: "), numberof8cards);
-        addCardWithCounter(player1, createCardLabel("| 10 Km cards: "), numberof10cards);
+		addCardWithCounter(player1 ,createCardLabel("| 5 Km cards: "), players.get(0).getPlayedCards().countCards(new KilometerCard("FIVE")));
+        addCardWithCounter(player1, createCardLabel("| 6 Km cards: "),  players.get(0).getPlayedCards().countCards(new KilometerCard("SIX")));
+        addCardWithCounter(player1, createCardLabel("| 8 Km cards: "),  players.get(0).getPlayedCards().countCards(new KilometerCard("EIGHT")));
+        addCardWithCounter(player1, createCardLabel("| 10 Km cards: "),  players.get(0).getPlayedCards().countCards(new KilometerCard("TEN")));
 		
 		player2 = new JPanel();
 		player2.setBounds(316, 430, 306, 152);
@@ -149,7 +151,7 @@ public class GameFrame extends JFrame {
         btnViewHand.setBounds(1129, 554, 85, 23);
         btnViewHand.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		PlayerHand.main(null, currentPlayer, rules, selectedCardIndex);
+        		PlayerHand.main(null, players.get(currentPlayerIndex), rules, selectedCardIndex);
         		refreshGameFrame(stack, discardPile);
         	}
         });
