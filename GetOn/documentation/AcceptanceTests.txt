@@ -8,14 +8,14 @@ Acceptance test:
 -------------------------------------------------------------------------------------
 
 ID #2
-Title: 
+Title: What is on the table
 
 Acceptance test:
 
 -------------------------------------------------------------------------------------
 
 ID #3
-Title: 
+Title: Observe Card Pile
 
 Acceptance test:
 1. Do all the steps from AcceptanceTest_ID_4
@@ -29,6 +29,8 @@ Title: Enter the player names
 Acceptance test:
 1. Click on "GET_ON" file.
 2. Enter the first player name in the "Player 1" field (e.g., enter "Gabriele"), the second - in the "Player 2" (e.g., enter "Niels"), and the third - in the "Player 3" (e.g., "Jan").
+3. Press Start Game.
+4. The names are visible before Bike Status and Wind Status.
 
 -------------------------------------------------------------------------------------
 
@@ -36,10 +38,11 @@ ID #5
 Title: View Progress
 
 Acceptance test:
-1. Do all the steps from AcceptanceTest_ID_11
-2. The score of each player is visualised at the bottom of the screen as a count of each kilometer card played.
-3. In the beginning of the game the scores are 0. 
-4. As games 
+1. Do all the steps from AcceptanceTest_ID_12.
+2. In the game frame, observe the score 0.
+3. Do AcceptanceTest_ID_6.
+4. Observe 0 increase to 5.
+
 
 -------------------------------------------------------------------------------------
 
@@ -54,7 +57,7 @@ Acceptance test:
 -------------------------------------------------------------------------------------
 
 ID #7
-Title: 
+Title: Discard Card
 
 Acceptance test:
 1. Do all the steps from AcceptanceTest_ID_1
@@ -122,7 +125,7 @@ Acceptance test:
 -------------------------------------------------------------------------------------
 
 ID #14
-Title: 
+Title: View Leaderboard
 
 Acceptance test:
 
@@ -132,7 +135,13 @@ ID #15
 Title: Shuffle the card stack
 
 Acceptance test:
-1. ????
+1. Do all the steps from AcceptanceTest_ID_17
+2. Observe their type and order.
+3. Close the game.
+4. Do all the steps from AcceptanceTest_ID_17 again.
+5. Compare this hand with the previous one.
+6. (optional) There is a very small chance that the cards are the same. If so, repeat step 3 to 5, at most two times more.
+
 
 -------------------------------------------------------------------------------------
 
@@ -155,7 +164,7 @@ Acceptance test:
 -------------------------------------------------------------------------------------
 
 ID #18
-Title: 
+Title: Graphical Representation of Kilometer Card
 
 Acceptance test:
 1. Do all the steps from AcceptanceTest_ID_6
@@ -173,48 +182,52 @@ Acceptance test:
 -------------------------------------------------------------------------------------
 
 ID #20
-Title: 
+Title: Reshuffle discardPile
 
 Acceptance test:
 
 -------------------------------------------------------------------------------------
 
 ID #21
-Title: 
+Title: Configurable game
 
 Acceptance test:
 
 -------------------------------------------------------------------------------------
 
 ID #22
-Title: 
+Title: Check if configurable game is feasible
 
 Acceptance test:
 
 -------------------------------------------------------------------------------------
 
 ID #23
-Title: 
+Title: Hide hand while passing turn
 
 Acceptance test:
 
 -------------------------------------------------------------------------------------
 
 ID #24
-Title: 
+Title: Observer Game View
 
 Acceptance test:
 
 -------------------------------------------------------------------------------------
 
 ID #25
-Title: 
+Title: Visually show playability in hand
 
 Acceptance test:
+1. Do all the steps from AcceptanceTest_ID_17
+2. Observe the color of the border of the cards. Because it's the first round, the bully cards, tailwind card, and get on cards should be green. All kilometer cards and repair cards should be red.
+3. (optional) If not every type of card is shown in the first hand, close game and redo steps 1 and 2 until you have seen all card types. 
+
 
 -------------------------------------------------------------------------------------
 
 ID #26
-Title: 
+Title: Playable through GUI
 
 Acceptance test:
