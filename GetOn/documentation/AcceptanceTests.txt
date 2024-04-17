@@ -18,7 +18,9 @@ ID #3
 Title: 
 
 Acceptance test:
-
+1. Do all the steps from AcceptanceTest_ID_4
+2. Click on the Start game button
+3. Look at the Remaining Cards right of the stack icon. The number next to Remaining Cards shows the amount of cards in the stack.
 -------------------------------------------------------------------------------------
 
 ID #4

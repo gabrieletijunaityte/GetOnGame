@@ -109,8 +109,7 @@ public class Game {
 			System.out.println("BulliedStatus is: " + currentPlayer.getBulliedType());
 			System.out.println("The traveled distance is: " + currentPlayer.getKmProgress());
 			
-									
-				
+
 			// See players hand:
 			System.out.println("The player's hand contains: " + currentPlayer.viewHand());
 
@@ -130,15 +129,19 @@ public class Game {
 			System.out.println("Selected card is " + selectedCard);
 
 			// Ask player to play or discard the selected card
-			System.out.println("Enter 1 to Play or 0 to discard the card: ");
-			int methodIndex = input.nextInt();
+//			System.out.println("Enter 1 to Play or 0 to discard the card: ");
+//			int methodIndex = input.nextInt();
 
 			System.out.println(Arrays.toString(selectedCard.getRequirements()));
 
 			System.out.println(rules.isPlayble(selectedCard, currentPlayer));
+			
+			while (!PlayerHand.getIsPlayedCard()) {
+				Thread.sleep(50);
+			}
 
 			// Check for playability or discard the selected card
-			if (methodIndex == 1 && rules.isPlayble(selectedCard, currentPlayer)) {
+			if (PlayerHand.getMethodIndex() == 1 && rules.isPlayble(selectedCard, currentPlayer)) {
 
 				System.out.println(rules.isPlayble(selectedCard, currentPlayer));
 
@@ -191,7 +194,7 @@ public class Game {
 			} else {
 				playerIndex++;
 			}
-			gameContinue = false;
+//			gameContinue = false;
 
 			// Check if card stack is empty and if so reshuffle discardPile
 			if (stack.getStackSize() == 0) {
@@ -203,6 +206,10 @@ public class Game {
 			if (currentPlayer.getKmProgress() == 100) {
 				gameContinue = false;
 			}
+			
+			// reset currentPlayers booleans to false
+			PlayerHand.resetBooleans();
+			
 		}
 		// Add dicardCardName for GUI
 //		discardedCardName = firstPlayer.discardCard(discardIndex, discardPile);
