@@ -19,7 +19,7 @@ public class Player {
 	private int kmProgress;
 	private String bulliedType;
 	private String windType;
-	public Hand hand;
+	private Hand hand;
 
 	// Constructor
 	public Player(String name, Boolean isTurn) {
@@ -190,4 +190,21 @@ public class Player {
 			}
 		}
 	}
+	
+	// Add card to the hand
+	public void drawCard(Card card) {
+		this.hand.addCard(card);
+	}
+	
+	public ArrayList<Card> getHand() {
+		return hand.getHand();
+	}
+
+	public Card getCard(int selectedCardIndex) {
+		return this.hand.get(selectedCardIndex);
+	}
+	
+	public void discardCard(Card card) {
+		this.hand.discardCard(card);
+	}	
 }

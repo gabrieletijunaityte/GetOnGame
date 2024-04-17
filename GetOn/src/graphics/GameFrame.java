@@ -50,17 +50,15 @@ public class GameFrame extends JFrame {
 	 * @param player 
 	 */
 
-	public static void main(String[] args, Stack stack, String discardedCardName, ArrayList<Card> hand, ArrayList<String> names, int selectedCardIndex, Player player, Rules rules) {
 
+	public static void main(String[] args, Stack stack, String discardedCardName, ArrayList<String> names, int selectedCardIndex, Player currentPlayer, Rules rules) {
 
-
-		
+	
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 
-					GameFrame frame = new GameFrame(stack, discardedCardName, hand, names, selectedCardIndex, player, rules);
-
+					GameFrame frame = new GameFrame(stack, discardedCardName, names, selectedCardIndex, currentPlayer, rules);
 
 
 					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -78,7 +76,8 @@ public class GameFrame extends JFrame {
 	 * @param player 
 	 */
 
-	public GameFrame(Stack stack, String discardedCardName, ArrayList<Card> hand, ArrayList<String> names, int selectedCardIndex, Player player, Rules rules) {
+
+	public GameFrame(Stack stack, String discardedCardName, ArrayList<String> names, int selectedCardIndex, Player currentPlayer, Rules rules) {
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -245,10 +244,7 @@ public class GameFrame extends JFrame {
         btnViewHand.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		
-
-        		PlayerHand.main(null, hand, player, rules, selectedCardIndex);
-
-        		
+        		PlayerHand.main(null, currentPlayer, rules, selectedCardIndex);
         	}
         });
 
