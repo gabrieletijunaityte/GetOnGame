@@ -12,7 +12,7 @@ import graphics.GameFrame;
 import graphics.MainMenu;
 import graphics.PlayerHand;
 
-public class Game { 
+public class Game {
 
 	public static void main(String[] args) throws InterruptedException {
 
@@ -75,35 +75,36 @@ public class Game {
 		int playerIndex = 0;
 
 		// Initiate a current player
-		Player currentPlayer;
+		Player currentPlayer = players.get(playerIndex);
 
 		// Initiate playerToBully
 		Player playerToBully;
 
 		// Launch GameFrame
-		GameFrame.main(args, stack, discardPile, names, selectedCardIndex,  players.get(playerIndex), rules);
+		GameFrame gameFrame = new GameFrame(stack, discardPile, names, selectedCardIndex, currentPlayer, rules);
+		gameFrame.main(gameFrame);
 
 		// Initialize input listener
 		Scanner input = new Scanner(System.in);
 
 		// Intialize drawn cards
 		Card drawnCard;
-		
+
 		// Game loop
 		while (gameContinue) {
 			currentPlayer = players.get(playerIndex);
+			// Create a new gameFrame method
+		
+			// Get the Gui popup
+			gameFrame.refreshGameFrame(stack, discardPile);
 			System.out.println("Current player is: " + currentPlayer.getName());
 			System.out.println("OnBikeStatus is: " + currentPlayer.getOnBikeStatus());
 			System.out.println("HasWind status is: " + currentPlayer.getHasWind());
 			System.out.println("BulliedStatus is: " + currentPlayer.getBulliedType());
 			System.out.println("The traveled distance is: " + currentPlayer.getKmProgress());
-			
 
 			// See players hand:
 			System.out.println("The player's hand contains: " + currentPlayer.viewHand());
-
-			// Discard a chosen card:
-			System.out.println("Enter which card (1-5) you want to play or discard: ");
 
 			// Waits for GUI to return the index of the selected Card
 			while (!PlayerHand.getReceivedSelectedCard()) {
@@ -117,23 +118,11 @@ public class Game {
 
 			System.out.println("Selected card is " + selectedCard);
 
-			// Ask player to play or discard the selected card
-//			System.out.println("Enter 1 to Play or 0 to discard the card: ");
-//			int methodIndex = input.nextInt();
-
-			System.out.println(Arrays.toString(selectedCard.getRequirements()));
-
-			System.out.println(rules.isPlayble(selectedCard, currentPlayer));
-			
 			while (!PlayerHand.getIsPlayedCard()) {
 				Thread.sleep(50);
 			}
-
 			// Check for playability or discard the selected card
-			if (PlayerHand.getMethodIndex() == 1 && rules.isPlayble(selectedCard, currentPlayer)) {
-
-				System.out.println(rules.isPlayble(selectedCard, currentPlayer));
-
+			if (PlayerHand.getMethodIndex() == 0 && rules.isPlayble(selectedCard, currentPlayer)) {
 				// Check card type and play it accordingly
 				if (!selectedCard.getType().equals("BULLY")) {
 					currentPlayer.setConsequences(selectedCard.getConsequences());
@@ -144,26 +133,35 @@ public class Game {
 					System.out.print("\n\nEnter which player (1-3) to bully: ");
 					int bullyIndex = input.nextInt() - 1;
 					playerToBully = players.get(bullyIndex);
-
 					playerToBully.setConsequences(selectedCard.getConsequences());
+				}
+
+				// If card is km card, add it to table
+				if (selectedCard.getType().equals("KILOMETER")) {
+
+					currentPlayer.discardCard(selectedCard);
+					currentPlayer.addToTable(selectedCard);
+
+					drawnCard = stack.drawTopCard();
+					currentPlayer.drawCard(drawnCard);
+				} else {
+					currentPlayer.discardCard(selectedCard);
+					discardPile.addDiscardedCard(selectedCard);
+
+					drawnCard = stack.drawTopCard();
+					currentPlayer.drawCard(drawnCard);
 				}
 
 			} else {
 
-				if (!rules.isPlayble(selectedCard, currentPlayer)) {
-
+				if (PlayerHand.getMethodIndex() == 0 && !rules.isPlayble(selectedCard, currentPlayer)) {
 					System.out.println("Selected card cannot be played, card is discarded");
 				}
-				currentPlayer.setConsequences(selectedCard.getConsequences());
-				
+				currentPlayer.discardCard(selectedCard);
+				discardPile.addDiscardedCard(selectedCard);
+				drawnCard = stack.drawTopCard();
+				currentPlayer.drawCard(drawnCard);
 			}
-
-			currentPlayer.discardCard(selectedCard);
-			discardPile.addDiscardedCard(selectedCard);
-
-			drawnCard = stack.drawTopCard();
-
-			currentPlayer.drawCard(drawnCard);
 
 			System.out.println("Current player is: " + currentPlayer.getName());
 			System.out.println("OnBikeStatus is: " + currentPlayer.getOnBikeStatus());
@@ -195,7 +193,7 @@ public class Game {
 			if (currentPlayer.getKmProgress() == 100) {
 				gameContinue = false;
 			}
-			
+
 			// reset currentPlayers booleans to false
 			PlayerHand.resetBooleans();
 			

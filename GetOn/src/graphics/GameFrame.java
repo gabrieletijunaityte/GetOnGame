@@ -36,17 +36,16 @@ public class GameFrame extends JFrame {
 	private JLabel lblCardStackCounter;
 	private JLabel lblDiscardCounter;
 	private JLabel lblDiscardedCard;
-
+	
 	/**
 	 * Launch the application.
 	 * @param player 
 	 */
-	public static void main(String[] args, Stack stack, Stack discardPile, ArrayList<String> names, int selectedCardIndex, Player currentPlayer, Rules rules) {
+	public static void main(GameFrame frame) {
 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					GameFrame frame = new GameFrame(stack, discardPile, names, selectedCardIndex, currentPlayer, rules);
 					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 					frame.setVisible(true);
 					frame.setAlwaysOnTop(true); // Makes sure frame always is on top
@@ -201,8 +200,7 @@ public class GameFrame extends JFrame {
         
 	}
 	
-	
-    private void addCardWithCounter(JPanel panel, JLabel cardLabel, int count) {
+	private void addCardWithCounter(JPanel panel, JLabel cardLabel, int count) {
         JLabel counterLabel = new JLabel(String.valueOf(count)); // Convert count to string
         counterLabel.setHorizontalAlignment(SwingConstants.CENTER);
         panel.add(cardLabel);
@@ -214,7 +212,7 @@ public class GameFrame extends JFrame {
     	JLabel label = new JLabel(labelText);
     	return label;
     }
-    
+
     public void refreshGameFrame(Stack stack, Stack discardPile) {
     
     	lblCardStackCounter.setText("" + stack.getStackSize());
@@ -233,4 +231,5 @@ public class GameFrame extends JFrame {
     	}
     	
     }
+
 }

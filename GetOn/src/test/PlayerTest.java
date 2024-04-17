@@ -1,6 +1,4 @@
 package test;
-
-import java.util.ArrayList;
 import java.util.Arrays;
 
 import junit.framework.TestCase;
@@ -218,5 +216,21 @@ public class PlayerTest extends TestCase {
 		
 		// Test if 5 cards were drawn
 		assertEquals("[KILOMETER_FIVE]", myPlayer.getHand().toString());
+	}
+	
+	// Test add card to player table method
+	public void testAddToTable() {
+		Player myPlayer = new Player("Jan", true);
+		Stack stack = new Stack();
+		stack.initializeStack();
+		Card card = stack.drawTopCard();
+		
+		myPlayer.addToTable(card);
+		PlayerTable playerTable = myPlayer.getPlayedCards();
+		
+		String target = "[KILOMETER_FIVE]";
+		String test = playerTable.getPlayedCards().toString();
+		
+		assertEquals(target, test);
 	}
 }
