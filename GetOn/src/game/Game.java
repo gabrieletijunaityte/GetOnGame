@@ -81,14 +81,13 @@ public class Game {
 		int playerIndex = 0;
 
 		// Initiate a current player
-		Player currentPlayer;
+		Player currentPlayer = players.get(playerIndex);
 
 		// Initiate playerToBully
 		Player playerToBully;
 
 		// Launch GameFrame
-		GameFrame.main(args, stack, discardedCardName, names, selectedCardIndex,  players.get(playerIndex), rules);
-
+		//GameFrame gameFrame = new GameFrame(stack, discardedCardName, names, selectedCardIndex, currentPlayer, rules);
 
 		// Initialize input listener
 		Scanner input = new Scanner(System.in);
@@ -103,6 +102,10 @@ public class Game {
 		// Game loop
 		while (gameContinue) {
 			currentPlayer = players.get(playerIndex);
+			// Create a new gameFrame method
+			GameFrame gameFrame = new GameFrame(stack, discardedCardName, names, selectedCardIndex, currentPlayer, rules);
+			// Get the Gui popup
+			gameFrame.main(gameFrame);
 			System.out.println("Current player is: " + currentPlayer.getName());
 			System.out.println("OnBikeStatus is: " + currentPlayer.getOnBikeStatus());
 			System.out.println("HasWind status is: " + currentPlayer.getHasWind());
@@ -209,6 +212,9 @@ public class Game {
 			
 			// reset currentPlayers booleans to false
 			PlayerHand.resetBooleans();
+			
+			// Close the gameFrame GUI
+			gameFrame.dispose();
 			
 		}
 		// Add dicardCardName for GUI

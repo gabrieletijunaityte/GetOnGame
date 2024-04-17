@@ -293,6 +293,5 @@ public class PlayerHand extends JFrame {
 		receivedSelectedCard = false;
 		isPlayedCard = false;
 	}
-		
 	
 }

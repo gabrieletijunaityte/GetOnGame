@@ -10,6 +10,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import logic.Card;
+import logic.Hand;
 import logic.Player;
 import logic.Rules;
 import logic.Stack;
@@ -43,6 +44,7 @@ public class GameFrame extends JFrame {
     protected int numberof8cards = 3;
     protected int numberof10cards = 4;
     
+    
 
 
 	/**
@@ -51,16 +53,12 @@ public class GameFrame extends JFrame {
 	 */
 
 
-	public static void main(String[] args, Stack stack, String discardedCardName, ArrayList<String> names, int selectedCardIndex, Player currentPlayer, Rules rules) {
+	public static void main(GameFrame frame) {
 
 	
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-
-					GameFrame frame = new GameFrame(stack, discardedCardName, names, selectedCardIndex, currentPlayer, rules);
-
-
 					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 					frame.setVisible(true);
 					frame.setAlwaysOnTop(true); // Makes sure frame always is on top
@@ -78,7 +76,8 @@ public class GameFrame extends JFrame {
 
 
 	public GameFrame(Stack stack, String discardedCardName, ArrayList<String> names, int selectedCardIndex, Player currentPlayer, Rules rules) {
-
+		
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -258,7 +257,9 @@ public class GameFrame extends JFrame {
 	}
 	
 	
-    private void addCardWithCounter(JPanel panel, JLabel cardLabel, int count) {
+
+
+	private void addCardWithCounter(JPanel panel, JLabel cardLabel, int count) {
         JLabel counterLabel = new JLabel(String.valueOf(count)); // Convert count to string
         counterLabel.setHorizontalAlignment(SwingConstants.CENTER);
         panel.add(cardLabel);
@@ -271,5 +272,5 @@ public class GameFrame extends JFrame {
     	return label;
     }
     
-    
+  
 }
