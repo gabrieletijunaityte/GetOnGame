@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 
 // Importing for testing purposes
 import logic.Card;
+import logic.Player;
 
 import java.awt.Image;
 import java.awt.GridBagLayout;
@@ -47,10 +48,10 @@ public class PlayerHand extends JFrame {
 	 * Launch the application.
 	 * @param hand 
 	 */
-	public static void main(String[] args, ArrayList<Card> hand, int selectedCardIndex) {
+	public static void main(String[] args, Player currentPlayer, int selectedCardIndex) {
 		
 		// Information passed by game of the current player's hand
-		ArrayList<Card> currentPlayerHand = hand;
+		ArrayList<Card> currentPlayerHand = currentPlayer.getHand();
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {

@@ -68,8 +68,10 @@ public class Game {
 		String discardedCardName = null;
 
 		// Deal initial cards
-		for (int i = 0; i <= players.size() - 1; i++) {
-			players.get(i).hand.fillHand(stack, 5);
+		for (int j = 0; j < 5; j++) {
+			for (int i = 0; i <= players.size() - 1; i++) {
+				players.get(i).drawCard(stack.drawTopCard());
+			}
 		}
 
 		// Create gameContinue variable
@@ -84,16 +86,13 @@ public class Game {
 		// Initiate playerToBully
 		Player playerToBully;
 
-		GameFrame.main(args, stack, discardedCardName, players.get(playerIndex).hand.getHand(), selectedCardIndex);
+		GameFrame.main(args, stack, discardedCardName, players.get(playerIndex), selectedCardIndex);
 
 		// Initialize input listener
 		Scanner input = new Scanner(System.in);
 
 		// Intialize drawn cards
 		Card drawnCard;
-
-		// Create a GUI game loop
-		Card cardToPlay = new Card(discardedCardName, discardedCardName);
 
 		// Game loop
 		while (gameContinue) {
@@ -118,7 +117,7 @@ public class Game {
 			// get the index of the selected card from the PlayerHand
 			selectedCardIndex = PlayerHand.getSelectedCardIndex().get();
 			// get the selected Card based on the retrieved index
-			Card selectedCard = currentPlayer.hand.getHand().get(selectedCardIndex);
+			Card selectedCard = currentPlayer.getCard(selectedCardIndex);
 
 			System.out.println("Selected card is " + selectedCard);
 
@@ -155,18 +154,16 @@ public class Game {
 
 					System.out.println("Selected card cannot be played, card is discarded");
 				}
-
-				currentPlayer.hand.discardedCard(selectedCard, discardPile);
-
 				currentPlayer.setConsequences(selectedCard.getConsequences());
-
+				
 			}
 
-			currentPlayer.hand.discardedCard(selectedCard, discardPile);
+			currentPlayer.discardCard(selectedCard);
+			discardPile.addDiscardedCard(selectedCard);
 
 			drawnCard = stack.drawTopCard();
 
-			currentPlayer.hand.addCard(drawnCard);
+			currentPlayer.drawCard(drawnCard);
 
 			System.out.println("Current player is: " + currentPlayer.getName());
 			System.out.println("OnBikeStatus is: " + currentPlayer.getOnBikeStatus());

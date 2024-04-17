@@ -10,6 +10,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import logic.Card;
+import logic.Player;
 import logic.Stack;
 
 import java.awt.GridBagLayout;
@@ -46,13 +47,13 @@ public class GameFrame extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args, Stack stack, String discardedCardName, ArrayList<Card> hand, int selectedCardIndex) {
+	public static void main(String[] args, Stack stack, String discardedCardName, Player currentPlayer, int selectedCardIndex) {
 
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					GameFrame frame = new GameFrame(stack, discardedCardName, hand, selectedCardIndex);
+					GameFrame frame = new GameFrame(stack, discardedCardName, currentPlayer, selectedCardIndex);
 					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 					frame.setVisible(true);
 					frame.setAlwaysOnTop(true); // Makes sure frame always is on top
@@ -66,7 +67,7 @@ public class GameFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public GameFrame(Stack stack, String discardedCardName, ArrayList<Card> hand, int selectedCardIndex) {
+	public GameFrame(Stack stack, String discardedCardName, Player currentPlayer, int selectedCardIndex) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -221,7 +222,7 @@ public class GameFrame extends JFrame {
         btnViewHand.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		
-        		PlayerHand.main(null, hand, selectedCardIndex);
+        		PlayerHand.main(null, currentPlayer, selectedCardIndex);
         		
         	}
         });
