@@ -43,7 +43,7 @@ public class PlayedCardsTest extends TestCase {
 		playerTable.addCard(card);
 		playerTable.addCard(card1);
 		
-		assertEquals(2, playerTable.countCards(card));		
+		assertEquals(1, playerTable.countCards(card));		
 	}
 	
 	// Test getPlayedCards method

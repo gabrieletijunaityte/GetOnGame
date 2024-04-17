@@ -96,7 +96,7 @@ public class Game {
 			// Create a new gameFrame method
 		
 			// Get the Gui popup
-			gameFrame.refreshGameFrame(stack, discardPile);
+			gameFrame.refreshGameFrame(stack, discardPile, players, currentPlayer, rules, selectedCardIndex);
 			System.out.println("Current player is: " + currentPlayer.getName());
 			System.out.println("OnBikeStatus is: " + currentPlayer.getOnBikeStatus());
 			System.out.println("HasWind status is: " + currentPlayer.getHasWind());
@@ -124,34 +124,27 @@ public class Game {
 			// Check for playability or discard the selected card
 			if (PlayerHand.getMethodIndex() == 0 && rules.isPlayble(selectedCard, currentPlayer)) {
 				// Check card type and play it accordingly
-				if (!selectedCard.getType().equals("BULLY")) {
-					currentPlayer.setConsequences(selectedCard.getConsequences());
-
-				} else {
-
+				if (selectedCard.getType().equals("BULLY")) {
 					// Create a dummy player to bully
 					System.out.print("\n\nEnter which player (1-3) to bully: ");
 					int bullyIndex = input.nextInt() - 1;
 					playerToBully = players.get(bullyIndex);
 					playerToBully.setConsequences(selectedCard.getConsequences());
 				}
-
-				// If card is km card, add it to table
-				if (selectedCard.getType().equals("KILOMETER")) {
-
-					currentPlayer.discardCard(selectedCard);
-					currentPlayer.addToTable(selectedCard);
-
-					drawnCard = stack.drawTopCard();
-					currentPlayer.drawCard(drawnCard);
-				} else {
-					currentPlayer.discardCard(selectedCard);
-					discardPile.addDiscardedCard(selectedCard);
-
+				else {
+					currentPlayer.setConsequences(selectedCard.getConsequences());
+					
+					// If card is km card, add it to table
+					if (selectedCard.getType().equals("KILOMETER")) {
+						currentPlayer.discardCard(selectedCard);
+						currentPlayer.addToTable(selectedCard);						
+					} else {
+						currentPlayer.discardCard(selectedCard);
+						discardPile.addDiscardedCard(selectedCard);
+					}
 					drawnCard = stack.drawTopCard();
 					currentPlayer.drawCard(drawnCard);
 				}
-
 			} else {
 
 				if (PlayerHand.getMethodIndex() == 0 && !rules.isPlayble(selectedCard, currentPlayer)) {
@@ -190,23 +183,13 @@ public class Game {
 				discardPile.clear();
 			}
 
-			if (currentPlayer.getKmProgress() == 100) {
+			if (currentPlayer.getKmProgress() == 100) { 
 				gameContinue = false;
 			}
 
 			// reset currentPlayers booleans to false
 			PlayerHand.resetBooleans();
-			
 		}
-		// Add dicardCardName for GUI
-//		discardedCardName = firstPlayer.discardCard(discardIndex, discardPile);
-
-		// Test PlayerHand GUI, to be removed later
-		// PlayerHand.main(args, firstPlayer.getHand());
-
-		// Launch GameFrame GUI (Test)
-		// GameFrame.main(args);
-
 	}
 
 }

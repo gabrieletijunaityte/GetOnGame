@@ -15,12 +15,12 @@ public class PlayerTable {
 	public int countCards(Card card) {
 		// initiate count
 		int i = 0;
-
+		
 		// iterate over the played cards
 		for (Card playedCard : this.getPlayedCards()) {
 
 			// check how many of the given specific cards are in the played pile
-			if (playedCard.getCardName().equals(playedCard.getCardName())) {
+			if (card.getCardName().equals(playedCard.getCardName())) {
 				i++;
 			}
 		}
@@ -29,7 +29,7 @@ public class PlayerTable {
 
 	public void addCard(Card card) {
 		// Add card to table
-		this.getPlayedCards().add(card);
+		this.playedCards.add(card);
 	}
 
 	public ArrayList<Card> getPlayedCards() {

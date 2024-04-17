@@ -65,12 +65,11 @@ public class PlayerHand extends JFrame {
 	 */
 	public static void main(String[] args, Player currentPlayer,  Rules rules, int selectedCardIndex) {
 		// Information passed by game of the current player's hand
-		ArrayList<Card> currentPlayerHand = currentPlayer.getHand();
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					PlayerHand frame = new PlayerHand(currentPlayerHand, currentPlayer, rules);
+					PlayerHand frame = new PlayerHand(currentPlayer, rules);
 					frame.setVisible(true);
 					frame.setAlwaysOnTop(true);
 				} catch (Exception e) {
@@ -85,7 +84,7 @@ public class PlayerHand extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public PlayerHand(ArrayList<Card> hand, Player player, Rules rules) {
+	public PlayerHand(Player player, Rules rules) {
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    setBounds(100, 100, 986, 484);
 	    contentPane = new JPanel();
@@ -197,7 +196,7 @@ public class PlayerHand extends JFrame {
 				int cardWidth = width/5;
 				
 				// fill the cards with icons
-				updateHand(hand, cardWidth, player, rules);
+				updateHand(cardWidth, player, rules);
 				
 			}
 
@@ -206,7 +205,7 @@ public class PlayerHand extends JFrame {
 	}
 	
 	// Method to display the cards in the GUI
-	public void updateHand(ArrayList<Card> hand, int width, Player currentPlayer, Rules rules) {
+	public void updateHand(int width, Player currentPlayer, Rules rules) {
 		
 		JLabel[] cards = {card1, card2, card3, card4, card5};
 		
@@ -215,15 +214,15 @@ public class PlayerHand extends JFrame {
 		
 		
 		// Inspired from https://stackoverflow.com/questions/6444042/java-resize-image-dynamically-to-fit-grids-in-gridlayout
-		for (int i = 0; i < hand.size(); i++) {
+		for (int i = 0; i < currentPlayer.getHand().size(); i++) {
 			Border border;
 			
-			String filePath = "data/cards/" + hand.get(i).toString() + ".png";
+			String filePath = "data/cards/" + currentPlayer.getHand().get(i).toString() + ".png";
 			ImageIcon cardImg = new ImageIcon(filePath);
 			Image orignalImg = cardImg.getImage();
 			Image resizedImg = orignalImg.getScaledInstance(width, height, Image.SCALE_SMOOTH);
 			cards[i].setIcon(new ImageIcon(resizedImg));
-			Card card = hand.get(i);
+			Card card = currentPlayer.getHand().get(i);
 			
 			// Check if card is playable and set corresponding border color
 			if (rules.isPlayble(card, currentPlayer)) {
