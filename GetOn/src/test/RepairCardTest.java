@@ -82,7 +82,6 @@ public class RepairCardTest extends TestCase {
 
 		// Testing getCardNameMethod
 		String test = Arrays.toString(repairCard.getPossibleValues());
-		System.out.print(Arrays.toString(repairCard.getPossibleValues()));
 
 		assertEquals("[BIKE_REPAIR, BARRIER_OPEN]", test);
 	}
