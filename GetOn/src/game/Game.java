@@ -15,7 +15,7 @@ import graphics.GameFrame;
 import graphics.MainMenu;
 import graphics.PlayerHand;
 
-public class Game {
+public class Game { 
 
 	public static void main(String[] args) throws InterruptedException {
 
@@ -86,7 +86,9 @@ public class Game {
 		// Initiate playerToBully
 		Player playerToBully;
 
-		GameFrame.main(args, stack, discardedCardName, players.get(playerIndex), selectedCardIndex);
+		// Launch GameFrame
+		GameFrame.main(args, stack, discardedCardName, names, selectedCardIndex,  players.get(playerIndex), rules);
+
 
 		// Initialize input listener
 		Scanner input = new Scanner(System.in);
@@ -94,6 +96,10 @@ public class Game {
 		// Intialize drawn cards
 		Card drawnCard;
 
+
+		// Create a GUI game loop
+		Card cardToPlay = new Card(discardedCardName, discardedCardName);
+		
 		// Game loop
 		while (gameContinue) {
 			currentPlayer = players.get(playerIndex);
@@ -102,7 +108,9 @@ public class Game {
 			System.out.println("HasWind status is: " + currentPlayer.getHasWind());
 			System.out.println("BulliedStatus is: " + currentPlayer.getBulliedType());
 			System.out.println("The traveled distance is: " + currentPlayer.getKmProgress());
-
+			
+									
+				
 			// See players hand:
 			System.out.println("The player's hand contains: " + currentPlayer.viewHand());
 

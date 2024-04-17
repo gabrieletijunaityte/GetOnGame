@@ -11,6 +11,7 @@ import javax.swing.border.EmptyBorder;
 
 import logic.Card;
 import logic.Player;
+import logic.Rules;
 import logic.Stack;
 
 import java.awt.GridBagLayout;
@@ -46,14 +47,20 @@ public class GameFrame extends JFrame {
 
 	/**
 	 * Launch the application.
+	 * @param player 
 	 */
-	public static void main(String[] args, Stack stack, String discardedCardName, Player currentPlayer, int selectedCardIndex) {
 
-		
+
+	public static void main(String[] args, Stack stack, String discardedCardName, ArrayList<String> names, int selectedCardIndex, Player currentPlayer, Rules rules) {
+
+	
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					GameFrame frame = new GameFrame(stack, discardedCardName, currentPlayer, selectedCardIndex);
+
+					GameFrame frame = new GameFrame(stack, discardedCardName, names, selectedCardIndex, currentPlayer, rules);
+
+
 					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 					frame.setVisible(true);
 					frame.setAlwaysOnTop(true); // Makes sure frame always is on top
@@ -66,8 +73,12 @@ public class GameFrame extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @param player 
 	 */
-	public GameFrame(Stack stack, String discardedCardName, Player currentPlayer, int selectedCardIndex) {
+
+
+	public GameFrame(Stack stack, String discardedCardName, ArrayList<String> names, int selectedCardIndex, Player currentPlayer, Rules rules) {
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -139,10 +150,10 @@ public class GameFrame extends JFrame {
 		JSplitPane splitPane = new JSplitPane();
 		player1Status.add(splitPane);
 		
-		JLabel lblP1BikeStatus = new JLabel("P1 Bike Status");
+		JLabel lblP1BikeStatus = new JLabel(names.get(0) + " Bike Status");
 		splitPane.setLeftComponent(lblP1BikeStatus);
 		
-		JLabel lblP1WindStatus = new JLabel("P1 Wind Status");
+		JLabel lblP1WindStatus = new JLabel(names.get(0) + " Wind Status");
 		splitPane.setRightComponent(lblP1WindStatus);
 		
 		JPanel player2Status = new JPanel();
@@ -156,10 +167,10 @@ public class GameFrame extends JFrame {
 		JSplitPane splitPane_1 = new JSplitPane();
 		player2Status.add(splitPane_1);
 		
-		JLabel lblP2BikeStatus = new JLabel("P2 Bike Status");
+		JLabel lblP2BikeStatus = new JLabel(names.get(1) + " Bike Status");
 		splitPane_1.setLeftComponent(lblP2BikeStatus);
 		
-		JLabel lblP2WindStatus = new JLabel("P2 Wind Status");
+		JLabel lblP2WindStatus = new JLabel(names.get(1) + " Wind Status");
 		splitPane_1.setRightComponent(lblP2WindStatus);
 		
 		JPanel panel_3 = new JPanel();
@@ -173,11 +184,22 @@ public class GameFrame extends JFrame {
 		JSplitPane splitPane_2 = new JSplitPane();
 		panel_3.add(splitPane_2);
 		
-		JLabel lblP3BikeStatus = new JLabel("P3 Bike Status");
-		splitPane_2.setLeftComponent(lblP3BikeStatus);
+		if (names.size() == 3) {
+			JLabel lblP3BikeStatus = new JLabel(names.get(2) + " Bike Status");
+			splitPane_2.setLeftComponent(lblP3BikeStatus);
+			
+			JLabel lblP3Windstatus = new JLabel(names.get(2) + " Wind Status");
+			splitPane_2.setRightComponent(lblP3Windstatus);
 		
-		JLabel lblP3Windstatus = new JLabel("P3 Wind Status");
-		splitPane_2.setRightComponent(lblP3Windstatus);
+		} else {
+			JLabel lblP3BikeStatus = new JLabel("Bike Status");
+			splitPane_2.setLeftComponent(lblP3BikeStatus);
+			
+			JLabel lblP3Windstatus = new JLabel("Wind Status");
+			splitPane_2.setRightComponent(lblP3Windstatus);
+		}
+		
+		
 		
 		player1 = new JPanel();
 		GridBagConstraints gbc_player1 = new GridBagConstraints();
@@ -222,8 +244,7 @@ public class GameFrame extends JFrame {
         btnViewHand.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		
-        		PlayerHand.main(null, currentPlayer, selectedCardIndex);
-        		
+        		PlayerHand.main(null, currentPlayer, rules, selectedCardIndex);
         	}
         });
 

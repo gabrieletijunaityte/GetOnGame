@@ -1,19 +1,26 @@
 package graphics;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
 // Importing for testing purposes
 import logic.Card;
 import logic.Player;
+import logic.Rules;
 
 import java.awt.Image;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
+
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+
 import java.awt.Insets;
 
 
@@ -48,17 +55,17 @@ public class PlayerHand extends JFrame {
 	 * Launch the application.
 	 * @param hand 
 	 */
-	public static void main(String[] args, Player currentPlayer, int selectedCardIndex) {
-		
+	public static void main(String[] args, Player currentPlayer,  Rules rules, int selectedCardIndex) {
 		// Information passed by game of the current player's hand
 		ArrayList<Card> currentPlayerHand = currentPlayer.getHand();
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					PlayerHand frame = new PlayerHand(currentPlayerHand);
+					PlayerHand frame = new PlayerHand(currentPlayerHand, currentPlayer, rules);
 					frame.setVisible(true);
 					frame.setAlwaysOnTop(true);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -66,41 +73,18 @@ public class PlayerHand extends JFrame {
 		});
 				
 	}
-
+	
+	
 	/**
 	 * Create the frame.
 	 */
-	public PlayerHand(ArrayList<Card> hand) {
+	public PlayerHand(ArrayList<Card> hand, Player player, Rules rules) {
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    setBounds(100, 100, 986, 484);
 	    contentPane = new JPanel();
 	    
-//	    // Add mouse listener to select a card based on where the mouse is clicked
-//	    contentPane.addMouseListener(new MouseAdapter() {
-//	        @Override
-//	        public void mouseClicked(MouseEvent e) {
-//	            // Get location of the click to calculate the card that's selected
-//	        	int clickLocation = e.getX();
-//	            int cardWidth = contentPane.getWidth() / hand.size();
-//	            int clickedCardIndex = clickLocation / cardWidth;
-//
-//	            // If the card width is greater than 0 and less than the hand size
-//	            if (clickedCardIndex >= 0 && clickedCardIndex < hand.size()) {
-//	                Card clickedCard = hand.get(clickedCardIndex);
-//	                System.out.println("Mouse clicked on card " + clickedCardIndex);
-//	                // Get card type and card value for subsequent steps, catch the error if not possible
-//	                try {
-//	                    String cardType = clickedCard.getType();
-//	                    String cardValue = clickedCard.getValue();
-//	                    System.out.println("Clicked card type: " + cardType + ", card value: " + cardValue);
-//	                } 
-//	                catch (Exception ex) {
-//	                    ex.printStackTrace();
-//	                }
-//	            }
-//	        }
-//	    });
-	    
+	
+		
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
@@ -120,7 +104,7 @@ public class PlayerHand extends JFrame {
 			}
 		});
         card1.setBackground(SystemColor.text);
-		GridBagConstraints gbc_card1 = new GridBagConstraints();
+        GridBagConstraints gbc_card1 = new GridBagConstraints();
 		gbc_card1.insets = new Insets(0, 0, 0, 5);
 		gbc_card1.gridx = 0;
 		gbc_card1.gridy = 0;
@@ -204,7 +188,7 @@ public class PlayerHand extends JFrame {
 				int cardWidth = width/5;
 				
 				// fill the cards with icons
-				updateHand(hand, cardWidth);
+				updateHand(hand, cardWidth, player, rules);
 				
 			}
 
@@ -213,7 +197,7 @@ public class PlayerHand extends JFrame {
 	}
 	
 	// Method to display the cards in the GUI
-	public void updateHand(ArrayList<Card> hand, int width) {
+	public void updateHand(ArrayList<Card> hand, int width, Player currentPlayer, Rules rules) {
 		
 		JLabel[] cards = {card1, card2, card3, card4, card5};
 		
@@ -223,13 +207,23 @@ public class PlayerHand extends JFrame {
 		
 		// Inspired from https://stackoverflow.com/questions/6444042/java-resize-image-dynamically-to-fit-grids-in-gridlayout
 		for (int i = 0; i < hand.size(); i++) {
+			Border border;
 			
 			String filePath = "data/cards/" + hand.get(i).toString() + ".png";
 			ImageIcon cardImg = new ImageIcon(filePath);
 			Image orignalImg = cardImg.getImage();
 			Image resizedImg = orignalImg.getScaledInstance(width, height, Image.SCALE_SMOOTH);
 			cards[i].setIcon(new ImageIcon(resizedImg));
+			Card card = hand.get(i);
 			
+			// Check if card is playable and set corresponding border color
+			if (rules.isPlayble(card, currentPlayer)) {
+				border = BorderFactory.createLineBorder(Color.green, 10, true);
+			}
+			else {
+			    border = BorderFactory.createLineBorder(Color.red, 10, true);
+			}
+			cards[i].setBorder(border);
 		}
 		
 	}
@@ -243,7 +237,4 @@ public class PlayerHand extends JFrame {
 	public static AtomicInteger getSelectedCardIndex() {
 		return selectedCardIndex;
 	}
-	
-		
-	
 }
