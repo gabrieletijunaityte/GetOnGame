@@ -10,6 +10,8 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import logic.Card;
+import logic.Player;
+import logic.Rules;
 import logic.Stack;
 
 import java.awt.GridBagLayout;
@@ -45,15 +47,22 @@ public class GameFrame extends JFrame {
 
 	/**
 	 * Launch the application.
+	 * @param player 
 	 */
-	public static void main(String[] args, Stack stack, String discardedCardName, ArrayList<Card> hand, ArrayList<String> names, int selectedCardIndex) {
+
+	public static void main(String[] args, Stack stack, String discardedCardName, ArrayList<Card> hand, ArrayList<String> names, int selectedCardIndex, Player player, Rules rules) {
+
 
 
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					GameFrame frame = new GameFrame(stack, discardedCardName, hand, names, selectedCardIndex);
+
+					GameFrame frame = new GameFrame(stack, discardedCardName, hand, names, selectedCardIndex, player, rules);
+
+
+
 					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 					frame.setVisible(true);
 					frame.setAlwaysOnTop(true); // Makes sure frame always is on top
@@ -66,8 +75,10 @@ public class GameFrame extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @param player 
 	 */
-	public GameFrame(Stack stack, String discardedCardName, ArrayList<Card> hand, ArrayList<String> names, int selectedCardIndex) {
+
+	public GameFrame(Stack stack, String discardedCardName, ArrayList<Card> hand, ArrayList<String> names, int selectedCardIndex, Player player, Rules rules) {
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -234,7 +245,9 @@ public class GameFrame extends JFrame {
         btnViewHand.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		
-        		PlayerHand.main(null, hand, selectedCardIndex);
+
+        		PlayerHand.main(null, hand, player, rules, selectedCardIndex);
+
         		
         	}
         });
