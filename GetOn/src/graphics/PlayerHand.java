@@ -73,7 +73,6 @@ public class PlayerHand extends JFrame {
 					PlayerHand frame = new PlayerHand(currentPlayerHand, currentPlayer, rules);
 					frame.setVisible(true);
 					frame.setAlwaysOnTop(true);
-					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -90,9 +89,6 @@ public class PlayerHand extends JFrame {
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    setBounds(100, 100, 986, 484);
 	    contentPane = new JPanel();
-	    
-	
-		
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);

@@ -1,12 +1,9 @@
 package game;
 
 import logic.Card;
-import logic.GameMaster;
 import logic.Player;
 import logic.Rules;
 import logic.Stack;
-import logic.KilometerCard;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -64,9 +61,6 @@ public class Game {
 		// Shuffle the stack
 		stack.shuffle();
 
-		// Initialize discardCardName for GUI
-		String discardedCardName = null;
-
 		// Deal initial cards
 		for (int j = 0; j < 5; j++) {
 			for (int i = 0; i <= players.size() - 1; i++) {
@@ -87,18 +81,13 @@ public class Game {
 		Player playerToBully;
 
 		// Launch GameFrame
-		GameFrame.main(args, stack, discardedCardName, names, selectedCardIndex,  players.get(playerIndex), rules);
-
+		GameFrame.main(args, stack, discardPile, names, selectedCardIndex,  players.get(playerIndex), rules);
 
 		// Initialize input listener
 		Scanner input = new Scanner(System.in);
 
 		// Intialize drawn cards
 		Card drawnCard;
-
-
-		// Create a GUI game loop
-		Card cardToPlay = new Card(discardedCardName, discardedCardName);
 		
 		// Game loop
 		while (gameContinue) {
