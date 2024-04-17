@@ -25,7 +25,7 @@ public class PlayerTest extends TestCase {
 	}
 
 	// Test hand creation
-	public void testCreateHand() {
+	public void testGetHand() {
 		// Creating variables for the test
 		Player myPlayer = new Player("Jan", true);
 		Stack stack = new Stack();
@@ -34,11 +34,11 @@ public class PlayerTest extends TestCase {
 		stack.initializeStack();
 
 		// Create a hand
-		myPlayer.hand.fillHand(stack, 5);
+		myPlayer.drawCard(stack.drawTopCard());
+		myPlayer.drawCard(stack.drawTopCard());
 
 		// Test if 5 cards were drawn
-		assertEquals(5, myPlayer.hand.getHand().size());
-		//System.out.println(myPlayer.hand.getHand().toString());
+		assertEquals("[KILOMETER_FIVE, KILOMETER_FIVE]", myPlayer.getHand().toString());
 
 	}
 
@@ -52,11 +52,11 @@ public class PlayerTest extends TestCase {
 		stack.initializeStack();
 
 		// Create a hand
-		myPlayer.hand.fillHand(stack, 5);
+		myPlayer.drawCard(stack.drawTopCard());
 		// Print Cards on hand
-		assertEquals("[KILOMETER_FIVE, KILOMETER_FIVE, KILOMETER_FIVE, KILOMETER_FIVE, KILOMETER_FIVE]", myPlayer.viewHand());
+		assertEquals("[KILOMETER_FIVE]", myPlayer.viewHand());
 	}
-	
+
 	// Test to get statuses methods
 	public void getPlayerStatuses() {
 		// Creating variables for the test
@@ -67,97 +67,156 @@ public class PlayerTest extends TestCase {
 		assertEquals(target, testPlayer.getHasWind());
 		assertEquals(target, testPlayer.getOnBikeStatus());
 
-	}	
-	
+	}
+
 	// Test to get the player progress
 	public void testPlayerProgress() {
-	    // Creating variables for the test
+		// Creating variables for the test
 		Hand myHand = new Hand();
 		Player myPlayer = new Player("Jan", true);
 
-	    // Add Kilometer cards to played cards. Added two SIX to see that duplicates also work
-	    Card card = new KilometerCard("FIVE");
-	    Card card1 = new KilometerCard("SIX");
-	
-	    myPlayer.playerProgress(card.getValue());
-	    myPlayer.playerProgress(card1.getValue());
+		// Add Kilometer cards to played cards. Added two SIX to see that duplicates
+		// also work
+		Card card = new KilometerCard("FIVE");
+		Card card1 = new KilometerCard("SIX");
 
-	    // Calculate player progress
-	    int totalKilometers = myPlayer.getKmProgress();
+		myPlayer.playerProgress(card.getValue());
+		myPlayer.playerProgress(card1.getValue());
 
-	    // Test total kilometers
-	    assertEquals(5 + 6, totalKilometers);
+		// Calculate player progress
+		int totalKilometers = myPlayer.getKmProgress();
+
+		// Test total kilometers
+		assertEquals(5 + 6, totalKilometers);
 	}
-	
+
 	// Test the setBulliedType and getBulliedType
 	public void testSetBulliedType() {
 		Player myPlayer = new Player("Jan", true);
 		myPlayer.setBulliedType("TAVERN");
 		String bulliedTest = "TAVERN";
-		
+
 		assertEquals(myPlayer.getBulliedType(), bulliedTest);
 
 	}
-	
+
 	// Test getStatuses method
 	public void testGetStatuses() {
 		// Create a player
 		Player testPlayer = new Player("Jan", true);
-		
+
 		// Change their statuses
 		testPlayer.setHasWind(true);
 		testPlayer.setOnBikeStatus(true);
-		
+
 		// Define the target
-		String [] target = {"true", "false", "true", null};
-		
-		String [] test = testPlayer.getStatuses();
+		String[] target = { "true", "false", "true", null };
+
+		String[] test = testPlayer.getStatuses();
 
 		assertTrue(Arrays.equals(target, test));
 	}
-	
+
 	// Broken Tests
 	// Test getConsequences Implementation for Get On
 	public void testSetConsequencesCaseA() {
-		
+
 		Card testCard = new StatusCard("GET_ON");
-		
+
 		String[] consequences = testCard.getConsequences();
-		
+
 		Player testPlayer = new Player("Jan", true);
-		
+
 		testPlayer.setConsequences(consequences);
-		
+
 		// Define the target
-		String [] target = {"true", "false", "false", null};
-		
+		String[] target = { "true", "false", "false", null };
+
 		String[] test = testPlayer.getStatuses();
-		System.out.println(Arrays.toString(test));
-		
+
 		assertTrue(Arrays.equals(target, test));
-		
-	}
-	
-	// Test getConsequences Implementation for Bully
-	public void testSetConsequencesCaseB() {
-		
-		Card testCard = new BullyCard("TAVERN");
-		
-		String[] consequences = testCard.getConsequences();
-		
-		Player testPlayer = new Player("Jan", true);
-		
-		testPlayer.setOnBikeStatus(true);
-		testPlayer.setConsequences(consequences);
-		
-		// Define the target
-		String [] target = {"false", "false", "false", null};
-		
-		String[] test = testPlayer.getStatuses();
-		
-		
-		assertTrue(Arrays.equals(target, test));
-		
+
 	}
 
+	// Test getConsequences Implementation for Bully
+	public void testSetConsequencesCaseB() {
+
+		Card testCard = new BullyCard("TAVERN");
+
+		String[] consequences = testCard.getConsequences();
+
+		Player testPlayer = new Player("Jan", true);
+
+		testPlayer.setOnBikeStatus(true);
+		testPlayer.setConsequences(consequences);
+
+		// Define the target
+		String[] target = { "false", "false", "false", null };
+
+		String[] test = testPlayer.getStatuses();
+
+		assertTrue(Arrays.equals(target, test));
+
+	}
+
+	// Test drawCard method
+	public void testDrawCard() {
+		// Creating variables for the test
+		Player myPlayer = new Player("Jan", true);
+		Stack stack = new Stack();
+
+		// Create stack of cards to test the set up
+		stack.initializeStack();
+
+		Card drawnCard = stack.drawTopCard();
+
+		// Create a hand with drawn card
+		myPlayer.drawCard(drawnCard);
+
+		// Test if 5 cards were drawn
+		assertEquals(drawnCard.toString(), myPlayer.getCard(0).toString());
+
+	}
+
+	// Test getCard method
+	public void testGetCard() {
+		// Creating variables for the test
+		Player myPlayer = new Player("Jan", true);
+		Stack stack = new Stack();
+
+		// Create stack of cards to test the set up
+		stack.initializeStack();
+
+		Card drawnCard = stack.drawTopCard();
+
+		// Create a hand with drawn card
+		myPlayer.drawCard(drawnCard);
+
+		// Test if 5 cards were drawn
+		assertEquals(1, myPlayer.getHand().size());
+	}
+	
+	// Test card removal from hand
+	public void testDiscardCard() {
+		// Creating variables for the test
+		Player myPlayer = new Player("Jan", true);
+		Stack stack = new Stack();
+
+		// Create stack of cards to test the set up
+		stack.initializeStack();
+
+		// Create a hand with drawn card
+		myPlayer.drawCard(stack.drawTopCard());
+
+		// Creating card to 
+		Card cardToRemove = new BullyCard("TAVERN");
+		
+		myPlayer.drawCard(cardToRemove);
+		
+		// Removing the card
+		myPlayer.discardCard(cardToRemove);
+		
+		// Test if 5 cards were drawn
+		assertEquals("[KILOMETER_FIVE]", myPlayer.getHand().toString());
+	}
 }
