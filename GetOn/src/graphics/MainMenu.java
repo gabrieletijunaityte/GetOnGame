@@ -1,14 +1,8 @@
 package graphics;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import logic.Card;
-import logic.Player;
-import logic.Stack;
 
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -19,48 +13,29 @@ import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import java.awt.Color;
+import java.awt.FlowLayout;
 
 public class MainMenu extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	public static boolean receivedNames = false;
-	private JPanel contentPane;
+	private boolean receivedNames = false;
 	private JTextField player1Name;
 	private JTextField player2Name;
 	private JTextField player3Name;
 
-	/**
-	 * Launch the application.
-	 * @return 
-	 */
-	public static void main(String[] args, ArrayList<String> names) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MainMenu frame = new MainMenu(names);
-					frame.setVisible(true);
-					frame.setAlwaysOnTop(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-		
-	}
-
-	/**
-	 * Create the frame.
-	 * @param thirdPlayer 
-	 * @param secondPlayer 
-	 * @param firstPlayer 
-	 */
 	public MainMenu(ArrayList<String> names) {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 738, 397);
-		contentPane = new JPanel();
+		
+		this.setVisible(true);
+		this.setAlwaysOnTop(true);
+		this.setResizable(false);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setBounds(100, 100, 738, 397);
+		
+		JPanel contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		
+		this.setContentPane(contentPane);
 
-		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("GET ON");
@@ -77,7 +52,7 @@ public class MainMenu extends JFrame {
 		JButton btnViewRules = new JButton("View Rules");
 		btnViewRules.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				RulesFrame.main(null);
+				RulesFrame rulesPopup = new RulesFrame();
 			}
 		});
 		
@@ -118,11 +93,14 @@ public class MainMenu extends JFrame {
 		
 		JButton btnStartGame = new JButton("Start Game");
 		btnStartGame.addActionListener(new ActionListener() {
+			
 			public void actionPerformed(ActionEvent e) {
+				// Starts the game when clicking the button
 				handleStartGame();
 			}
 
 			private void handleStartGame() {
+				// Saves the entered names
 				if (!player1Name.getText().isBlank() && !player2Name.getText().isBlank()){
 
 					names.add(player1Name.getText());
@@ -142,12 +120,19 @@ public class MainMenu extends JFrame {
 					
 				}			
 				
+				// Flags the game loop that names have been entered
 				if (names.size() != 0) {
 					receivedNames = true;
-					dispose();
+					
+					// Notifies the Game Master that the game has been started and locks the changing of some settings.
+					playerLabel.setText("The game has been started.");
+					playerLabel.setForeground(Color.BLACK);
+					btnStartGame.setVisible(false);	
+					player1Name.setEditable(false);
+					player2Name.setEditable(false);
+					player3Name.setEditable(false);
+										
 				}
-				
-				
 				
 			}
 		});
@@ -156,10 +141,12 @@ public class MainMenu extends JFrame {
 		contentPane.add(btnStartGame);
 		
 		this.setTitle("Get On - The Classic Cycling game");
-
+		
+		repaint();
+		
 	}
 
-	public static boolean getReceivedNames() {
+	public boolean getReceivedNames() {
 		return receivedNames;
 	}
 	

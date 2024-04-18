@@ -16,60 +16,58 @@ public class Game {
 
 	public static void main(String[] args) throws InterruptedException {
 
-		// Declares the names list
+		// Declares the names and players list
 		ArrayList<String> names = new ArrayList<>();
-
-		// Declare the selected card
-		int selectedCardIndex = 0;
-
-		// Intialize rules
-		Rules rules = new Rules();
-
+		ArrayList<Player> players = new ArrayList<>();
+		
 		// Launches the main menu gui
-		MainMenu.main(args, names);
-
+		MainMenu menu = new MainMenu(names);
+		
 		// Waits for GUI to return some input for the names
-		while (!MainMenu.getReceivedNames()) {
+		while (!menu.getReceivedNames()) {
 			Thread.sleep(100);
 		}
-
-		// Intializes players
-		Player firstPlayer = new Player("Player1", true), secondPlayer = new Player("Player2", false),
-				thirdPlayer = new Player("Player3", false);
-
-		// Create an Array list with the players
-		ArrayList<Player> players = new ArrayList<>(Arrays.asList(firstPlayer, secondPlayer, thirdPlayer));
-
-		// Changes player names based on GUI input
-		for (int i = 1; i <= names.size(); i++) {
-			players.get(i - 1).changeName(names.get(i - 1));
+		
+		// Initialises players based on main menu input
+		if (names.size() != 1) {
+			
+			// Creates two players if only two names entered
+			Player firstPlayer = new Player(names.get(0), true);
+			players.add(firstPlayer);
+			Player secondPlayer = new Player(names.get(1), false);
+			players.add(secondPlayer);
+			
+			// Creates a third player object when three names entered
+			if (names.size() == 3){
+				Player thirdPlayer = new Player(names.get(2), false);
+				players.add(thirdPlayer);	
+			}
+			
 		}
 
-		// Sets the amount of players in the game
-		if (names.size() == 2) {
-			players.remove(thirdPlayer);
-		}
-
-		// Initialize the stack
+		// Intialize rules, stack and discard pile
+		Rules rules = new Rules();
 		Stack stack = new Stack();
-
-		// Initialize discardPile
 		Stack discardPile = new Stack();
 
 		// Create the initial stack filled with all cards that are used in the game
 		stack.initializeStack();
+		
 		// Shuffle the stack
 		stack.shuffle();
 
 		// Deal initial cards
 		for (int j = 0; j < 5; j++) {
-			for (int i = 0; i <= players.size() - 1; i++) {
+			for (int i = 0; i < players.size(); i++) {
 				players.get(i).drawCard(stack.drawTopCard());
 			}
 		}
 
 		// Create gameContinue variable
 		Boolean gameContinue = true;
+		
+		// Declare the selected card
+		int selectedCardIndex = 0;
 
 		// Set current player index
 		int playerIndex = 0;
@@ -81,9 +79,9 @@ public class Game {
 		Player playerToBully;
 
 		// Launch GameFrame
+		PlayerHand currentPlayerHand = new PlayerHand(players.get(playerIndex), rules);
 		GameFrame gameFrame = new GameFrame(stack, discardPile, players, selectedCardIndex, rules, playerIndex);
-		gameFrame.main(gameFrame);
-
+		
 		// Initialize input listener
 		Scanner input = new Scanner(System.in);
 
@@ -93,7 +91,9 @@ public class Game {
 		// Game loop
 		while (gameContinue) {
 			currentPlayer = players.get(playerIndex);
-			// Create a new gameFrame method
+			
+			gameFrame.getPlayerHand(currentPlayerHand);
+			currentPlayerHand.updateHand(986, currentPlayer, rules);			
 		
 			// Get the Gui popup
 			gameFrame.refreshGameFrame(stack, discardPile, players, currentPlayer, rules, selectedCardIndex);
@@ -107,22 +107,23 @@ public class Game {
 			System.out.println("The player's hand contains: " + currentPlayer.viewHand());
 
 			// Waits for GUI to return the index of the selected Card
-			while (!PlayerHand.getReceivedSelectedCard()) {
+			while (!currentPlayerHand.getReceivedSelectedCard()) {
 				Thread.sleep(50);
 			}
 
 			// get the index of the selected card from the PlayerHand
-			selectedCardIndex = PlayerHand.getSelectedCardIndex().get();
+			selectedCardIndex = currentPlayerHand.getSelectedCardIndex();
 			// get the selected Card based on the retrieved index
 			Card selectedCard = currentPlayer.getCard(selectedCardIndex);
 
 			System.out.println("Selected card is " + selectedCard);
 
-			while (!PlayerHand.getIsPlayedCard()) {
+			while (!currentPlayerHand.getIsPlayedCard()) {
 				Thread.sleep(50);
 			}
+			
 			// Check for playability or discard the selected card
-			if (PlayerHand.getMethodIndex() == 0 && rules.isPlayble(selectedCard, currentPlayer)) {
+			if (currentPlayerHand.getMethodIndex() == 0 && rules.isPlayble(selectedCard, currentPlayer)) {
 				// Check card type and play it accordingly
 				if (selectedCard.getType().equals("BULLY")) {
 					// Create a dummy player to bully
@@ -147,7 +148,7 @@ public class Game {
 				}
 			} else {
 
-				if (PlayerHand.getMethodIndex() == 0 && !rules.isPlayble(selectedCard, currentPlayer)) {
+				if (currentPlayerHand.getMethodIndex() == 0 && !rules.isPlayble(selectedCard, currentPlayer)) {
 					System.out.println("Selected card cannot be played, card is discarded");
 				}
 				currentPlayer.discardCard(selectedCard);
@@ -188,7 +189,7 @@ public class Game {
 			}
 
 			// reset currentPlayers booleans to false
-			PlayerHand.resetBooleans();
+			currentPlayerHand.resetBooleans();
 		}
 	}
 

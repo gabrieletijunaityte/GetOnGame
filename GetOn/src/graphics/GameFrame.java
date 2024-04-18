@@ -1,7 +1,5 @@
 package graphics;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -30,39 +28,18 @@ public class GameFrame extends JFrame {
 	private JPanel player2;
 	private JPanel player3;
 	
-
 	private JLabel lblCardStackCounter;
 	private JLabel lblDiscardCounter;
 	private JLabel lblDiscardedCard;
 	
-	/**
-	 * Launch the application.
-	 * @param player 
-	 */
-	public static void main(GameFrame frame) {
-
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-//					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-					frame.setVisible(true);
-					frame.setAlwaysOnTop(true); // Makes sure frame always is on top
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 * @param currentPlayerIndex TODO
-	 * @param player 
-	 */
+	private PlayerHand currentPlayerHand = new PlayerHand(null, null);
+	
 	public GameFrame(Stack stack, Stack discardPile, ArrayList<Player> players, int selectedCardIndex, Rules rules, int currentPlayerIndex) {
 
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1238, 625);
+		this.setVisible(true);
+		this.setAlwaysOnTop(true);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setBounds(100, 100, 1238, 625);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -103,6 +80,7 @@ public class GameFrame extends JFrame {
 		panel_3.add(splitPane_2);
 		
 		if (players.size() == 3) {
+			
 			JLabel lblP3BikeStatus = new JLabel(players.get(2).getName() + " Bike Status");
 			splitPane_2.setLeftComponent(lblP3BikeStatus);
 			
@@ -110,11 +88,13 @@ public class GameFrame extends JFrame {
 			splitPane_2.setRightComponent(lblP3Windstatus);
 		
 		} else {
+			
 			JLabel lblP3BikeStatus = new JLabel("Bike Status");
 			splitPane_2.setLeftComponent(lblP3BikeStatus);
 			
 			JLabel lblP3Windstatus = new JLabel("Wind Status");
 			splitPane_2.setRightComponent(lblP3Windstatus);
+			
 		}
 		
 		player1 = new JPanel();
@@ -126,8 +106,10 @@ public class GameFrame extends JFrame {
         btnViewHand.setBounds(1129, 554, 85, 23);
         btnViewHand.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		PlayerHand.main(null, players.get(currentPlayerIndex), rules, selectedCardIndex);
-//        		refreshGameFrame(stack, discardPile, players, players.get(currentPlayerIndex), rules, );
+        		
+        		currentPlayerHand.updateHand(986, players.get(currentPlayerIndex), rules);
+        		currentPlayerHand.setVisible(true);
+        		
         	}
         });
         contentPane.add(btnViewHand);
@@ -173,9 +155,9 @@ public class GameFrame extends JFrame {
         Image resizedImg = orignalImg.getScaledInstance(width, height, Image.SCALE_SMOOTH);
         lblCardStackIcon.setIcon(new ImageIcon(resizedImg));
         
-        
-
         refreshGameFrame(stack, discardPile, players, players.get(currentPlayerIndex), rules, selectedCardIndex);
+        
+        repaint();
         
 	}
 	
@@ -215,14 +197,18 @@ public class GameFrame extends JFrame {
 		addCardWithCounter(player2, createCardLabel("| 8 Km cards: "), players.get(1).getPlayedCards().countCards(new KilometerCard("EIGHT")));
 		addCardWithCounter(player2, createCardLabel("| 10 Km cards: "), players.get(1).getPlayedCards().countCards(new KilometerCard("TEN")));
 		
-		player3 = new JPanel();
-		player3.setBounds(627, 430, 324, 152);
-		contentPane.add(player3);
-		
-        addCardWithCounter(player3 ,createCardLabel("| 5 Km cards: "), players.get(2).getPlayedCards().countCards(new KilometerCard("FIVE")));
-        addCardWithCounter(player3, createCardLabel("| 6 Km cards: "), players.get(2).getPlayedCards().countCards(new KilometerCard("SIX")));
-        addCardWithCounter(player3, createCardLabel("| 8 Km cards: "), players.get(2).getPlayedCards().countCards(new KilometerCard("EIGHT")));
-        addCardWithCounter(player3, createCardLabel("| 10 Km cards: "), players.get(2).getPlayedCards().countCards(new KilometerCard("TEN")));
+		if (players.size() == 3) {
+			
+			player3 = new JPanel();
+			player3.setBounds(627, 430, 324, 152);
+			contentPane.add(player3);
+			
+	        addCardWithCounter(player3 ,createCardLabel("| 5 Km cards: "), players.get(2).getPlayedCards().countCards(new KilometerCard("FIVE")));
+	        addCardWithCounter(player3, createCardLabel("| 6 Km cards: "), players.get(2).getPlayedCards().countCards(new KilometerCard("SIX")));
+	        addCardWithCounter(player3, createCardLabel("| 8 Km cards: "), players.get(2).getPlayedCards().countCards(new KilometerCard("EIGHT")));
+	        addCardWithCounter(player3, createCardLabel("| 10 Km cards: "), players.get(2).getPlayedCards().countCards(new KilometerCard("TEN")));
+			
+		}
         
         contentPane.revalidate();
         contentPane.repaint();
@@ -246,7 +232,13 @@ public class GameFrame extends JFrame {
     		lblDiscardedCard.setIcon(new ImageIcon(resizedImg));
     		
     	}
-//    	PlayerHand.main(null, currentPlayer, rules, selectedCardIndex);
     	
     }
+    
+    public void getPlayerHand(PlayerHand playerHand) {
+    	
+    	this.currentPlayerHand = playerHand;
+    	
+    }
+    
 }

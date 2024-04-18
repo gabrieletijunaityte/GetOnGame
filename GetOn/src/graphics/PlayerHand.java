@@ -51,41 +51,18 @@ public class PlayerHand extends JFrame {
 	private JLabel card4;
 	private JLabel card5;
 	// initialise receivedSelectedCard boolean which indicates if a card is chosen from the hand
-	public static boolean receivedSelectedCard = false;
+	public boolean receivedSelectedCard = false;
 	// initialise selectedCardIndex as an AtomicInteger
-	private static AtomicInteger selectedCardIndex = new AtomicInteger(0);
+	private int selectedCardIndex = 0;
 	// initialize playedCard
-	private static boolean isPlayedCard = false;
+	private boolean isPlayedCard = false;
 	// initialize methodIndex to play the card
-	private static int methodIndex;
+	private int methodIndex;
 	
-	/**
-	 * Launch the application.
-	 * @param hand 
-	 */
-	public static void main(String[] args, Player currentPlayer,  Rules rules, int selectedCardIndex) {
-		// Information passed by game of the current player's hand
-		
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					PlayerHand frame = new PlayerHand(currentPlayer, rules);
-					frame.setVisible(true);
-					frame.setAlwaysOnTop(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-				
-	}
-	
-	
-	/**
-	 * Create the frame.
-	 */
 	public PlayerHand(Player player, Rules rules) {
-	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setAlwaysOnTop(true);
+		
+	    setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 	    setBounds(100, 100, 986, 484);
 	    contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -102,7 +79,7 @@ public class PlayerHand extends JFrame {
 		card1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				selectedCardIndex.set(0);
+				selectedCardIndex = 0;
 				receivedSelectedCard = true;
 				showPopupDialog();
 			}
@@ -119,7 +96,7 @@ public class PlayerHand extends JFrame {
 		card2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				selectedCardIndex.set(1);
+				selectedCardIndex = 1;
 				receivedSelectedCard = true;
 				showPopupDialog();
 			}
@@ -136,7 +113,7 @@ public class PlayerHand extends JFrame {
 		card3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				selectedCardIndex.set(2);
+				selectedCardIndex = 2;
 				receivedSelectedCard = true;
 				showPopupDialog();
 			}
@@ -153,7 +130,7 @@ public class PlayerHand extends JFrame {
 		card4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				selectedCardIndex.set(3);
+				selectedCardIndex = 3;
 				receivedSelectedCard = true;
 				showPopupDialog();
 			}
@@ -170,7 +147,7 @@ public class PlayerHand extends JFrame {
 		card5.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				selectedCardIndex.set(4);
+				selectedCardIndex = 4;
 				receivedSelectedCard = true;
 				showPopupDialog();
 			}
@@ -202,6 +179,8 @@ public class PlayerHand extends JFrame {
 
 		});
 		
+		repaint();
+		
 	}
 	
 	// Method to display the cards in the GUI
@@ -211,7 +190,6 @@ public class PlayerHand extends JFrame {
 		
 		// Calculate height based on scale
 		int height = (int) (width * 2.28);
-		
 		
 		// Inspired from https://stackoverflow.com/questions/6444042/java-resize-image-dynamically-to-fit-grids-in-gridlayout
 		for (int i = 0; i < currentPlayer.getHand().size(); i++) {
@@ -237,13 +215,12 @@ public class PlayerHand extends JFrame {
 	}
 	
 	// method for getting boolean that indicates if a card is clicked
-	public static boolean getReceivedSelectedCard() {
+	public boolean getReceivedSelectedCard() {
 		return receivedSelectedCard;
 	}
 	
-	
 	// method for getting selectedCardIndex
-	public static AtomicInteger getSelectedCardIndex() {
+	public int getSelectedCardIndex() {
 		return selectedCardIndex;
 	}
 	
@@ -258,11 +235,9 @@ public class PlayerHand extends JFrame {
     	
         // Check for the option selected
         if (choice == 0) {
-        	isPlayedCard = true;
         	methodIndex = 0;
             JOptionPane.showMessageDialog(this, "Card is Played.");
         } else if (choice == 1) {
-        	isPlayedCard = true;
         	methodIndex = 1;
             JOptionPane.showMessageDialog(this, "Card is Discared.");
         }
@@ -270,21 +245,23 @@ public class PlayerHand extends JFrame {
         // Close hand after playing
         dispose();
         
+        isPlayedCard = true;
+        
     }
     
     //method to return isPlayedCard boolean
-    public static boolean getIsPlayedCard() {
+    public boolean getIsPlayedCard() {
     	return isPlayedCard;
     }
     
     
     //method to return getMethodIndex int
-    public static int getMethodIndex() {
+    public int getMethodIndex() {
     	return methodIndex;
     }
     
 	// method to reset selectedCardIndex to false
-	public static void resetBooleans() {
+	public void resetBooleans() {
 		receivedSelectedCard = false;
 		isPlayedCard = false;
 	}

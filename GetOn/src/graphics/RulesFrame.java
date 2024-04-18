@@ -9,10 +9,7 @@ import javax.swing.border.EmptyBorder;
 
 import logic.Rules;
 
-import javax.swing.JButton;
 import javax.swing.JTextPane;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import java.awt.GridLayout;
 
 public class RulesFrame extends JFrame {
@@ -21,33 +18,15 @@ public class RulesFrame extends JFrame {
 	private JPanel contentPanel;
 	private JTextPane textRules;
 
-	
-	
-	// Launch the window
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					RulesFrame frame = new RulesFrame();
-					frame.setSize(781, 410);
-					frame.setVisible(true);
-					frame.setAlwaysOnTop(true);
-					
-					// Do not allow to resize the frame
-					frame.setResizable(false);
-					
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-		
-	}
-
 	/**
 	 * Create the frame.
 	 */
 	public RulesFrame() {
+		this.setSize(781, 410);
+		this.setVisible(true);
+		this.setAlwaysOnTop(true);
+		this.setResizable(false);
+		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		contentPanel = new JPanel();
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -66,6 +45,7 @@ public class RulesFrame extends JFrame {
 		
 		this.setTitle("Rules");
 		
+		repaint();
 		handleShowRules();
 	
 	}
