@@ -97,34 +97,6 @@ public class BullyCardTest extends TestCase {
 		assertEquals("[2, 4, 3, 3]", test);
 	}
 
-	// Test playing bully card
-	public void testPlayCard() {
-		// creating dummy players
-		Player bulliedPlayer = new Player("Gabby", false);
-
-		// Creating a bully card
-		BullyCard bullyCard = new BullyCard("TAVERN");
-
-		// Create discard pile
-		Stack discard = new Stack();
-
-		// Test playing bully card to Gabby
-		bullyCard.playCard(bulliedPlayer, discard);
-
-		boolean target = true;
-		boolean test = bulliedPlayer.getBulliedStatus();
-
-		boolean target2 = false;
-		boolean test2 = bulliedPlayer.getOnBikeStatus();
-
-		// Check bully status
-		assertEquals(target, test);
-		assertEquals("TAVERN", bulliedPlayer.getBulliedType());
-
-		// Check onbike status
-		assertEquals(target2, test2);
-	}
-
 	// Test getRequirements
 	public void testGetRequirements() {
 		// Creating a bullyCard

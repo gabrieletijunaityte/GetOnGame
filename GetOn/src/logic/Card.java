@@ -66,9 +66,6 @@ public class Card {
 		return requirements;
 	}
 	
-	public void playCard(Player currentPlayer, Stack discard) {
-	}
-	
 	public String[] getConsequences() {
 		// Changes for (-1 to ignore)
 		// GetOnStatus

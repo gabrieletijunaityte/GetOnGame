@@ -27,19 +27,6 @@ public class BullyCard extends Card {
 		return requirements;
 	}
 
-	// Implementing game logic by playing the card
-	public void playCard(Player bulliedPlayer, Stack discard) {
-		// Updating bullied status and onbike status
-		bulliedPlayer.setBulliedStatus(true);
-		bulliedPlayer.setOnBikeStatus(false);
-
-		// Updating bullied type of the player
-		bulliedPlayer.setBulliedType(this.getValue());
-
-		// add card to the discard pile
-		discard.addDiscardedCard(this);
-	}
-
 	// Implement method for getConsequences
 	public String[] getConsequences() {
 		// Changes for (-1 to ignore)

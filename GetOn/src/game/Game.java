@@ -81,6 +81,7 @@ public class Game {
 		Player playerToBully;
 
 		// Launch GameFrame
+//		GameFrame gameFrame = new GameFrame();
 		GameFrame gameFrame = new GameFrame(stack, discardPile, players, selectedCardIndex, rules, playerIndex);
 		gameFrame.main(gameFrame);
 

@@ -13,30 +13,6 @@ public class RepairCard extends Card {
 		// Assign amount per card
 		this.amount = new int[] { 8, 8 };
 	}
-
-	// Create isPlayable method
-	public boolean isPlayable(Player currentPlayer) {
-		if (this.getValue() == "BIKE_REPAIR" && currentPlayer.getBulliedType() == "FLAT_TIRE") {
-			return true;
-		} else if (this.getValue() == "BARRIER_OPEN" && currentPlayer.getBulliedType() == "CRISS_CROSS") {
-			return true;
-		} else {
-			return false;
-
-		}
-	}
-	
-	// Implementing game logic by playing the card
-	public void playCard(Player targetPlayer, Stack discard) {
-		// Change bulliedstatus to false
-		targetPlayer.setBulliedStatus(false);
-		
-		// Set bullied type string back to empty
-		targetPlayer.setBulliedType("");
-		
-		// add card to the discard pile
-		discard.addDiscardedCard(this);
-	}
 	
 	// getRequirements method
 	public String[] getRequirements() {
@@ -58,9 +34,7 @@ public class RepairCard extends Card {
 			String [] requirements = {"-1", "true", "-1", "CRISS_CROSS", "-1"};
 			return requirements;
 		} 
-		
 	}
-	
 	
 	// Implement method for getConsequences
 	public String[] getConsequences() {
@@ -73,6 +47,5 @@ public class RepairCard extends Card {
 
 		String[] consequences = { "-1", "false", "-1", null, "-1" };
 		return consequences;
-
 	}
 }
