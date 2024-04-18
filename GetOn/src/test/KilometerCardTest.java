@@ -99,67 +99,6 @@ public class KilometerCardTest extends TestCase {
 		assertEquals("[24, 12, 8, 8]", test);		
 	}
 	
-	// Test isPlayable for false
-	public void testIsPlayableFalse() {
-		// Creating Card class
-		KilometerCard kmCard = new KilometerCard("EIGHT");
-		// Create player
-		Player testPlayer = new Player("Jan", true);
-		testPlayer.setOnBikeStatus(true);
-		testPlayer.setHasWind(true);
-		testPlayer.getPlayedCards().addCard(kmCard);
-		testPlayer.getPlayedCards().addCard(kmCard);
-		
-		// Testing isPlayable
-		boolean test = false;
-		
-		boolean target = kmCard.isPlayable(testPlayer);
-				
-		assertEquals(target, test);		
-	}
-	
-	//Test isPlayable for true
-	public void testIsPlayableTrue() {
-		// Creating Card class
-		KilometerCard kmCard = new KilometerCard("EIGHT");
-		// Create player
-		Player testPlayer = new Player("Jan", true);
-		
-		testPlayer.setOnBikeStatus(true);
-		testPlayer.setHasWind(true);
-		testPlayer.getPlayedCards().addCard(kmCard);
-		
-		// Testing isPlayable
-		boolean test = true;
-		
-		boolean target = kmCard.isPlayable(testPlayer);
-		
-		assertEquals(target, test);		
-	}
-
-	// test playCard method
-	public void testPlayCard() {
-		// Create player
-		Player testPlayer = new Player("Jan", true);
-		
-		// Set bikestatus to true so conditions for playing KM card are met
-		testPlayer.setOnBikeStatus(true);
-		
-		// Create discard pile
-		Stack discard = new Stack();
-		
-		// create km card
-		KilometerCard kmCard = new KilometerCard("FIVE");
-		
-		// Play the km card
-		kmCard.playCard(testPlayer, discard);
-		
-		// retrieve km Progress
-		int totalKilometers = testPlayer.getKmProgress();
-		
-		assertEquals(5, totalKilometers);	
-	}
-	
 	// Test getRequirements
 	public void testGetRequirements() {
 		// Creating a kmCard

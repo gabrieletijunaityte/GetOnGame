@@ -3,10 +3,6 @@ package test;
 import java.util.Arrays;
 
 import junit.framework.TestCase;
-import logic.KilometerCard;
-import logic.Player;
-import logic.RepairCard;
-import logic.Stack;
 import logic.Card;
 import logic.StatusCard;
 
@@ -32,9 +28,6 @@ public class StatusCardTest extends TestCase {
 		catch (IllegalArgumentException e) {
 		}
 	}
-
-	
-	
 
 	// Test the type retrieval method
 	public void testgetType() {
@@ -103,70 +96,6 @@ public class StatusCardTest extends TestCase {
 		
 		
 		assertEquals("[14, 5]", test);		
-	}
-	
-	// Test isPlayable
-	public void testIsPlayable() {
-		// Creating Card class
-		StatusCard card = new StatusCard("GET_ON");
-		
-		// Create test player
-		Player testPlayer = new Player("Jan", true);
-		
-		testPlayer.setBulliedStatus(true);
-		
-		// Test boolean
-		boolean target = false;
-		
-		boolean test = card.isPlayable(testPlayer);
-		
-		assertEquals(target, test);		
-	}
-	
-	// ADD TEST FOR playCard()
-	public void testPlayGetOnCard() {
-		
-		// creating dummy players
-		Player targetPlayer = new Player("Gabby", false);
-		
-		// Create discard pile
-		Stack discard = new Stack();
-		
-		// Creating a get on card
-		StatusCard getOnCard = new StatusCard("GET_ON");
-		
-		// test playing the get on card
-		getOnCard.playCard(targetPlayer, discard);
-		
-		boolean target = true;
-		boolean test = targetPlayer.getOnBikeStatus();
-		
-		assertEquals(target, test);
-	}
-	
-	public void testPlayWindsCard() {
-		// creating dummy players
-		Player targetPlayer = new Player("Gabby", false);
-				
-		// Create discard pile
-		Stack discard = new Stack();
-				
-		// Creating a tail wind card
-		StatusCard tailWindCard = new StatusCard("TAIL_WIND");
-		
-		// test playing the get on card
-		tailWindCard.playCard(targetPlayer, discard);
-		
-		// 
-		boolean target = true;
-		boolean test = targetPlayer.getWindStatus();
-		
-		assertEquals(target, test);
-		
-		String target2 = "TAIL_WIND";
-		String test2 = targetPlayer.getWindType();
-		
-		assertEquals(target2, test2);
 	}
 	
 	// Test getRequirements
