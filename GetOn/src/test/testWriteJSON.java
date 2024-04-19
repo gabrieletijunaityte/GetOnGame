@@ -1,5 +1,7 @@
 package test;
+import logic.KilometerCard;
 import logic.Player;
+import logic.Stack;
 import utilites.WriteJSON;
 
 import java.io.File;
@@ -16,10 +18,33 @@ public class testWriteJSON extends TestCase {
 																		new Player("Mark", false), 
 																		new Player("Kelly", false)));
 		
-		WriteJSON writer = new WriteJSON(players);
-		writer.writePlayers();	
+		Stack stack = new Stack();
+		
+		stack.initializeStack();
+		
+		WriteJSON writer = new WriteJSON(players, stack);
+		writer.writePlayers("TestPlayers");	
 		
 		Boolean test = new File("data/outputs/players.json").isFile();
+		
+		assertTrue(test);
+	}
+	
+	// Testing card object to json 
+	public void testWriteStack() {
+		ArrayList <Player> players = new ArrayList <Player> (Arrays.asList(new Player("Tom", true), 
+																		new Player("Mark", false), 
+																		new Player("Kelly", false)));
+		
+		Stack stack = new Stack();
+		
+		stack.addDiscardedCard(new KilometerCard ("FIVE"));
+		stack.addDiscardedCard(new KilometerCard ("SIX"));
+		
+		WriteJSON writer = new WriteJSON(players, stack);
+		writer.writeStack("TestCards");	
+		
+		Boolean test = new File("data/outputs/stack.json").isFile();
 		
 		assertTrue(test);
 	}
