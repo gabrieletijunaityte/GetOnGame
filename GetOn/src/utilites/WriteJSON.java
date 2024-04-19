@@ -30,7 +30,7 @@ public class WriteJSON {
 			this.playerList.add(player);
 		}
 		// Add Card Information.
-		addCardDetails(stackObject);
+		addCards(stackObject);
 	}
 
 	/**
@@ -61,7 +61,7 @@ public class WriteJSON {
 	 * @param stackObject Stack Class Object
 	 * @return Nothing.
 	 */
-	public void addCardDetails(Stack stackObject) {
+	public void addCards(Stack stackObject) {
 
 		// Create Card Object
 		Card cardObject;
