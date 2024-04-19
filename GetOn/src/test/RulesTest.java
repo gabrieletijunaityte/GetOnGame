@@ -35,7 +35,7 @@ public class RulesTest extends TestCase {
 		
 		// Define required attributes
 		Card kmCard = new KilometerCard("EIGHT");
-		Player testPlayer = new Player("Jan", true);
+		Player testPlayer = new Player("Jan");
 		
 		// Set Statuses for player to be able to play the card
 		testPlayer.setOnBikeStatus(true);
@@ -55,7 +55,7 @@ public class RulesTest extends TestCase {
 		
 		// Define required attributes
 		Card statusCard = new StatusCard("GET_ON");
-		Player testPlayer = new Player("Jan", true);
+		Player testPlayer = new Player("Jan");
 		
 		// Defining test variables
 		Boolean target = true;

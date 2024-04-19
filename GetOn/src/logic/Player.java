@@ -16,7 +16,7 @@ public class Player {
 	private Hand hand;
 
 	// Constructor
-	public Player(String name, Boolean isTurn) {
+	public Player(String name) {
 		this.name = name;
 		this.onBikeStatus = false;
 		this.bulliedStatus = false;

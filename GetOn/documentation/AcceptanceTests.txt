@@ -231,3 +231,47 @@ ID #26
 Title: Playable through GUI
 
 Acceptance test:
+
+-------------------------------------------------------------------------------------
+
+ID #27
+Title: Show current player
+
+Acceptance test:
+1. Click on "GET_ON" file.
+2. Enter the first player name in the "Player 1" field (e.g., enter "Gabriele"), the second - in the "Player 2" (e.g., enter "Niels"), and the third - in the "Player 3" (e.g., "Jan").
+3. Press Start Game.
+4. The names are visible before Bike Status and Wind Status.
+5. Click on "Start Test Game" button.
+6. Look at the green border around Player 1 on the main game frame, and a red border around Player 2 and Player 3.
+7. Click on "View Hand" button.
+8. Discard the first card.
+9. Look at the green border around Player 2 on the main game frame, and a red border around Player 1 and Player 3.
+10.Click on "View Hand" button.
+11.Discard the first card.
+12.Look at the green border around Player 3 on the main game frame, and a red border around Player 1 and Player 2.
+
+
+-------------------------------------------------------------------------------------
+
+ID #28
+Title: Pre shuffled deck
+
+Acceptance test:
+
+-------------------------------------------------------------------------------------
+
+ID #29
+Title: Selectable Scenarios
+
+Acceptance test:
+
+-------------------------------------------------------------------------------------
+
+ID #30
+Title: Save game in JSON
+
+Acceptance test:
+
+-------------------------------------------------------------------------------------
+
