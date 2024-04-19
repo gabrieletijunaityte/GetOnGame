@@ -50,12 +50,17 @@ public class Game {
 		Stack stack = new Stack();
 		Stack discardPile = new Stack();
 
-		// Create the initial stack filled with all cards that are used in the game
-		stack.initializeStack();
 		
-		// Shuffle the stack
-		stack.shuffle();
-
+		// Create a random stack or test stack depending on which option is chosen
+		if (!menu.getIsTestGame()) {
+			// Create the initial stack filled with all cards that are used in the game
+			stack.initializeStack();
+			// Shuffle the stack
+			stack.shuffle();
+		} else {
+			stack.initializeTestStack();
+		}
+		
 		// Deal initial cards
 		for (int j = 0; j < 5; j++) {
 			for (int i = 0; i < players.size(); i++) {
