@@ -36,6 +36,24 @@ public class WriteJSON {
 	 * @serialData JSON file.
 	 */
 	public void writePlayers(String fileName, ArrayList<Player> players) {
+		addPlayer(players);
+		
+		if (!new File("data/outputs").isFile()) {
+			new File("data/outputs").mkdirs();
+		}
+		// Write JSON file
+		try (FileWriter file = new FileWriter("data/outputs/" + fileName + ".json")) {
+			// We can write any JSONArray or JSONObject instance to the file
+			file.write(this.playerList.toJSONString());
+			file.flush();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+
+	private void addPlayer(ArrayList<Player> players) {
 		for (Player playerObject : players) {
 			JSONObject statusDetails = new JSONObject();
 			JSONObject playerStatuses = new JSONObject();
@@ -49,19 +67,6 @@ public class WriteJSON {
 			statusDetails.put("BullyType", statuses[3]);
 			playerStatuses.put("Statuses", statusDetails);
 			this.playerList.add(playerStatuses);
-		}
-		
-		if (!new File("data/outputs").isFile()) {
-			new File("data/outputs").mkdirs();
-		}
-		// Write JSON file
-		try (FileWriter file = new FileWriter("data/outputs/" + fileName + ".json")) {
-			// We can write any JSONArray or JSONObject instance to the file
-			file.write(this.playerList.toJSONString());
-			file.flush();
-
-		} catch (IOException e) {
-			e.printStackTrace();
 		}
 	}
 
