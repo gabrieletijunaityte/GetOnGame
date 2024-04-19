@@ -14,9 +14,9 @@ public class testWriteJSON extends TestCase {
 	
 	// Testing player object to json 
 	public void testWritePlayers() {
-		ArrayList <Player> players = new ArrayList <Player> (Arrays.asList(new Player("Tom", true), 
-																		new Player("Mark", false), 
-																		new Player("Kelly", false)));
+		ArrayList <Player> players = new ArrayList <Player> (Arrays.asList(new Player("Tom"), 
+																		new Player("Mark"), 
+																		new Player("Kelly")));
 		
 		Stack stack = new Stack();
 		
@@ -32,9 +32,9 @@ public class testWriteJSON extends TestCase {
 	
 	// Testing card object to json 
 	public void testWriteStack() {
-		ArrayList <Player> players = new ArrayList <Player> (Arrays.asList(new Player("Tom", true), 
-																		new Player("Mark", false), 
-																		new Player("Kelly", false)));
+		ArrayList <Player> players = new ArrayList <Player> (Arrays.asList(new Player("Tom"), 
+																		new Player("Mark"), 
+																		new Player("Kelly")));
 		
 		Stack stack = new Stack();
 		

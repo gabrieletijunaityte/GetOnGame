@@ -32,14 +32,14 @@ public class Game {
 		if (names.size() != 1) {
 			
 			// Creates two players if only two names entered
-			Player firstPlayer = new Player(names.get(0), true);
+			Player firstPlayer = new Player(names.get(0));
 			players.add(firstPlayer);
-			Player secondPlayer = new Player(names.get(1), false);
+			Player secondPlayer = new Player(names.get(1));
 			players.add(secondPlayer);
 			
 			// Creates a third player object when three names entered
 			if (names.size() == 3){
-				Player thirdPlayer = new Player(names.get(2), false);
+				Player thirdPlayer = new Player(names.get(2));
 				players.add(thirdPlayer);	
 			}
 			
