@@ -14,15 +14,29 @@ public class testWriteJSON extends TestCase {
 	
 	// Testing player object to json 
 	public void testWritePlayers() {
+		// Create players
 		ArrayList <Player> players = new ArrayList <Player> (Arrays.asList(new Player("Tom"), 
 																		new Player("Mark"), 
 																		new Player("Kelly")));
+		
+		// Create and initialise stack
 		Stack stack = new Stack();
-		
 		stack.initializeStack();
+		stack.shuffle();
 		
+		// Give players 5 cards each
+		for (int j = 0; j < 5; j++) {
+			for (int i = 0; i < players.size(); i++) {
+				players.get(i).drawCard(stack.drawTopCard());
+			}
+		}
+		players.get(1).setOnBikeStatus(true);
+		
+		// Initialise writer;
 		WriteJSON writer = new WriteJSON();
-		writer.writePlayers("TestPlayers", players);	
+		
+		// Write the file
+		writer.writePlayers("TestPlayers", players);
 		
 		Boolean test = new File("data/outputs/TestPlayers.json").isFile();
 		

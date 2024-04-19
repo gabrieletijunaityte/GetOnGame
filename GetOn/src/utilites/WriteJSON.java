@@ -14,7 +14,6 @@ import org.json.simple.JSONObject;
 
 public class WriteJSON {
 	private JSONArray playerList = new JSONArray();
-	private JSONArray cards = new JSONArray();
 
 	/**
 	 * This method is a Constructor creating Writer JSON class object.
@@ -54,20 +53,27 @@ public class WriteJSON {
 
 
 	private void addPlayer(ArrayList<Player> players) {
-		for (Player playerObject : players) {
-			JSONObject statusDetails = new JSONObject();
-			JSONObject playerStatuses = new JSONObject();
-			
-			
-			// Put information of this card into Card Details
-			String[] statuses = playerObject.getStatuses();
-			statusDetails.put("GetOnStatus", statuses[0]);
-			statusDetails.put("BulliedStatus", statuses[1]);
-			statusDetails.put("HasWind", statuses[2]);
-			statusDetails.put("BullyType", statuses[3]);
-			playerStatuses.put("Statuses", statusDetails);
-			this.playerList.add(playerStatuses);
-		}
+	    for (Player playerObject : players) {
+	        // Create a new list of cards for each player
+	        ArrayList<JSONObject> playerCards = new ArrayList<>();
+
+	        JSONObject statusDetails = new JSONObject();
+	        JSONObject playerStatuses = new JSONObject();
+
+	        // Put information of this card into Card Details
+	        String[] statuses = playerObject.getStatuses();
+	        statusDetails.put("GetOnStatus", statuses[0]);
+	        statusDetails.put("BulliedStatus", statuses[1]);
+	        statusDetails.put("HasWind", statuses[2]);
+	        statusDetails.put("BullyType", statuses[3]);
+	        playerStatuses.put("Statuses", statusDetails);
+
+	        addCards(playerObject.getHand(), playerCards); // Pass the playerCards list
+
+	        playerStatuses.put("Hand", playerCards);
+
+	        this.playerList.add(playerStatuses);
+	    }
 	}
 
 	/**
@@ -76,22 +82,19 @@ public class WriteJSON {
 	 * @param cards Stack Class Object
 	 * @return Nothing.
 	 */
-	public void addCards(ArrayList<Card> cards) {
+	public void addCards(ArrayList<Card> cards, ArrayList<JSONObject> playerCards) {
+	    for (Card cardObject : cards) {
+	        // Create JSON Objects for Card and Card Details
+	        JSONObject card = new JSONObject();
+	        JSONObject cardDetails = new JSONObject();
 
-		for (Card cardObject: cards) {
-
-			// Create JSON Objects for Card and Card Detials
-			JSONObject card = new JSONObject();
-			JSONObject cardDetails = new JSONObject();
-			
-			// Put information of this card into Card Details
-			cardDetails.put("type", cardObject.getType());
-			cardDetails.put("value", cardObject.getValue());
-			card.put("card", cardDetails);
-			this.cards.add(card);
-		}
+	        // Put information of this card into Card Details
+	        cardDetails.put("type", cardObject.getType());
+	        cardDetails.put("value", cardObject.getValue());
+	        card.put("card", cardDetails);
+	        playerCards.add(card); // Add the card to the playerCards list
+	    }
 	}
-
 	/**
 	 * This method write JSON Array Stack to file.
 	 * 
@@ -100,14 +103,15 @@ public class WriteJSON {
 	 * @serialData JSON file.
 	 */
 	public void writeCards(String fileName, ArrayList<Card> cards) {
-		addCards(cards);
+		JSONArray cardsJSON = new JSONArray();
+		addCards(cards, cardsJSON);
 		if (!new File("data/outputs").isFile()) {
 			new File("data/outputs").mkdirs();
 		}
 		// Write JSON file
 		try (FileWriter file = new FileWriter("data/outputs/" + fileName + ".json")) {
 			// We can write any JSONArray or JSONObject instance to the file
-			file.write(this.cards.toJSONString());
+			file.write(cardsJSON.toJSONString());
 			file.flush();
 		} catch (IOException e) {
 			e.printStackTrace();
