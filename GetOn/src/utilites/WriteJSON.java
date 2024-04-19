@@ -1,4 +1,4 @@
-package game;
+package utilites;
 
 import logic.Player;
 import java.io.FileWriter;

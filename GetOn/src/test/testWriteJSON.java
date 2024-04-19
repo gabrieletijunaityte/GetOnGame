@@ -1,11 +1,11 @@
 package test;
 import logic.Player;
+import utilites.WriteJSON;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import game.WriteJSON;
 import junit.framework.TestCase;
 
 public class testWriteJSON extends TestCase {
