@@ -2,7 +2,6 @@ package utilites;
 
 import logic.Card;
 import logic.Player;
-import logic.Stack;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -15,7 +14,7 @@ import org.json.simple.JSONObject;
 
 public class WriteJSON {
 	private JSONArray playerList = new JSONArray();
-	private JSONArray stack = new JSONArray();
+	private JSONArray cards = new JSONArray();
 
 	/**
 	 * This method is a Constructor creating Writer JSON class object.
@@ -25,12 +24,10 @@ public class WriteJSON {
 	 */
 
 	@SuppressWarnings("unchecked")
-	public WriteJSON(ArrayList<Player> players, Stack stackObject) {
+	public WriteJSON(ArrayList<Player> players) {
 		for (Player player : players) {
 			this.playerList.add(player);
 		}
-		// Add Card Information.
-		addCards(stackObject);
 	}
 
 	/**
@@ -58,28 +55,22 @@ public class WriteJSON {
 	/**
 	 * This method adds cards and detials about them to the JSONArray of Stack
 	 * 
-	 * @param stackObject Stack Class Object
+	 * @param cards Stack Class Object
 	 * @return Nothing.
 	 */
-	public void addCards(Stack stackObject) {
+	public void addCards(ArrayList<Card> cards) {
 
-		// Create Card Object
-		Card cardObject;
-
-		for (int i = 0; i < stackObject.getStackSize(); i++) {
+		for (Card cardObject: cards) {
 
 			// Create JSON Objects for Card and Card Detials
 			JSONObject card = new JSONObject();
 			JSONObject cardDetails = new JSONObject();
-
-			// Get Card from Stack
-			cardObject = stackObject.get(i);
-
+			
 			// Put information of this card into Card Details
 			cardDetails.put("type", cardObject.getType());
 			cardDetails.put("value", cardObject.getValue());
 			card.put("card", cardDetails);
-			this.stack.add(card);
+			this.cards.add(card);
 		}
 	}
 
@@ -90,14 +81,15 @@ public class WriteJSON {
 	 * @return Nothing.
 	 * @serialData JSON file.
 	 */
-	public void writeStack(String fileName) {
+	public void writeCards(String fileName, ArrayList<Card> cards) {
+		addCards(cards);
 		if (!new File("data/outputs").isFile()) {
 			new File("data/outputs").mkdirs();
 		}
 		// Write JSON file
 		try (FileWriter file = new FileWriter("data/outputs/" + fileName + ".json")) {
 			// We can write any JSONArray or JSONObject instance to the file
-			file.write(this.stack.toJSONString());
+			file.write(this.cards.toJSONString());
 			file.flush();
 		} catch (IOException e) {
 			e.printStackTrace();

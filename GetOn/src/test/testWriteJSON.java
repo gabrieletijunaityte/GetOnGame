@@ -22,7 +22,7 @@ public class testWriteJSON extends TestCase {
 		
 		stack.initializeStack();
 		
-		WriteJSON writer = new WriteJSON(players, stack);
+		WriteJSON writer = new WriteJSON(players);
 		writer.writePlayers("TestPlayers");	
 		
 		Boolean test = new File("data/outputs/TestPlayers.json").isFile();
@@ -41,8 +41,8 @@ public class testWriteJSON extends TestCase {
 		stack.addDiscardedCard(new KilometerCard ("FIVE"));
 		stack.addDiscardedCard(new KilometerCard ("SIX"));
 		
-		WriteJSON writer = new WriteJSON(players, stack);
-		writer.writeStack("TestCards");	
+		WriteJSON writer = new WriteJSON(players);
+		writer.writeCards("TestCards", stack.getStack());	
 		
 		Boolean test = new File("data/outputs/TestCards.json").isFile();
 		
