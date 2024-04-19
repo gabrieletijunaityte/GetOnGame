@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
 import logic.KilometerCard;
@@ -11,12 +12,14 @@ import logic.Player;
 import logic.Rules;
 import logic.Stack;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JSplitPane;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
 
@@ -32,14 +35,16 @@ public class GameFrame extends JFrame {
 	private JLabel lblDiscardCounter;
 	private JLabel lblDiscardedCard;
 	
-	private PlayerHand currentPlayerHand = new PlayerHand(null, null);
+	private PlayerHand currentPlayerHand;
+	private int currentPlayerIndex;
 	
 	public GameFrame(Stack stack, Stack discardPile, ArrayList<Player> players, int selectedCardIndex, Rules rules, int currentPlayerIndex) {
-
+		
 		this.setVisible(true);
 		this.setAlwaysOnTop(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setBounds(100, 100, 1238, 625);
+		this.currentPlayerIndex = currentPlayerIndex;
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -74,7 +79,7 @@ public class GameFrame extends JFrame {
 		
 		JPanel panel_3 = new JPanel();
 		panel_3.setBounds(627, 280, 324, 145);
-		contentPane.add(panel_3);
+		
 		
 		JSplitPane splitPane_2 = new JSplitPane();
 		panel_3.add(splitPane_2);
@@ -86,6 +91,8 @@ public class GameFrame extends JFrame {
 			
 			JLabel lblP3Windstatus = new JLabel(players.get(2).getName() + " Wind Status");
 			splitPane_2.setRightComponent(lblP3Windstatus);
+			
+			contentPane.add(panel_3);
 		
 		} else {
 			
@@ -107,7 +114,6 @@ public class GameFrame extends JFrame {
         btnViewHand.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		
-        		currentPlayerHand.updateHand(986, players.get(currentPlayerIndex), rules);
         		currentPlayerHand.setVisible(true);
         		
         	}
@@ -155,7 +161,7 @@ public class GameFrame extends JFrame {
         Image resizedImg = orignalImg.getScaledInstance(width, height, Image.SCALE_SMOOTH);
         lblCardStackIcon.setIcon(new ImageIcon(resizedImg));
         
-        refreshGameFrame(stack, discardPile, players, players.get(currentPlayerIndex), rules, selectedCardIndex);
+        refreshGameFrame(stack, discardPile, players, players.get(currentPlayerIndex), rules, selectedCardIndex, currentPlayerIndex);
         
         repaint();
         
@@ -174,13 +180,20 @@ public class GameFrame extends JFrame {
     	return label;
     }
     
-    public void refreshScores(ArrayList <Player> players) {
+    public void refreshScores(ArrayList <Player> players, int currentPlayerIndex) {
     	contentPane.remove(player1);
         contentPane.remove(player2);
         contentPane.remove(player3);
-    	
+        
+        Border player1border;
     	player1 = new JPanel();
 		player1.setBounds(5, 430, 306, 152);
+		if(currentPlayerIndex == 0) {
+			player1border = BorderFactory.createLineBorder(Color.green, 5, true);
+		}else {
+			player1border = BorderFactory.createLineBorder(Color.red, 5, true);
+		}
+		player1.setBorder(player1border);
 		contentPane.add(player1);
 		
 		addCardWithCounter(player1 ,createCardLabel("| 5 Km cards: "), players.get(0).getPlayedCards().countCards(new KilometerCard("FIVE")));
@@ -188,8 +201,15 @@ public class GameFrame extends JFrame {
         addCardWithCounter(player1, createCardLabel("| 8 Km cards: "),  players.get(0).getPlayedCards().countCards(new KilometerCard("EIGHT")));
         addCardWithCounter(player1, createCardLabel("| 10 Km cards: "),  players.get(0).getPlayedCards().countCards(new KilometerCard("TEN")));
 		
+        Border player2border;
 		player2 = new JPanel();
 		player2.setBounds(316, 430, 306, 152);
+		if(currentPlayerIndex == 1) {
+			player2border = BorderFactory.createLineBorder(Color.green, 5, true);
+		}else {
+			player2border = BorderFactory.createLineBorder(Color.red, 5, true);
+		}
+		player2.setBorder(player2border);
 		contentPane.add(player2);
 		
 		addCardWithCounter(player2 ,createCardLabel("| 5 Km cards: "), players.get(1).getPlayedCards().countCards(new KilometerCard("FIVE")));
@@ -201,6 +221,13 @@ public class GameFrame extends JFrame {
 			
 			player3 = new JPanel();
 			player3.setBounds(627, 430, 324, 152);
+			Border player3border;
+			if(currentPlayerIndex == 2) {
+				player3border = BorderFactory.createLineBorder(Color.green, 5, true);
+			}else {
+				player3border = BorderFactory.createLineBorder(Color.red, 5, true);
+			}
+			player3.setBorder(player3border);
 			contentPane.add(player3);
 			
 	        addCardWithCounter(player3 ,createCardLabel("| 5 Km cards: "), players.get(2).getPlayedCards().countCards(new KilometerCard("FIVE")));
@@ -215,11 +242,11 @@ public class GameFrame extends JFrame {
     	
     }
 
-    public void refreshGameFrame(Stack stack, Stack discardPile, ArrayList <Player> players, Player currentPlayer, Rules rules, int selectedCardIndex) {
+    public void refreshGameFrame(Stack stack, Stack discardPile, ArrayList <Player> players, Player currentPlayer, Rules rules, int selectedCardIndex, int currentPlayerIndex) {
     
     	lblCardStackCounter.setText("" + stack.getStackSize());
     	lblDiscardCounter.setText("" + discardPile.getStackSize());
-    	refreshScores(players);
+    	refreshScores(players, currentPlayerIndex);
     	
     	if (discardPile.getStackSize() != 0) {
     		
@@ -235,9 +262,9 @@ public class GameFrame extends JFrame {
     	
     }
     
-    public void getPlayerHand(PlayerHand playerHand) {
+    public void updatePlayerHand(PlayerHand playerHand) {
     	
-    	this.currentPlayerHand = playerHand;
+    	currentPlayerHand = playerHand;
     	
     }
     

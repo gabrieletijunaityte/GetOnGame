@@ -12,7 +12,7 @@ public class ChangePlayerNameTest extends TestCase {
 	 * Assert if the name is not null or an empty string after the change
 	 */
 	public void testPlayerNameChange() {
-		Player player = new Player("Peter", true);
+		Player player = new Player("Peter");
 		
 		String newName = "Marcus";
 		player.changeName(newName);

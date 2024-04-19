@@ -61,9 +61,11 @@ public class PlayerHand extends JFrame {
 	
 
 	private int methodIndex;
+	private Player currentPlayer;
 	
 	public PlayerHand(Player player, Rules rules) {
 		this.setAlwaysOnTop(true);
+		this.currentPlayer = player;
 		
 	    setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 	    setBounds(100, 100, 986, 484);
@@ -167,7 +169,7 @@ public class PlayerHand extends JFrame {
 		contentPane.add(card5, gbc_card5);
 		
 		// Sets the window title and icon
-		this.setTitle("Player hand");
+		this.setTitle(currentPlayer.getName() + "'s hand");
 		ImageIcon img = new ImageIcon("data/hand_icon.png");
 		this.setIconImage(img.getImage());		
 		
@@ -181,7 +183,7 @@ public class PlayerHand extends JFrame {
 				int cardWidth = width/5;
 				
 				// fill the cards with icons
-				updateHand(cardWidth, player, rules);
+				updateHand(cardWidth, currentPlayer, rules);
 				
 			}
 
@@ -193,8 +195,11 @@ public class PlayerHand extends JFrame {
 	
 	// Method to display the cards in the GUI
 	public void updateHand(int width, Player currentPlayer, Rules rules) {
+		this.currentPlayer = currentPlayer;
 		
 		JLabel[] cards = {card1, card2, card3, card4, card5};
+		
+		setTitle(currentPlayer.getName() + "'s hand");
 		
 		// Calculate height based on scale
 		int height = (int) (width * 2.28);
@@ -220,6 +225,8 @@ public class PlayerHand extends JFrame {
 			cards[i].setBorder(border);
 		}
 		
+		repaint();
+		
 	}
 	
 	// method for getting boolean that indicates if a card is clicked
@@ -233,9 +240,9 @@ public class PlayerHand extends JFrame {
 	}
 	
 	// method to show pop-up message to play bully card to player
-		public int showSelectPlayerToBully() {
+		public int showSelectPlayerToBully(ArrayList<String> names) {
 			// create options to bully a player
-			Object[] options = {"Player 1", "Player 2", "Player 3"}; 
+			Object[] options = {names.get(0), names.get(1),names.get(2)}; 
 			
 			int choice = JOptionPane.showOptionDialog(this, "Choose which player to bully", "Bully player",
 	                JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
@@ -243,13 +250,13 @@ public class PlayerHand extends JFrame {
 			// Check for the option selected
 	        if (choice == 0) {
 	        	methodIndex = 0;
-	            JOptionPane.showMessageDialog(this, "Player 1 is bullied.");
+	            JOptionPane.showMessageDialog(this, names.get(0)+ " is bullied.");
 	        } else if (choice == 1) {
 	        	methodIndex = 1;
-	            JOptionPane.showMessageDialog(this, "Player 2 is bullied.");
+	            JOptionPane.showMessageDialog(this, names.get(1)+ " is bullied.");
 	        } else if (choice == 2) {
 	        	methodIndex = 2;
-	            JOptionPane.showMessageDialog(this, "Player 3 is bullied.");
+	            JOptionPane.showMessageDialog(this, names.get(2)+ " is bullied.");
 	        }
 	        int bullyIndex = methodIndex;
 	        selectBulliedPlayer = true;
@@ -304,6 +311,7 @@ public class PlayerHand extends JFrame {
 	public void resetBooleans() {
 		receivedSelectedCard = false;
 		isPlayedCard = false;
+		selectBulliedPlayer = false;
 	}
 	
 }
