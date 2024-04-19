@@ -58,9 +58,11 @@ public class PlayerHand extends JFrame {
 	private boolean isPlayedCard = false;
 	// initialize methodIndex to play the card
 	private int methodIndex;
+	private Player currentPlayer;
 	
 	public PlayerHand(Player player, Rules rules) {
 		this.setAlwaysOnTop(true);
+		this.currentPlayer = player;
 		
 	    setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 	    setBounds(100, 100, 986, 484);
@@ -159,7 +161,7 @@ public class PlayerHand extends JFrame {
 		contentPane.add(card5, gbc_card5);
 		
 		// Sets the window title and icon
-		this.setTitle("Player hand");
+		this.setTitle(currentPlayer.getName() + "'s hand");
 		ImageIcon img = new ImageIcon("data/hand_icon.png");
 		this.setIconImage(img.getImage());		
 		
@@ -173,7 +175,7 @@ public class PlayerHand extends JFrame {
 				int cardWidth = width/5;
 				
 				// fill the cards with icons
-				updateHand(cardWidth, player, rules);
+				updateHand(cardWidth, currentPlayer, rules);
 				
 			}
 
@@ -185,8 +187,11 @@ public class PlayerHand extends JFrame {
 	
 	// Method to display the cards in the GUI
 	public void updateHand(int width, Player currentPlayer, Rules rules) {
+		this.currentPlayer = currentPlayer;
 		
 		JLabel[] cards = {card1, card2, card3, card4, card5};
+		
+		setTitle(currentPlayer.getName() + "'s hand");
 		
 		// Calculate height based on scale
 		int height = (int) (width * 2.28);
@@ -211,6 +216,8 @@ public class PlayerHand extends JFrame {
 			}
 			cards[i].setBorder(border);
 		}
+		
+		repaint();
 		
 	}
 	

@@ -79,8 +79,9 @@ public class Game {
 		Player playerToBully;
 
 		// Launch GameFrame
-		PlayerHand currentPlayerHand = new PlayerHand(players.get(playerIndex), rules);
+		PlayerHand currentPlayerHand = new PlayerHand(currentPlayer, rules);
 		GameFrame gameFrame = new GameFrame(stack, discardPile, players, selectedCardIndex, rules, playerIndex);
+		gameFrame.updatePlayerHand(currentPlayerHand);
 		
 		// Initialize input listener
 		Scanner input = new Scanner(System.in);
@@ -90,22 +91,16 @@ public class Game {
 
 		// Game loop
 		while (gameContinue) {
+			
 			currentPlayer = players.get(playerIndex);
 			
-			gameFrame.getPlayerHand(currentPlayerHand);
-			currentPlayerHand.updateHand(986, currentPlayer, rules);			
+			currentPlayerHand.updateHand(986, currentPlayer, rules);
+			
+			gameFrame.updatePlayerHand(currentPlayerHand);		
 		
 			// Get the Gui popup
 			gameFrame.refreshGameFrame(stack, discardPile, players, currentPlayer, rules, selectedCardIndex);
-			System.out.println("Current player is: " + currentPlayer.getName());
-			System.out.println("OnBikeStatus is: " + currentPlayer.getOnBikeStatus());
-			System.out.println("HasWind status is: " + currentPlayer.getHasWind());
-			System.out.println("BulliedStatus is: " + currentPlayer.getBulliedType());
-			System.out.println("The traveled distance is: " + currentPlayer.getKmProgress());
-
-			// See players hand:
-			System.out.println("The player's hand contains: " + currentPlayer.viewHand());
-
+			
 			// Waits for GUI to return the index of the selected Card
 			while (!currentPlayerHand.getReceivedSelectedCard()) {
 				Thread.sleep(50);
@@ -126,13 +121,15 @@ public class Game {
 			if (currentPlayerHand.getMethodIndex() == 0 && rules.isPlayble(selectedCard, currentPlayer)) {
 				// Check card type and play it accordingly
 				if (selectedCard.getType().equals("BULLY")) {
+					
 					// Create a dummy player to bully
 					System.out.print("\n\nEnter which player (1-3) to bully: ");
 					int bullyIndex = input.nextInt() - 1;
 					playerToBully = players.get(bullyIndex);
 					playerToBully.setConsequences(selectedCard.getConsequences());
-				}
-				else {
+					
+				} else {
+					
 					currentPlayer.setConsequences(selectedCard.getConsequences());
 					
 					// If card is km card, add it to table
@@ -146,15 +143,20 @@ public class Game {
 					drawnCard = stack.drawTopCard();
 					currentPlayer.drawCard(drawnCard);
 				}
+				
 			} else {
 
 				if (currentPlayerHand.getMethodIndex() == 0 && !rules.isPlayble(selectedCard, currentPlayer)) {
+					
 					System.out.println("Selected card cannot be played, card is discarded");
+					
 				}
+				
 				currentPlayer.discardCard(selectedCard);
 				discardPile.addDiscardedCard(selectedCard);
 				drawnCard = stack.drawTopCard();
 				currentPlayer.drawCard(drawnCard);
+				
 			}
 
 			System.out.println("Current player is: " + currentPlayer.getName());
@@ -170,12 +172,14 @@ public class Game {
 
 			// Passing turn to next player or first player
 			if (playerIndex == players.size() - 1) {
+				
 				playerIndex = 0;
 
 			} else {
+				
 				playerIndex++;
+				
 			}
-//			gameContinue = false;
 
 			// Check if card stack is empty and if so reshuffle discardPile
 			if (stack.getStackSize() == 0) {
@@ -190,6 +194,7 @@ public class Game {
 
 			// reset currentPlayers booleans to false
 			currentPlayerHand.resetBooleans();
+			
 		}
 	}
 

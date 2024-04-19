@@ -32,10 +32,10 @@ public class GameFrame extends JFrame {
 	private JLabel lblDiscardCounter;
 	private JLabel lblDiscardedCard;
 	
-	private PlayerHand currentPlayerHand = new PlayerHand(null, null);
+	private PlayerHand currentPlayerHand;
 	
 	public GameFrame(Stack stack, Stack discardPile, ArrayList<Player> players, int selectedCardIndex, Rules rules, int currentPlayerIndex) {
-
+		
 		this.setVisible(true);
 		this.setAlwaysOnTop(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -74,7 +74,7 @@ public class GameFrame extends JFrame {
 		
 		JPanel panel_3 = new JPanel();
 		panel_3.setBounds(627, 280, 324, 145);
-		contentPane.add(panel_3);
+		
 		
 		JSplitPane splitPane_2 = new JSplitPane();
 		panel_3.add(splitPane_2);
@@ -86,6 +86,8 @@ public class GameFrame extends JFrame {
 			
 			JLabel lblP3Windstatus = new JLabel(players.get(2).getName() + " Wind Status");
 			splitPane_2.setRightComponent(lblP3Windstatus);
+			
+			contentPane.add(panel_3);
 		
 		} else {
 			
@@ -107,7 +109,6 @@ public class GameFrame extends JFrame {
         btnViewHand.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		
-        		currentPlayerHand.updateHand(986, players.get(currentPlayerIndex), rules);
         		currentPlayerHand.setVisible(true);
         		
         	}
@@ -235,9 +236,9 @@ public class GameFrame extends JFrame {
     	
     }
     
-    public void getPlayerHand(PlayerHand playerHand) {
+    public void updatePlayerHand(PlayerHand playerHand) {
     	
-    	this.currentPlayerHand = playerHand;
+    	currentPlayerHand = playerHand;
     	
     }
     
