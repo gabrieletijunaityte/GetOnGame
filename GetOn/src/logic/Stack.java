@@ -33,8 +33,8 @@ public class Stack {
     	StatusCard tailWindCard = new StatusCard("TAIL_WIND");
     	
     	KilometerCard fiveKilometerCard = new KilometerCard("FIVE");
-    	KilometerCard sixKiloMeterCard = new KilometerCard("SIX");
-    	KilometerCard eightKiloMeterCard = new KilometerCard("EIGHT");
+    	KilometerCard sixKilometerCard = new KilometerCard("SIX");
+    	KilometerCard eightKilometerCard = new KilometerCard("EIGHT");
     	KilometerCard tenKilometerCard = new KilometerCard("TEN"); 
     	
     	BullyCard flatTireCard = new BullyCard("FLAT_TIRE");
@@ -50,7 +50,7 @@ public class Stack {
     	 */
     	List<Card> testListStack=Arrays.asList( /*Player 1's starting hand*/ getOnCard, bikeRepairCard, barrierOpenCard, getOnCard, getOnCard, 
     											/*Player 2's starting hand */ flatTireCard, crisCrossCard, getOnCard, tavernCard, tailWindCard,
-    											/*The rest of the stack */ sixKiloMeterCard, eightKiloMeterCard, crossWindCard, tenKilometerCard, 
+    											/*The rest of the stack */ sixKilometerCard, eightKilometerCard, crossWindCard, tenKilometerCard, 
     											fiveKilometerCard);
     	
     	for (Card i : testListStack) {
