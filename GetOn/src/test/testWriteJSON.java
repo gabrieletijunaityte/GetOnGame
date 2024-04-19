@@ -17,13 +17,12 @@ public class testWriteJSON extends TestCase {
 		ArrayList <Player> players = new ArrayList <Player> (Arrays.asList(new Player("Tom"), 
 																		new Player("Mark"), 
 																		new Player("Kelly")));
-		
 		Stack stack = new Stack();
 		
 		stack.initializeStack();
 		
-		WriteJSON writer = new WriteJSON(players);
-		writer.writePlayers("TestPlayers");	
+		WriteJSON writer = new WriteJSON();
+		writer.writePlayers("TestPlayers", players);	
 		
 		Boolean test = new File("data/outputs/TestPlayers.json").isFile();
 		
@@ -41,12 +40,11 @@ public class testWriteJSON extends TestCase {
 		stack.addDiscardedCard(new KilometerCard ("FIVE"));
 		stack.addDiscardedCard(new KilometerCard ("SIX"));
 		
-		WriteJSON writer = new WriteJSON(players);
+		WriteJSON writer = new WriteJSON();
 		writer.writeCards("TestCards", stack.getStack());	
 		
 		Boolean test = new File("data/outputs/TestCards.json").isFile();
 		
 		assertTrue(test);
 	}
-
 }
