@@ -3,11 +3,7 @@ package test;
 import logic.Card;
 import logic.KilometerCard;
 import logic.Stack;
-
-import static org.junit.Assert.assertNotEquals;
-
-import java.util.ArrayList;
-import java.util.Arrays;
+import logic.StatusCard;
 
 import junit.framework.TestCase;
 
@@ -78,6 +74,23 @@ public class StackTest extends TestCase {
 		
 		//check if length is zero
 		assertEquals(0,stack.getStackSize());
+	}
+	
+	// Test stack for testing
+	public void testInitTestStack() {
+		
+		// Initialze teststack
+		Stack testStack = new Stack();
+		testStack.initializeTestStack();
+		
+		//Check the length
+		assertEquals(15,testStack.getStackSize());
+		
+		//Draw the top card and check if it is a Get On card
+		Card card = testStack.drawTopCard();
+		Card topCard = new StatusCard("GET_ON");
+		assertEquals(card.getCardName(), topCard.getCardName());
+		
 	}
 
 }
