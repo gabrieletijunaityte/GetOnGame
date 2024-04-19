@@ -22,6 +22,8 @@ import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class GameFrame extends JFrame {
 
@@ -110,7 +112,7 @@ public class GameFrame extends JFrame {
 		
         
         JButton btnViewHand = new JButton("View Hand");
-        btnViewHand.setBounds(1129, 554, 85, 23);
+        btnViewHand.setBounds(1091, 554, 123, 23);
         btnViewHand.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		
@@ -217,6 +219,15 @@ public class GameFrame extends JFrame {
 		addCardWithCounter(player2, createCardLabel("| 8 Km cards: "), players.get(1).getPlayedCards().countCards(new KilometerCard("EIGHT")));
 		addCardWithCounter(player2, createCardLabel("| 10 Km cards: "), players.get(1).getPlayedCards().countCards(new KilometerCard("TEN")));
 		
+		JButton btnSaveQuit = new JButton("Save & Quit");
+		btnSaveQuit.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+		});
+		btnSaveQuit.setBounds(1091, 21, 123, 23);
+		contentPane.add(btnSaveQuit);
+		
 		if (players.size() == 3) {
 			
 			player3 = new JPanel();
@@ -267,5 +278,4 @@ public class GameFrame extends JFrame {
     	currentPlayerHand = playerHand;
     	
     }
-    
 }

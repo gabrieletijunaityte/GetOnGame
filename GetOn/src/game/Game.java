@@ -50,12 +50,17 @@ public class Game {
 		Stack stack = new Stack();
 		Stack discardPile = new Stack();
 
-		// Create the initial stack filled with all cards that are used in the game
-		stack.initializeStack();
 		
-		// Shuffle the stack
-		stack.shuffle();
-
+		// Create a random stack or test stack depending on which option is chosen
+		if (!menu.getIsTestGame()) {
+			// Create the initial stack filled with all cards that are used in the game
+			stack.initializeStack();
+			// Shuffle the stack
+			stack.shuffle();
+		} else {
+			stack.initializeTestStack();
+		}
+		
 		// Deal initial cards
 		for (int j = 0; j < 5; j++) {
 			for (int i = 0; i < players.size(); i++) {
@@ -121,10 +126,15 @@ public class Game {
 			if (currentPlayerHand.getMethodIndex() == 0 && rules.isPlayble(selectedCard, currentPlayer)) {
 				// Check card type and play it accordingly
 				if (selectedCard.getType().equals("BULLY")) {
-					
-					// Create a dummy player to bully
-					System.out.print("\n\nEnter which player (1-3) to bully: ");
-					int bullyIndex = input.nextInt() - 1;
+
+					// launch optionPane to select player you want to bully
+					int bullyIndex = currentPlayerHand.showSelectPlayerToBully(names);	
+					// wait for selection input
+					while (!currentPlayerHand.getReceivedPlayerToBully()) {
+						Thread.sleep(50);
+					}
+					// bully player/update its statuses 
+
 					playerToBully = players.get(bullyIndex);
 					playerToBully.setConsequences(selectedCard.getConsequences());
 					

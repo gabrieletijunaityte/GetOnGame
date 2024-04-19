@@ -83,9 +83,9 @@ public class StackTest extends TestCase {
 		// Initialze teststack
 		Stack testStack = new Stack();
 		testStack.initializeTestStack();
-
-		// Check the length
-		assertEquals(15, testStack.getStackSize());
+		
+		//Check the length
+		assertEquals(19,testStack.getStackSize());
 
 		// Draw the top card and check if it is a Get On card
 		Card card = testStack.drawTopCard();
