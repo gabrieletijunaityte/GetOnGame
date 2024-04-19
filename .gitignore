@@ -1,8 +1,7 @@
 .metadata/
 bin/
 doc/
-<<<<<<< HEAD
 .settings/
-=======
 multiInst
->>>>>>> Card_Class_rework
+GetOn/data/outputs/*
+
