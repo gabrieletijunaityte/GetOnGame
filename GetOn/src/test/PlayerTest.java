@@ -17,7 +17,7 @@ public class PlayerTest extends TestCase {
 	// Test Player creation
 	public void testPlayerCreation() {
 		// Create a player
-		Player testPlayer = new Player("Jan", true);
+		Player testPlayer = new Player("Jan");
 
 		// assert that the object was created
 		assertNotNull(testPlayer);
@@ -26,7 +26,7 @@ public class PlayerTest extends TestCase {
 	// Test hand creation
 	public void testGetHand() {
 		// Creating variables for the test
-		Player myPlayer = new Player("Jan", true);
+		Player myPlayer = new Player("Jan");
 		Stack stack = new Stack();
 
 		// Create stack of cards to test the set up
@@ -44,7 +44,7 @@ public class PlayerTest extends TestCase {
 	// Test viewing the hand
 	public void testViewHand() {
 		// Creating variables for the test
-		Player myPlayer = new Player("Jan", true);
+		Player myPlayer = new Player("Jan");
 		Stack stack = new Stack();
 
 		// Create stack of cards to test the set up
@@ -59,7 +59,7 @@ public class PlayerTest extends TestCase {
 	// Test to get statuses methods
 	public void getPlayerStatuses() {
 		// Creating variables for the test
-		Player testPlayer = new Player("Jan", true);
+		Player testPlayer = new Player("Jan");
 		Boolean target = false;
 		// assert the methods
 		assertEquals(target, testPlayer.getBulliedStatus());
@@ -72,7 +72,7 @@ public class PlayerTest extends TestCase {
 	public void testPlayerProgress() {
 		// Creating variables for the test
 		Hand myHand = new Hand();
-		Player myPlayer = new Player("Jan", true);
+		Player myPlayer = new Player("Jan");
 
 		// Add Kilometer cards to played cards. Added two SIX to see that duplicates
 		// also work
@@ -91,7 +91,7 @@ public class PlayerTest extends TestCase {
 
 	// Test the setBulliedType and getBulliedType
 	public void testSetBulliedType() {
-		Player myPlayer = new Player("Jan", true);
+		Player myPlayer = new Player("Jan");
 		myPlayer.setBulliedType("TAVERN");
 		String bulliedTest = "TAVERN";
 
@@ -102,7 +102,7 @@ public class PlayerTest extends TestCase {
 	// Test getStatuses method
 	public void testGetStatuses() {
 		// Create a player
-		Player testPlayer = new Player("Jan", true);
+		Player testPlayer = new Player("Jan");
 
 		// Change their statuses
 		testPlayer.setHasWind(true);
@@ -124,7 +124,7 @@ public class PlayerTest extends TestCase {
 
 		String[] consequences = testCard.getConsequences();
 
-		Player testPlayer = new Player("Jan", true);
+		Player testPlayer = new Player("Jan");
 
 		testPlayer.setConsequences(consequences);
 
@@ -144,7 +144,7 @@ public class PlayerTest extends TestCase {
 
 		String[] consequences = testCard.getConsequences();
 
-		Player testPlayer = new Player("Jan", true);
+		Player testPlayer = new Player("Jan");
 
 		testPlayer.setOnBikeStatus(true);
 		testPlayer.setConsequences(consequences);
@@ -161,7 +161,7 @@ public class PlayerTest extends TestCase {
 	// Test drawCard method
 	public void testDrawCard() {
 		// Creating variables for the test
-		Player myPlayer = new Player("Jan", true);
+		Player myPlayer = new Player("Jan");
 		Stack stack = new Stack();
 
 		// Create stack of cards to test the set up
@@ -180,7 +180,7 @@ public class PlayerTest extends TestCase {
 	// Test getCard method
 	public void testGetCard() {
 		// Creating variables for the test
-		Player myPlayer = new Player("Jan", true);
+		Player myPlayer = new Player("Jan");
 		Stack stack = new Stack();
 
 		// Create stack of cards to test the set up
@@ -198,7 +198,7 @@ public class PlayerTest extends TestCase {
 	// Test card removal from hand
 	public void testDiscardCard() {
 		// Creating variables for the test
-		Player myPlayer = new Player("Jan", true);
+		Player myPlayer = new Player("Jan");
 		Stack stack = new Stack();
 
 		// Create stack of cards to test the set up
@@ -221,7 +221,7 @@ public class PlayerTest extends TestCase {
 	
 	// Test add card to player table method
 	public void testAddToTable() {
-		Player myPlayer = new Player("Jan", true);
+		Player myPlayer = new Player("Jan");
 		Stack stack = new Stack();
 		stack.initializeStack();
 		Card card = stack.drawTopCard();

@@ -33,7 +33,7 @@ public class SpectatorTest extends TestCase {
 	public void testGetProgress() {
 	    Spectator testspectator = new Spectator();
 	    // Null, because it is not supposed to be the spectator's turn
-	    Player playerProgress = new Player("John Marston", null);
+	    Player playerProgress = new Player("John Marston");
 	    // Set player and "true" which means you are on a bike
 	    playerProgress.setOnBikeStatus(true);
 	    KilometerCard fiveKilometerCard = new KilometerCard("FIVE");

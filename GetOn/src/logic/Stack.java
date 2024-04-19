@@ -161,6 +161,10 @@ public class Stack {
 	public void clear() {
 		this.stack.clear();
 	}
+
+	public ArrayList<Card> getStack() {
+		return this.stack;
+	}
 	
  	
     
