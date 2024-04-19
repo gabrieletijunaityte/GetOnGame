@@ -47,11 +47,12 @@ public class Stack {
     	
     	/*Set cards in the deck in specific order required for play testing all the cards 
     	 * an reshuffling the discard pile when the last card is drawn
+    	 * Only the first four cards in the hand of the three players matter for the acceptance tests
     	 */
-    	List<Card> testListStack=Arrays.asList( /*Player 1's starting hand*/ getOnCard, bikeRepairCard, barrierOpenCard, getOnCard, getOnCard, 
-    											/*Player 2's starting hand */ flatTireCard, crisCrossCard, getOnCard, tavernCard, tailWindCard,
-    											/*The rest of the stack */ sixKilometerCard, eightKilometerCard, crossWindCard, tenKilometerCard, 
-    											fiveKilometerCard);
+    	List<Card> testListStack=Arrays.asList(getOnCard, flatTireCard, bikeRepairCard, fiveKilometerCard, getOnCard, 
+    										flatTireCard, crisCrossCard, getOnCard, tavernCard, tailWindCard,
+    										sixKilometerCard, eightKilometerCard, crossWindCard, tenKilometerCard, 
+    										fiveKilometerCard,fiveKilometerCard, fiveKilometerCard, fiveKilometerCard, eightKilometerCard);
     	
     	for (Card i : testListStack) {
     		stack.add(i);

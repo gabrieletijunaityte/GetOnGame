@@ -21,6 +21,7 @@ public class MainMenu extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private boolean receivedNames = false;
+	private boolean isTestGame = false;
 	private JTextField player1Name;
 	private JTextField player2Name;
 	private JTextField player3Name;
@@ -142,6 +143,55 @@ public class MainMenu extends JFrame {
 		btnStartGame.setBounds(305, 263, 128, 38);
 		contentPane.add(btnStartGame);
 		
+		
+		// Button to start the testgame, instead of a normal game
+		JButton btnTestGame = new JButton("Start Test Game");
+		btnTestGame.setBounds(443, 263, 119, 38);
+		contentPane.add(btnTestGame);
+		btnTestGame.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// Starts the game when clicking the button
+				handleStartGame();
+				isTestGame = true;
+			}
+			private void handleStartGame() {
+				// Saves the entered names
+				if (!player1Name.getText().isBlank() && !player2Name.getText().isBlank()){
+
+					names.add(player1Name.getText());
+					names.add(player2Name.getText());
+					
+					if (!player3Name.getText().isBlank()) {
+						
+						names.add(player3Name.getText());
+						
+					} 
+					
+				} else {
+					
+					// Warns user that you need at least two players
+					playerLabel.setText("Enter at least two player names to start!");
+					playerLabel.setForeground(Color.RED);
+					
+				}			
+				
+				// Flags the game loop that names have been entered
+				if (names.size() != 0) {
+					receivedNames = true;
+					
+					// Notifies the Game Master that the game has been started and locks the changing of some settings.
+					playerLabel.setText("The game has been started.");
+					playerLabel.setForeground(Color.BLACK);
+					btnStartGame.setVisible(false);	
+					player1Name.setEditable(false);
+					player2Name.setEditable(false);
+					player3Name.setEditable(false);
+										
+				}
+				
+			}
+	});
+		
 		this.setTitle("Get On - The Classic Cycling game");
 		
 		repaint();
@@ -152,5 +202,8 @@ public class MainMenu extends JFrame {
 		return receivedNames;
 	}
 	
+	public boolean getIsTestGame() {
+		return isTestGame;
+	}
 }
 	

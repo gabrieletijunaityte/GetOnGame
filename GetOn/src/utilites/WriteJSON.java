@@ -18,17 +18,15 @@ public class WriteJSON {
 
 	/**
 	 * This method is a Constructor creating Writer JSON class object.
-	 * 
 	 * @param Players ArrayList of Players
+	 * 
 	 * @parm StackObject Stack Class Object
 	 */
 
 	@SuppressWarnings("unchecked")
-	public WriteJSON(ArrayList<Player> players) {
-		for (Player player : players) {
-			this.playerList.add(player);
-		}
+	public WriteJSON() {
 	}
+	
 
 	/**
 	 * This method write JSON Array Players to file.
@@ -37,7 +35,9 @@ public class WriteJSON {
 	 * @return Nothing.
 	 * @serialData JSON file.
 	 */
-	public void writePlayers(String fileName) {
+	public void writePlayers(String fileName, ArrayList<Player> players) {
+		addPlayer(players);
+		
 		if (!new File("data/outputs").isFile()) {
 			new File("data/outputs").mkdirs();
 		}
@@ -49,6 +49,24 @@ public class WriteJSON {
 
 		} catch (IOException e) {
 			e.printStackTrace();
+		}
+	}
+
+
+	private void addPlayer(ArrayList<Player> players) {
+		for (Player playerObject : players) {
+			JSONObject statusDetails = new JSONObject();
+			JSONObject playerStatuses = new JSONObject();
+			
+			
+			// Put information of this card into Card Details
+			String[] statuses = playerObject.getStatuses();
+			statusDetails.put("GetOnStatus", statuses[0]);
+			statusDetails.put("BulliedStatus", statuses[1]);
+			statusDetails.put("HasWind", statuses[2]);
+			statusDetails.put("BullyType", statuses[3]);
+			playerStatuses.put("Statuses", statusDetails);
+			this.playerList.add(playerStatuses);
 		}
 	}
 
