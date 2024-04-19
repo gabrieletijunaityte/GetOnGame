@@ -2,6 +2,8 @@ package logic;
 
 import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 
 /* Stack class
@@ -22,6 +24,40 @@ public class Stack {
     public Stack() {
         this.stack = new ArrayList<>();
     }
+    
+    // intitialize deck with limited cards for testing purposes
+    public void initializeTestStack() {
+
+    	//Create objects of each different card needed vor testing:
+    	StatusCard getOnCard = new StatusCard("GET_ON");
+    	StatusCard tailWindCard = new StatusCard("TAIL_WIND");
+    	
+    	KilometerCard fiveKilometerCard = new KilometerCard("FIVE");
+    	KilometerCard sixKiloMeterCard = new KilometerCard("SIX");
+    	KilometerCard eightKiloMeterCard = new KilometerCard("EIGHT");
+    	KilometerCard tenKilometerCard = new KilometerCard("TEN"); 
+    	
+    	BullyCard flatTireCard = new BullyCard("FLAT_TIRE");
+    	BullyCard crisCrossCard = new BullyCard("CRISS_CROSS");
+    	BullyCard tavernCard = new BullyCard("TAVERN");
+    	BullyCard crossWindCard = new BullyCard("CROSSWIND");
+    	
+    	RepairCard bikeRepairCard = new RepairCard("BIKE_REPAIR");
+    	RepairCard barrierOpenCard = new RepairCard("BARRIER_OPEN");
+    	
+    	/*Set cards in the deck in specific order required for play testing all the cards 
+    	 * an reshuffling the discard pile when the last card is drawn
+    	 */
+    	List<Card> testListStack=Arrays.asList( /*Player 1's starting hand*/ getOnCard, bikeRepairCard, barrierOpenCard, getOnCard, getOnCard, 
+    											/*Player 2's starting hand */ flatTireCard, crisCrossCard, getOnCard, tavernCard, tailWindCard,
+    											/*The rest of the stack */ sixKiloMeterCard, eightKiloMeterCard, crossWindCard, tenKilometerCard, 
+    											fiveKilometerCard);
+    	
+    	for (Card i : testListStack) {
+    		stack.add(i);
+    	}
+    }
+    
     
     public void initializeStack() {
     	// initialize KilometerCard to get its methods
