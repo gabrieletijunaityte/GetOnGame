@@ -19,7 +19,7 @@ public class testWriteJSON extends TestCase {
 		WriteJSON writer = new WriteJSON(players);
 		writer.writePlayers();	
 		
-		Boolean test = new File("data/outputs/players.json").isFile();
+		Boolean test = new File("data/players.json").isFile();
 		
 		assertTrue(test);
 	}

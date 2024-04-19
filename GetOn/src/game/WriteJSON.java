@@ -21,7 +21,7 @@ public class WriteJSON {
 	
 	public void writePlayers() {
         //Write JSON file
-        try (FileWriter file = new FileWriter("data/outputs/players.json")) {
+        try (FileWriter file = new FileWriter("data/players.json")) {
             //We can write any JSONArray or JSONObject instance to the file
             file.write(this.playerList.toJSONString()); 
             file.flush();

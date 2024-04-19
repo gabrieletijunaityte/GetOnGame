@@ -96,7 +96,7 @@ public class Game {
 			currentPlayerHand.updateHand(986, currentPlayer, rules);			
 		
 			// Get the Gui popup
-			gameFrame.refreshGameFrame(stack, discardPile, players, currentPlayer, rules, selectedCardIndex);
+			gameFrame.refreshGameFrame(stack, discardPile, players, currentPlayer, rules, selectedCardIndex, playerIndex);
 			System.out.println("Current player is: " + currentPlayer.getName());
 			System.out.println("OnBikeStatus is: " + currentPlayer.getOnBikeStatus());
 			System.out.println("HasWind status is: " + currentPlayer.getHasWind());
