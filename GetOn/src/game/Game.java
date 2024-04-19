@@ -126,9 +126,13 @@ public class Game {
 			if (currentPlayerHand.getMethodIndex() == 0 && rules.isPlayble(selectedCard, currentPlayer)) {
 				// Check card type and play it accordingly
 				if (selectedCard.getType().equals("BULLY")) {
-					// Create a dummy player to bully
-					System.out.print("\n\nEnter which player (1-3) to bully: ");
-					int bullyIndex = input.nextInt() - 1;
+					// launch optionPane to select player you want to bully
+					int bullyIndex = currentPlayerHand.showSelectPlayerToBully();	
+					// wait for selection input
+					while (!currentPlayerHand.getReceivedPlayerToBully()) {
+						Thread.sleep(50);
+					}
+					// bully player/update its statuses 
 					playerToBully = players.get(bullyIndex);
 					playerToBully.setConsequences(selectedCard.getConsequences());
 				}

@@ -50,13 +50,16 @@ public class PlayerHand extends JFrame {
 	private JLabel card3;
 	private JLabel card4;
 	private JLabel card5;
-	// initialise receivedSelectedCard boolean which indicates if a card is chosen from the hand
+	// initialize receivedSelectedCard boolean which indicates if a card is chosen from the hand
 	public boolean receivedSelectedCard = false;
-	// initialise selectedCardIndex as an AtomicInteger
+	// initialize selectedCardIndex as an AtomicInteger
 	private int selectedCardIndex = 0;
 	// initialize playedCard
 	private boolean isPlayedCard = false;
-	// initialize methodIndex to play the card
+	// initialize selectedBulliedPlayer
+	private boolean selectBulliedPlayer = false;
+	
+
 	private int methodIndex;
 	
 	public PlayerHand(Player player, Rules rules) {
@@ -82,7 +85,7 @@ public class PlayerHand extends JFrame {
 				selectedCardIndex = 0;
 				receivedSelectedCard = true;
 				showPopupDialog();
-			}
+							}
 		});
         card1.setBackground(SystemColor.text);
         GridBagConstraints gbc_card1 = new GridBagConstraints();
@@ -99,7 +102,8 @@ public class PlayerHand extends JFrame {
 				selectedCardIndex = 1;
 				receivedSelectedCard = true;
 				showPopupDialog();
-			}
+				
+				}
 		});
 		card2.setBackground(SystemColor.text);
 		GridBagConstraints gbc_card2 = new GridBagConstraints();
@@ -116,6 +120,7 @@ public class PlayerHand extends JFrame {
 				selectedCardIndex = 2;
 				receivedSelectedCard = true;
 				showPopupDialog();
+				
 			}
 		});
 		card3.setBackground(SystemColor.text);
@@ -133,6 +138,7 @@ public class PlayerHand extends JFrame {
 				selectedCardIndex = 3;
 				receivedSelectedCard = true;
 				showPopupDialog();
+				
 			}
 		});
 		card4.setBackground(SystemColor.text);
@@ -142,6 +148,7 @@ public class PlayerHand extends JFrame {
 		gbc_card4.gridy = 0;
 		contentPane.add(card4, gbc_card4);
 		
+		
 		card5 = new JLabel("");
 		// change the selectedCardIndex to which card is clicked.
 		card5.addMouseListener(new MouseAdapter() {
@@ -150,6 +157,7 @@ public class PlayerHand extends JFrame {
 				selectedCardIndex = 4;
 				receivedSelectedCard = true;
 				showPopupDialog();
+				
 			}
 		});
 		card5.setBackground(SystemColor.text);
@@ -224,6 +232,37 @@ public class PlayerHand extends JFrame {
 		return selectedCardIndex;
 	}
 	
+	// method to show pop-up message to play bully card to player
+		public int showSelectPlayerToBully() {
+			// create options to bully a player
+			Object[] options = {"Player 1", "Player 2", "Player 3"}; 
+			
+			int choice = JOptionPane.showOptionDialog(this, "Choose which player to bully", "Bully player",
+	                JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+			
+			// Check for the option selected
+	        if (choice == 0) {
+	        	methodIndex = 0;
+	            JOptionPane.showMessageDialog(this, "Player 1 is bullied.");
+	        } else if (choice == 1) {
+	        	methodIndex = 1;
+	            JOptionPane.showMessageDialog(this, "Player 2 is bullied.");
+	        } else if (choice == 2) {
+	        	methodIndex = 2;
+	            JOptionPane.showMessageDialog(this, "Player 3 is bullied.");
+	        }
+	        int bullyIndex = methodIndex;
+	        selectBulliedPlayer = true;
+	        
+	   return bullyIndex;
+	}
+	
+   //method to return selectBulliedPlayer boolean
+	public boolean getReceivedPlayerToBully() {
+		return selectBulliedPlayer;	
+	}
+	
+		
 	// method for showing a pop-up message, to play or discard the selected card
     public void showPopupDialog() {
     	
@@ -249,6 +288,7 @@ public class PlayerHand extends JFrame {
         
     }
     
+        
     //method to return isPlayedCard boolean
     public boolean getIsPlayedCard() {
     	return isPlayedCard;
