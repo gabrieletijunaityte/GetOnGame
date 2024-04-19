@@ -4,6 +4,7 @@ import logic.Card;
 import logic.Player;
 import logic.Stack;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -40,6 +41,9 @@ public class WriteJSON {
 	 * @serialData JSON file.
 	 */
 	public void writePlayers(String fileName) {
+		if (!new File("data/outputs").isFile()) {
+			new File("data/outputs").mkdirs();
+		}
 		// Write JSON file
 		try (FileWriter file = new FileWriter("data/outputs/" + fileName + ".json")) {
 			// We can write any JSONArray or JSONObject instance to the file
@@ -87,6 +91,9 @@ public class WriteJSON {
 	 * @serialData JSON file.
 	 */
 	public void writeStack(String fileName) {
+		if (!new File("data/outputs").isFile()) {
+			new File("data/outputs").mkdirs();
+		}
 		// Write JSON file
 		try (FileWriter file = new FileWriter("data/outputs/" + fileName + ".json")) {
 			// We can write any JSONArray or JSONObject instance to the file
