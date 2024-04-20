@@ -1,26 +1,23 @@
-You have to bike a 100 km total:
+This game can be played by 2 or 3 players. 
 
-* 8x a 5km card
-* 4x an 6km card
-* 2x an 8km card (only possible with tailwind)
-* 2x a 10km card (only possible with tailwind)
+The goal of the game is to bike 100 km in total. This can be done by playing:
+* Eight 5km cards.
+* Four an 6km cards.
+* Two 8km cards (these cards can only be played with tailwind activated).
+* Two 10km cards  (these cards can only be played with tailwind activated).
 
-If this is reached, player wins the game. 
+If a player bikes 100km, they win the game.
+Each round, a player either plays or discards one card from their hand and draws one card from the game stack. During their turn a player can choose to propel themselves forward by playing a kilometer, or make life difficult for their fellow players by playing one of the bully cards. 
 
-There are 3 players in the game
+Cards in the game: 
+Get On (your bike) card (Step Up) - this card needs to be played before playing any of the kilometer cards (You cannot bike if you are not physically on your bike, right?) 
 
-Each round, every player plays 1 card and draw 1 card from the deck. You can choose to propel yourself forward during your turn, or make life difficult for your fellow players by playing one of the bully cards. 
-
-Get on your bike: 
-* Get-on-your-bike-card (Step Up) (You cannot bike if you’re not physically on you’re bike, right?) 
-
-Bully cards;: 
-* Flat tire
-* Closed railway crossing
-* Youth Hostel
-* Headwind (wind against, can no longer bike 8 and 10 km)
+Bully cards: 
+* Flat tire card - gets the player off their bike and requires the tire to be fixed, before starting to bike again.
+* Closses Criss-cross - gets the player off their bike and requires the criss-cross barrier to be opened, before starting to bike again.
+* Hostel, tavern - gets the player off their bike.
+* Cross-wind - removes player's tailwind activation (player can no longer bike 8 or 10 km).
 
 Repair cards: 
-* Bicycle repair ( need to play after a flat tire, and then you need to play a Step Up also play a Step Up card before you can bike again. )
-* Railway crossing opens (need to play after Closed Railway crossing, and then you need to also play a Step Up card before you can bike again).
-
+* Bicycle repair card - played to fix the player's flat tire. To continue biking after repairing their bike, a player must first Get-On the bike again. 
+* Barrier open card - played to open the closed criss-cross barrier. To continue biking after repairing their bike, a player must first Get-On the bike again. 
