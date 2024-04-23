@@ -10,19 +10,18 @@ import java.util.ArrayList;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-//import org.json.simple.JSONObject;
 
+/**
+ * This class creates JSON files for saving the game state
+ */
 public class WriteJSON {
-	private JSONArray playerList = new JSONArray();
 
 	/**
 	 * This method is a Constructor creating Writer JSON class object.
 	 * 
 	 * @param Players     ArrayList of Players
-	 * 
 	 * @param StackObject Stack Class Object
 	 */
-
 	@SuppressWarnings("unchecked")
 	public WriteJSON() {
 	}
@@ -35,7 +34,7 @@ public class WriteJSON {
 	 * @serialData JSON file.
 	 */
 	public void writePlayers(String fileName, ArrayList<Player> players) {
-		addPlayer(players);
+		JSONArray playerList = addPlayer(players);
 
 		if (!new File("data/outputs").isFile()) {
 			new File("data/outputs").mkdirs();
@@ -43,7 +42,7 @@ public class WriteJSON {
 		// Write JSON file
 		try (FileWriter file = new FileWriter("data/outputs/" + fileName + ".json")) {
 			// We can write any JSONArray or JSONObject instance to the file
-			file.write(this.playerList.toJSONString());
+			file.write(playerList.toJSONString());
 			file.flush();
 
 		} catch (IOException e) {
@@ -53,36 +52,38 @@ public class WriteJSON {
 
 	/**
 	 * This method adds players to playersList JSON array
+	 * 
 	 * @param players - Array list of players
 	 */
-	private void addPlayer(ArrayList<Player> players) {
-	    for (Player playerObject : players) {
-	        JSONObject statusDetails = new JSONObject();
-	        JSONObject playerStatuses = new JSONObject();
+	private JSONArray addPlayer(ArrayList<Player> players) {
+		JSONArray playerList = new JSONArray();
+		for (Player playerObject : players) {
+			JSONObject statusDetails = new JSONObject();
+			JSONObject playerStatuses = new JSONObject();
 
-	        // Put information of this card into Card Details
-	        String[] statuses = playerObject.getStatuses();
-	        statusDetails.put("GetOnStatus", statuses[0]);
-	        statusDetails.put("BulliedStatus", statuses[1]);
-	        statusDetails.put("HasWind", statuses[2]);
-	        statusDetails.put("BullyType", statuses[3]);
-	        playerStatuses.put("Statuses", statusDetails);
+			// Put information of this card into Card Details
+			String[] statuses = playerObject.getStatuses();
+			statusDetails.put("GetOnStatus", statuses[0]);
+			statusDetails.put("BulliedStatus", statuses[1]);
+			statusDetails.put("HasWind", statuses[2]);
+			statusDetails.put("BullyType", statuses[3]);
+			playerStatuses.put("Statuses", statusDetails);
 
-	        JSONArray playerHand = addCards(playerObject.getHand()); // Pass the playerCards list
+			JSONArray playerHand = addCards(playerObject.getHand()); // Pass the playerCards list
 
-	        // Create a new list of cards for each player
-	        playerStatuses.put("Hand", playerHand);
-	        
-	        
-	        JSONArray playerTable = addCards(playerObject.getPlayedCards().getPlayedCards());
-	        playerStatuses.put("Table", playerTable);
+			// Create a new list of cards for each player
+			playerStatuses.put("Hand", playerHand);
 
-	        this.playerList.add(playerStatuses);
-	    }
+			JSONArray playerTable = addCards(playerObject.getPlayedCards().getPlayedCards());
+			playerStatuses.put("Table", playerTable);
+
+			playerList.add(playerStatuses);
+		}
+		return playerList;
 	}
 
 	/**
-	 * This method adds cards and detials about them to the JSONArray of Stack
+	 * This method adds cards and details about them to the JSONArray of Stack
 	 * 
 	 * @param cards Stack Class Object
 	 * @return Nothing.
@@ -107,7 +108,7 @@ public class WriteJSON {
 	/**
 	 * This method write JSON Array Stack to file.
 	 * 
-	 * @param fileName String Object specifying the fileName
+	 * @param fileName - String Object specifying the fileName
 	 * @return Nothing.
 	 * @serialData JSON file.
 	 */
