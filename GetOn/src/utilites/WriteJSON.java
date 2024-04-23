@@ -35,19 +35,7 @@ public class WriteJSON {
 	 */
 	public void writePlayers(String fileName, ArrayList<Player> players) {
 		JSONArray playerList = addPlayer(players);
-
-		if (!new File("data/outputs").isFile()) {
-			new File("data/outputs").mkdirs();
-		}
-		// Write JSON file
-		try (FileWriter file = new FileWriter("data/outputs/" + fileName + ".json")) {
-			// We can write any JSONArray or JSONObject instance to the file
-			file.write(playerList.toJSONString());
-			file.flush();
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		writeJSON(fileName, playerList);
 	}
 
 	/**
@@ -114,6 +102,10 @@ public class WriteJSON {
 	 */
 	public void writeCards(String fileName, ArrayList<Card> cards) {
 		JSONArray cardsJSON = addCards(cards);
+		writeJSON(fileName, cardsJSON);
+	}
+
+	private void writeJSON(String fileName, JSONArray cardsJSON) {
 		if (!new File("data/outputs").isFile()) {
 			new File("data/outputs").mkdirs();
 		}
@@ -126,4 +118,6 @@ public class WriteJSON {
 			e.printStackTrace();
 		}
 	}
+
+
 }
