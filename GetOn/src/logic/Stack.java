@@ -164,8 +164,6 @@ public class Stack {
 
 	public ArrayList<Card> getStack() {
 		return this.stack;
-	}
-	
- 	
+	} 	
     
 }

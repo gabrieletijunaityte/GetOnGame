@@ -192,10 +192,13 @@ public class Game {
 
 			// Check if card stack is empty and if so re-shuffle discardPile
 			if (stack.getStackSize() == 0) {
-				stack = discardPile;
+				for (int i = 0; i < discardPile.getStackSize(); i++) {
+					stack.addDiscardedCard(discardPile.get(i));
+				}
 				stack.shuffle();
 				discardPile.clear();
 			}
+			
 			// Check if the game has ended
 			if (currentPlayer.getKmProgress() == 100) { 
 				gameContinue = false;
@@ -206,4 +209,5 @@ public class Game {
 			currentPlayerHand.resetBooleans();
 		}
 	}
+
 }

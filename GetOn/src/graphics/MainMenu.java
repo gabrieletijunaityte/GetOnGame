@@ -121,7 +121,10 @@ public class MainMenu extends JFrame {
 					playerLabel.setText("Enter at least two player names to start!");
 					playerLabel.setForeground(Color.RED);
 					
-				}			
+				}
+				
+				// Notifies game loop that the normal game was started
+				isTestGame = false;
 				
 				// Flags the game loop that names have been entered
 				if (names.size() != 0) {
@@ -140,20 +143,20 @@ public class MainMenu extends JFrame {
 			}
 		});
 		
-		btnStartGame.setBounds(305, 263, 128, 38);
+		btnStartGame.setBounds(230, 264, 128, 38);
 		contentPane.add(btnStartGame);
-		
 		
 		// Button to start the testgame, instead of a normal game
 		JButton btnTestGame = new JButton("Start Test Game");
-		btnTestGame.setBounds(443, 263, 119, 38);
+		btnTestGame.setBounds(368, 264, 157, 38);
 		contentPane.add(btnTestGame);
 		btnTestGame.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// Starts the game when clicking the button
 				handleStartGame();
-				isTestGame = true;
+				
 			}
+			
 			private void handleStartGame() {
 				// Saves the entered names
 				if (!player1Name.getText().isBlank() && !player2Name.getText().isBlank()){
@@ -173,7 +176,10 @@ public class MainMenu extends JFrame {
 					playerLabel.setText("Enter at least two player names to start!");
 					playerLabel.setForeground(Color.RED);
 					
-				}			
+				}
+				
+				// Notifies game loop that the test game was started
+				isTestGame = true;
 				
 				// Flags the game loop that names have been entered
 				if (names.size() != 0) {
@@ -183,6 +189,7 @@ public class MainMenu extends JFrame {
 					playerLabel.setText("The game has been started.");
 					playerLabel.setForeground(Color.BLACK);
 					btnStartGame.setVisible(false);	
+					btnTestGame.setVisible(false);
 					player1Name.setEditable(false);
 					player2Name.setEditable(false);
 					player3Name.setEditable(false);
@@ -204,6 +211,11 @@ public class MainMenu extends JFrame {
 	
 	public boolean getIsTestGame() {
 		return isTestGame;
+	}
+	
+	public void resetBoolean() {
+		receivedNames = false;
+		isTestGame = false;
 	}
 }
 	
