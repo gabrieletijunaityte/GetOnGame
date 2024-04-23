@@ -4,10 +4,6 @@ import java.util.Arrays;
 
 import junit.framework.TestCase;
 import logic.BullyCard;
-import logic.Card;
-import logic.KilometerCard;
-import logic.Player;
-import logic.Stack;
 
 public class BullyCardTest extends TestCase {
 

@@ -1,8 +1,5 @@
 package test;
 
-import java.util.Arrays;
-
-
 import junit.framework.TestCase;
 import logic.Rules;
 import logic.Player;

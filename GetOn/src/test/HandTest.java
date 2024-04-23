@@ -1,10 +1,7 @@
 package test;
 
-import java.util.Arrays;
-
 import junit.framework.TestCase;
 import logic.Hand;
-import logic.Player;
 import logic.Stack;
 
 public class HandTest extends TestCase {

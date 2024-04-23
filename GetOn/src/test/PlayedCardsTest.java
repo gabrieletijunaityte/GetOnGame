@@ -1,17 +1,13 @@
 package test;
 
 import junit.framework.TestCase;
-import logic.Card;
 import logic.PlayerTable;
 import logic.KilometerCard;
 
 public class PlayedCardsTest extends TestCase {
 
 	// Test playedCard creation
-	public void testCreationOfPlayedCards() {
-		// Create a fake card
-		KilometerCard card = new KilometerCard("FIVE");
-		
+	public void testCreationOfPlayedCards() {	
 		// creating played card pile by playing a first card
 		PlayerTable playerTable = new PlayerTable();
 		

@@ -25,6 +25,7 @@ public class Stack {
 		this.stack = new ArrayList<>();
 	}
 
+
 	/**
 	 * Method to intitialize deck with limited cards for testing purposes
 	 */
@@ -45,7 +46,6 @@ public class Stack {
 		BullyCard crossWindCard = new BullyCard("CROSSWIND");
 
 		RepairCard bikeRepairCard = new RepairCard("BIKE_REPAIR");
-		RepairCard barrierOpenCard = new RepairCard("BARRIER_OPEN");
 
 		/*
 		 * Set cards in the deck in specific order required for play testing all the
