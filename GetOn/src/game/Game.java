@@ -166,12 +166,16 @@ public class Game {
 						discardPile.addDiscardedCard(selectedCard);
 					}
 				}
+				currentPlayerHand.popupMessage(1);
+				
 			} 
 			// If card is not playable or player selected to discard card:
 			else {
 				// If player wants to play un-playble card:
 				if (currentPlayerHand.getMethodIndex() == 0 && !rules.isPlayble(selectedCard, currentPlayer)) {
-					System.out.println("Selected card cannot be played, card is discarded");
+					currentPlayerHand.popupMessage(3);
+				} else {
+					currentPlayerHand.popupMessage(2);
 				}
 				// Discard selected card
 				currentPlayer.discardCard(selectedCard);
