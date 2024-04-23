@@ -4,9 +4,10 @@ import logic.Card;
 import logic.Player;
 import logic.Rules;
 import logic.Stack;
+import utilities.WriteJSON;
+
 import java.util.ArrayList;
 import java.util.Scanner;
-import utilites.WriteJSON;
 
 import graphics.GameFrame;
 import graphics.MainMenu;

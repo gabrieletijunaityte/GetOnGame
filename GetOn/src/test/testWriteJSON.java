@@ -2,7 +2,7 @@ package test;
 import logic.KilometerCard;
 import logic.Player;
 import logic.Stack;
-import utilites.WriteJSON;
+import utilities.WriteJSON;
 
 import java.io.File;
 import java.util.ArrayList;
