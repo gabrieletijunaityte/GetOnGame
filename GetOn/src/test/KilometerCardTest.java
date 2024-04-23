@@ -4,9 +4,7 @@ import java.util.Arrays;
 
 import junit.framework.TestCase;
 import logic.KilometerCard;
-import logic.Player;
 import logic.Card;
-import logic.Stack;
 
 public class KilometerCardTest extends TestCase {
 
@@ -20,7 +18,6 @@ public class KilometerCardTest extends TestCase {
 	
 	// Test bully card creation with invalid value
 	public void testBadCreationOfKilometerCard() {
-		
 		try {
 			// Creating a bully card
 			KilometerCard kmCard = new KilometerCard("BAD_VALUE");

@@ -6,10 +6,7 @@ import java.io.FileReader;
 // Import required functionalities
 import java.io.IOException;
 import java.lang.IllegalStateException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.NoSuchElementException;
-import java.util.Scanner;
 
 // Create rule class
 public class Rules {

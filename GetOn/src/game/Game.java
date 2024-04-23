@@ -7,7 +7,6 @@ import logic.Stack;
 import utilities.WriteJSON;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import graphics.GameFrame;
 import graphics.MainMenu;
@@ -91,9 +90,6 @@ public class Game {
 		PlayerHand currentPlayerHand = new PlayerHand(currentPlayer, rules);
 		GameFrame gameFrame = new GameFrame(stack, discardPile, players, selectedCardIndex, rules, playerIndex);
 		gameFrame.updatePlayerHand(currentPlayerHand);
-		
-		// Initialize input listener
-		Scanner input = new Scanner(System.in);
 
 		// Intialize drawn cards
 		Card drawnCard;

@@ -1,7 +1,6 @@
 package test;
 
 import junit.framework.TestCase;
-import logic.GameMaster;
 import logic.Player;
 
 public class ChangePlayerNameTest extends TestCase {
