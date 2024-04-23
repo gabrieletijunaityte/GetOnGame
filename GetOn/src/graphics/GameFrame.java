@@ -24,6 +24,7 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JProgressBar;
 
 public class GameFrame extends JFrame {
 
@@ -39,6 +40,9 @@ public class GameFrame extends JFrame {
 	
 	private PlayerHand currentPlayerHand;
 	private int currentPlayerIndex;
+	private JProgressBar p1Progress;
+	private JProgressBar p2Progress;
+	private JProgressBar p3Progress;
 	
 	public GameFrame(Stack stack, Stack discardPile, ArrayList<Player> players, int selectedCardIndex, Rules rules, int currentPlayerIndex) {
 		
@@ -66,6 +70,10 @@ public class GameFrame extends JFrame {
 		JLabel lblP1WindStatus = new JLabel(players.get(0).getName() + " Wind Status");
 		splitPane.setRightComponent(lblP1WindStatus);
 		
+		p1Progress = new JProgressBar();
+		p1Progress.setStringPainted(true);
+		player1Status.add(p1Progress);
+		
 		JPanel player2Status = new JPanel();
 		player2Status.setBounds(316, 280, 306, 145);
 		contentPane.add(player2Status);
@@ -82,6 +90,9 @@ public class GameFrame extends JFrame {
 		JPanel panel_3 = new JPanel();
 		panel_3.setBounds(627, 280, 324, 145);
 		
+		p2Progress = new JProgressBar();
+		p2Progress.setStringPainted(true);
+		player2Status.add(p2Progress);
 		
 		JSplitPane splitPane_2 = new JSplitPane();
 		panel_3.add(splitPane_2);
@@ -93,6 +104,10 @@ public class GameFrame extends JFrame {
 			
 			JLabel lblP3Windstatus = new JLabel(players.get(2).getName() + " Wind Status");
 			splitPane_2.setRightComponent(lblP3Windstatus);
+			
+			p3Progress = new JProgressBar();
+			p3Progress.setStringPainted(true);
+			panel_3.add(p3Progress);
 			
 			contentPane.add(panel_3);
 		
@@ -163,6 +178,15 @@ public class GameFrame extends JFrame {
         Image resizedImg = orignalImg.getScaledInstance(width, height, Image.SCALE_SMOOTH);
         lblCardStackIcon.setIcon(new ImageIcon(resizedImg));
         
+        JButton btnSaveQuit = new JButton("Save & Quit");
+		btnSaveQuit.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+		});
+		btnSaveQuit.setBounds(1091, 21, 123, 23);
+		contentPane.add(btnSaveQuit);
+        
         refreshGameFrame(stack, discardPile, players, players.get(currentPlayerIndex), rules, selectedCardIndex, currentPlayerIndex);
         
         repaint();
@@ -183,6 +207,9 @@ public class GameFrame extends JFrame {
     }
     
     public void refreshScores(ArrayList <Player> players, int currentPlayerIndex) {
+    	
+    	int kmProgress;
+    	
     	contentPane.remove(player1);
         contentPane.remove(player2);
         contentPane.remove(player3);
@@ -190,25 +217,29 @@ public class GameFrame extends JFrame {
         Border player1border;
     	player1 = new JPanel();
 		player1.setBounds(5, 430, 306, 152);
-		if(currentPlayerIndex == 0) {
+		if (currentPlayerIndex == 0) {
 			player1border = BorderFactory.createLineBorder(Color.green, 5, true);
-		}else {
+		} else {
 			player1border = BorderFactory.createLineBorder(Color.red, 5, true);
 		}
 		player1.setBorder(player1border);
 		contentPane.add(player1);
 		
-		addCardWithCounter(player1 ,createCardLabel("| 5 Km cards: "), players.get(0).getPlayedCards().countCards(new KilometerCard("FIVE")));
+		addCardWithCounter(player1,createCardLabel("| 5 Km cards: "), players.get(0).getPlayedCards().countCards(new KilometerCard("FIVE")));
         addCardWithCounter(player1, createCardLabel("| 6 Km cards: "),  players.get(0).getPlayedCards().countCards(new KilometerCard("SIX")));
         addCardWithCounter(player1, createCardLabel("| 8 Km cards: "),  players.get(0).getPlayedCards().countCards(new KilometerCard("EIGHT")));
-        addCardWithCounter(player1, createCardLabel("| 10 Km cards: "),  players.get(0).getPlayedCards().countCards(new KilometerCard("TEN")));
-		
+        addCardWithCounter(player1, createCardLabel("| 10 Km cards: "),  players.get(0).getPlayedCards().countCards(new KilometerCard("TEN")));        
+        
+        kmProgress = players.get(0).getKmProgress();
+        p1Progress.setValue(kmProgress);
+        p1Progress.setString(kmProgress + " KM travelled");
+        
         Border player2border;
 		player2 = new JPanel();
 		player2.setBounds(316, 430, 306, 152);
-		if(currentPlayerIndex == 1) {
+		if (currentPlayerIndex == 1) {
 			player2border = BorderFactory.createLineBorder(Color.green, 5, true);
-		}else {
+		} else {
 			player2border = BorderFactory.createLineBorder(Color.red, 5, true);
 		}
 		player2.setBorder(player2border);
@@ -219,14 +250,9 @@ public class GameFrame extends JFrame {
 		addCardWithCounter(player2, createCardLabel("| 8 Km cards: "), players.get(1).getPlayedCards().countCards(new KilometerCard("EIGHT")));
 		addCardWithCounter(player2, createCardLabel("| 10 Km cards: "), players.get(1).getPlayedCards().countCards(new KilometerCard("TEN")));
 		
-		JButton btnSaveQuit = new JButton("Save & Quit");
-		btnSaveQuit.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-			}
-		});
-		btnSaveQuit.setBounds(1091, 21, 123, 23);
-		contentPane.add(btnSaveQuit);
+		kmProgress = players.get(1).getKmProgress();
+        p2Progress.setValue(kmProgress);
+        p2Progress.setString(kmProgress + " KM travelled");
 		
 		if (players.size() == 3) {
 			
@@ -235,7 +261,7 @@ public class GameFrame extends JFrame {
 			Border player3border;
 			if(currentPlayerIndex == 2) {
 				player3border = BorderFactory.createLineBorder(Color.green, 5, true);
-			}else {
+			} else {
 				player3border = BorderFactory.createLineBorder(Color.red, 5, true);
 			}
 			player3.setBorder(player3border);
@@ -246,6 +272,10 @@ public class GameFrame extends JFrame {
 	        addCardWithCounter(player3, createCardLabel("| 8 Km cards: "), players.get(2).getPlayedCards().countCards(new KilometerCard("EIGHT")));
 	        addCardWithCounter(player3, createCardLabel("| 10 Km cards: "), players.get(2).getPlayedCards().countCards(new KilometerCard("TEN")));
 			
+	        kmProgress = players.get(2).getKmProgress();
+	        p3Progress.setValue(kmProgress);
+	        p3Progress.setString(kmProgress + " KM travelled");
+	        
 		}
         
         contentPane.revalidate();

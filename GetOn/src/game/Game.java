@@ -98,12 +98,10 @@ public class Game {
 			
 			// Activate current player
 			currentPlayer = players.get(playerIndex);
-			
-			System.out.println("\nCurrent player is: " + currentPlayer.getName());
+
 			System.out.println("OnBikeStatus is: " + currentPlayer.getOnBikeStatus());
 			System.out.println("HasWind status is: " + currentPlayer.getHasWind());
 			System.out.println("BulliedStatus is: " + currentPlayer.getBulliedType());
-			System.out.println("The traveled distance is: " + currentPlayer.getKmProgress());
 			
 			// Update current players hand
 			currentPlayerHand.updateHand(986, currentPlayer, rules);
@@ -124,8 +122,6 @@ public class Game {
 			// Get the selected Card based on the retrieved index
 			Card selectedCard = currentPlayer.getCard(selectedCardIndex);
 
-			System.out.println("Selected card is " + selectedCard);
-
 			while (!currentPlayerHand.getIsPlayedCard()) {
 				Thread.sleep(50);
 			}
@@ -143,11 +139,9 @@ public class Game {
 						Thread.sleep(50);
 					}
 					// bully player/update its statuses 
-					// DOES NOT WORK WITH TWO PLAYERS!!!
 					playerToBully = players.get(bullyIndex);
-					System.out.println("Selected player to bully: " + playerToBully.getName());
-					
 					playerToBully.setConsequences(selectedCard.getConsequences());
+					
 					// Discard played card
 					currentPlayer.discardCard(selectedCard);
 					discardPile.addDiscardedCard(selectedCard);
@@ -200,7 +194,7 @@ public class Game {
 			}
 			
 			// Check if the game has ended
-			if (currentPlayer.getKmProgress() == 100) { 
+		if (currentPlayer.getKmProgress() == 100) { 
 				gameContinue = false;
 				System.out.println(currentPlayer.getName() + " has won the game!");
 			}
