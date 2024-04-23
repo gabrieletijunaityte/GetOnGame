@@ -98,26 +98,29 @@ public class WriteJSON {
 	 * 
 	 * @param fileName - String Object specifying the fileName
 	 * @return Nothing.
-	 * @serialData JSON file.
 	 */
 	public void writeCards(String fileName, ArrayList<Card> cards) {
 		JSONArray cardsJSON = addCards(cards);
 		writeJSON(fileName, cardsJSON);
 	}
 
-	private void writeJSON(String fileName, JSONArray cardsJSON) {
+	/**
+	 * A method that writes a given JSONArray into a file
+	 * @param fileName - string name for a file name
+	 * @param arrayJSON - JSONArray object to be saved in the file
+	 * @serialData JSON file.
+	 */
+	private void writeJSON(String fileName, JSONArray arrayJSON) {
 		if (!new File("data/outputs").isFile()) {
 			new File("data/outputs").mkdirs();
 		}
 		// Write JSON file
 		try (FileWriter file = new FileWriter("data/outputs/" + fileName + ".json")) {
 			// We can write any JSONArray or JSONObject instance to the file
-			file.write(cardsJSON.toJSONString());
+			file.write(arrayJSON.toJSONString());
 			file.flush();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-
-
 }

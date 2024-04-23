@@ -45,11 +45,7 @@ public class testWriteJSON extends TestCase {
 	}
 	
 	// Testing card object to json 
-	public void testWriteStack() {
-		ArrayList <Player> players = new ArrayList <Player> (Arrays.asList(new Player("Tom"), 
-																		new Player("Mark"), 
-																		new Player("Kelly")));
-		
+	public void testWriteStack() {	
 		Stack stack = new Stack();
 		
 		stack.addDiscardedCard(new KilometerCard ("FIVE"));
