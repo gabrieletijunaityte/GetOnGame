@@ -1,10 +1,12 @@
 package logic;
 
 import java.util.ArrayList;
+
 /**
- * The player class stores the player and the player's attributes.
- * Attributes stored in the class are: name, onBikeStatus, bulliedStatus, hasWind, playerTable, kmProgress, bulliedType, windType, and hand.
- * The player class handles the names of the players and their current statuses.
+ * The player class stores the player and the player's attributes. Attributes
+ * stored in the class are: name, onBikeStatus, bulliedStatus, hasWind,
+ * playerTable, kmProgress, bulliedType, windType, and hand. The player class
+ * handles the names of the players and their current statuses.
  */
 public class Player {
 
@@ -20,6 +22,7 @@ public class Player {
 
 	/**
 	 * Constructor of the player class
+	 * 
 	 * @param name - name of the player
 	 */
 	public Player(String name) {
@@ -36,6 +39,7 @@ public class Player {
 
 	/**
 	 * Method to change the player name
+	 * 
 	 * @param name - player's name
 	 */
 	public void changeName(String name) {
@@ -44,6 +48,7 @@ public class Player {
 
 	/**
 	 * Method to get player's name
+	 * 
 	 * @return name - name of the player
 	 */
 	public String getName() {
@@ -52,6 +57,7 @@ public class Player {
 
 	/**
 	 * Method to view the cards player has in their hand (as a string)
+	 * 
 	 * @return handCardsString - string with the cards in the hand
 	 */
 	public String viewHand() {
@@ -65,6 +71,7 @@ public class Player {
 
 	/**
 	 * Method to get status if the player is on bike
+	 * 
 	 * @return onBikeStatus boolean whether the player is on the bike or not
 	 */
 	public Boolean getOnBikeStatus() {
@@ -73,6 +80,7 @@ public class Player {
 
 	/**
 	 * Method to change the player "isOnBike" status
+	 * 
 	 * @param onBikeStatus - boolean whether the player is on the bike or not
 	 */
 	public void setOnBikeStatus(Boolean onBikeStatus) {
@@ -81,6 +89,7 @@ public class Player {
 
 	/**
 	 * Method to get the player "bullied" status
+	 * 
 	 * @return bulliedStatus - boolean whether the player is bullied or not
 	 */
 	public Boolean getBulliedStatus() {
@@ -89,6 +98,7 @@ public class Player {
 
 	/**
 	 * Method to change the player "bullied" status
+	 * 
 	 * @param bulliedStatus - boolean whether the player is bullied or not
 	 */
 	public void setBulliedStatus(Boolean bulliedStatus) {
@@ -97,6 +107,7 @@ public class Player {
 
 	/**
 	 * Method to get the player "hasWind" status
+	 * 
 	 * @return hasWind - boolean if the player has wind or not
 	 */
 	public Boolean getHasWind() {
@@ -105,6 +116,7 @@ public class Player {
 
 	/**
 	 * Method to get the player "bullied" status
+	 * 
 	 * @param hasWind - boolean whether the player has wind or not
 	 */
 	public void setHasWind(Boolean hasWind) {
@@ -113,6 +125,7 @@ public class Player {
 
 	/**
 	 * Method updates the player's kilometer progress
+	 * 
 	 * @param value - value of the card
 	 */
 	public void playerProgress(String value) {
@@ -136,8 +149,10 @@ public class Player {
 			break;
 		}
 	}
+
 	/**
 	 * Method to get the played cards
+	 * 
 	 * @return PlayerTable - cards on the table
 	 */
 	public PlayerTable getPlayedCards() {
@@ -146,6 +161,7 @@ public class Player {
 
 	/**
 	 * Method to get the kilometer progress
+	 * 
 	 * @return kmProgress - the progress of the player
 	 */
 	public int getKmProgress() {
@@ -154,7 +170,8 @@ public class Player {
 
 	/**
 	 * Method to get the players "Bully type" string
-	 * @return bulliedType - the bullied type 
+	 * 
+	 * @return bulliedType - the bullied type
 	 */
 	public String getBulliedType() {
 		return this.bulliedType;
@@ -162,6 +179,7 @@ public class Player {
 
 	/**
 	 * Method to set the "Bully Type" to a string
+	 * 
 	 * @param bulliedType - specifies the type of the bullying
 	 */
 	public void setBulliedType(String bulliedType) {
@@ -170,15 +188,16 @@ public class Player {
 
 	/**
 	 * Method to get the players "hasWind" status
+	 * 
 	 * @return hasWind - Boolean with the wind status
 	 */
 	public Boolean getWindStatus() {
 		return this.hasWind;
 	}
 
-	
 	/**
 	 * Method to get the players "WindType" string
+	 * 
 	 * @return windtype - String with the windtype
 	 */
 	public String getWindType() {
@@ -187,16 +206,16 @@ public class Player {
 
 	/**
 	 * Method to set the players "WindType" string
+	 * 
 	 * @param windType - the windtype for the players
 	 */
 	public void setWindType(String windType) {
 		this.windType = windType;
 	}
 
-
 	/**
-	 *Method to retrieve all player statuses for card
-	 *playability check in rules
+	 * Method to retrieve all player statuses for card playability check in rules
+	 * 
 	 * @return statuses - the statuses of the player
 	 */
 	public String[] getStatuses() {
