@@ -58,4 +58,43 @@ public class testWriteJSON extends TestCase {
 		
 		assertTrue(test);
 	}
+	
+	// Testing the whole game saving
+	public void testWriteGame() {
+		// Create players
+		ArrayList <Player> players = new ArrayList <Player> (Arrays.asList(new Player("Tom"), 
+																		new Player("Mark"), 
+																		new Player("Kelly")));
+		
+		// Create and initialise stack
+		Stack stack = new Stack();
+		stack.initializeStack();
+		stack.shuffle();
+		
+		// Give players 5 cards each
+		for (int j = 0; j < 5; j++) {
+			for (int i = 0; i < players.size(); i++) {
+				players.get(i).drawCard(stack.drawTopCard());
+			}
+		}
+		// Change status of 1st player
+		players.get(1).setOnBikeStatus(true);
+		
+		// Add card to table
+		players.get(1).addToTable(new KilometerCard("FIVE"));
+		
+		// Create and initialise discard pile
+		Stack discardPile = new Stack();
+		discardPile.addDiscardedCard(new KilometerCard ("FIVE"));
+		discardPile.addDiscardedCard(new KilometerCard ("SIX"));
+		
+		// Initialise writer;
+		WriteJSON writer = new WriteJSON();
+		
+		writer.writeGame("TestGame", stack.getStack(), discardPile.getStack(), players, 2);	
+		
+		Boolean test = new File("data/outputs/TestGame.json").isFile();
+		
+		assertTrue(test);
+	}
 }

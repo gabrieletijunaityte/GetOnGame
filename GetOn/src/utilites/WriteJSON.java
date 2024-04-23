@@ -123,4 +123,40 @@ public class WriteJSON {
 			e.printStackTrace();
 		}
 	}
+
+	/**
+	 * Method that collects all game variables and saves it to JSON file with a given name
+	 * 
+	 * @param fileName  - string value of desired file name
+	 * @param stack - stack class object containing unplayed cards
+	 * @param discardPile - stack class object containing played/discarded cards
+	 * @param players - arrayList of player class objects, containing active players and their information
+	 * @param currentPlayerIndex - index value of the current player whos turn will be next if game would be reloaded
+	 */
+	public void writeGame(String fileName, ArrayList<Card> stack, ArrayList<Card> discardPile, ArrayList<Player> players, int currentPlayerIndex) {
+		// Create game JSON array and objects (for labels)
+		JSONArray gameJSON = new JSONArray();
+		JSONObject objects = new JSONObject();
+		
+		// Create player JSON object and add it to objects
+		JSONArray playersJSON = addPlayer(players);
+		objects.put("Players", playersJSON);
+		
+		// Create stack JSON object and add it to objects
+		JSONArray stackJSON = addCards(stack);
+		objects.put("Stack", stackJSON);
+		
+		// Create discard ile JSON object and add it to objects
+		JSONArray discardPileJSON = addCards(discardPile);
+		objects.put("DiscardPile", discardPileJSON);
+		
+		// Add currentPlayer index to object		
+		objects.put("CurrentIndex", currentPlayerIndex);
+
+		// Add objects to array
+		gameJSON.add(objects);
+		
+		// Write it to the file
+		writeJSON(fileName, gameJSON);
+	}
 }
