@@ -45,7 +45,7 @@ public class GameFrame extends JFrame {
 	private JProgressBar p2Progress;
 	private JProgressBar p3Progress;
 	
-	private Boolean isExit;
+	private Boolean isExit = false;
 	
 	public GameFrame(Stack stack, Stack discardPile, ArrayList<Player> players, int selectedCardIndex, Rules rules, int currentPlayerIndex) {
 		
