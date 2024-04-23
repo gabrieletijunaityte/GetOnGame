@@ -1,8 +1,5 @@
 package utilites;
 
-import logic.Card;
-import logic.Player;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -10,6 +7,9 @@ import java.util.ArrayList;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+
+import logic.Card;
+import logic.Player;
 
 /**
  * This class creates JSON files for saving the game state
@@ -47,7 +47,10 @@ public class WriteJSON {
 		JSONArray playerList = new JSONArray();
 		for (Player playerObject : players) {
 			JSONObject statusDetails = new JSONObject();
-			JSONObject playerStatuses = new JSONObject();
+			JSONObject playerInformation = new JSONObject();
+			
+			// Put player name information
+			playerInformation.put("Name", playerObject.getName());
 
 			// Put information of this card into Card Details
 			String[] statuses = playerObject.getStatuses();
@@ -55,17 +58,19 @@ public class WriteJSON {
 			statusDetails.put("BulliedStatus", statuses[1]);
 			statusDetails.put("HasWind", statuses[2]);
 			statusDetails.put("BullyType", statuses[3]);
-			playerStatuses.put("Statuses", statusDetails);
+			playerInformation.put("Statuses", statusDetails);
+			
+			
 
 			JSONArray playerHand = addCards(playerObject.getHand()); // Pass the playerCards list
 
 			// Create a new list of cards for each player
-			playerStatuses.put("Hand", playerHand);
+			playerInformation.put("Hand", playerHand);
 
 			JSONArray playerTable = addCards(playerObject.getPlayedCards().getPlayedCards());
-			playerStatuses.put("Table", playerTable);
+			playerInformation.put("Table", playerTable);
 
-			playerList.add(playerStatuses);
+			playerList.add(playerInformation);
 		}
 		return playerList;
 	}

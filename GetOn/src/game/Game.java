@@ -5,8 +5,8 @@ import logic.Player;
 import logic.Rules;
 import logic.Stack;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
+import utilites.WriteJSON;
 
 import graphics.GameFrame;
 import graphics.MainMenu;
@@ -212,6 +212,8 @@ public class Game {
 				gameContinue = false;
 				gameFrame.dispose();
 				menu.endGame();
+				WriteJSON writer = new WriteJSON();
+				writer.writeGame("saved_game", stack.getStack(), discardPile.getStack(), players, playerIndex);
 			}
 		
 		}
