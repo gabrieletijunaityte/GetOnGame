@@ -62,6 +62,7 @@ public class PlayerHand extends JFrame {
 
 	private int methodIndex;
 	private Player currentPlayer;
+	private int choice;
 	
 	public PlayerHand(Player player, Rules rules) {
 		this.setAlwaysOnTop(true);
@@ -241,11 +242,20 @@ public class PlayerHand extends JFrame {
 	
 	// method to show pop-up message to play bully card to player
 		public int showSelectPlayerToBully(ArrayList<String> names) {
-			// create options to bully a player
-			Object[] options = {names.get(0), names.get(1),names.get(2)}; 
 			
-			int choice = JOptionPane.showOptionDialog(this, "Choose which player to bully", "Bully player",
-	                JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+			if (names.size() == 2) {
+				
+				Object[] options = {names.get(0), names.get(1)};
+				choice = JOptionPane.showOptionDialog(this, "Choose which player to bully", "Bully player",
+		                JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+				
+			} else {
+				
+				Object[] options = {names.get(0), names.get(1), names.get(2)};
+				choice = JOptionPane.showOptionDialog(this, "Choose which player to bully", "Bully player",
+		                JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+				
+			}
 			
 			// Check for the option selected
 	        if (choice == 0) {
