@@ -4,8 +4,9 @@ import logic.Card;
 import logic.Player;
 import logic.Rules;
 import logic.Stack;
+import utilities.WriteJSON;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 import graphics.GameFrame;
@@ -212,6 +213,8 @@ public class Game {
 				gameContinue = false;
 				gameFrame.dispose();
 				menu.endGame();
+				WriteJSON writer = new WriteJSON();
+				writer.writeGame("saved_game", stack.getStack(), discardPile.getStack(), players, playerIndex);
 			}
 		
 		}

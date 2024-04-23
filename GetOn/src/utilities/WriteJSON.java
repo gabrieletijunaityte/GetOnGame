@@ -1,7 +1,4 @@
-package utilites;
-
-import logic.Card;
-import logic.Player;
+package utilities;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -10,6 +7,9 @@ import java.util.ArrayList;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+
+import logic.Card;
+import logic.Player;
 
 /**
  * This class creates JSON files for saving the game state
@@ -35,19 +35,7 @@ public class WriteJSON {
 	 */
 	public void writePlayers(String fileName, ArrayList<Player> players) {
 		JSONArray playerList = addPlayer(players);
-
-		if (!new File("data/outputs").isFile()) {
-			new File("data/outputs").mkdirs();
-		}
-		// Write JSON file
-		try (FileWriter file = new FileWriter("data/outputs/" + fileName + ".json")) {
-			// We can write any JSONArray or JSONObject instance to the file
-			file.write(playerList.toJSONString());
-			file.flush();
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		writeJSON(fileName, playerList);
 	}
 
 	/**
@@ -59,7 +47,10 @@ public class WriteJSON {
 		JSONArray playerList = new JSONArray();
 		for (Player playerObject : players) {
 			JSONObject statusDetails = new JSONObject();
-			JSONObject playerStatuses = new JSONObject();
+			JSONObject playerInformation = new JSONObject();
+			
+			// Put player name information
+			playerInformation.put("Name", playerObject.getName());
 
 			// Put information of this card into Card Details
 			String[] statuses = playerObject.getStatuses();
@@ -67,17 +58,19 @@ public class WriteJSON {
 			statusDetails.put("BulliedStatus", statuses[1]);
 			statusDetails.put("HasWind", statuses[2]);
 			statusDetails.put("BullyType", statuses[3]);
-			playerStatuses.put("Statuses", statusDetails);
+			playerInformation.put("Statuses", statusDetails);
+			
+			
 
 			JSONArray playerHand = addCards(playerObject.getHand()); // Pass the playerCards list
 
 			// Create a new list of cards for each player
-			playerStatuses.put("Hand", playerHand);
+			playerInformation.put("Hand", playerHand);
 
 			JSONArray playerTable = addCards(playerObject.getPlayedCards().getPlayedCards());
-			playerStatuses.put("Table", playerTable);
+			playerInformation.put("Table", playerTable);
 
-			playerList.add(playerStatuses);
+			playerList.add(playerInformation);
 		}
 		return playerList;
 	}
@@ -110,20 +103,65 @@ public class WriteJSON {
 	 * 
 	 * @param fileName - String Object specifying the fileName
 	 * @return Nothing.
-	 * @serialData JSON file.
 	 */
 	public void writeCards(String fileName, ArrayList<Card> cards) {
 		JSONArray cardsJSON = addCards(cards);
+		writeJSON(fileName, cardsJSON);
+	}
+
+	/**
+	 * A method that writes a given JSONArray into a file
+	 * @param fileName - string name for a file name
+	 * @param arrayJSON - JSONArray object to be saved in the file
+	 * @serialData JSON file.
+	 */
+	private void writeJSON(String fileName, JSONArray arrayJSON) {
 		if (!new File("data/outputs").isFile()) {
 			new File("data/outputs").mkdirs();
 		}
 		// Write JSON file
 		try (FileWriter file = new FileWriter("data/outputs/" + fileName + ".json")) {
 			// We can write any JSONArray or JSONObject instance to the file
-			file.write(cardsJSON.toJSONString());
+			file.write(arrayJSON.toJSONString());
 			file.flush();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	/**
+	 * Method that collects all game variables and saves it to JSON file with a given name
+	 * 
+	 * @param fileName  - string value of desired file name
+	 * @param stack - stack class object containing unplayed cards
+	 * @param discardPile - stack class object containing played/discarded cards
+	 * @param players - arrayList of player class objects, containing active players and their information
+	 * @param currentPlayerIndex - index value of the current player whos turn will be next if game would be reloaded
+	 */
+	public void writeGame(String fileName, ArrayList<Card> stack, ArrayList<Card> discardPile, ArrayList<Player> players, int currentPlayerIndex) {
+		// Create game JSON array and objects (for labels)
+		JSONArray gameJSON = new JSONArray();
+		JSONObject objects = new JSONObject();
+		
+		// Create player JSON object and add it to objects
+		JSONArray playersJSON = addPlayer(players);
+		objects.put("Players", playersJSON);
+		
+		// Create stack JSON object and add it to objects
+		JSONArray stackJSON = addCards(stack);
+		objects.put("Stack", stackJSON);
+		
+		// Create discard ile JSON object and add it to objects
+		JSONArray discardPileJSON = addCards(discardPile);
+		objects.put("DiscardPile", discardPileJSON);
+		
+		// Add currentPlayer index to object		
+		objects.put("CurrentIndex", currentPlayerIndex);
+
+		// Add objects to array
+		gameJSON.add(objects);
+		
+		// Write it to the file
+		writeJSON(fileName, gameJSON);
 	}
 }

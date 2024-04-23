@@ -2,7 +2,7 @@ package test;
 import logic.KilometerCard;
 import logic.Player;
 import logic.Stack;
-import utilites.WriteJSON;
+import utilities.WriteJSON;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -45,11 +45,7 @@ public class testWriteJSON extends TestCase {
 	}
 	
 	// Testing card object to json 
-	public void testWriteStack() {
-		ArrayList <Player> players = new ArrayList <Player> (Arrays.asList(new Player("Tom"), 
-																		new Player("Mark"), 
-																		new Player("Kelly")));
-		
+	public void testWriteStack() {	
 		Stack stack = new Stack();
 		
 		stack.addDiscardedCard(new KilometerCard ("FIVE"));
@@ -59,6 +55,45 @@ public class testWriteJSON extends TestCase {
 		writer.writeCards("TestCards", stack.getStack());	
 		
 		Boolean test = new File("data/outputs/TestCards.json").isFile();
+		
+		assertTrue(test);
+	}
+	
+	// Testing the whole game saving
+	public void testWriteGame() {
+		// Create players
+		ArrayList <Player> players = new ArrayList <Player> (Arrays.asList(new Player("Tom"), 
+																		new Player("Mark"), 
+																		new Player("Kelly")));
+		
+		// Create and initialise stack
+		Stack stack = new Stack();
+		stack.initializeStack();
+		stack.shuffle();
+		
+		// Give players 5 cards each
+		for (int j = 0; j < 5; j++) {
+			for (int i = 0; i < players.size(); i++) {
+				players.get(i).drawCard(stack.drawTopCard());
+			}
+		}
+		// Change status of 1st player
+		players.get(1).setOnBikeStatus(true);
+		
+		// Add card to table
+		players.get(1).addToTable(new KilometerCard("FIVE"));
+		
+		// Create and initialise discard pile
+		Stack discardPile = new Stack();
+		discardPile.addDiscardedCard(new KilometerCard ("FIVE"));
+		discardPile.addDiscardedCard(new KilometerCard ("SIX"));
+		
+		// Initialise writer;
+		WriteJSON writer = new WriteJSON();
+		
+		writer.writeGame("TestGame", stack.getStack(), discardPile.getStack(), players, 2);	
+		
+		Boolean test = new File("data/outputs/TestGame.json").isFile();
 		
 		assertTrue(test);
 	}
