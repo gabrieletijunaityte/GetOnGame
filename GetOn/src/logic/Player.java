@@ -17,7 +17,6 @@ public class Player {
 	private PlayerTable playerTable;
 	private int kmProgress;
 	private String bulliedType;
-	private String windType;
 	private Hand hand;
 
 	/**
@@ -33,7 +32,6 @@ public class Player {
 		this.playerTable = new PlayerTable();
 		this.kmProgress = 0;
 		this.bulliedType = null;
-		this.windType = null;
 		this.hand = new Hand();
 	}
 
@@ -193,24 +191,6 @@ public class Player {
 	 */
 	public Boolean getWindStatus() {
 		return this.hasWind;
-	}
-
-	/**
-	 * Method to get the players "WindType" string
-	 * 
-	 * @return windtype - String with the windtype
-	 */
-	public String getWindType() {
-		return this.windType;
-	}
-
-	/**
-	 * Method to set the players "WindType" string
-	 * 
-	 * @param windType - the windtype for the players
-	 */
-	public void setWindType(String windType) {
-		this.windType = windType;
 	}
 
 	/**
