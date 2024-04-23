@@ -202,6 +202,7 @@ public class Game {
 				gameContinue = false;
 				gameFrame.winGame(currentPlayer);
 				gameFrame.dispose();
+				menu.endGame();
 			}
 
 			// reset currentPlayers booleans to false

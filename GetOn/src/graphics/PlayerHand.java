@@ -295,7 +295,7 @@ public class PlayerHand extends JFrame {
             JOptionPane.showMessageDialog(this, "Card is Played.");
         } else if (choice == 1) {
         	methodIndex = 1;
-            JOptionPane.showMessageDialog(this, "Card is Discared.");
+            JOptionPane.showMessageDialog(this, "Card is Discarded.");
         }
         
         // Close hand after playing
