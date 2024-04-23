@@ -185,13 +185,22 @@ ID #20
 Title: Reshuffle discardPile
 
 Acceptance test:
-1. Launch "Game".
-2. For Player 1 Enter name "P1".
-3. For Player 2 Enter name "P2".
-4. For Player 3 Enter name "P3".
-5. Click "Start Test Game".
-6. As P1, P2, P3 "play" or "discard" random cards until "Card Stack" reaches size 0.
-7. Observe all "Discared Pile" cards being shuffled back into "Card Stack".
+
+1. Run the file Game.java
+2. Fill in the fields for Player 1, Player 2, and Player 3 with "player1", "player2", "player3".
+3. Press on Start Test Game
+- player1 has the turn
+4. Press on View Hand, discard "Get On" card
+- turn switches to player2
+5. Press on View Hand, discard "Get On" card
+- turn switches to player3
+6. Press on View Hand, discard "Bike Repair" card
+- turn switches to player1
+7. Press on View HAnd, discard "Rail Road Crossing" card
+- discard pile will have 4 cards, stack will be empty.
+- discard pile is automatically reshuffled into stack
+- turn switches to player 2
+8. Observe that in gameFrame GUI the number of cards under Card Stack is 4 on the number of cards under Discard Pile is 0.
 
 -------------------------------------------------------------------------------------
 
@@ -299,7 +308,7 @@ ID #32
 Title: Win game
 
 Acceptance test:
-1. Run the game.java file
+1. Run the Game.java file
 2. Enter names in Player 1 and Player 2, "player1" and "player2"
 3. Click on Start Test Game
 4. Click on View Hand, play a "Get On" card (first card in hand)

@@ -31,6 +31,7 @@ public class testWriteJSON extends TestCase {
 			}
 		}
 		players.get(1).setOnBikeStatus(true);
+		players.get(1).addToTable(new KilometerCard("FIVE"));
 		
 		// Initialise writer;
 		WriteJSON writer = new WriteJSON();
