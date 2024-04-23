@@ -103,7 +103,7 @@ public class KilometerCardTest extends TestCase {
 	public void testGetRequirements() {
 		// Creating a kmCard
 		Card kmCard = new KilometerCard("FIVE");
-		String [] target = {"true", "false", "-1", "-1", "8"};
+		String [] target = {"true", "false", "-1", "-1", "7"};
 		
 		// Testing getPossibleValues() method
 		String [] test = kmCard.getRequirements();
