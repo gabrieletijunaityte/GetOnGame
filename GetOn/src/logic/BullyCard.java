@@ -1,8 +1,17 @@
 package logic;
 
+/**
+ * BullyCard class inherits from the Card class
+ * The class handles the requirements for the bully card to play and the consequences of the bullycards
+ */
 public class BullyCard extends Card {
 
 	// Constructor
+	/**
+	 * Constructor of the BullyCard
+	 * Assign possible bully values
+	 * @param value
+	 */
 	public BullyCard(String value) {
 		super("BULLY", value);
 
@@ -14,7 +23,11 @@ public class BullyCard extends Card {
 		this.amount = new int[] { 2, 4, 3, 3 };
 	}
 
-	// getRequirements method
+
+	/**
+	 * Method to get the requirements to play a bully card
+	 * @return requirements - the requirements to play a bully card
+	 */
 	public String[] getRequirements() {
 		// Requirements for (-1 to ignore)
 		// GetOnStatus
@@ -27,7 +40,10 @@ public class BullyCard extends Card {
 		return requirements;
 	}
 
-	// Implement method for getConsequences
+	/**
+	 * Method to get the consequences of a bully card
+	 * @return consequences - consequences of each of the bully cards.
+	 */
 	public String[] getConsequences() {
 		// Changes for (-1 to ignore)
 		// GetOnStatus
