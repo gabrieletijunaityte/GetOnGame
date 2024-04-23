@@ -26,17 +26,17 @@ public class KilometerCard extends Card {
 		
 		// To play 5 km: (to be on bike, not bullied and 8 cards max)
 		if (value.equals("FIVE")) {
-			String [] requirements = {"true", "false", "-1", "-1", "8"};
+			String [] requirements = {"true", "false", "-1", "-1", "7"};
 			return requirements;
 		}
 		// To play 6 km: (to be on bike, not bullied and 4 cards max)
 		else if (value.equals("SIX")) {
-			String [] requirements = {"true", "false", "-1", "-1", "4"};
+			String [] requirements = {"true", "false", "-1", "-1", "3"};
 			return requirements;
 		}
 		// To play 8 or 10 km: (to be on bike, not bullied, to have wind and 2 cards max)
 		else {
-			String [] requirements = {"true", "false", "true", "-1", "2"};
+			String [] requirements = {"true", "false", "true", "-1", "1"};
 			return requirements;
 		}
 	}
