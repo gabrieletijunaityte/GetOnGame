@@ -185,6 +185,7 @@ ID #20
 Title: Reshuffle discardPile
 
 Acceptance test:
+1. 
 
 -------------------------------------------------------------------------------------
 
@@ -274,4 +275,38 @@ Title: Save game in JSON
 Acceptance test:
 
 -------------------------------------------------------------------------------------
+
+ID #31
+Title: Resume game
+
+Acceptance test:
+
+-------------------------------------------------------------------------------------
+ID #32
+Title: Win game
+
+Acceptance test:
+1. Run the game.java file
+2. Enter names in Player 1 and Player 2, "player1" and "player2"
+3. Click on Start Test Game
+4. Click on View Hand, play a "Get On" card (first card in hand)
+- turn switches to player 2
+5. Click on View Hand, play a "Get On" card (card 4)
+- turn switches to player 1
+6. Click on View Hand, discard a "Bike Repair" card (card 1)
+- turn switches to player 2
+7. Click on View Hand, play a "5 Kilometer" card (card 2)
+- turn switches to player 1
+8. Click on View Hand, discard a "Get On" card (card 1)
+- turn switches to player 2
+9. Click on View Hand, play a "Tail Wind" card (card 3)
+- turn switches to player 1
+10. Click on View Hand, discard a "Rail Road Crossing" card (card 1)
+- turn switches to player 2
+11. Click on View Hand, play a "10 Kilometer" card (card 4)
+- player 2 reaches 100 km
+12. Observe a popup "Congrats! ...."
+13. Click ok
+-------------------------------------------------------------------------------------
+
 
