@@ -292,10 +292,8 @@ public class PlayerHand extends JFrame {
         // Check for the option selected
         if (choice == 0) {
         	methodIndex = 0;
-            JOptionPane.showMessageDialog(this, "Card is Played.");
         } else if (choice == 1) {
         	methodIndex = 1;
-            JOptionPane.showMessageDialog(this, "Card is Discarded.");
         }
         
         // Close hand after playing
@@ -322,6 +320,23 @@ public class PlayerHand extends JFrame {
 		receivedSelectedCard = false;
 		isPlayedCard = false;
 		selectBulliedPlayer = false;
+	}
+	
+	public void popupMessage(int msgIndex) {
+		
+		// Shows popup with correct message passed by Game.
+		switch (msgIndex) {
+		case 1:
+			JOptionPane.showMessageDialog(PlayerHand.this, "Card is Played.");
+			break;
+		case 2:
+			JOptionPane.showMessageDialog(PlayerHand.this, "Card is Discarded.");
+			break;
+		case 3:
+			JOptionPane.showMessageDialog(PlayerHand.this, "Card is not playable, Discarded instead.");
+			break;
+		}
+		
 	}
 	
 }
