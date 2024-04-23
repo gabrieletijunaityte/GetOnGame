@@ -2,6 +2,7 @@ package graphics;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
@@ -43,6 +44,8 @@ public class GameFrame extends JFrame {
 	private JProgressBar p1Progress;
 	private JProgressBar p2Progress;
 	private JProgressBar p3Progress;
+	
+	private Boolean isExit;
 	
 	public GameFrame(Stack stack, Stack discardPile, ArrayList<Player> players, int selectedCardIndex, Rules rules, int currentPlayerIndex) {
 		
@@ -180,8 +183,11 @@ public class GameFrame extends JFrame {
         
         JButton btnSaveQuit = new JButton("Save & Quit");
 		btnSaveQuit.addMouseListener(new MouseAdapter() {
-			@Override
 			public void mouseClicked(MouseEvent e) {
+				
+				isExit = true;
+				JOptionPane.showMessageDialog(GameFrame.this, "Game will be ended after finishing this turn.");
+				
 			}
 		});
 		btnSaveQuit.setBounds(1091, 21, 123, 23);
@@ -308,4 +314,14 @@ public class GameFrame extends JFrame {
     	currentPlayerHand = playerHand;
     	
     }
+    
+    public void winGame(Player currentPlayer) {
+    	
+    	JOptionPane.showMessageDialog(this, "Congrats! " + currentPlayer.getName() + " has won the game.");
+    	
+    }
+
+	public boolean getIsExit() {
+		return isExit;
+	}
 }

@@ -6,6 +6,8 @@ import javax.swing.border.EmptyBorder;
 
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Window;
+
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -13,6 +15,7 @@ import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -25,6 +28,9 @@ public class MainMenu extends JFrame {
 	private JTextField player1Name;
 	private JTextField player2Name;
 	private JTextField player3Name;
+	private JButton btnTestGame;
+	private JButton btnStartGame;
+	private JLabel playerLabel;
 
 	public MainMenu(ArrayList<String> names) {
 		
@@ -87,14 +93,20 @@ public class MainMenu extends JFrame {
 		player3Name.setBounds(328, 214, 197, 27);
 		contentPane.add(player3Name);
 		
-		JLabel playerLabel = new JLabel("Enter player names");
+		playerLabel = new JLabel("Enter player names");
 		playerLabel.setForeground(Color.BLACK);
 		playerLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		playerLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		playerLabel.setBounds(66, 92, 593, 27);
 		contentPane.add(playerLabel);
 		
-		JButton btnStartGame = new JButton("Start Game");
+		btnStartGame = new JButton("Start Game");
+		
+		// Button to start the testgame, instead of a normal game
+		btnTestGame = new JButton("Start Test Game");
+		btnTestGame.setBounds(368, 264, 157, 38);
+		contentPane.add(btnTestGame);
+		
 		btnStartGame.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
@@ -133,7 +145,8 @@ public class MainMenu extends JFrame {
 					// Notifies the Game Master that the game has been started and locks the changing of some settings.
 					playerLabel.setText("The game has been started.");
 					playerLabel.setForeground(Color.BLACK);
-					btnStartGame.setVisible(false);	
+					btnStartGame.setVisible(false);
+					btnTestGame.setVisible(false);
 					player1Name.setEditable(false);
 					player2Name.setEditable(false);
 					player3Name.setEditable(false);
@@ -145,11 +158,7 @@ public class MainMenu extends JFrame {
 		
 		btnStartGame.setBounds(230, 264, 128, 38);
 		contentPane.add(btnStartGame);
-		
-		// Button to start the testgame, instead of a normal game
-		JButton btnTestGame = new JButton("Start Test Game");
-		btnTestGame.setBounds(368, 264, 157, 38);
-		contentPane.add(btnTestGame);
+
 		btnTestGame.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// Starts the game when clicking the button
@@ -217,5 +226,18 @@ public class MainMenu extends JFrame {
 		receivedNames = false;
 		isTestGame = false;
 	}
+	
+	public void endGame() {
+		resetBoolean();
+		playerLabel.setText("Enter player names");
+		playerLabel.setForeground(Color.BLACK);
+		btnStartGame.setVisible(true);	
+		btnTestGame.setVisible(true);
+		player1Name.setEditable(true);
+		player2Name.setEditable(true);
+		player3Name.setEditable(true);
+		repaint();
+	}
+	
 }
 	

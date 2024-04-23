@@ -234,4 +234,13 @@ public class PlayerTest extends TestCase {
 		
 		assertEquals(target, test);
 	}
+	
+	public void testSetKmProgress() {
+		Player myPlayer = new Player("Test player");
+		assertEquals(0, myPlayer.getKmProgress());
+		
+		myPlayer.setKmProgress(50);
+		assertEquals(50, myPlayer.getKmProgress());
+		
+	}
 }

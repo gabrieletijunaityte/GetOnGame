@@ -204,5 +204,9 @@ public class Player {
 
 	public void addToTable(Card selectedCard) {
 		this.playerTable.addCard(selectedCard);		
+	}
+
+	public void setKmProgress(int i) {
+		this.kmProgress = i;	
 	}	
 }

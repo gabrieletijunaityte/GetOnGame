@@ -58,6 +58,10 @@ public class Game {
 			stack.shuffle();
 		} else {
 			stack.initializeTestStack();
+			// Updates the player
+			for (int i = 0; i < players.size(); i++) {
+				players.get(i).setKmProgress(85);
+			}
 		}
 		
 		// Deal initial cards
@@ -194,13 +198,21 @@ public class Game {
 			}
 			
 			// Check if the game has ended
-		if (currentPlayer.getKmProgress() == 100) { 
+			if (currentPlayer.getKmProgress() == 100) { 
 				gameContinue = false;
-				System.out.println(currentPlayer.getName() + " has won the game!");
+				gameFrame.winGame(currentPlayer);
+				gameFrame.dispose();
 			}
 
 			// reset currentPlayers booleans to false
 			currentPlayerHand.resetBooleans();
+			
+			if (gameFrame.getIsExit()) {
+				gameContinue = false;
+				gameFrame.dispose();
+				menu.endGame();
+			}
+		
 		}
 	}
 
