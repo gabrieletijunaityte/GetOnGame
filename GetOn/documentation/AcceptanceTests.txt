@@ -185,7 +185,13 @@ ID #20
 Title: Reshuffle discardPile
 
 Acceptance test:
-1. 
+1. Launch "Game".
+2. For Player 1 Enter name "P1".
+3. For Player 2 Enter name "P2".
+4. For Player 3 Enter name "P3".
+5. Click "Start Test Game".
+6. As P1, P2, P3 "play" or "discard" random cards until "Card Stack" reaches size 0.
+7. Observe all "Discared Pile" cards being shuffled back into "Card Stack".
 
 -------------------------------------------------------------------------------------
 
@@ -207,6 +213,13 @@ ID #23
 Title: Hide hand while passing turn
 
 Acceptance test:
+1. Launch "Game".
+2. For Player 1 Enter name "P1".
+3. For Player 2 Enter name "P2".
+4. For Player 3 Enter name "P3".
+5. Click "Start Test Game".
+6. As P1, click "View Hand" and "Play" or "Discard" a random Card.
+7. Observe the hand hiding as the turn passes to P2.
 
 -------------------------------------------------------------------------------------
 
