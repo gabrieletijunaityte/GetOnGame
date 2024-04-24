@@ -11,6 +11,7 @@ public class BullyCardTest extends TestCase {
 	// Test bully card creation
 	public void testCreationOfbullyCard() {
 		// Creating a bully card
+
 		BullyCard bullyCard = new BullyCard(Constant.TAVERN);
 		
 		assertNotNull(bullyCard);

@@ -27,11 +27,9 @@ public class RepairCard extends Card {
 	}
 
 	/**
-	 * Retrieves the requirements necessary to play the repair card.
-	 * <p>
 	 * This method provides an array of strings indicating whether certain conditions required
 	 * to play the card are met.
-	 * </p>
+	 * 
 	 * @return An array of strings representing the requirements to play this card.
 	 */
 	public String[] getRequirements() {
@@ -56,11 +54,9 @@ public class RepairCard extends Card {
 	}
 
 	/**
-	 * Computes the consequences of playing this specific type of repair card.
-	 * <p>
 	 * This method returns an array of strings that detail the effects of playing
 	 * the repair card.
-	 * </p>
+	 * 
 	 * @return An array of strings with detailing the consequences of the played card.
 	 */
 	public String[] getConsequences() {
