@@ -428,18 +428,33 @@ public class GameFrame extends JFrame {
         contentPane.repaint();
     }
     
+    /**
+     * Method which updates the ghrapics of the players hand
+     * 
+     * @param playerHand - The hand of the player
+     */
     public void updatePlayerHand(PlayerHand playerHand) {
     	
     	currentPlayerHand = playerHand;
     	
     }
     
+    /**
+     * Method which shows a dialog which congratulates the player that has won the game.
+     * 
+     * @param currentPlayer - The player who's turn it is when the game finishes
+     */
     public void winGame(Player currentPlayer) {
     	
     	JOptionPane.showMessageDialog(this, "Congrats! " + currentPlayer.getName() + " has won the game.");
     	
     }
-
+    
+    /**
+     * Method which closes the game frem when it ends.
+     * 
+     * @return game exits
+     */
 	public boolean getIsExit() {
 		return isExit;
 	}
