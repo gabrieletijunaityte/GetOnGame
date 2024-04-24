@@ -21,6 +21,23 @@ public class StackTest extends TestCase {
 		assertNotNull(stack);
 	}
 
+	// Test stack for testing
+	public void testInitTestStack() {
+
+		// Initialize test stack
+		Stack testStack = new Stack();
+		testStack.initializeTestStack();
+		
+		//Check the length
+		assertEquals(19,testStack.getStackSize());
+
+		// Draw the top card and check if it is a Get On card
+		Card card = testStack.drawTopCard();
+		Card topCard = new StatusCard("GET_ON");
+		assertEquals(card.getCardName(), topCard.getCardName());
+
+	}
+
 	// Test to see if the length of the Stack is equal to 99
 	public void testStackSize() {
 		// Create a stack
@@ -64,7 +81,7 @@ public class StackTest extends TestCase {
 		assertEquals(topCard.getCardName(), card.getCardName());
 	}
 
-	// Test clear()
+	// Test clear
 	public void testClear() {
 		// Create a stack
 		Stack stack = new Stack();
@@ -77,27 +94,10 @@ public class StackTest extends TestCase {
 		assertEquals(0, stack.getStackSize());
 	}
 
-	// Test stack for testing
-	public void testInitTestStack() {
-
-		// Initialze teststack
-		Stack testStack = new Stack();
-		testStack.initializeTestStack();
-		
-		//Check the length
-		assertEquals(19,testStack.getStackSize());
-
-		// Draw the top card and check if it is a Get On card
-		Card card = testStack.drawTopCard();
-		Card topCard = new StatusCard("GET_ON");
-		assertEquals(card.getCardName(), topCard.getCardName());
-
-	}
-
 	// Test for getting Stack as ArrayList
-	public void testgetStack() {
+	public void testGetStack() {
 		
-		// Initialze teststack
+		// Initialize test stack
 		Stack testStack = new Stack();
 		
 		testStack.addDiscardedCard(new KilometerCard ("FIVE"));
@@ -106,9 +106,5 @@ public class StackTest extends TestCase {
 		ArrayList<Card> target = new ArrayList<Card> (Arrays.asList(new KilometerCard ("FIVE"), new KilometerCard ("SIX")));
 		
 		assertEquals(target.toString(), test.toString());
-		
-		
-
 	}
-
 }

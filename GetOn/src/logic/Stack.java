@@ -6,52 +6,50 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Stack class Creates a stack with all 99 playable cards - 52 kilometer cards
- * (24 five, 12 six, 8 eight, 8 ten) - 12 attack cards (4 crosswind, 3 flatTire,
- * 3 crisscross, 2 tavern - 16 defense cards (8 barrierOpen, 8 bikeRepair) - 19
- * status cards (14 getOn, 5 tailwind) Credits for inspiration on stack
- * creation:
+ * Stack class creates a stack with all 99 playable cards: 52 kilometer cards
+ * (24 five, 12 six, 8 eight, 8 ten, 12 attack cards (4 cross_wind, 3 flat_tire,
+ * 3 criss_cross, 2 tavern, 16 defense cards (8 barrier_open, 8 bike_repair), 19
+ * status cards (14 get_on, 5 tail_wind). Credits for inspiration on stack creation:
  * https://stackoverflow.com/questions/70086453/create-a-stack-of-cards Credits
- * for shuffle method: java how to program Paul Deitel & Harvey Deitel
+ * For the shuffle method: "Java How To Program" by Paul Deitel & Harvey Deitel
  */
 public class Stack {
 	private ArrayList<Card> stack;
 	private static final SecureRandom randomNumbers = new SecureRandom();
 
 	/**
-	 * Constructor for the stack
+	 * Constructs a new Stack as an empty array.
 	 */
 	public Stack() {
 		this.stack = new ArrayList<>();
 	}
 
-
 	/**
-	 * Method to intitialize deck with limited cards for testing purposes
+	 * This method initializes the stack with a predefined set of cards for testing purposes.
 	 */
 	public void initializeTestStack() {
 
-		// Create objects of each different card needed vor testing:
-		StatusCard getOnCard = new StatusCard("GET_ON");
-		StatusCard tailWindCard = new StatusCard("TAIL_WIND");
-
+		// Create objects of each different card needed for testing:
+		BullyCard flatTireCard = new BullyCard("FLAT_TIRE");
+		BullyCard crisCrossCard = new BullyCard("CRISS_CROSS");
+		BullyCard tavernCard = new BullyCard("TAVERN");
+		BullyCard crossWindCard = new BullyCard("CROSSWIND");
+		
 		KilometerCard fiveKilometerCard = new KilometerCard("FIVE");
 		KilometerCard sixKilometerCard = new KilometerCard("SIX");
 		KilometerCard eightKilometerCard = new KilometerCard("EIGHT");
 		KilometerCard tenKilometerCard = new KilometerCard("TEN");
 
-		BullyCard flatTireCard = new BullyCard("FLAT_TIRE");
-		BullyCard crisCrossCard = new BullyCard("CRISS_CROSS");
-		BullyCard tavernCard = new BullyCard("TAVERN");
-		BullyCard crossWindCard = new BullyCard("CROSSWIND");
-
 		RepairCard bikeRepairCard = new RepairCard("BIKE_REPAIR");
+		
+		StatusCard getOnCard = new StatusCard("GET_ON");
+		StatusCard tailWindCard = new StatusCard("TAIL_WIND");
 
 		/*
-		 * Set cards in the deck in specific order required for play testing all the
-		 * cards an reshuffling the discard pile when the last card is drawn Only the
+		 * Set cards in the deck in a specific order required for play testing all the
+		 * cards and re-shuffling the discard pile when the last card is drawn. Only the
 		 * first four cards in the hand of the three players matter for the acceptance
-		 * tests
+		 * tests.
 		 */
 		List<Card> testListStack = Arrays.asList(getOnCard, flatTireCard, bikeRepairCard, fiveKilometerCard, getOnCard,
 				flatTireCard, crisCrossCard, getOnCard, tavernCard, tailWindCard, sixKilometerCard, eightKilometerCard,
@@ -64,7 +62,8 @@ public class Stack {
 	}
 
 	/**
-	 * Method to initialize the stack and add the cards to it
+	 * This method populates the stack with different types of cards based on their
+	 * defined qualities and types. This stack is not is a random order.
 	 */
 	public void initializeStack() {
 		// initialize KilometerCard to get its methods
@@ -125,18 +124,18 @@ public class Stack {
 	}
 
 	/**
-	 * Method to return the stack size
+	 * This method returns the current size of the stack.
 	 * 
-	 * @return stack size - int of the amount of cards in the stack
+	 * @return The number of cards currently in the stack.
 	 */
 	public int getStackSize() {
 		return stack.size();
 	}
 
 	/**
-	 * Method to shuffle cards This method takes a random index with randomNumbers
-	 * in the range of the stack size it then iterates through the original stack
-	 * based on its index. The card is swapped with the random index
+	 * This method shuffles the cards in the stack randomly. It takes a random index
+	 * with randomNumbers() in the range of the stack size. It then iterates through the
+	 * original stack based on its index and swaps the card with the random index.
 	 */
 	public void shuffle() {
 		for (int first = 0; first < stack.size(); first++) {
@@ -148,9 +147,9 @@ public class Stack {
 	}
 
 	/**
-	 * Method to draw the top card from the stack
+	 * This method draws the top card from the stack and then removes it from the stack.
 	 * 
-	 * @return topCard - card that is on top of the stack
+	 * @return The card that was on top of the stack.
 	 */
 	public Card drawTopCard() {
 		// Draw the top card from the stack
@@ -162,9 +161,9 @@ public class Stack {
 	}
 
 	/**
-	 * Method to add the discarded card to the discard pile
+	 * This method adds a discarded card back to the stack.
 	 * 
-	 * @param discardedCard - card that is discarded
+	 * @param discardedCard The card to be added back to the stack.
 	 */
 	public void addDiscardedCard(Card discardedCard) {
 		// add a discardedCard to the discardPile
@@ -173,10 +172,10 @@ public class Stack {
 	}
 
 	/**
-	 * Method to get a card at a specific index
+	 * This method retrieves a card from the stack at a specified index without removing it.
 	 * 
-	 * @param i - int specifying the index
-	 * @return Card - card at index i
+	 * @param i The index of the card to be retrieved.
+	 * @return The card at a specified index.
 	 */
 	public Card get(int i) {
 		// add method to get a card at a specific index
@@ -184,19 +183,18 @@ public class Stack {
 	}
 
 	/**
-	 * Method to clear the stack
+	 * This method clears all the cards from the stack, resulting in an empty stack.
 	 */
 	public void clear() {
 		this.stack.clear();
 	}
 
 	/**
-	 * Method to get the stack
+	 * This method gives access to the current stack of cards.
 	 * 
-	 * @return stack - the current stack
+	 * @return A list representing the current stack of cards.
 	 */
 	public ArrayList<Card> getStack() {
 		return this.stack;
 	}
-
 }

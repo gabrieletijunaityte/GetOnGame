@@ -71,5 +71,4 @@ public class PlayerTableTest extends TestCase {
 		// Assert if playCards instance was created
 		assertNotNull(playerTable);
 		}
-
 }
