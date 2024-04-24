@@ -11,13 +11,12 @@ public class BullyCardTest extends TestCase {
 	public void testCreationOfbullyCard() {
 		// Creating a bully card
 		BullyCard bullyCard = new BullyCard("TAVERN");
-
+		
 		assertNotNull(bullyCard);
 	}
 
 	// Test bully card creation with invalid value
 	public void testBadCreationOfbullyCard() {
-
 		try {
 			// Creating a bully card
 			BullyCard bullyCard = new BullyCard("BAD_VALUE");
@@ -56,7 +55,7 @@ public class BullyCardTest extends TestCase {
 		assertEquals(target, test);
 	}
 
-// Test the getCardName() method
+	// Test the getCardName() method
 	public void testgetCardName() {
 		// Setting the target
 		String target = "TAVERN";
@@ -104,10 +103,9 @@ public class BullyCardTest extends TestCase {
 
 		assertTrue(Arrays.equals(target, test));
 	}
-	
+
 	// Test getConsequences
 	public void testGetConsequencesCaseA() {
-
 		// Creating a bullyCard
 		BullyCard bullyCard = new BullyCard("TAVERN");
 		String[] target = { "false", "-1", "-1", "-1", "-1" };
@@ -118,10 +116,9 @@ public class BullyCardTest extends TestCase {
 		assertTrue(Arrays.equals(target, test));
 
 	}
-	
+
 	// Test getConsequences for CrossWind
 	public void testGetConsequencesCaseB() {
-
 		// Creating a bullyCard
 		BullyCard bullyCard = new BullyCard("CROSSWIND");
 		String[] target = { "-1", "-1", "false", "-1", "-1" };
@@ -130,7 +127,5 @@ public class BullyCardTest extends TestCase {
 		String[] test = bullyCard.getConsequences();
 
 		assertTrue(Arrays.equals(target, test));
-
 	}
-
 }

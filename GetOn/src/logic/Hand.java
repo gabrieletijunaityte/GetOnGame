@@ -2,9 +2,16 @@ package logic;
 
 import java.util.ArrayList;
 
+/**
+ * Hand class handles the creation of the player Hand, add and discard cards to
+ * the Hand.
+ */
 public class Hand {
 	private ArrayList<Card> hand;
 
+	/**
+	 * Constructor for the Hand class
+	 */
 	public Hand() {
 		this.hand = new ArrayList<>();
 	}
