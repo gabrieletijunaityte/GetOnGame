@@ -4,6 +4,7 @@ import logic.Card;
 import logic.Player;
 import logic.Rules;
 import logic.Stack;
+import utilities.Constant;
 import utilities.WriteJSON;
 
 import java.util.ArrayList;
@@ -131,7 +132,7 @@ public class Game {
 			// if yes: check for playability of the selected card
 			if (currentPlayerHand.getMethodIndex() == 0 && rules.isPlayble(selectedCard, currentPlayer)) {
 				// Check card type and play it accordingly
-				if (selectedCard.getType().equals("BULLY")) {
+				if (selectedCard.getType().equals(Constant.BULLY)) {
 
 					// launch optionPane to select player you want to bully
 					int bullyIndex = currentPlayerHand.showSelectPlayerToBully(names);	
@@ -152,7 +153,7 @@ public class Game {
 					currentPlayer.setConsequences(selectedCard.getConsequences());
 					
 					// If card is km card, add it to table
-					if (selectedCard.getType().equals("KILOMETER")) {
+					if (selectedCard.getType().equals(Constant.KILOMETER)) {
 						currentPlayer.discardCard(selectedCard);
 						currentPlayer.addToTable(selectedCard);						
 					} 

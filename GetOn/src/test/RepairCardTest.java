@@ -4,13 +4,14 @@ import java.util.Arrays;
 
 import junit.framework.TestCase;
 import logic.RepairCard;
+import utilities.Constant;
 import logic.Card;
 
 public class RepairCardTest extends TestCase {
 	// Test repair card creation
 	public void testCreationOfRepairCard() {
 		// Creating a repair card
-		RepairCard repairCard = new RepairCard("BIKE_REPAIR");
+		RepairCard repairCard = new RepairCard(Constant.BIKE_REPAIR);
 
 		assertNotNull(repairCard);
 	}
@@ -27,12 +28,12 @@ public class RepairCardTest extends TestCase {
 	}
 
 	// Test the type retrieval method
-	public void testgetType() {
+	public void testGetType() {
 		// Setting the target
-		String target = "REPAIR";
+		String target = Constant.REPAIR;
 
 		// Creating a repair card
-		RepairCard repairCard = new RepairCard("BIKE_REPAIR");
+		RepairCard repairCard = new RepairCard(Constant.BIKE_REPAIR);
 
 		// Getting the type
 		String test = repairCard.getType();
@@ -42,9 +43,9 @@ public class RepairCardTest extends TestCase {
 	}
 
 	// Test the value retrieval method
-	public void testgetValue() {
+	public void testGetValue() {
 		// Setting the target
-		String target = "BIKE_REPAIR";
+		String target = Constant.BIKE_REPAIR;
 
 		// Creating a repair card
 		RepairCard repairCard = new RepairCard(target);
@@ -57,10 +58,10 @@ public class RepairCardTest extends TestCase {
 	}
 
 // Test the getCardName() method
-	public void testgetCardName() {
+	public void testGetCardName() {
 		// Setting the target
-		String target = "BIKE_REPAIR";
-		String target1 = "REPAIR_" + target;
+		String target = Constant.BIKE_REPAIR;
+		String target1 = Constant.REPAIR + "_" + target;
 
 		// Creating a repair card
 		RepairCard repairCard = new RepairCard(target);
@@ -72,32 +73,35 @@ public class RepairCardTest extends TestCase {
 	}
 
 	// Test getPossibleValues
-	public void testgetPossibleValues() {
+	public void testGetPossibleValues() {
 		// Creating Card class
-		RepairCard repairCard = new RepairCard("BIKE_REPAIR");
+		RepairCard repairCard = new RepairCard(Constant.BIKE_REPAIR);
 
 		// Testing getCardNameMethod
 		String test = Arrays.toString(repairCard.getPossibleValues());
+		String target = Arrays.toString(Constant.VALID_REPAIR_VALUES);
+		
 
-		assertEquals("[BIKE_REPAIR, BARRIER_OPEN]", test);
+		assertEquals(target, test);
 	}
 
 	// Test getAmounts
 	public void testGetAmounts() {
 		// Creating Card class
-		RepairCard card = new RepairCard("BIKE_REPAIR");
+		RepairCard card = new RepairCard(Constant.BIKE_REPAIR);
 
 		// Testing getAmounts
 		String test = Arrays.toString(card.getAmounts());
+		String target = Arrays.toString(Constant.VALID_REPAIR_AMOUNTS);
 
-		assertEquals("[8, 8]", test);
+		assertEquals(target, test);
 	}
 
 	// Test getRequirements
-	public void testgetRequirements() {
+	public void testGetRequirements() {
 		// Creating a statusCard
-		Card repairCard = new RepairCard("BIKE_REPAIR");
-		String[] target = { "-1", "true", "-1", "FLAT_TIRE", "-1" };
+		Card repairCard = new RepairCard(Constant.BIKE_REPAIR);
+		String[] target = { Constant.IGNORE, Constant.TRUE, Constant.IGNORE, Constant.FLAT_TIRE, Constant.IGNORE };
 
 		// Testing getPossibleValues() method
 		String[] test = repairCard.getRequirements();
@@ -106,10 +110,10 @@ public class RepairCardTest extends TestCase {
 	}
 
 	// Test getConsequences
-	public void testgetConsequences() {
+	public void testGetConsequences() {
 		// Creating a statusCard
-		Card repairCard = new RepairCard("BIKE_REPAIR");
-		String[] target = { "-1", "false", "-1", null, "-1" };
+		Card repairCard = new RepairCard(Constant.BIKE_REPAIR);
+		String[] target = { Constant.IGNORE, Constant.FALSE, Constant.IGNORE, null, Constant.IGNORE };
 
 		// Testing getPossibleValues() method
 		String[] test = repairCard.getConsequences();

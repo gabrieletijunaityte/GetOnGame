@@ -12,7 +12,6 @@ public class Card {
 	protected String[] pos_values; // array of possible values for each type
 	protected int[] amount; // array of amounts of each card for stack generation
 
-	// Constructor
 	/**
 	 * This is the Constructor for Card class.
 	 * 
@@ -83,8 +82,9 @@ public class Card {
 	 * 
 	 * @param value
 	 */
-	protected void validateValue(String value) {
-		for (String validValue : pos_values) {
+
+	public void validateValue(String value) {
+		for (String validValue : getPossibleValues()) {
 			if (validValue.equals(value)) {
 				return;
 			}

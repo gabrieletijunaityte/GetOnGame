@@ -2,6 +2,7 @@ package test;
 import logic.KilometerCard;
 import logic.Player;
 import logic.Stack;
+import utilities.Constant;
 import utilities.WriteJSON;
 
 import java.io.File;
@@ -31,7 +32,7 @@ public class testWriteJSON extends TestCase {
 			}
 		}
 		players.get(1).setOnBikeStatus(true);
-		players.get(1).addToTable(new KilometerCard("FIVE"));
+		players.get(1).addToTable(new KilometerCard(Constant.FIVE));
 		
 		// Initialise writer;
 		WriteJSON writer = new WriteJSON();
@@ -48,8 +49,8 @@ public class testWriteJSON extends TestCase {
 	public void testWriteStack() {	
 		Stack stack = new Stack();
 		
-		stack.addDiscardedCard(new KilometerCard ("FIVE"));
-		stack.addDiscardedCard(new KilometerCard ("SIX"));
+		stack.addDiscardedCard(new KilometerCard (Constant.FIVE));
+		stack.addDiscardedCard(new KilometerCard (Constant.SIX));
 		
 		WriteJSON writer = new WriteJSON();
 		writer.writeCards("TestCards", stack.getStack());	
@@ -81,12 +82,12 @@ public class testWriteJSON extends TestCase {
 		players.get(1).setOnBikeStatus(true);
 		
 		// Add card to table
-		players.get(1).addToTable(new KilometerCard("FIVE"));
+		players.get(1).addToTable(new KilometerCard(Constant.FIVE));
 		
 		// Create and initialise discard pile
 		Stack discardPile = new Stack();
-		discardPile.addDiscardedCard(new KilometerCard ("FIVE"));
-		discardPile.addDiscardedCard(new KilometerCard ("SIX"));
+		discardPile.addDiscardedCard(new KilometerCard (Constant.FIVE));
+		discardPile.addDiscardedCard(new KilometerCard (Constant.SIX));
 		
 		// Initialise writer;
 		WriteJSON writer = new WriteJSON();

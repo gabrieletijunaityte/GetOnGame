@@ -1,5 +1,7 @@
 package logic;
 
+import utilities.Constant;
+
 public class StatusCard extends Card {
 
 	// Constructor
@@ -7,36 +9,37 @@ public class StatusCard extends Card {
 		super("STATUS", value);
 
 		// Assign possible status values
-		this.pos_values = new String[] { "GET_ON", "TAIL_WIND" };
+		this.pos_values = Constant.VALID_STATUS_VALUES;
 		validateValue(value);
 
 		// Assign amount per card
-		this.amount = new int[] { 14, 5 };
+		this.amount = Constant.VALID_STATUS_AMOUNTS;
 	}
-	
+
 	// getRequirements method
 	public String[] getRequirements() {
 		// Requirements for (-1 to ignore)
-			// GetOnStatus
-			// BulliedStatus
-			// hasWindStatus
-			// Bullied type (-1 - ignore)
-			// Maximum number of the same cards played (-1 for no limit)
+		// GetOnStatus
+		// BulliedStatus
+		// hasWindStatus
+		// Bullied type (-1 - ignore)
+		// Maximum number of the same cards played (-1 for no limit)
 		String value = this.getValue();
-		
+
 		// To play GET_ON: be not bullied
-		if (value.equals("GET_ON")) {
-			String [] requirements = {"-1", "false", "-1", "-1", "-1"};
+		if (value.equals(Constant.GET_ON)) {
+			String[] requirements = { Constant.IGNORE, Constant.FALSE, Constant.IGNORE, Constant.IGNORE,
+					Constant.IGNORE };
 			return requirements;
 		}
 		// To play TAIL_WIND - always possible
 		else {
-			String [] requirements = {"-1", "-1", "-1", "-1", "-1"};
+			String[] requirements = { Constant.IGNORE, Constant.IGNORE, Constant.IGNORE, Constant.IGNORE,
+					Constant.IGNORE };
 			return requirements;
 		}
 	}
-	
-	
+
 	// Implement method for getConsequences
 	public String[] getConsequences() {
 		// Changes for (-1 to ignore)
@@ -46,14 +49,16 @@ public class StatusCard extends Card {
 		// Bullied type
 		// Kilometer increase
 
-		if (this.getValue().equals("GET_ON")) {
+		if (this.getValue().equals(Constant.GET_ON)) {
 
-			String[] consequences = { "true", "-1", "-1", "-1", "-1" };
+			String[] consequences = { Constant.TRUE, Constant.IGNORE, Constant.IGNORE, Constant.IGNORE,
+					Constant.IGNORE };
 
 			return consequences;
 		} else {
 
-			String[] consequences = { "-1", "-1", "true", "-1", "-1" };
+			String[] consequences = { Constant.IGNORE, Constant.IGNORE, Constant.TRUE, Constant.IGNORE,
+					Constant.IGNORE };
 			return consequences;
 
 		}

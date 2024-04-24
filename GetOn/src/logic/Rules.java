@@ -3,18 +3,24 @@ package logic;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-// Import required functionalities
 import java.io.IOException;
 import java.lang.IllegalStateException;
 import java.util.NoSuchElementException;
 
-// Create rule class
+import utilities.Constant;
+
+/**
+ * Loads the game rules from a text file, and checks whether the card can be played.
+ */
 public class Rules {
 	
-	// Set the default rules of the game
 	private String rules = readRules();
 	
-	// Method to load the rules from the data folder
+	/**
+	 * Constructs a new Rules object and loading it from a text file.
+	 * 
+	 * @return A single string containing all rules.
+	 */
 	private String readRules() {
 		
 		String defaultRules = "";
@@ -35,23 +41,32 @@ public class Rules {
 		} catch (NoSuchElementException | IllegalStateException | IOException e) {
 			System.err.println("Error reading text file. Terminating.");
 		}
-		
 		return defaultRules;
-		
 	}
 	
-	// Method to show the rules to a spectator
+	/**
+	 * This method is used to retrieve the rules.
+	 * 
+	 * @return A single string containing all game rules.
+	 */
 	public String getRules() {
 		return rules;
 	}
 	
+	/**
+	 * Evaluates the requirements of the card against the status of the player and
+	 * checks whether the maximum number of the same card type has been reached.
+	 *
+	 * @param card The card to evaluate.
+	 * @param player The player attempting to play the card.
+	 * @return {@code true} if the card can be played, {@code false} is the card cannot be played.
+	 */
 	public Boolean isPlayble(Card card, Player player) {
 		String[] requirements = card.getRequirements();
-//		String[] playerStatus = { "false", "true", "true", "-1", "-1" };
 		String[] playerStatus = player.getStatuses();
 
 		for (int i = 0; i < playerStatus.length; i++) {
-			if (!requirements[i].equals("-1")) {
+			if (!requirements[i].equals(Constant.IGNORE)) {
 				if (!requirements[i].equals(playerStatus[i])) {
 					return false;
 				}
@@ -65,6 +80,5 @@ public class Rules {
 			return false;
 		}
 		return true;
-	}
-	
+	}	
 }
