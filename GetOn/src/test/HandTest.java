@@ -27,7 +27,6 @@ public class HandTest extends TestCase {
 		assertEquals(1, myHand.getHand().size());
 
 		assertEquals(98, stack.getStackSize());
-
 	}
 
 	// Test adding cards to the discard pile
@@ -53,18 +52,18 @@ public class HandTest extends TestCase {
 
 		// Create stack of cards to test the set up
 		stack.initializeStack();
-		
+
 		// Add 5 cards
 		myHand.addCard(stack.drawTopCard());
 		myHand.addCard(stack.drawTopCard());
 		myHand.addCard(stack.drawTopCard());
 		myHand.addCard(stack.drawTopCard());
 		myHand.addCard(stack.drawTopCard());
-		
+
+		// Set the Targets
 		String target = "[KILOMETER_FIVE, KILOMETER_FIVE, KILOMETER_FIVE, KILOMETER_FIVE, KILOMETER_FIVE]";
 		String test = myHand.getHand().toString();
-		
+
 		assertEquals(target, test);
 	}
-
 }
