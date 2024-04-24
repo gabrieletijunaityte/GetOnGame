@@ -1,8 +1,22 @@
 package logic;
 
+/**
+ * Represents a repair card, extending the generic card class.
+ * <p>
+ * RepairCard is used to repair the status of the player. The specific requirements
+ * of each repair card type have to be met before they can be played.
+ * </p>
+ */
 public class RepairCard extends Card {
 
-	// Constructor
+	/**
+	 * Constructs a new RepairCard with a specified repair value.
+	 * <p>
+	 * This constructor initializes a repair card and checks if the value is valid.
+	 * It assigns the repair values to the cards, and the number of cards of that type.
+	 * </p>
+	 * @param value The value assigned to the repair card.
+	 */
 	public RepairCard(String value) {
 		super("REPAIR", value);
 
@@ -13,8 +27,15 @@ public class RepairCard extends Card {
 		// Assign amount per card
 		this.amount = new int[] { 8, 8 };
 	}
-	
-	// getRequirements method
+
+	/**
+	 * Retrieves the requirements necessary to play the repair card.
+	 * <p>
+	 * This method provides an array of strings indicating whether certain conditions required
+	 * to play the card are met.
+	 * </p>
+	 * @return An array of strings representing the requirements to play this card.
+	 */
 	public String[] getRequirements() {
 		// Requirements for (-1 to ignore)
 			// GetOnStatus
@@ -33,10 +54,17 @@ public class RepairCard extends Card {
 		else {
 			String [] requirements = {"-1", "true", "-1", "CRISS_CROSS", "-1"};
 			return requirements;
-		} 
+		}
 	}
-	
-	// Implement method for getConsequences
+
+	/**
+	 * Computes the consequences of playing this specific type of repair card.
+	 * <p>
+	 * This method returns an array of strings that detail the effects of playing
+	 * the repair card.
+	 * </p>
+	 * @return An array of strings with detailing the consequences of the played card.
+	 */
 	public String[] getConsequences() {
 		// Changes for (-1 to ignore)
 		// GetOnStatus
