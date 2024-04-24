@@ -28,7 +28,7 @@ public class RepairCardTest extends TestCase {
 	}
 
 	// Test the type retrieval method
-	public void testgetType() {
+	public void testGetType() {
 		// Setting the target
 		String target = Constant.REPAIR;
 
@@ -43,7 +43,7 @@ public class RepairCardTest extends TestCase {
 	}
 
 	// Test the value retrieval method
-	public void testgetValue() {
+	public void testGetValue() {
 		// Setting the target
 		String target = Constant.BIKE_REPAIR;
 
@@ -58,7 +58,7 @@ public class RepairCardTest extends TestCase {
 	}
 
 // Test the getCardName() method
-	public void testgetCardName() {
+	public void testGetCardName() {
 		// Setting the target
 		String target = Constant.BIKE_REPAIR;
 		String target1 = Constant.REPAIR + "_" + target;
@@ -73,7 +73,7 @@ public class RepairCardTest extends TestCase {
 	}
 
 	// Test getPossibleValues
-	public void testgetPossibleValues() {
+	public void testGetPossibleValues() {
 		// Creating Card class
 		RepairCard repairCard = new RepairCard(Constant.BIKE_REPAIR);
 
@@ -98,7 +98,7 @@ public class RepairCardTest extends TestCase {
 	}
 
 	// Test getRequirements
-	public void testgetRequirements() {
+	public void testGetRequirements() {
 		// Creating a statusCard
 		Card repairCard = new RepairCard(Constant.BIKE_REPAIR);
 		String[] target = { Constant.IGNORE, Constant.TRUE, Constant.IGNORE, Constant.FLAT_TIRE, Constant.IGNORE };
@@ -110,7 +110,7 @@ public class RepairCardTest extends TestCase {
 	}
 
 	// Test getConsequences
-	public void testgetConsequences() {
+	public void testGetConsequences() {
 		// Creating a statusCard
 		Card repairCard = new RepairCard(Constant.BIKE_REPAIR);
 		String[] target = { Constant.IGNORE, Constant.FALSE, Constant.IGNORE, null, Constant.IGNORE };
