@@ -58,7 +58,7 @@ public class BullyCard extends Card {
 		if (this.getValue().equals("CROSSWIND")) {
 			String[] consequences = { Constant.IGNORE, Constant.IGNORE, Constant.FALSE, Constant.IGNORE, Constant.IGNORE };
 			return consequences;
-		} else if (this.getValue().equals("TAVERN")) {
+		} else if (this.getValue().equals(Constant.TAVERN)) {
 			String[] consequences = { Constant.FALSE, Constant.IGNORE, Constant.IGNORE, Constant.IGNORE, Constant.IGNORE };
 			return consequences;
 		} else {

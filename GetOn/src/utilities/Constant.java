@@ -37,7 +37,9 @@ public class Constant {
     public static final String IGNORE = "-1";
     
     // Possible value arrays
-    public static final String[] VALID_BULLY_VALUES = new String[] { "TAVERN", "CROSSWIND", "FLAT_TIRE", "CRISS_CROSS" };
+    public static final String[] VALID_BULLY_VALUES = new String[] {TAVERN, CROSSWIND, FLAT_TIRE, CRISS_CROSS};
+    public static final String[] VALID_KM_VALUES = new String[] {FIVE, SIX, EIGHT, TEN};
     
     public static final int[] VALID_BULLY_AMOUNTS = new int[] {2, 4, 3, 3 };
+    public static final int[] VALID_KM_AMOUNTS = new int[] { 24, 12, 8, 8 };
 }
