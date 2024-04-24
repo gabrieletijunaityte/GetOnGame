@@ -9,8 +9,8 @@ public class Card {
 
 	private String type; // type of the card e.g. BULLY
 	private String value; // value of the card e.g. TAVERN
-	private String[] pos_values; // array of possible values for each type
-	private int[] amount; // array of amounts of each card for stack generation
+	protected String[] pos_values; // array of possible values for each type
+	protected int[] amount; // array of amounts of each card for stack generation
 
 	/**
 	 * This is the Constructor for Card class.
@@ -82,6 +82,7 @@ public class Card {
 	 * 
 	 * @param value
 	 */
+
 	public void validateValue(String value) {
 		for (String validValue : getPossibleValues()) {
 			if (validValue.equals(value)) {
@@ -121,23 +122,5 @@ public class Card {
 		// Kilometer increase
 		String[] consequences = {};
 		return consequences;
-	}
-
-	/**
-	 * Method to set the possible card values
-	 * 
-	 * @param pos_values - Set the possible values
-	 */
-	public void setPossibleValues(String[] pos_values) {
-		this.pos_values = pos_values;
-	}
-
-	/**
-	 * Method to set the amount of cards for all the different types
-	 * 
-	 * @param amount - Set amount of cards for the types
-	 */
-	public void setAmount(int[] amount) {
-		this.amount = amount;
 	}
 }

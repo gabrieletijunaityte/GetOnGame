@@ -1,5 +1,7 @@
 package logic;
 
+import utilities.Constant;
+
 public class KilometerCard extends Card {
 
 	// Constructor
@@ -7,11 +9,11 @@ public class KilometerCard extends Card {
 		super("KILOMETER", value);
 
 		// Assign possible km values
-		this.setPossibleValues(new String[] { "FIVE", "SIX", "EIGHT", "TEN" });
+		this.pos_values = Constant.VALID_KM_VALUES;
 		validateValue(value);
 
 		// Assign amount per card
-		this.setAmount(new int[] { 24, 12, 8, 8 });
+		this.amount = Constant.VALID_KM_AMOUNTS;
 	}
 	
 	// getRequirements method
@@ -25,18 +27,18 @@ public class KilometerCard extends Card {
 		String value = this.getValue();
 		
 		// To play 5 km: (to be on bike, not bullied and 8 cards max)
-		if (value.equals("FIVE")) {
-			String [] requirements = {"true", "false", "-1", "-1", "7"};
+		if (value.equals(Constant.FIVE)) {
+			String [] requirements = {Constant.TRUE, Constant.FALSE, Constant.IGNORE, Constant.IGNORE, "7"};
 			return requirements;
 		}
 		// To play 6 km: (to be on bike, not bullied and 4 cards max)
-		else if (value.equals("SIX")) {
-			String [] requirements = {"true", "false", "-1", "-1", "3"};
+		else if (value.equals(Constant.SIX)) {
+			String [] requirements = {Constant.TRUE, Constant.FALSE, Constant.IGNORE, Constant.IGNORE, "3"};
 			return requirements;
 		}
 		// To play 8 or 10 km: (to be on bike, not bullied, to have wind and 2 cards max)
 		else {
-			String [] requirements = {"true", "false", "true", "-1", "1"};
+			String [] requirements = {Constant.TRUE, Constant.FALSE, Constant.TRUE, Constant.IGNORE, "1"};
 			return requirements;
 		}
 	}
@@ -50,7 +52,7 @@ public class KilometerCard extends Card {
 		// Bullied type
 		// Kilometer increase
 
-		String[] consequences = { "-1", "-1", "-1", "-1", this.getValue() };
+		String[] consequences = { Constant.IGNORE, Constant.IGNORE, Constant.IGNORE, Constant.IGNORE, this.getValue() };
 		return consequences;
 
 
