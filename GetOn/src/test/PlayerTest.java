@@ -1,4 +1,6 @@
 package test;
+
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import junit.framework.TestCase;
@@ -20,6 +22,22 @@ public class PlayerTest extends TestCase {
 
 		// assert that the object was created
 		assertNotNull(testPlayer);
+	}
+
+	// Test change name
+	public void testChangeName() {
+		// Create a player
+		Player testPlayer = new Player("Jan");
+		testPlayer.changeName("Gabi");
+		// assert that the object was created
+		String target = "Gabi";
+		assertEquals(target, testPlayer.getName());
+	}
+
+	// Test getName
+	public void testGetName() {
+		Player testPlayer = new Player("Jan");
+		assertEquals("Jan", testPlayer.getName());
 	}
 
 	// Test hand creation
@@ -67,10 +85,17 @@ public class PlayerTest extends TestCase {
 
 	}
 
+	// Test to set the bullied status
+	public void testSetBulliedStatus() {
+		Player testPlayer = new Player("Jan");
+		testPlayer.setBulliedStatus(true);
+		Boolean target = true;
+		assertEquals(target, testPlayer.getBulliedStatus());
+	}
+
 	// Test to get the player progress
 	public void testPlayerProgress() {
 		// Creating variables for the test
-		Hand myHand = new Hand();
 		Player myPlayer = new Player("Jan");
 
 		// Add Kilometer cards to played cards. Added two SIX to see that duplicates
@@ -96,6 +121,13 @@ public class PlayerTest extends TestCase {
 
 		assertEquals(myPlayer.getBulliedType(), bulliedTest);
 
+	}
+
+	// Test the getWindStatus method
+	public void testGetWindStatus() {
+		Player myPlayer = new Player("Jan");
+		myPlayer.setHasWind(true);
+		assertTrue(myPlayer.getWindStatus());
 	}
 
 	// Test getStatuses method
@@ -193,7 +225,7 @@ public class PlayerTest extends TestCase {
 		// Test if 5 cards were drawn
 		assertEquals(1, myPlayer.getHand().size());
 	}
-	
+
 	// Test card removal from hand
 	public void testDiscardCard() {
 		// Creating variables for the test
@@ -206,40 +238,41 @@ public class PlayerTest extends TestCase {
 		// Create a hand with drawn card
 		myPlayer.drawCard(stack.drawTopCard());
 
-		// Creating card to 
+		// Creating card to
 		Card cardToRemove = new BullyCard("TAVERN");
-		
+
 		myPlayer.drawCard(cardToRemove);
-		
+
 		// Removing the card
 		myPlayer.discardCard(cardToRemove);
-				
+
 		// Test if the only card in the hand is a kilometer five card
 		assertEquals("[KILOMETER_FIVE]", myPlayer.getHand().toString());
 	}
-	
-	// Test add card to player table method
+
+	// Test add card to player table method and test getPlayedCards
 	public void testAddToTable() {
 		Player myPlayer = new Player("Jan");
 		Stack stack = new Stack();
 		stack.initializeStack();
 		Card card = stack.drawTopCard();
-		
+
 		myPlayer.addToTable(card);
 		PlayerTable playerTable = myPlayer.getPlayedCards();
-		
+
 		String target = "[KILOMETER_FIVE]";
 		String test = playerTable.getPlayedCards().toString();
-		
+
 		assertEquals(target, test);
 	}
 	
+	// Test to set the Kilometer progress
 	public void testSetKmProgress() {
 		Player myPlayer = new Player("Test player");
 		assertEquals(0, myPlayer.getKmProgress());
-		
+
 		myPlayer.setKmProgress(50);
 		assertEquals(50, myPlayer.getKmProgress());
-		
+
 	}
 }
