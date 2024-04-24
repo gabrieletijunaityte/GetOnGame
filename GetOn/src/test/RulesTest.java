@@ -5,6 +5,7 @@ import logic.Rules;
 import logic.Player;
 import logic.Card;
 import logic.StatusCard;
+import utilities.Constant;
 import logic.KilometerCard;
 
 public class RulesTest extends TestCase {
@@ -29,7 +30,7 @@ public class RulesTest extends TestCase {
 		Rules rules = new Rules();
 		
 		// Define required attributes
-		Card kmCard = new KilometerCard("EIGHT");
+		Card kmCard = new KilometerCard(Constant.EIGHT);
 		Player testPlayer = new Player("Jan");
 		
 		// Set Statuses for player to be able to play the card
@@ -49,7 +50,7 @@ public class RulesTest extends TestCase {
 		Rules rules = new Rules();
 		
 		// Define required attributes
-		Card statusCard = new StatusCard("GET_ON");
+		Card statusCard = new StatusCard(Constant.GET_ON);
 		Player testPlayer = new Player("Jan");
 		
 		// Defining test variables
