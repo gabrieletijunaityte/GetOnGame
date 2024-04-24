@@ -7,7 +7,6 @@ import logic.Stack;
 import utilities.WriteJSON;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import graphics.GameFrame;
 import graphics.MainMenu;
@@ -91,9 +90,6 @@ public class Game {
 		PlayerHand currentPlayerHand = new PlayerHand(currentPlayer, rules);
 		GameFrame gameFrame = new GameFrame(stack, discardPile, players, selectedCardIndex, rules, playerIndex);
 		gameFrame.updatePlayerHand(currentPlayerHand);
-		
-		// Initialize input listener
-		Scanner input = new Scanner(System.in);
 
 		// Intialize drawn cards
 		Card drawnCard;
@@ -166,12 +162,16 @@ public class Game {
 						discardPile.addDiscardedCard(selectedCard);
 					}
 				}
+				currentPlayerHand.popupMessage(1);
+				
 			} 
 			// If card is not playable or player selected to discard card:
 			else {
 				// If player wants to play un-playble card:
 				if (currentPlayerHand.getMethodIndex() == 0 && !rules.isPlayble(selectedCard, currentPlayer)) {
-					System.out.println("Selected card cannot be played, card is discarded");
+					currentPlayerHand.popupMessage(3);
+				} else {
+					currentPlayerHand.popupMessage(2);
 				}
 				// Discard selected card
 				currentPlayer.discardCard(selectedCard);

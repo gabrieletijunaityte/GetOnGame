@@ -1,5 +1,4 @@
 package test;
-import java.util.ArrayList;
 import java.util.Arrays;
 
 import junit.framework.TestCase;
@@ -214,8 +213,8 @@ public class PlayerTest extends TestCase {
 		
 		// Removing the card
 		myPlayer.discardCard(cardToRemove);
-		
-		// Test if 5 cards were drawn
+				
+		// Test if the only card in the hand is a kilometer five card
 		assertEquals("[KILOMETER_FIVE]", myPlayer.getHand().toString());
 	}
 	

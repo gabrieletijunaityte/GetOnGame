@@ -6,7 +6,6 @@ import javax.swing.border.EmptyBorder;
 
 import javax.swing.JLabel;
 import java.awt.Font;
-import java.awt.Window;
 
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -15,10 +14,6 @@ import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.FlowLayout;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 
 public class MainMenu extends JFrame {
 

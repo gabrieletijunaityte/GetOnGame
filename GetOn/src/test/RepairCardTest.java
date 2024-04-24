@@ -8,7 +8,7 @@ import logic.Card;
 
 public class RepairCardTest extends TestCase {
 	// Test repair card creation
-	public void testCreationOfrepairCard() {
+	public void testCreationOfRepairCard() {
 		// Creating a repair card
 		RepairCard repairCard = new RepairCard("BIKE_REPAIR");
 
@@ -27,7 +27,7 @@ public class RepairCardTest extends TestCase {
 	}
 
 	// Test the type retrieval method
-	public void testgetType() {
+	public void testGetType() {
 		// Setting the target
 		String target = "REPAIR";
 
@@ -42,7 +42,7 @@ public class RepairCardTest extends TestCase {
 	}
 
 	// Test the value retrieval method
-	public void testgetValue() {
+	public void testGetValue() {
 		// Setting the target
 		String target = "BIKE_REPAIR";
 
@@ -57,7 +57,7 @@ public class RepairCardTest extends TestCase {
 	}
 
 // Test the getCardName() method
-	public void testgetCardName() {
+	public void testGetCardName() {
 		// Setting the target
 		String target = "BIKE_REPAIR";
 		String target1 = "REPAIR_" + target;
@@ -116,5 +116,4 @@ public class RepairCardTest extends TestCase {
 
 		assertTrue(Arrays.equals(target, test));
 	}
-
 }

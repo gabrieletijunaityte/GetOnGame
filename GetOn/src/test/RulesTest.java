@@ -1,8 +1,5 @@
 package test;
 
-import java.util.Arrays;
-
-
 import junit.framework.TestCase;
 import logic.Rules;
 import logic.Player;
@@ -17,7 +14,6 @@ public class RulesTest extends TestCase {
 		
 		Rules defaultRule = new Rules();
 		assertNotNull(defaultRule);
-		
 	}
 	
 	// Testing the retrieving of the default rule object
@@ -26,10 +22,9 @@ public class RulesTest extends TestCase {
 		Rules defaultRule = new Rules();
 		String returned = defaultRule.getRules();
 		assertNotNull(returned);
-		
 	}
 	
-	// Check if the card is playble caseA (kmCard with requirement for wind)
+	// Check if the card is playable caseA (kmCard with requirement for wind)
 	public void testIsPlaybleCaseA() {
 		Rules rules = new Rules();
 		
@@ -49,7 +44,7 @@ public class RulesTest extends TestCase {
 		assertEquals(target, test);
 	}
 	
-	// Check if the card is playble caseB (GET_ON with requirement for noBully)
+	// Check if the card is playable caseB (GET_ON with requirement for noBully)
 	public void testIsPlaybleCaseB() {
 		Rules rules = new Rules();
 		
@@ -63,6 +58,4 @@ public class RulesTest extends TestCase {
 		
 		assertEquals(target, test);
 	}
-
-	
 }
