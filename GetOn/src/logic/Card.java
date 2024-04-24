@@ -1,97 +1,143 @@
 package logic;
 
-public class Card {	
-	
-	private String type; 				// type of the card e.g. BULLY
-	private String value; 				// value of the card e.g. TAVERN
-	private String [] pos_values; 	// array of possible values for each type
-	private int [] amount; 			// array of amounts of each card for stack generation
-	
-	// Constructor
-	public Card (String type, String value) {
+/**
+ * Card class is the Super Class used for Inheritance by BullyCard,
+ * KilometerCard, RepairCard, StatusCard subclasses. It handles the creation of
+ * the cards, validation.
+ */
+public class Card {
+
+	private String type; // type of the card e.g. BULLY
+	private String value; // value of the card e.g. TAVERN
+	private String[] pos_values; // array of possible values for each type
+	private int[] amount; // array of amounts of each card for stack generation
+
+	/**
+	 * This is the Constructor for Card class.
+	 * 
+	 * @param type  String
+	 * @param value String
+	 */
+	public Card(String type, String value) {
 		this.type = type;
 		this.value = value;
 	}
-	
-	// Getting the type of the card
+
+	/**
+	 * Method to get the type of the card.
+	 * 
+	 * @return type of the card.
+	 */
 	public String getType() {
 		return this.type;
 	}
-	
-	// Getting the value of the card
+
+	/**
+	 * Method to get the value of the card.
+	 * 
+	 * @return value of the card.
+	 */
 	public String getValue() {
 		return this.value;
 	}
-	
-	// Adjust default toString function
+
+	/**
+	 * Method to return the card as a String return
+	 * 
+	 * @return The type_value of the card.
+	 */
 	public String toString() {
 		return this.type + "_" + this.value;
 	}
-	
-	// Getting the representation of the card by combining the type and value
+
+	/**
+	 * Method to get the name of the card by combining type and value.
+	 * 
+	 * @return name of the card.
+	 */
 	public String getCardName() {
 		return toString();
 	}
-	
-	// Method to retrieve possible values for the specific type
-	public String[] getPossibleValues() {        
-        return this.getPos_values();
+
+	/**
+	 * Method to retrieve possible values for the specific type
+	 * 
+	 * @return Array of String with the possible values.
+	 */
+	public String[] getPossibleValues() {
+		return this.pos_values;
 	}
-	
-	// Method to get amounts of the specific card
+
+	/**
+	 * Method to get amounts of the specific card
+	 * 
+	 * @return The number of the specific card
+	 */
 	public int[] getAmounts() {
-		return this.getAmount();
+		return this.amount;
 	}
-	
-	// Method to check if value is in pos_values for deck building
+
+	/**
+	 * Method to check if value is in pos_values for deck building
+	 * 
+	 * @param value
+	 */
 	public void validateValue(String value) {
-		for (String validValue : getPos_values()) {
+		for (String validValue : getPossibleValues()) {
 			if (validValue.equals(value)) {
 				return;
 			}
 		}
 		throw new IllegalArgumentException("Entered value is not in possible values list");
 	}
-	
-	// Method to check if the card is playable
+
+	/**
+	 * Method to get the requirements of the card.
+	 * 
+	 * @return The requirements of the card.
+	 */
 	public String[] getRequirements() {
 		// Requirements for (-1 to ignore)
 		// GetOnStatus
 		// BulliedStatus
 		// hasWindStatus
-		// Bullied type 
-		// Maximum number of the same cards played 
-
-		String [] requirements = {};
+		// Bullied type
+		// Maximum number of the same cards played
+		String[] requirements = {};
 		return requirements;
 	}
-	
+
+	/**
+	 * Method to set the consequences of the card.
+	 * 
+	 * @return The consequences of the card.
+	 */
 	public String[] getConsequences() {
 		// Changes for (-1 to ignore)
 		// GetOnStatus
 		// BulliedStatus
-		// hasWindStatus		
-		// Bullied type 
+		// hasWindStatus
+		// Bullied type
 		// Kilometer increase
-		String [] consequences = {};
+		String[] consequences = {};
 		return consequences;
-		
-	}
-	
-	public String [] getPos_values() {
-		return pos_values;
 	}
 
-	public void setPos_values(String [] pos_values) {
+	/**
+	 * Method to set the possible card values
+	 * 
+	 * @param pos_values - Set the possible values
+	 */
+	public void setPossibleValues(String[] pos_values) {
 		this.pos_values = pos_values;
 	}
 
-	public int [] getAmount() {
-		return amount;
-	}
-
-	public void setAmount(int [] amount) {
+	/**
+	 * Method to set the amount of cards for all the different types
+	 * 
+	 * @param amount - Set amount of cards for the types
+	 */
+	public void setAmount(int[] amount) {
 		this.amount = amount;
 	}
-	
 }

@@ -4,7 +4,7 @@ import junit.framework.TestCase;
 import logic.PlayerTable;
 import logic.KilometerCard;
 
-public class PlayedCardsTest extends TestCase {
+public class PlayerTableTest extends TestCase {
 
 	// Test playedCard creation
 	public void testCreationOfPlayedCards() {	

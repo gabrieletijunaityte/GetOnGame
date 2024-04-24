@@ -7,7 +7,7 @@ public class StatusCard extends Card {
 		super("STATUS", value);
 
 		// Assign possible status values
-		this.setPos_values(new String[] { "GET_ON", "TAIL_WIND" });
+		this.setPossibleValues(new String[] { "GET_ON", "TAIL_WIND" });
 		validateValue(value);
 
 		// Assign amount per card
