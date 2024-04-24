@@ -9,7 +9,6 @@ import java.util.ArrayList;
  * handles the names of the players and their current statuses.
  */
 public class Player {
-
 	private String name;
 	private Boolean onBikeStatus;
 	private Boolean bulliedStatus;
@@ -209,7 +208,11 @@ public class Player {
 		return statuses;
 	}
 
-	// Implement set Consequences method
+	/**
+	 * Implement set Consequences method
+	 * 
+	 * @param consequences - The consequences to be set
+	 */
 	public void setConsequences(String[] consequences) {
 		for (int i = 0; i < consequences.length; i++) {
 			switch (i) {
