@@ -35,4 +35,9 @@ public class Constant {
     public static final String TRUE = "true";
     public static final String FALSE = "false";
     public static final String IGNORE = "-1";
+    
+    // Possible value arrays
+    public static final String[] VALID_BULLY_VALUES = new String[] { "TAVERN", "CROSSWIND", "FLAT_TIRE", "CRISS_CROSS" };
+    
+    public static final int[] VALID_BULLY_AMOUNTS = new int[] {2, 4, 3, 3 };
 }
