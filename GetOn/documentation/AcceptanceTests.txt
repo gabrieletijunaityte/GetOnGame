@@ -2,8 +2,10 @@ ID #1
 Title: Show Hand
 
 Acceptance test:
-1. Do all the steps from AcceptanceTest_ID_11
-2. In the bottom right corner click on the button "View Hand" to see your cards.
+1. Do all the steps from ID #4.
+2. Click "Start Test Game"
+3. In the bottom right corner click on the button "View Hand" to see your cards.
+4. Verify that you can see all 5 cards in your hand.
 
 -------------------------------------------------------------------------------------
 
@@ -11,6 +13,11 @@ ID #2
 Title: What is on the table
 
 Acceptance test:
+1. Perform steps from ID #4, followed by ID #11
+2. Observe the Game table interface. 
+3. Verify that the discard pile is empty as you've just started the game. You are always able to observe the last discarded card.
+4. Verify that the card stack has 84 cards left as you've dealth 15 cards to players. 
+5. Verify that at the bottom of the screen you are able to observe which km cards every player has played.
 
 -------------------------------------------------------------------------------------
 
@@ -18,19 +25,30 @@ ID #3
 Title: Observe Card Pile
 
 Acceptance test:
-1. Do all the steps from AcceptanceTest_ID_4
-2. Click on the Start game button
-3. Look at the Remaining Cards right of the stack icon. The number next to Remaining Cards shows the amount of cards in the stack.
+1. Do all the steps from ID #4, followed by ID #11
+2. Verify that you are able to observe the remaining amount of cards in the Card Stack. It is the number to the right of the Card Stack Icon.
+3. Verify that as the game has just been started, there are 84 cards left on the card stack.	
+
 -------------------------------------------------------------------------------------
 
 ID #4
 Title: Enter the player names
 
 Acceptance test:
-1. Click on "GET_ON" file.
-2. Enter the first player name in the "Player 1" field (e.g., enter "Gabriele"), the second - in the "Player 2" (e.g., enter "Niels"), and the third - in the "Player 3" (e.g., "Jan").
-3. Press Start Game.
-4. The names are visible before Bike Status and Wind Status.
+1. Open the Eclipse directory "group24d"
+2. Run the Game.java class
+3. Enter the first player name in the "Player 1" field (e.g., enter "Gabriele"), the second - in the "Player 2" (e.g., enter "Niels"), and the third - in the "Player 3" (e.g., "Jan").
+4. Verify that the game starts succesfully with the entered player names displayed in the centre of the game table, by clicking the button "Start Game" and observing.
+
+
+Exception:
+1. Open the Eclipse directory "group24d"
+2. Run the Game.java class
+3. Enter only the first player name in the "Player 1" field (e.g., enter "Gabriele".
+4. Click the "Start Game" button.
+5. An error message will pop-up with the text "Enter at least two player names to start!"
+
+
 
 -------------------------------------------------------------------------------------
 
@@ -38,10 +56,9 @@ ID #5
 Title: View Progress
 
 Acceptance test:
-1. Do all the steps from AcceptanceTest_ID_12.
-2. In the game frame, observe the score 0.
-3. Do AcceptanceTest_ID_6.
-4. Observe 0 increase to 5.
+1. Do all the steps from ID #4
+2. Click the "Start Test Game" button.
+2. Observe the progress bar in the middle of the screen that shows how much each player has biked in total. 
 
 
 -------------------------------------------------------------------------------------
@@ -50,8 +67,17 @@ ID #6
 Title: Play a kilometer Card
 
 Acceptance test:
-1. Do all the steps from AcceptanceTest_ID_12
-2. As a player 1 select to play a "FIVE" kilometer card.
+1. Do all the steps from ID #4, ID #1 and ID #13
+2. As Player 2, click "View Hand" and click the "Cycle 10 KM" card. Click "discard". A message "Card has been discarded" will pop up. Press the OK button to dismiss.
+3. As Player 3, click "View Hand" and click the "Cycle 8 KM" card. Click "discard". A message "Card has been discarded" will pop up. Press the OK button to dismiss.
+4. As Player 4, click "View Hand" and click the "Cycle 5 KM" card. Click "Play". A message "Card has been played" will pop up. Press the OK button to dismiss.
+5. Verify in the left bottom corner that the 5 KM counter for Player 1 has changed from 0 to 1.
+
+Exception:
+1. Do all the steps from ID #4 and ID #1
+2. As Player 2, click the "Cycle 10 KM" card. Click "Play". A message "Card is not playable, Discarded instead." will pop up. Press the OK button to dismiss.
+3. Verify that the 5 KM counter of Player 1 has not changed from 0 and the "Cycle 5 KM" card is now on top of the discard pile. 
+
 
 
 -------------------------------------------------------------------------------------
@@ -60,9 +86,10 @@ ID #7
 Title: Discard Card
 
 Acceptance test:
-1. Do all the steps from AcceptanceTest_ID_1
-2. Select a "TEN" kilometer card.
-3. Select "Discard card".
+1. Do all the steps from ID #4 and ID #1
+2. As Player 1, click the "Cycle 5 KM" card. Click "Discard". A message "Card has been discarded" will pop up. Press the OK button to dismiss.
+3. Verify that the card is now on top of the Discard Pile and the amounts of cards on the discard pile has changed to 1. 
+
 
 -------------------------------------------------------------------------------------
 
@@ -70,8 +97,11 @@ ID #8
 Title: View rules
 
 Acceptance test:
-1. Click on "GET_ON" file.
-2. On the bottom right corner click "View Rules".
+1. Open the Eclipse directory "group24d"
+2. Run the Game.java class
+3. In the main menu, click "View Rules" in the bottom right corner.
+4. Verify that you can read the rules in a separate window.
+
 
 -------------------------------------------------------------------------------------
 
@@ -79,10 +109,12 @@ ID #9
 Title: Play a bully card
 
 Acceptance test:
-1. Do all the steps from AcceptanceTest_ID_13
-2. Click "View my hand" button.
-3. As Player 2, select to play a bully card "FLAT_TIRE".
-4. Select Player 3 as a player to bully.
+1. Perform all steps from ID #4, ID #1, ID #13 and ID #6.
+2. As Player 2, click the "Flat Tire" bully card. 
+3. Click "Play Card". 
+4. Select which player to play the bully card on. Bully Player 3, click "3".
+5. Verify that on the game table, the bike status of Player 3 has changed to "FLAT_TIRE"
+
 
 -------------------------------------------------------------------------------------
 
@@ -90,8 +122,14 @@ ID #10
 Title: Draw card and Pass turn
 
 Acceptance test:
-1. Do all the steps from AcceptanceTest_ID_13
-2. No further action needed.
+1. Do all the steps from ID #4, ID #1, ID #16
+2. Test ID #16 has passed the turn to the next player. 
+3. A new card has automatically been drawn. Now we need to verify this in the steps below. 
+4. As Player 2, click the "Get On" card. Click "Play". A message "Card has been played" will pop up. Press the OK button to dismiss.
+5. As Player 3, click the "bully_hostel" card. Click "Discard". A message "Card has been discarded" will pop up. Press the OK button to dismiss.
+6. As Player 1, click "View Hand". 
+7. Verify that Player 1 has drawn a new card in the last round. Last round, the first hand of Player 1 was "Get On", "Cycle 5 KM", "bully_railroadCrossing", "status tail wind", "bully_crosswind". Now, the first card of Player 1 has been changed to "Cycle 5 km". 
+
 
 -------------------------------------------------------------------------------------
 
@@ -99,7 +137,7 @@ ID #11
 Title: Start game
 
 Acceptance test:
-1. Do all the steps from AcceptanceTest_ID_4
+1. Do all the steps from ID #4
 2. Click on "Start Test Game" button.
 
 
@@ -109,8 +147,20 @@ ID #12
 Title: Play a repair card
 
 Acceptance test:
-1. Do all the steps from AcceptanceTest_ID_9
-2. As a player 3 select to play a repair card "REPAIR_BIKE".
+1. Perform all steps from ID #4, ID #1, ID #13, ID #6 and ID #9.
+2. As Player 3, select to play the repair card "defense_bikeRepair". Click "Play Card". Click "OK". 
+3. Verify that the bike status of Player 3 has now changed to "Not on the bike."
+
+
+Exception:
+1. Do all the steps from ID #4, ID #13 and ID #6.
+2. As Player 2, click the "Flat Tire" bully card. 
+3. Click "Discard Card". 
+4. A message will pop up "Card has been discarded". Click "OK". 
+5. As Player 3, select to play the repair card "defense_bikeRepair". Click "Play Card". Click "OK". 
+6. As the card is not playable, a message will pop up saying "Card is not playable, Discarded instead". 
+
+
 
 -------------------------------------------------------------------------------------
 
@@ -118,9 +168,11 @@ ID #13
 Title: Play Get-On card
 
 Acceptance test:
-1. Do all the steps from AcceptanceTest_ID_1
-2. Select "GET_ON" card.
-3. Select "Play card".
+1. Do all the steps from ID #4, ID #1
+2. As Player 1, click the "Get On" card. 
+3. Click "Play". A message "Card has been played" will pop up. Press the OK button to dismiss.
+4. Verify that next to the name of Player 1 ("Gabriele") the "Not on the bike" has changed into "On bike".
+
 
 -------------------------------------------------------------------------------------
 
@@ -135,10 +187,10 @@ ID #15
 Title: Shuffle the card stack
 
 Acceptance test:
-1. Do all the steps from AcceptanceTest_ID_17
+1. Do all the steps from ID #17
 2. Observe their type and order.
 3. Close the game.
-4. Do all the steps from AcceptanceTest_ID_17 again.
+4. Do all the steps from ID #17 again.
 5. Compare this hand with the previous one.
 6. (optional) There is a very small chance that the cards are the same. If so, repeat step 3 to 5, at most two times more.
 
@@ -149,8 +201,12 @@ ID #16
 Title: Pass turn
 
 Acceptance test:
-1. Do all the steps from AcceptanceTest_ID_13
-2. Click "Pass turn" button.
+1. Do all the steps from ID #4, ID #1
+2. Verify that Player 1 is currently at hand, their area of cards played will be outlined in green. 
+3. As Player 1, click the "Get On" card. 
+4. Click "Play". A message "Card has been played" will pop up. 
+5. Press the OK button to dismiss. This will pass the turn to the next player.
+4. Verify that the turn has been passed to Player 2, by checking whether the area of cards played by Player 2 is now the one outlined in green. 
 
 -------------------------------------------------------------------------------------
 
@@ -158,8 +214,10 @@ ID #17
 Title: View hand graphically
 
 Acceptance test:
-1. Do all the steps from AcceptanceTest_ID_1
-2. No further steps needed.
+1. Do all the steps from ID #4.
+2. Click "Start Test Game"
+3. In the bottom right corner click on the button "View Hand" to see your cards.
+4. Verify that you can see all 5 cards in your hand.
 
 -------------------------------------------------------------------------------------
 
@@ -167,8 +225,9 @@ ID #18
 Title: Graphical Representation of Kilometer Card
 
 Acceptance test:
-1. Do all the steps from AcceptanceTest_ID_6
-2. No further action needed.
+1. Perform all steps from ID #4 and ID #17.
+2. Verify that you can observe the second card in your hand, a "Cycle 5 KM" card graphically with a bike symbol in the middle.
+
 
 -------------------------------------------------------------------------------------
 
@@ -176,8 +235,11 @@ ID #19
 Title: View Formatted rules
 
 Acceptance test:
-1. Click on "GET_ON" file.
-2. On the bottom right corner click "View Rules".
+1. Open the Eclipse directory "group24d"
+2. Run the Game.java class
+3. In the main menu, click "View Rules" in the bottom right corner.
+4. Verify that you can read the formatted rules in a separate window.
+
 
 -------------------------------------------------------------------------------------
 
@@ -185,6 +247,13 @@ ID #20
 Title: Reshuffle discardPile
 
 Acceptance test:
+1. Perform all steps from ID #4, AcceptanceTest 1, 
+
+
+
+
+
+
 
 1. Run the file Game.java
 2. Fill in the fields for Player 1, Player 2, and Player 3 with "player1", "player2", "player3".
@@ -243,7 +312,7 @@ ID #25
 Title: Visually show playability in hand
 
 Acceptance test:
-1. Do all the steps from AcceptanceTest_ID_17
+1. Do all the steps from ID #17
 2. Observe the color of the border of the cards. Because it's the first round, the bully cards, tailwind card, and get on cards should be green. All kilometer cards and repair cards should be red.
 3. (optional) If not every type of card is shown in the first hand, close game and redo steps 1 and 2 until you have seen all card types. 
 
