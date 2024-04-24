@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 import junit.framework.TestCase;
 import logic.KilometerCard;
+import utilities.Constant;
 import logic.Card;
 
 public class KilometerCardTest extends TestCase {
@@ -11,7 +12,7 @@ public class KilometerCardTest extends TestCase {
 	// Test km card creation
 	public void testCreationOfKmCard() {
 		// Creating a km card
-		KilometerCard kmCard = new KilometerCard("FIVE");
+		KilometerCard kmCard = new KilometerCard(Constant.FIVE);
 
 		assertNotNull(kmCard);
 	}
@@ -30,10 +31,10 @@ public class KilometerCardTest extends TestCase {
 	// Test the type retrieval method
 	public void testgetType() {
 		// Setting the target
-		String target = "KILOMETER";
+		String target = Constant.KILOMETER;
 
 		// Creating a km card
-		KilometerCard kmCard = new KilometerCard("FIVE");
+		KilometerCard kmCard = new KilometerCard(Constant.FIVE);
 
 		// Getting the type
 		String test = kmCard.getType();
@@ -45,7 +46,7 @@ public class KilometerCardTest extends TestCase {
 	// Test the value retrieval method
 	public void testgetValue() {
 		// Setting the target
-		String target = "FIVE";
+		String target = Constant.FIVE;
 
 		// Creating a km card
 		KilometerCard kmCard = new KilometerCard(target);
@@ -60,8 +61,8 @@ public class KilometerCardTest extends TestCase {
 // Test the getCardName() method
 	public void testgetCardName() {
 		// Setting the target
-		String target = "FIVE";
-		String target1 = "KILOMETER_" + target;
+		String target = Constant.FIVE;
+		String target1 = Constant.KILOMETER + "_" + target;
 
 		// Creating a km card
 		KilometerCard kmCard = new KilometerCard(target);
@@ -76,31 +77,32 @@ public class KilometerCardTest extends TestCase {
 	// Test getPossibleValues
 	public void testGetPossibleValues() {
 		// Creating Card class
-		KilometerCard kmCard = new KilometerCard("FIVE");
+		KilometerCard kmCard = new KilometerCard(Constant.FIVE);
 		
 		// Testing getCardNameMethod
 		String test = Arrays.toString(kmCard.getPossibleValues());
+		String target = Arrays.toString(new String [] {Constant.FIVE, Constant.SIX, Constant.EIGHT, Constant.TEN});
 		
-		assertEquals("[FIVE, SIX, EIGHT, TEN]", test);		
+		assertEquals(target, test);		
 	}
 	
 	// Test getAmounts
 	public void testGetAmounts() {
 		// Creating Card class
-		KilometerCard kmCard = new KilometerCard("FIVE");
+		KilometerCard kmCard = new KilometerCard(Constant.FIVE);
 		
 		// Testing getAmounts
 		String test = Arrays.toString(kmCard.getAmounts());
+		String target = Arrays.toString(Constant.VALID_KM_AMOUNTS);
 		
-		
-		assertEquals("[24, 12, 8, 8]", test);		
+		assertEquals(target, test);		
 	}
 	
 	// Test getRequirements
 	public void testGetRequirements() {
 		// Creating a kmCard
-		Card kmCard = new KilometerCard("FIVE");
-		String [] target = {"true", "false", "-1", "-1", "7"};
+		Card kmCard = new KilometerCard(Constant.FIVE);
+		String [] target = {Constant.TRUE, Constant.FALSE, Constant.IGNORE, Constant.IGNORE, "7"};
 		
 		// Testing getPossibleValues() method
 		String [] test = kmCard.getRequirements();
@@ -112,8 +114,8 @@ public class KilometerCardTest extends TestCase {
 	// Test getConsequences
 	public void testGetConsequences() {
 		// Creating a kmCard
-		Card kmCard = new KilometerCard("FIVE");
-		String [] target = {"-1", "-1", "-1", "-1", "FIVE"};
+		Card kmCard = new KilometerCard(Constant.FIVE);
+		String [] target = {Constant.IGNORE, Constant.IGNORE, Constant.IGNORE, Constant.IGNORE, Constant.FIVE};
 		
 		// Testing getPossibleValues() method
 		String [] test = kmCard.getConsequences();

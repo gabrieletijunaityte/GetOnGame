@@ -27,6 +27,9 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JProgressBar;
 
+/**
+ * Create GUI for the player table
+ */
 public class GameFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -39,6 +42,14 @@ public class GameFrame extends JFrame {
 	private JLabel lblDiscardCounter;
 	private JLabel lblDiscardedCard;
 	
+	private JLabel lblP1BikeStatus;
+	private JLabel lblP2BikeStatus;
+	private JLabel lblP3BikeStatus;
+	
+	private JLabel lblP1WindStatus;
+	private JLabel lblP2WindStatus;
+	private JLabel lblP3WindStatus;
+	
 	private PlayerHand currentPlayerHand;
 	private int currentPlayerIndex;
 	private JProgressBar p1Progress;
@@ -47,6 +58,15 @@ public class GameFrame extends JFrame {
 	
 	private Boolean isExit = false;
 	
+	/**
+	 * Constructor for the GameFrame
+	 * @param stack - Stack of Card
+	 * @param discardPile - Stack of discarded Card
+	 * @param players - Player(s) that participate in the game
+	 * @param selectedCardIndex - int that indicates the selected Card
+	 * @param rules - Rules for the game
+	 * @param currentPlayerIndex - int of the Player who's turn it is 
+	 */
 	public GameFrame(Stack stack, Stack discardPile, ArrayList<Player> players, int selectedCardIndex, Rules rules, int currentPlayerIndex) {
 		
 		this.setVisible(true);
@@ -60,69 +80,85 @@ public class GameFrame extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		// Player 1 statuses
 		JPanel player1Status = new JPanel();
-		player1Status.setBounds(5, 280, 306, 145);
+		player1Status.setBounds(5, 280, 306, 43);
 		contentPane.add(player1Status);
+		
+		JLabel lblPlayer1Name = new JLabel(players.get(0).getName());
+		player1Status.add(lblPlayer1Name);
 		
 		JSplitPane splitPane = new JSplitPane();
 		player1Status.add(splitPane);
 		
-		JLabel lblP1BikeStatus = new JLabel(players.get(0).getName() + " Bike Status");
+		lblP1BikeStatus = new JLabel(" ");
 		splitPane.setLeftComponent(lblP1BikeStatus);
 		
-		JLabel lblP1WindStatus = new JLabel(players.get(0).getName() + " Wind Status");
+		lblP1WindStatus = new JLabel(" ");
 		splitPane.setRightComponent(lblP1WindStatus);
 		
-		p1Progress = new JProgressBar();
-		p1Progress.setStringPainted(true);
-		player1Status.add(p1Progress);
+		// Player 1 progressbar
+		JPanel P1Progressbar = new JPanel();
+        P1Progressbar.setBounds(5, 330, 306, 43);
+        contentPane.add(P1Progressbar);
+        
+        p1Progress = new JProgressBar();
+        P1Progressbar.add(p1Progress);
 		
+		// Player 2 statuses
 		JPanel player2Status = new JPanel();
-		player2Status.setBounds(316, 280, 306, 145);
+		player2Status.setBounds(316, 280, 306, 43);
 		contentPane.add(player2Status);
+		
+		JLabel lblPlayer2Name = new JLabel(players.get(1).getName());
+		player2Status.add(lblPlayer2Name);
 		
 		JSplitPane splitPane_1 = new JSplitPane();
 		player2Status.add(splitPane_1);
 		
-		JLabel lblP2BikeStatus = new JLabel(players.get(1).getName() + " Bike Status");
+		lblP2BikeStatus = new JLabel(" ");
 		splitPane_1.setLeftComponent(lblP2BikeStatus);
 		
-		JLabel lblP2WindStatus = new JLabel(players.get(1).getName() + " Wind Status");
+		lblP2WindStatus = new JLabel(" ");
 		splitPane_1.setRightComponent(lblP2WindStatus);
 		
-		JPanel panel_3 = new JPanel();
-		panel_3.setBounds(627, 280, 324, 145);
-		
+		// Player 2 progressbar
+		JPanel P2Progressbar = new JPanel();
+        P2Progressbar.setBounds(316, 330, 306, 43);
+        contentPane.add(P2Progressbar);
+        
 		p2Progress = new JProgressBar();
-		p2Progress.setStringPainted(true);
-		player2Status.add(p2Progress);
+		P2Progressbar.add(p2Progress);
 		
-		JSplitPane splitPane_2 = new JSplitPane();
-		panel_3.add(splitPane_2);
+		// Player 3 statuses
+		JPanel player3Status = new JPanel();
+		player3Status.setBounds(627, 280, 306, 43);
 		
+		JPanel P3Progressbar = new JPanel();
+        P3Progressbar.setBounds(627, 330, 306, 43);
+        
 		if (players.size() == 3) {
-			
-			JLabel lblP3BikeStatus = new JLabel(players.get(2).getName() + " Bike Status");
-			splitPane_2.setLeftComponent(lblP3BikeStatus);
-			
-			JLabel lblP3Windstatus = new JLabel(players.get(2).getName() + " Wind Status");
-			splitPane_2.setRightComponent(lblP3Windstatus);
-			
-			p3Progress = new JProgressBar();
-			p3Progress.setStringPainted(true);
-			panel_3.add(p3Progress);
-			
-			contentPane.add(panel_3);
+						
+			JLabel lblPlayer3Name = new JLabel(players.get(2).getName());
+			player3Status.add(lblPlayer3Name);
 		
-		} else {
+			JSplitPane splitPane_2 = new JSplitPane();
+			player3Status.add(splitPane_2);
+			contentPane.add(player3Status);
 			
-			JLabel lblP3BikeStatus = new JLabel("Bike Status");
+			lblP3BikeStatus = new JLabel(" ");
 			splitPane_2.setLeftComponent(lblP3BikeStatus);
 			
-			JLabel lblP3Windstatus = new JLabel("Wind Status");
-			splitPane_2.setRightComponent(lblP3Windstatus);
+			lblP3WindStatus = new JLabel(" ");
+			splitPane_2.setRightComponent(lblP3WindStatus);
+								
+		    contentPane.add(P3Progressbar);
+	        
+			p3Progress = new JProgressBar();
+			P3Progressbar.add(p3Progress);
+											
+		} 
 			
-		}
 		
 		player1 = new JPanel();
 		player2 = new JPanel();
@@ -183,6 +219,10 @@ public class GameFrame extends JFrame {
         
         JButton btnSaveQuit = new JButton("Save & Quit");
 		btnSaveQuit.addMouseListener(new MouseAdapter() {
+			/**
+			 * Method to handle mouse click
+			 * @param e - location of mouse click
+			 */
 			public void mouseClicked(MouseEvent e) {
 				
 				isExit = true;
@@ -212,6 +252,11 @@ public class GameFrame extends JFrame {
     	return label;
     }
     
+    /**
+     * Method to refresh the scores shown on the game table
+     * @param players - ArrayList of Player that participate
+     * @param currentPlayerIndex - int of the Player who's turn it is 
+     */
     public void refreshScores(ArrayList <Player> players, int currentPlayerIndex) {
     	
     	int kmProgress;
@@ -236,9 +281,8 @@ public class GameFrame extends JFrame {
         addCardWithCounter(player1, createCardLabel("| 8 Km cards: "),  players.get(0).getPlayedCards().countCards(new KilometerCard("EIGHT")));
         addCardWithCounter(player1, createCardLabel("| 10 Km cards: "),  players.get(0).getPlayedCards().countCards(new KilometerCard("TEN")));        
         
+              
         kmProgress = players.get(0).getKmProgress();
-        p1Progress.setValue(kmProgress);
-        p1Progress.setString(kmProgress + " KM travelled");
         
         Border player2border;
 		player2 = new JPanel();
@@ -256,9 +300,15 @@ public class GameFrame extends JFrame {
 		addCardWithCounter(player2, createCardLabel("| 8 Km cards: "), players.get(1).getPlayedCards().countCards(new KilometerCard("EIGHT")));
 		addCardWithCounter(player2, createCardLabel("| 10 Km cards: "), players.get(1).getPlayedCards().countCards(new KilometerCard("TEN")));
 		
-		kmProgress = players.get(1).getKmProgress();
-        p2Progress.setValue(kmProgress);
-        p2Progress.setString(kmProgress + " KM travelled");
+		kmProgress = players.get(0).getKmProgress();
+        p1Progress.setStringPainted(true);
+        p1Progress.setValue(kmProgress);
+        p1Progress.setString(kmProgress + " KM travelled");
+        
+        kmProgress = players.get(1).getKmProgress();
+		p2Progress.setStringPainted(true);
+		p2Progress.setValue(kmProgress);
+		p2Progress.setString(kmProgress + " KM travelled");
 		
 		if (players.size() == 3) {
 			
@@ -278,10 +328,11 @@ public class GameFrame extends JFrame {
 	        addCardWithCounter(player3, createCardLabel("| 8 Km cards: "), players.get(2).getPlayedCards().countCards(new KilometerCard("EIGHT")));
 	        addCardWithCounter(player3, createCardLabel("| 10 Km cards: "), players.get(2).getPlayedCards().countCards(new KilometerCard("TEN")));
 			
-	        kmProgress = players.get(2).getKmProgress();
-	        p3Progress.setValue(kmProgress);
-	        p3Progress.setString(kmProgress + " KM travelled");
-	        
+	        kmProgress = players.get(2).getKmProgress();     
+	        p3Progress.setStringPainted(true);
+			p3Progress.setValue(kmProgress);
+			p3Progress.setString(kmProgress + " KM travelled");
+			
 		}
         
         contentPane.revalidate();
@@ -289,6 +340,16 @@ public class GameFrame extends JFrame {
     	
     }
 
+    /** 
+     * Method to refresh the graphics shown on the game table
+     * @param stack - Stack of Card
+     * @param discardPile - Stack of discarded Card
+     * @param players - ArrayList of Player that participate
+     * @param currentPlayer - Player who's turn it is 
+     * @param rules - Rules of the game
+     * @param selectedCardIndex - int that indicates the selected Card 
+     * @param currentPlayerIndex - int of the Player who's turn it is
+     */
     public void refreshGameFrame(Stack stack, Stack discardPile, ArrayList <Player> players, Player currentPlayer, Rules rules, int selectedCardIndex, int currentPlayerIndex) {
     
     	lblCardStackCounter.setText("" + stack.getStackSize());
@@ -307,6 +368,64 @@ public class GameFrame extends JFrame {
     		
     	}
     	
+    	// Player1 status update
+    	if(!players.get(0).getOnBikeStatus()) {
+			if(players.get(0).getBulliedStatus()) {
+					lblP1BikeStatus.setText("" + players.get(0).getBulliedType());
+					} else {
+						lblP1BikeStatus.setText("Not on the bike.");
+					}
+				
+			} else {
+				lblP1BikeStatus.setText("On bike");
+		}
+    	
+    	if(players.get(0).getWindStatus()) {
+			lblP1WindStatus.setText("Tailwind");
+		}
+		else {
+			lblP1WindStatus.setText("Headwind");
+		}
+    	
+    	// Player2 status update
+    	if(!players.get(1).getOnBikeStatus()) {
+			if(players.get(1).getBulliedStatus()) {
+					lblP2BikeStatus.setText("" + players.get(1).getBulliedType());
+					} else {
+						lblP2BikeStatus.setText("Not on the bike.");
+					}
+				
+			} else {
+				lblP2BikeStatus.setText("On bike");
+		}
+    	
+   	   	if(players.get(1).getWindStatus()) {
+			lblP2WindStatus.setText("Tailwind");
+		}
+		else {
+			lblP2WindStatus.setText("Headwind");
+		}
+    	
+   	   	// Player3 status update    	
+   	   	if (players.size() == 3) {
+			if (!players.get(2).getOnBikeStatus()) {
+				if (players.get(2).getBulliedStatus()) {
+					lblP3BikeStatus.setText("" + players.get(2).getBulliedType());
+				} else {
+					lblP3BikeStatus.setText("Not on the bike.");
+				}
+
+			} else {
+				lblP3BikeStatus.setText("On bike");
+			}
+			if (players.get(2).getWindStatus()) {
+				lblP3WindStatus.setText("Tailwind");
+			} else {
+				lblP3WindStatus.setText("Headwind");
+			} 
+		}
+		contentPane.revalidate();
+        contentPane.repaint();
     }
     
     public void updatePlayerHand(PlayerHand playerHand) {
