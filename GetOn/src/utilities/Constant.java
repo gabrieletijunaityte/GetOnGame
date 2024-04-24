@@ -40,9 +40,12 @@ public class Constant {
     public static final String[] VALID_BULLY_VALUES = new String[] {TAVERN, CROSSWIND, FLAT_TIRE, CRISS_CROSS};
     public static final String[] VALID_KM_VALUES = new String[] {FIVE, SIX, EIGHT, TEN};
     public static final String[] VALID_REPAIR_VALUES = new String[] {BIKE_REPAIR, BARRIER_OPEN};
+    public static final String[] VALID_STATUS_VALUES = new String[] {GET_ON, TAIL_WIND};
     
     // Possible amount values arrays
-    public static final int[] VALID_BULLY_AMOUNTS = new int[] {2, 4, 3, 3 };
-    public static final int[] VALID_KM_AMOUNTS = new int[] { 24, 12, 8, 8 };
+    public static final int[] VALID_BULLY_AMOUNTS = new int[] {2, 4, 3, 3};
+    public static final int[] VALID_KM_AMOUNTS = new int[] {24, 12, 8, 8};
     public static final int[] VALID_REPAIR_AMOUNTS = new int[] {8, 8};
+    public static final int[] VALID_STATUS_AMOUNTS =  new int[] {14, 5};
+    
 }

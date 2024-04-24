@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.lang.IllegalStateException;
 import java.util.NoSuchElementException;
 
+import utilities.Constant;
+
 /**
  * Loads the game rules from a text file, and checks whether the card can be played.
  */
@@ -64,7 +66,7 @@ public class Rules {
 		String[] playerStatus = player.getStatuses();
 
 		for (int i = 0; i < playerStatus.length; i++) {
-			if (!requirements[i].equals("-1")) {
+			if (!requirements[i].equals(Constant.IGNORE)) {
 				if (!requirements[i].equals(playerStatus[i])) {
 					return false;
 				}

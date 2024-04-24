@@ -1,8 +1,11 @@
 package test;
 
+import java.util.Arrays;
+
 import junit.framework.TestCase;
 import logic.Hand;
 import logic.Stack;
+import utilities.Constant;
 
 public class HandTest extends TestCase {
 
@@ -41,7 +44,9 @@ public class HandTest extends TestCase {
 		// Create a hand
 		myHand.addCard(stack.drawTopCard());
 
-		assertEquals("KILOMETER_FIVE", myHand.get(0).toString());
+		String target = Constant.KILOMETER + "_" + Constant.FIVE;
+
+		assertEquals(target, myHand.get(0).toString());
 	}
 
 	// Test getting the hand
@@ -61,7 +66,8 @@ public class HandTest extends TestCase {
 		myHand.addCard(stack.drawTopCard());
 
 		// Set the Targets
-		String target = "[KILOMETER_FIVE, KILOMETER_FIVE, KILOMETER_FIVE, KILOMETER_FIVE, KILOMETER_FIVE]";
+		String subTarget = Constant.KILOMETER + "_" + Constant.FIVE;
+		String target = Arrays.toString(new String[] {subTarget, subTarget, subTarget, subTarget, subTarget});
 		String test = myHand.getHand().toString();
 
 		assertEquals(target, test);
