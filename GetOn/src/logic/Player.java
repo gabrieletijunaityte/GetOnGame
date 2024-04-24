@@ -2,6 +2,8 @@ package logic;
 
 import java.util.ArrayList;
 
+import utilities.Constant;
+
 /**
  * The player class stores the player and the player's attributes. Attributes
  * stored in the class are: name, onBikeStatus, bulliedStatus, hasWind,
@@ -128,16 +130,16 @@ public class Player {
 	public void playerProgress(String value) {
 
 		switch (value) {
-		case "FIVE":
+		case Constant.FIVE:
 			this.kmProgress += 5;
 			break;
-		case "SIX":
+		case Constant.SIX:
 			this.kmProgress += 6;
 			break;
-		case "EIGHT":
+		case Constant.EIGHT:
 			this.kmProgress += 8;
 			break;
-		case "TEN":
+		case Constant.TEN:
 			this.kmProgress += 10;
 			break;
 		// If the card is not one of these four cards, nothing "default" is triggered
@@ -217,13 +219,13 @@ public class Player {
 		for (int i = 0; i < consequences.length; i++) {
 			switch (i) {
 			case 0:
-				if (!consequences[0].equals("-1")) {
+				if (!consequences[0].equals(Constant.IGNORE)) {
 
 					setOnBikeStatus(Boolean.valueOf(consequences[0]));
 				}
 				break;
 			case 1:
-				if (!consequences[1].equals("-1")) {
+				if (!consequences[1].equals(Constant.IGNORE)) {
 					setBulliedStatus(Boolean.valueOf(consequences[1]));
 					// Reset bullied type to null if bullied status is set to false
 					if (!Boolean.valueOf(consequences[1])) {
@@ -232,17 +234,17 @@ public class Player {
 				}
 				break;
 			case 2:
-				if (!consequences[2].equals("-1")) {
+				if (!consequences[2].equals(Constant.IGNORE)) {
 					setHasWind(Boolean.valueOf(consequences[2]));
 				}
 				break;
 			case 3:
-				if (consequences[3] != null && !consequences[3].equals("-1")) {
+				if (consequences[3] != null && !consequences[3].equals(Constant.IGNORE)) {
 					setBulliedType(consequences[3]);
 				}
 				break;
 			case 4:
-				if (!consequences[4].equals("-1")) {
+				if (!consequences[4].equals(Constant.IGNORE)) {
 					playerProgress(consequences[4]);
 				}
 			}
