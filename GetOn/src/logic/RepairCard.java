@@ -7,11 +7,11 @@ public class RepairCard extends Card {
 		super("REPAIR", value);
 
 		// Assign possible repair values
-		this.pos_values = new String[] { "BIKE_REPAIR", "BARRIER_OPEN" };
+		this.setPos_values(new String[] { "BIKE_REPAIR", "BARRIER_OPEN" });
 		validateValue(value);
 
 		// Assign amount per card
-		this.amount = new int[] { 8, 8 };
+		this.setAmount(new int[] { 8, 8 });
 	}
 	
 	// getRequirements method

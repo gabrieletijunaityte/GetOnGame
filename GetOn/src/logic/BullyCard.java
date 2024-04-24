@@ -16,11 +16,11 @@ public class BullyCard extends Card {
 		super("BULLY", value);
 
 		// Assign possible Bully values
-		this.pos_values = new String[] { "TAVERN", "CROSSWIND", "FLAT_TIRE", "CRISS_CROSS" };
+		this.setPos_values(new String[] { "TAVERN", "CROSSWIND", "FLAT_TIRE", "CRISS_CROSS" });
 		validateValue(value);
 
 		// Assign amount per card
-		this.amount = new int[] { 2, 4, 3, 3 };
+		this.setAmount(new int[] { 2, 4, 3, 3 });
 	}
 
 
