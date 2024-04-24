@@ -27,7 +27,7 @@ public class RepairCardTest extends TestCase {
 	}
 
 	// Test the type retrieval method
-	public void testgetType() {
+	public void testGetType() {
 		// Setting the target
 		String target = "REPAIR";
 
@@ -42,7 +42,7 @@ public class RepairCardTest extends TestCase {
 	}
 
 	// Test the value retrieval method
-	public void testgetValue() {
+	public void testGetValue() {
 		// Setting the target
 		String target = "BIKE_REPAIR";
 
@@ -57,7 +57,7 @@ public class RepairCardTest extends TestCase {
 	}
 
 // Test the getCardName() method
-	public void testgetCardName() {
+	public void testGetCardName() {
 		// Setting the target
 		String target = "BIKE_REPAIR";
 		String target1 = "REPAIR_" + target;
@@ -72,7 +72,7 @@ public class RepairCardTest extends TestCase {
 	}
 
 	// Test getPossibleValues
-	public void testgetPossibleValues() {
+	public void testGetPossibleValues() {
 		// Creating Card class
 		RepairCard repairCard = new RepairCard("BIKE_REPAIR");
 
@@ -94,7 +94,7 @@ public class RepairCardTest extends TestCase {
 	}
 
 	// Test getRequirements
-	public void testgetRequirements() {
+	public void testGetRequirements() {
 		// Creating a statusCard
 		Card repairCard = new RepairCard("BIKE_REPAIR");
 		String[] target = { "-1", "true", "-1", "FLAT_TIRE", "-1" };
@@ -106,7 +106,7 @@ public class RepairCardTest extends TestCase {
 	}
 
 	// Test getConsequences
-	public void testgetConsequences() {
+	public void testGetConsequences() {
 		// Creating a statusCard
 		Card repairCard = new RepairCard("BIKE_REPAIR");
 		String[] target = { "-1", "false", "-1", null, "-1" };
