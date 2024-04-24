@@ -8,7 +8,7 @@ import logic.Card;
 
 public class RepairCardTest extends TestCase {
 	// Test repair card creation
-	public void testCreationOfrepairCard() {
+	public void testCreationOfRepairCard() {
 		// Creating a repair card
 		RepairCard repairCard = new RepairCard("BIKE_REPAIR");
 
@@ -72,7 +72,7 @@ public class RepairCardTest extends TestCase {
 	}
 
 	// Test getPossibleValues
-	public void testGetPossibleValues() {
+	public void testgetPossibleValues() {
 		// Creating Card class
 		RepairCard repairCard = new RepairCard("BIKE_REPAIR");
 
@@ -94,7 +94,7 @@ public class RepairCardTest extends TestCase {
 	}
 
 	// Test getRequirements
-	public void testGetRequirements() {
+	public void testgetRequirements() {
 		// Creating a statusCard
 		Card repairCard = new RepairCard("BIKE_REPAIR");
 		String[] target = { "-1", "true", "-1", "FLAT_TIRE", "-1" };
@@ -106,7 +106,7 @@ public class RepairCardTest extends TestCase {
 	}
 
 	// Test getConsequences
-	public void testGetConsequences() {
+	public void testgetConsequences() {
 		// Creating a statusCard
 		Card repairCard = new RepairCard("BIKE_REPAIR");
 		String[] target = { "-1", "false", "-1", null, "-1" };
@@ -116,5 +116,4 @@ public class RepairCardTest extends TestCase {
 
 		assertTrue(Arrays.equals(target, test));
 	}
-
 }
