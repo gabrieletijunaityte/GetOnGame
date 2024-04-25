@@ -28,7 +28,7 @@ public class KilometerCardTest extends TestCase {
 	}
 
 	// Test the type retrieval method
-	public void testgetType() {
+	public void testGetType() {
 		// Setting the target
 		String target = Constant.KILOMETER;
 
@@ -43,7 +43,7 @@ public class KilometerCardTest extends TestCase {
 	}
 
 	// Test the value retrieval method
-	public void testgetValue() {
+	public void testGetValue() {
 		// Setting the target
 		String target = Constant.FIVE;
 
@@ -57,8 +57,8 @@ public class KilometerCardTest extends TestCase {
 		assertEquals(target, test);
 	}
 
-// Test the getCardName() method
-	public void testgetCardName() {
+	// Test the getCardName() method
+	public void testGetCardName() {
 		// Setting the target
 		String target = Constant.FIVE;
 		String target1 = Constant.KILOMETER + "_" + target;

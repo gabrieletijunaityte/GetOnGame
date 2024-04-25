@@ -1,23 +1,49 @@
-This game can be played by 2 or 3 players. 
+INTRO
+STAP OP is a game in which the players make four cycling trips of 100 km together. They not only try to cover their 100 km as quickly as possible, but also try to hinder their opponents' progress as much as possible. Along the way, other players regularly poke your tires flat!
 
-The goal of the game is to bike 100 km in total. This can be done by playing:
-* Eight 5km cards.
-* Four an 6km cards.
-* Two 8km cards (these cards can only be played with tailwind activated).
-* Two 10km cards  (these cards can only be played with tailwind activated).
+The routes that players need to complete in order to win the game:
+* 8x5 km (40km) to the woods
+* 4x6 km (24km) to the moors
+* 2x 8 km (16km) to the lakes
+* 2x 10 km (20km) to the sea
 
-If a player bikes 100km, they win the game.
-Each round, a player either plays or discards one card from their hand and draws one card from the game stack. During their turn a player can choose to propel themselves forward by playing a kilometer, or make life difficult for their fellow players by playing one of the bully cards. 
+Furthermore, the game consists of 99 cards in total:
+* 14 Get-On; 
+* 4 Headwind;
+* 5 Tailwind; 
+* 3 Criss-Cross;
+* 8 Barrier Open; 
+* 3 Flat Tire; 
+* 8 Bike Repair; 
+* 2 Youth Hostel; 
+* 24 x 5 km; 
+* 12 x 6 km;
+* 8 x 8 km;
+* 8 x 10 km.
 
-Cards in the game: 
-Get On (your bike) card (Step Up) - this card needs to be played before playing any of the kilometer cards (You cannot bike if you are not physically on your bike, right?) 
 
-Bully cards: 
-* Flat tire card - gets the player off their bike and requires the tire to be fixed, before starting to bike again.
-* Closses Criss-cross - gets the player off their bike and requires the criss-cross barrier to be opened, before starting to bike again.
-* Hostel, tavern - gets the player off their bike.
-* Cross-wind - removes player's tailwind activation (player can no longer bike 8 or 10 km).
+BEGINNING OF THE GAME
+The cards are shuffled and laid out as a covered draw pile. Each player receives five cards in their hand. The cards are divided into: kilometer cards (possible distances: 5 km, 6 km, 8 km and 10 km), obstacle cards (possible situations: flat tire, criss-cross, youth hostel or a headwind), recovery cards (bike repair, barrier open, tailwind or 'get on').
+During the game, each player keeps track of his own condition on an imaginary playing field. Here there is space for the different distances, a place for wind or headwind, and a place for the remaining plague and recovery cards.
 
-Repair cards: 
-* Bicycle repair card - played to fix the player's flat tire. To continue biking after repairing their bike, a player must first Get-On the bike again. 
-* Barrier open card - played to open the closed criss-cross barrier. To continue biking after repairing their bike, a player must first Get-On the bike again. 
+
+HOW TO PLAY
+Get-On is played clockwise.
+In his turn, the player takes the top card from the draw pile in his hand and then he places a card from his hand face-up. The player can choose from the following three options:
+* The player places the card with himself.
+* The player places the card with a fellow player of their choice.
+* The player places the card on the discard pile.
+
+1: To place a card with themselves, a number of conditions must be met. A KM card may only be played if the player has a 'Get-On' card face-up. In addition, the distances 8 km and 10 km may only be played if the player has a windward card open. The various obstacle cards indicate which cards must be played first before cycling on. For example, a flat tire must be fixed by placing a bike repair card on it, and in a subsequent turn another 'get on' card.
+
+2: The player may play a bully card from his hand on any of his fellow players at any time. Same goes for a headwind card. You can only play the tailwind card on yourself.
+
+3: The player may place any card from his hand on the discard pile. Then the turn goes to the next player. When the last card has been taken from the stack, all cards in the discard pile are re-shuffled and put back in the stack.
+
+
+WINNING THE GAME
+Once a player has completed exactly 8×5 km, 4×6 km, 2×8 km and 2×10 km, the game ends. This player is the winner.
+
+
+
+

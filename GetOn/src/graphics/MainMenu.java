@@ -23,20 +23,21 @@ public class MainMenu extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private boolean receivedNames = false;
 	private boolean isTestGame = false;
+
 	private JTextField player1Name;
 	private JTextField player2Name;
 	private JTextField player3Name;
+
 	private JButton btnTestGame;
 	private JButton btnStartGame;
 	private JLabel playerLabel;
 
 	/**
-	 * Constructor for Main
+	 * Constructor for Main Menu
 	 * 
 	 * @param names - Names of the Players
 	 */
 	public MainMenu(ArrayList<String> names) {
-
 		this.setVisible(true);
 		this.setAlwaysOnTop(true);
 		this.setResizable(false);
@@ -47,7 +48,6 @@ public class MainMenu extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		this.setContentPane(contentPane);
-
 		contentPane.setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("GET ON");
@@ -67,7 +67,6 @@ public class MainMenu extends JFrame {
 				RulesFrame rulesPopup = new RulesFrame();
 			}
 		});
-
 		btnViewRules.setBounds(565, 326, 149, 23);
 		contentPane.add(btnViewRules);
 
@@ -115,15 +114,30 @@ public class MainMenu extends JFrame {
 				// Starts the game when clicking the button
 				handleStartGame();
 			}
+
 			private void handleStartGame() {
 				// Saves the entered names
 				if (!player1Name.getText().isBlank() && !player2Name.getText().isBlank()) {
-					names.add(player1Name.getText());
-					names.add(player2Name.getText());
+
+					// Check if the player names are not the same
+					if (!player1Name.getText().equals(player2Name.getText())) {
+						names.add(player1Name.getText());
+						names.add(player2Name.getText());
+					} else {
+						playerLabel.setText("Cannot enter the same player names");
+						playerLabel.setForeground(Color.RED);
+					}
 					if (!player3Name.getText().isBlank()) {
-						names.add(player3Name.getText());
+						if (!player3Name.getText().equals(player1Name.getText())
+								|| !player3Name.getText().equals(player2Name.getText())) {
+							names.add(player3Name.getText());
+						} else {
+							playerLabel.setText("Cannot enter the same player names");
+							playerLabel.setForeground(Color.RED);
+						}
 					}
 				} else {
+
 					// Warns user that you need at least two players
 					playerLabel.setText("Enter at least two player names to start!");
 					playerLabel.setForeground(Color.RED);
@@ -134,6 +148,7 @@ public class MainMenu extends JFrame {
 				// Flags the game loop that names have been entered
 				if (names.size() != 0) {
 					receivedNames = true;
+
 					// Notifies the Game Master that the game has been started and locks the
 					// changing of some settings.
 					playerLabel.setText("The game has been started.");
@@ -146,36 +161,55 @@ public class MainMenu extends JFrame {
 				}
 			}
 		});
-
 		btnStartGame.setBounds(230, 264, 128, 38);
 		contentPane.add(btnStartGame);
 
 		btnTestGame.addActionListener(new ActionListener() {
+			/**
+			 * Action listener that starts the game when the button is clicked
+			 */
 			public void actionPerformed(ActionEvent e) {
 				// Starts the game when clicking the button
 				handleStartGame();
 			}
+
+			/**
+			 * Method to save the names or warn the user that at least player 1 and 2 are
+			 * needed. Starts the game
+			 */
 			private void handleStartGame() {
 				// Saves the entered names
 				if (!player1Name.getText().isBlank() && !player2Name.getText().isBlank()) {
-					names.add(player1Name.getText());
-					names.add(player2Name.getText());
+
+					// Check if the player names are not the same
+					if (!player1Name.getText().equals(player2Name.getText())) {
+						names.add(player1Name.getText());
+						names.add(player2Name.getText());
+					} else {
+						playerLabel.setText("Cannot enter the same player names");
+						playerLabel.setForeground(Color.RED);
+					}
 					if (!player3Name.getText().isBlank()) {
-						names.add(player3Name.getText());
+						if (!player3Name.getText().equals(player1Name.getText())
+								|| !player3Name.getText().equals(player2Name.getText())) {
+							names.add(player3Name.getText());
+						} else {
+							playerLabel.setText("Cannot enter the same player names");
+							playerLabel.setForeground(Color.RED);
+						}
 					}
 				} else {
+
 					// Warns user that you need at least two players
 					playerLabel.setText("Enter at least two player names to start!");
 					playerLabel.setForeground(Color.RED);
 				}
-
 				// Notifies game loop that the test game was started
 				isTestGame = true;
 
 				// Flags the game loop that names have been entered
 				if (names.size() != 0) {
 					receivedNames = true;
-
 					// Notifies the Game Master that the game has been started and locks the
 					// changing of some settings.
 					playerLabel.setText("The game has been started.");

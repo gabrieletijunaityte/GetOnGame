@@ -2,9 +2,18 @@ package logic;
 
 import utilities.Constant;
 
+/**
+ * Kilometer Card class inherits from Card class. This class handles the
+ * requirements to play the Kilometer Cards and consequences for the Kilometer
+ * Cards.
+ */
 public class KilometerCard extends Card {
 
-	// Constructor
+	/**
+	 * Constructor for Kilometer Card, assign possible values and number of cards
+	 * 
+	 * @param value
+	 */
 	public KilometerCard(String value) {
 		super("KILOMETER", value);
 
@@ -16,7 +25,11 @@ public class KilometerCard extends Card {
 		this.amount = Constant.VALID_KM_AMOUNTS;
 	}
 
-	// getRequirements method
+	/**
+	 * Method to get the requirements to play a Kilometer Card.
+	 * 
+	 * @return requirements - The requirements to play a Kilometer Card.
+	 */
 	public String[] getRequirements() {
 		// Requirements for (-1 to ignore)
 		// GetOnStatus
@@ -44,7 +57,11 @@ public class KilometerCard extends Card {
 		}
 	}
 
-	// Implement method for getConsequences
+	/**
+	 * Method to get the Consequences after playing the Kilometer Card
+	 * 
+	 * @return consequences - The Consequences of the Kilometer Card
+	 */
 	public String[] getConsequences() {
 		// Changes for (-1 to ignore)
 		// GetOnStatus
@@ -52,9 +69,7 @@ public class KilometerCard extends Card {
 		// hasWindStatus
 		// Bullied type
 		// Kilometer increase
-
 		String[] consequences = { Constant.IGNORE, Constant.IGNORE, Constant.IGNORE, Constant.IGNORE, this.getValue() };
 		return consequences;
-
 	}
 }
