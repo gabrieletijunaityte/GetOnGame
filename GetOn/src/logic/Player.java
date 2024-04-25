@@ -128,6 +128,7 @@ public class Player {
 		case Constant.TEN:
 			this.kmProgress += 10;
 			break;
+
 		// If the card is not one of these four cards, nothing "default" is triggered
 		// and nothing happens
 		default:
@@ -204,6 +205,7 @@ public class Player {
 			case 1:
 				if (!consequences[1].equals(Constant.IGNORE)) {
 					setBulliedStatus(Boolean.valueOf(consequences[1]));
+
 					// Reset bullied type to null if bullied status is set to false
 					if (!Boolean.valueOf(consequences[1])) {
 						setBulliedType(null);

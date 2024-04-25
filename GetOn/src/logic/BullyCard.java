@@ -56,13 +56,16 @@ public class BullyCard extends Card {
 		// Kilometer increase
 		// Adjust the consequences when a bully card is played
 		if (this.getValue().equals("CROSSWIND")) {
-			String[] consequences = { Constant.IGNORE, Constant.IGNORE, Constant.FALSE, Constant.IGNORE, Constant.IGNORE };
+			String[] consequences = { Constant.IGNORE, Constant.IGNORE, Constant.FALSE, Constant.IGNORE,
+					Constant.IGNORE };
 			return consequences;
 		} else if (this.getValue().equals(Constant.TAVERN)) {
-			String[] consequences = { Constant.FALSE, Constant.IGNORE, Constant.IGNORE, Constant.IGNORE, Constant.IGNORE };
+			String[] consequences = { Constant.FALSE, Constant.IGNORE, Constant.IGNORE, Constant.IGNORE,
+					Constant.IGNORE };
 			return consequences;
 		} else {
-			String[] consequences = { Constant.FALSE, Constant.TRUE, Constant.IGNORE, this.getValue(), Constant.IGNORE };
+			String[] consequences = { Constant.FALSE, Constant.TRUE, Constant.IGNORE, this.getValue(),
+					Constant.IGNORE };
 			return consequences;
 		}
 	}
