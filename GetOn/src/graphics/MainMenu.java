@@ -125,7 +125,7 @@ public class MainMenu extends JFrame {
 					}
 				} else {
 					// Warns user that you need at least two players
-					playerLabel.setText("Enter at least two player names to start!");
+					playerLabel.setText("Enter at least player names for player 1 & 2 to start!");
 					playerLabel.setForeground(Color.RED);
 				}
 				// Notifies game loop that the normal game was started
