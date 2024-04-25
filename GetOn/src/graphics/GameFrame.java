@@ -71,7 +71,7 @@ public class GameFrame extends JFrame {
 		
 		this.setVisible(true);
 		this.setAlwaysOnTop(true);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setBounds(100, 100, 1238, 625);
 		this.currentPlayerIndex = currentPlayerIndex;
 		contentPane = new JPanel();
@@ -380,7 +380,7 @@ public class GameFrame extends JFrame {
 				lblP1BikeStatus.setText("On bike");
 		}
     	
-    	if(players.get(0).getWindStatus()) {
+    	if(players.get(0).getHasWind()) {
 			lblP1WindStatus.setText("Tailwind");
 		}
 		else {
@@ -399,7 +399,7 @@ public class GameFrame extends JFrame {
 				lblP2BikeStatus.setText("On bike");
 		}
     	
-   	   	if(players.get(1).getWindStatus()) {
+   	   	if(players.get(1).getHasWind()) {
 			lblP2WindStatus.setText("Tailwind");
 		}
 		else {
@@ -418,7 +418,7 @@ public class GameFrame extends JFrame {
 			} else {
 				lblP3BikeStatus.setText("On bike");
 			}
-			if (players.get(2).getWindStatus()) {
+			if (players.get(2).getHasWind()) {
 				lblP3WindStatus.setText("Tailwind");
 			} else {
 				lblP3WindStatus.setText("Headwind");
@@ -428,18 +428,33 @@ public class GameFrame extends JFrame {
         contentPane.repaint();
     }
     
+    /**
+     * Method which updates the ghrapics of the players hand
+     * 
+     * @param playerHand - The hand of the player
+     */
     public void updatePlayerHand(PlayerHand playerHand) {
     	
     	currentPlayerHand = playerHand;
     	
     }
     
+    /**
+     * Method which shows a dialog which congratulates the player that has won the game.
+     * 
+     * @param currentPlayer - The player who's turn it is when the game finishes
+     */
     public void winGame(Player currentPlayer) {
     	
     	JOptionPane.showMessageDialog(this, "Congrats! " + currentPlayer.getName() + " has won the game.");
     	
     }
-
+    
+    /**
+     * Method which closes the game frem when it ends.
+     * 
+     * @return game exits
+     */
 	public boolean getIsExit() {
 		return isExit;
 	}

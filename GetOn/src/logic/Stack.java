@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import utilities.Constant;
+
 /**
  * Stack class creates a stack with all 99 playable cards: 52 kilometer cards
  * (24 five, 12 six, 8 eight, 8 ten, 12 attack cards (4 cross_wind, 3 flat_tire,
@@ -30,20 +32,20 @@ public class Stack {
 	public void initializeTestStack() {
 
 		// Create objects of each different card needed for testing:
-		BullyCard flatTireCard = new BullyCard("FLAT_TIRE");
-		BullyCard crisCrossCard = new BullyCard("CRISS_CROSS");
-		BullyCard tavernCard = new BullyCard("TAVERN");
-		BullyCard crossWindCard = new BullyCard("CROSSWIND");
+		BullyCard flatTireCard = new BullyCard(Constant.FLAT_TIRE);
+		BullyCard crisCrossCard = new BullyCard(Constant.CRISS_CROSS);
+		BullyCard tavernCard = new BullyCard(Constant.TAVERN);
+		BullyCard crossWindCard = new BullyCard(Constant.CROSSWIND);
 		
-		KilometerCard fiveKilometerCard = new KilometerCard("FIVE");
-		KilometerCard sixKilometerCard = new KilometerCard("SIX");
-		KilometerCard eightKilometerCard = new KilometerCard("EIGHT");
-		KilometerCard tenKilometerCard = new KilometerCard("TEN");
+		KilometerCard fiveKilometerCard = new KilometerCard(Constant.FIVE);
+		KilometerCard sixKilometerCard = new KilometerCard(Constant.SIX);
+		KilometerCard eightKilometerCard = new KilometerCard(Constant.EIGHT);
+		KilometerCard tenKilometerCard = new KilometerCard(Constant.TEN);
 
-		RepairCard bikeRepairCard = new RepairCard("BIKE_REPAIR");
+		RepairCard bikeRepairCard = new RepairCard(Constant.BIKE_REPAIR);
 		
-		StatusCard getOnCard = new StatusCard("GET_ON");
-		StatusCard tailWindCard = new StatusCard("TAIL_WIND");
+		StatusCard getOnCard = new StatusCard(Constant.GET_ON);
+		StatusCard tailWindCard = new StatusCard(Constant.TAIL_WIND);
 
 		/*
 		 * Set cards in the deck in a specific order required for play testing all the
@@ -67,7 +69,7 @@ public class Stack {
 	 */
 	public void initializeStack() {
 		// initialize KilometerCard to get its methods
-		KilometerCard kilometerCard = new KilometerCard("FIVE");
+		KilometerCard kilometerCard = new KilometerCard(Constant.FIVE);
 		String[] valuesKM = kilometerCard.getPossibleValues();
 		int[] amountKM = kilometerCard.getAmounts();
 
@@ -81,7 +83,7 @@ public class Stack {
 		}
 
 		// initialize BullyCard to get its methods
-		BullyCard bullyCard = new BullyCard("CROSSWIND");
+		BullyCard bullyCard = new BullyCard(Constant.CROSSWIND);
 		String[] valuesBully = bullyCard.getPossibleValues();
 		int[] amountBully = bullyCard.getAmounts();
 
@@ -95,7 +97,7 @@ public class Stack {
 		}
 
 		// initialize RepairCard to get its methods
-		RepairCard repairCard = new RepairCard("BARRIER_OPEN");
+		RepairCard repairCard = new RepairCard(Constant.BARRIER_OPEN);
 		String[] valuesRepair = repairCard.getPossibleValues();
 		int[] amountRepair = repairCard.getAmounts();
 
@@ -109,7 +111,7 @@ public class Stack {
 		}
 
 		// initialize StatusCard to get its methods
-		StatusCard statusCard = new StatusCard("GET_ON");
+		StatusCard statusCard = new StatusCard(Constant.GET_ON);
 		String[] valuesStatus = statusCard.getPossibleValues();
 		int[] amountStatus = statusCard.getAmounts();
 
@@ -168,7 +170,6 @@ public class Stack {
 	public void addDiscardedCard(Card discardedCard) {
 		// add a discardedCard to the discardPile
 		stack.add(discardedCard);
-
 	}
 
 	/**

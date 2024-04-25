@@ -2,6 +2,8 @@ package logic;
 
 import java.util.ArrayList;
 
+import utilities.Constant;
+
 /**
  * The player class stores the player and the player's attributes. Attributes
  * stored in the class are: name, onBikeStatus, bulliedStatus, hasWind,
@@ -9,7 +11,6 @@ import java.util.ArrayList;
  * handles the names of the players and their current statuses.
  */
 public class Player {
-
 	private String name;
 	private Boolean onBikeStatus;
 	private Boolean bulliedStatus;
@@ -51,20 +52,6 @@ public class Player {
 	 */
 	public String getName() {
 		return name;
-	}
-
-	/**
-	 * Method to view the cards player has in their hand (as a string)
-	 * 
-	 * @return handCardsString - string with the cards in the hand
-	 */
-	public String viewHand() {
-		ArrayList<String> handCards = new ArrayList<>();
-		for (Card card : this.hand.getHand()) {
-			handCards.add(card.getCardName());
-		}
-		String handCardsString = handCards.toString();
-		return handCardsString;
 	}
 
 	/**
@@ -129,16 +116,16 @@ public class Player {
 	public void playerProgress(String value) {
 
 		switch (value) {
-		case "FIVE":
+		case Constant.FIVE:
 			this.kmProgress += 5;
 			break;
-		case "SIX":
+		case Constant.SIX:
 			this.kmProgress += 6;
 			break;
-		case "EIGHT":
+		case Constant.EIGHT:
 			this.kmProgress += 8;
 			break;
-		case "TEN":
+		case Constant.TEN:
 			this.kmProgress += 10;
 			break;
 		// If the card is not one of these four cards, nothing "default" is triggered
@@ -185,15 +172,6 @@ public class Player {
 	}
 
 	/**
-	 * Method to get the players "hasWind" status
-	 * 
-	 * @return hasWind - Boolean with the wind status
-	 */
-	public Boolean getWindStatus() {
-		return this.hasWind;
-	}
-
-	/**
 	 * Method to retrieve all player statuses for card playability check in rules
 	 * 
 	 * @return statuses - the statuses of the player
@@ -209,18 +187,22 @@ public class Player {
 		return statuses;
 	}
 
-	// Implement set Consequences method
+	/**
+	 * Implement set Consequences method
+	 * 
+	 * @param consequences - The consequences to be set
+	 */
 	public void setConsequences(String[] consequences) {
 		for (int i = 0; i < consequences.length; i++) {
 			switch (i) {
 			case 0:
-				if (!consequences[0].equals("-1")) {
+				if (!consequences[0].equals(Constant.IGNORE)) {
 
 					setOnBikeStatus(Boolean.valueOf(consequences[0]));
 				}
 				break;
 			case 1:
-				if (!consequences[1].equals("-1")) {
+				if (!consequences[1].equals(Constant.IGNORE)) {
 					setBulliedStatus(Boolean.valueOf(consequences[1]));
 					// Reset bullied type to null if bullied status is set to false
 					if (!Boolean.valueOf(consequences[1])) {
@@ -229,17 +211,17 @@ public class Player {
 				}
 				break;
 			case 2:
-				if (!consequences[2].equals("-1")) {
+				if (!consequences[2].equals(Constant.IGNORE)) {
 					setHasWind(Boolean.valueOf(consequences[2]));
 				}
 				break;
 			case 3:
-				if (consequences[3] != null && !consequences[3].equals("-1")) {
+				if (consequences[3] != null && !consequences[3].equals(Constant.IGNORE)) {
 					setBulliedType(consequences[3]);
 				}
 				break;
 			case 4:
-				if (!consequences[4].equals("-1")) {
+				if (!consequences[4].equals(Constant.IGNORE)) {
 					playerProgress(consequences[4]);
 				}
 			}
@@ -293,7 +275,7 @@ public class Player {
 	}
 
 	/**
-	 * Method to set the kilometerprogress
+	 * Method to set the kilometer progress
 	 * 
 	 * @param i - which is the kilometer's cycled
 	 */

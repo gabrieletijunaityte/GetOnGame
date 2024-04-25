@@ -1,15 +1,16 @@
 package test;
+
 import java.util.Arrays;
 
 import junit.framework.TestCase;
 import logic.BullyCard;
 import logic.Card;
-import logic.Hand;
 import logic.KilometerCard;
 import logic.PlayerTable;
 import logic.Player;
 import logic.Stack;
 import logic.StatusCard;
+import utilities.Constant;
 
 public class PlayerTest extends TestCase {
 
@@ -20,6 +21,22 @@ public class PlayerTest extends TestCase {
 
 		// assert that the object was created
 		assertNotNull(testPlayer);
+	}
+
+	// Test change name
+	public void testChangeName() {
+		// Create a player
+		Player testPlayer = new Player("Jan");
+		testPlayer.changeName("Gabi");
+		// assert that the object was created
+		String target = "Gabi";
+		assertEquals(target, testPlayer.getName());
+	}
+
+	// Test getName
+	public void testGetName() {
+		Player testPlayer = new Player("Jan");
+		assertEquals("Jan", testPlayer.getName());
 	}
 
 	// Test hand creation
@@ -34,49 +51,79 @@ public class PlayerTest extends TestCase {
 		// Create a hand
 		myPlayer.drawCard(stack.drawTopCard());
 		myPlayer.drawCard(stack.drawTopCard());
+		
+		String subTarget = Constant.KILOMETER + "_" + Constant.FIVE;
+		String target = Arrays.toString(new String[] {subTarget, subTarget});
 
 		// Test if 5 cards were drawn
-		assertEquals("[KILOMETER_FIVE, KILOMETER_FIVE]", myPlayer.getHand().toString());
+		assertEquals(target, myPlayer.getHand().toString());
 
 	}
 
-	// Test viewing the hand
-	public void testViewHand() {
-		// Creating variables for the test
-		Player myPlayer = new Player("Jan");
-		Stack stack = new Stack();
-
-		// Create stack of cards to test the set up
-		stack.initializeStack();
-
-		// Create a hand
-		myPlayer.drawCard(stack.drawTopCard());
-		// Print Cards on hand
-		assertEquals("[KILOMETER_FIVE]", myPlayer.viewHand());
-	}
-
-	// Test to get statuses methods
-	public void getPlayerStatuses() {
+	// Test to get OnBike status method
+	public void testGetPlayerOnBikeStatuse() {
 		// Creating variables for the test
 		Player testPlayer = new Player("Jan");
 		Boolean target = false;
-		// assert the methods
-		assertEquals(target, testPlayer.getBulliedStatus());
-		assertEquals(target, testPlayer.getHasWind());
+		// assert the method
 		assertEquals(target, testPlayer.getOnBikeStatus());
+	}
+	
+	// Test to set OnBike status method
+	public void testSetPlayerOnBikeStatuse() {
+		// Creating variables for the test
+		Player testPlayer = new Player("Jan");
+		Boolean target = true;
+		testPlayer.setOnBikeStatus(true);
+		// assert the method
+		assertEquals(target, testPlayer.getOnBikeStatus());
+	}
+	
+	// Test to get hasWind status method
+	public void testGetHasWind() {
+		// Creating variables for the test
+		Player testPlayer = new Player("Jan");
+		Boolean target = false;
+		// assert the method
+		assertEquals(target, testPlayer.getHasWind());
+	}
+	
+	// Test to set hasWind status method
+	public void testSetHasWind() {
+		// Creating variables for the test
+		Player testPlayer = new Player("Jan");
+		Boolean target = true;
+		testPlayer.setHasWind(target);
+		
+		// assert the method
+		assertEquals(target, testPlayer.getHasWind());
+	}
+	
+	// Test to get the bullied status
+	public void testGetBulliedStatus() {
+		Player testPlayer = new Player("Jan");
+		Boolean target = false;
+		
+		assertEquals(target, testPlayer.getBulliedStatus());
+	}
 
+	// Test to set the bullied status
+	public void testSetBulliedStatus() {
+		Player testPlayer = new Player("Jan");
+		testPlayer.setBulliedStatus(true);
+		Boolean target = true;
+		assertEquals(target, testPlayer.getBulliedStatus());
 	}
 
 	// Test to get the player progress
 	public void testPlayerProgress() {
 		// Creating variables for the test
-		Hand myHand = new Hand();
 		Player myPlayer = new Player("Jan");
 
 		// Add Kilometer cards to played cards. Added two SIX to see that duplicates
 		// also work
-		Card card = new KilometerCard("FIVE");
-		Card card1 = new KilometerCard("SIX");
+		Card card = new KilometerCard(Constant.FIVE);
+		Card card1 = new KilometerCard(Constant.SIX);
 
 		myPlayer.playerProgress(card.getValue());
 		myPlayer.playerProgress(card1.getValue());
@@ -88,14 +135,13 @@ public class PlayerTest extends TestCase {
 		assertEquals(5 + 6, totalKilometers);
 	}
 
-	// Test the setBulliedType and getBulliedType
+	// Test the getBulliedType and setBulliedType and getBulliedType
 	public void testSetBulliedType() {
 		Player myPlayer = new Player("Jan");
-		myPlayer.setBulliedType("TAVERN");
-		String bulliedTest = "TAVERN";
+		myPlayer.setBulliedType(Constant.TAVERN);
+		String bulliedTestTarget = Constant.TAVERN;
 
-		assertEquals(myPlayer.getBulliedType(), bulliedTest);
-
+		assertEquals(bulliedTestTarget, myPlayer.getBulliedType());
 	}
 
 	// Test getStatuses method
@@ -108,18 +154,17 @@ public class PlayerTest extends TestCase {
 		testPlayer.setOnBikeStatus(true);
 
 		// Define the target
-		String[] target = { "true", "false", "true", null };
+		String[] target = { Constant.TRUE, Constant.FALSE, Constant.TRUE, null };
 
 		String[] test = testPlayer.getStatuses();
 
 		assertTrue(Arrays.equals(target, test));
 	}
 
-	// Broken Tests
 	// Test getConsequences Implementation for Get On
 	public void testSetConsequencesCaseA() {
 
-		Card testCard = new StatusCard("GET_ON");
+		Card testCard = new StatusCard(Constant.GET_ON);
 
 		String[] consequences = testCard.getConsequences();
 
@@ -128,7 +173,7 @@ public class PlayerTest extends TestCase {
 		testPlayer.setConsequences(consequences);
 
 		// Define the target
-		String[] target = { "true", "false", "false", null };
+		String[] target = { Constant.TRUE, Constant.FALSE, Constant.FALSE, null };
 
 		String[] test = testPlayer.getStatuses();
 
@@ -139,7 +184,7 @@ public class PlayerTest extends TestCase {
 	// Test getConsequences Implementation for Bully
 	public void testSetConsequencesCaseB() {
 
-		Card testCard = new BullyCard("TAVERN");
+		Card testCard = new BullyCard(Constant.TAVERN);
 
 		String[] consequences = testCard.getConsequences();
 
@@ -149,7 +194,7 @@ public class PlayerTest extends TestCase {
 		testPlayer.setConsequences(consequences);
 
 		// Define the target
-		String[] target = { "false", "false", "false", null };
+		String[] target = { Constant.FALSE, Constant.FALSE, Constant.FALSE, null };
 
 		String[] test = testPlayer.getStatuses();
 
@@ -173,10 +218,9 @@ public class PlayerTest extends TestCase {
 
 		// Test if 5 cards were drawn
 		assertEquals(drawnCard.toString(), myPlayer.getCard(0).toString());
-
 	}
 
-	// Test getCard method
+	// Test get card method
 	public void testGetCard() {
 		// Creating variables for the test
 		Player myPlayer = new Player("Jan");
@@ -189,11 +233,12 @@ public class PlayerTest extends TestCase {
 
 		// Create a hand with drawn card
 		myPlayer.drawCard(drawnCard);
+		Card test = myPlayer.getCard(0);
 
 		// Test if 5 cards were drawn
-		assertEquals(1, myPlayer.getHand().size());
+		assertEquals(drawnCard, test);
 	}
-	
+
 	// Test card removal from hand
 	public void testDiscardCard() {
 		// Creating variables for the test
@@ -204,42 +249,44 @@ public class PlayerTest extends TestCase {
 		stack.initializeStack();
 
 		// Create a hand with drawn card
-		myPlayer.drawCard(stack.drawTopCard());
+		Card target = stack.drawTopCard();
+		myPlayer.drawCard(target);
 
-		// Creating card to 
-		Card cardToRemove = new BullyCard("TAVERN");
-		
+		// Creating card to
+		Card cardToRemove = new BullyCard(Constant.TAVERN);
+
 		myPlayer.drawCard(cardToRemove);
-		
+
 		// Removing the card
 		myPlayer.discardCard(cardToRemove);
-				
+
 		// Test if the only card in the hand is a kilometer five card
-		assertEquals("[KILOMETER_FIVE]", myPlayer.getHand().toString());
+		assertEquals("[" + target+ "]", myPlayer.getHand().toString());
 	}
-	
-	// Test add card to player table method
+
+	// Test add card to player table method and test getPlayedCards
 	public void testAddToTable() {
 		Player myPlayer = new Player("Jan");
 		Stack stack = new Stack();
 		stack.initializeStack();
 		Card card = stack.drawTopCard();
-		
+
 		myPlayer.addToTable(card);
 		PlayerTable playerTable = myPlayer.getPlayedCards();
-		
-		String target = "[KILOMETER_FIVE]";
+
+		String target = "[" + Constant.KILOMETER + "_" + Constant.FIVE + "]";
 		String test = playerTable.getPlayedCards().toString();
-		
+
 		assertEquals(target, test);
 	}
-	
+
+	// Test to set the Kilometer progress
 	public void testSetKmProgress() {
 		Player myPlayer = new Player("Test player");
 		assertEquals(0, myPlayer.getKmProgress());
-		
+
 		myPlayer.setKmProgress(50);
 		assertEquals(50, myPlayer.getKmProgress());
-		
+
 	}
 }

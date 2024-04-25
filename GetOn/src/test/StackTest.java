@@ -4,6 +4,7 @@ import logic.Card;
 import logic.KilometerCard;
 import logic.Stack;
 import logic.StatusCard;
+import utilities.Constant;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -33,7 +34,7 @@ public class StackTest extends TestCase {
 
 		// Draw the top card and check if it is a Get On card
 		Card card = testStack.drawTopCard();
-		Card topCard = new StatusCard("GET_ON");
+		Card topCard = new StatusCard(Constant.GET_ON);
 		assertEquals(card.getCardName(), topCard.getCardName());
 
 	}
@@ -75,7 +76,7 @@ public class StackTest extends TestCase {
 		// Draw a card from the stack
 		Card card = stack.drawTopCard();
 		// topCard is kilometer five because stack is not shuffled
-		Card topCard = new KilometerCard("FIVE");
+		Card topCard = new KilometerCard(Constant.FIVE);
 
 		// Assert drawn card is equal to topCard
 		assertEquals(topCard.getCardName(), card.getCardName());
@@ -100,10 +101,10 @@ public class StackTest extends TestCase {
 		// Initialize test stack
 		Stack testStack = new Stack();
 		
-		testStack.addDiscardedCard(new KilometerCard ("FIVE"));
-		testStack.addDiscardedCard(new KilometerCard ("SIX"));
+		testStack.addDiscardedCard(new KilometerCard (Constant.FIVE));
+		testStack.addDiscardedCard(new KilometerCard (Constant.SIX));
 		ArrayList<Card> test = testStack.getStack();
-		ArrayList<Card> target = new ArrayList<Card> (Arrays.asList(new KilometerCard ("FIVE"), new KilometerCard ("SIX")));
+		ArrayList<Card> target = new ArrayList<Card> (Arrays.asList(new KilometerCard (Constant.FIVE), new KilometerCard (Constant.SIX)));
 		
 		assertEquals(target.toString(), test.toString());
 	}

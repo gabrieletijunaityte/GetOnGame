@@ -100,10 +100,6 @@ public class Game {
 			
 			// Activate current player
 			currentPlayer = players.get(playerIndex);
-
-			System.out.println("OnBikeStatus is: " + currentPlayer.getOnBikeStatus());
-			System.out.println("HasWind status is: " + currentPlayer.getHasWind());
-			System.out.println("BulliedStatus is: " + currentPlayer.getBulliedType());
 			
 			// Update current players hand
 			currentPlayerHand.updateHand(986, currentPlayer, rules);

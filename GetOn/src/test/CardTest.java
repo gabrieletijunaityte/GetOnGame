@@ -1,9 +1,7 @@
 package test;
 
 import logic.Card;
-
 import java.util.Arrays;
-
 import junit.framework.TestCase;
 
 public class CardTest extends TestCase {
@@ -114,7 +112,7 @@ public class CardTest extends TestCase {
 
 		assertTrue(Arrays.equals(target, test));
 	}
-	
+
 	// Test the getCardNameToString() method
 	public void testGetCardNameToString() {
 		// Setting the target

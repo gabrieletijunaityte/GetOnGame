@@ -11,7 +11,7 @@ import java.util.Arrays;
 
 import junit.framework.TestCase;
 
-public class testWriteJSON extends TestCase {
+public class WriteJSONTest extends TestCase {
 	
 	// Testing player object to json 
 	public void testWritePlayers() {
