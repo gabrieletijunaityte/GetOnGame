@@ -31,7 +31,7 @@ public class MainMenu extends JFrame {
 	private JLabel playerLabel;
 
 	/**
-	 * Constructor for Main
+	 * Constructor for Main Menu
 	 * 
 	 * @param names - Names of the Players
 	 */
@@ -151,10 +151,17 @@ public class MainMenu extends JFrame {
 		contentPane.add(btnStartGame);
 
 		btnTestGame.addActionListener(new ActionListener() {
+			/**
+			 * Action listener that starts the game when the button is clicked
+			 */
 			public void actionPerformed(ActionEvent e) {
 				// Starts the game when clicking the button
 				handleStartGame();
 			}
+			/**
+			 * Method to save the names or warn the user that at least player 1 and 2 are needed.
+			 * Starts the game
+			 */
 			private void handleStartGame() {
 				// Saves the entered names
 				if (!player1Name.getText().isBlank() && !player2Name.getText().isBlank()) {
