@@ -63,7 +63,11 @@ public class PlayerHand extends JFrame {
 	private int methodIndex;
 	private Player currentPlayer;
 	private int choice;
-	
+	/**
+	 * Constructor of the PlayerHand
+	 * @param player - the player to show the hand 
+	 * @param rules - the rules to determine which cards are playable and which aren't.
+	 */
 	public PlayerHand(Player player, Rules rules) {
 		this.setAlwaysOnTop(true);
 		this.currentPlayer = player;
@@ -194,7 +198,12 @@ public class PlayerHand extends JFrame {
 		
 	}
 	
-	// Method to display the cards in the GUI
+	/**
+	 *  Method to display the cards in the GUI
+	 * @param width - used to calculate the size of the hand
+	 * @param currentPlayer - the player whose hand is shown
+	 * @param rules - the rules to see which card is playable
+	 */
 	public void updateHand(int width, Player currentPlayer, Rules rules) {
 		this.currentPlayer = currentPlayer;
 		
@@ -230,17 +239,27 @@ public class PlayerHand extends JFrame {
 		
 	}
 	
-	// method for getting boolean that indicates if a card is clicked
+	/**
+	 *  Method for getting boolean that indicates if a card is clicked
+	 * @return receivedSelectedCard - boolean that shows if a card is clicked or not
+	 */
 	public boolean getReceivedSelectedCard() {
 		return receivedSelectedCard;
 	}
 	
-	// method for getting selectedCardIndex
+	/**\
+	 * Method for getting selectedCardIndex
+	 * @return selectedCardIndex - int of the index of the card that is selected
+	 */
 	public int getSelectedCardIndex() {
 		return selectedCardIndex;
 	}
 	
-	// method to show pop-up message to play bully card to player
+	/**
+	 * Method to show pop-up message to play bully card to player
+	 * @param names - names of the players that can be bullied
+	 * @return bullyIndex - int of the index of the player that will be bullied
+	 */
 		public int showSelectPlayerToBully(ArrayList<String> names) {
 			
 			if (names.size() == 2) {
@@ -274,13 +293,18 @@ public class PlayerHand extends JFrame {
 	   return bullyIndex;
 	}
 	
-   //method to return selectBulliedPlayer boolean
+   /**
+    * Method to return selectBulliedPlayer
+    * @return selectBulliedPlayer - boolean to keep game waiting till bullied player is selected
+    */
 	public boolean getReceivedPlayerToBully() {
 		return selectBulliedPlayer;	
 	}
 	
 		
-	// method for showing a pop-up message, to play or discard the selected card
+	/**
+	 * Method for showing a pop-up message, to play or discard the selected card
+	 */
     public void showPopupDialog() {
     	
     	// create options to either "Play" or "Discard" card
@@ -304,24 +328,36 @@ public class PlayerHand extends JFrame {
     }
     
         
-    //method to return isPlayedCard boolean
+    /**
+     * method to return isPlayedCard 
+     * @return boolean - Whether a card is played or not
+     */
     public boolean getIsPlayedCard() {
     	return isPlayedCard;
     }
     
     
-    //method to return getMethodIndex int
+    /**
+     * Method to return getMethodIndex 
+     * @return int - that shows index of the method
+     */
     public int getMethodIndex() {
     	return methodIndex;
     }
     
-	// method to reset selectedCardIndex to false
+	/**
+	 * Method to reset selectedCardIndex to false
+	 */
 	public void resetBooleans() {
 		receivedSelectedCard = false;
 		isPlayedCard = false;
 		selectBulliedPlayer = false;
 	}
 	
+	/**
+	 * Method to show a popup message about the card being played or not
+	 * @param msgIndex - index of the message to be shown
+	 */
 	public void popupMessage(int msgIndex) {
 		
 		// Shows popup with correct message passed by Game.
