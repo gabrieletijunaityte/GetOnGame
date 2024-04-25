@@ -71,7 +71,7 @@ public class GameFrame extends JFrame {
 		
 		this.setVisible(true);
 		this.setAlwaysOnTop(true);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setBounds(100, 100, 1238, 625);
 		this.currentPlayerIndex = currentPlayerIndex;
 		contentPane = new JPanel();
