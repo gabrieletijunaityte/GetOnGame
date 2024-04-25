@@ -55,20 +55,6 @@ public class Player {
 	}
 
 	/**
-	 * Method to view the cards player has in their hand (as a string)
-	 * 
-	 * @return handCardsString - string with the cards in the hand
-	 */
-	public String viewHand() {
-		ArrayList<String> handCards = new ArrayList<>();
-		for (Card card : this.hand.getHand()) {
-			handCards.add(card.getCardName());
-		}
-		String handCardsString = handCards.toString();
-		return handCardsString;
-	}
-
-	/**
 	 * Method to get status if the player is on bike
 	 * 
 	 * @return onBikeStatus boolean whether the player is on the bike or not
@@ -186,15 +172,6 @@ public class Player {
 	}
 
 	/**
-	 * Method to get the players "hasWind" status
-	 * 
-	 * @return hasWind - Boolean with the wind status
-	 */
-	public Boolean getWindStatus() {
-		return this.hasWind;
-	}
-
-	/**
 	 * Method to retrieve all player statuses for card playability check in rules
 	 * 
 	 * @return statuses - the statuses of the player
@@ -298,7 +275,7 @@ public class Player {
 	}
 
 	/**
-	 * Method to set the kilometerprogress
+	 * Method to set the kilometer progress
 	 * 
 	 * @param i - which is the kilometer's cycled
 	 */

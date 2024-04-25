@@ -170,7 +170,6 @@ public class Stack {
 	public void addDiscardedCard(Card discardedCard) {
 		// add a discardedCard to the discardPile
 		stack.add(discardedCard);
-
 	}
 
 	/**

@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 import junit.framework.TestCase;
 import logic.Hand;
+import logic.KilometerCard;
 import logic.Stack;
 import utilities.Constant;
 
@@ -26,9 +27,9 @@ public class HandTest extends TestCase {
 		Hand myHand = new Hand();
 		// Draw cards to the hand
 		myHand.addCard(stack.drawTopCard());
+		
 		// Test the method
 		assertEquals(1, myHand.getHand().size());
-
 		assertEquals(98, stack.getStackSize());
 	}
 
@@ -59,15 +60,38 @@ public class HandTest extends TestCase {
 		stack.initializeStack();
 
 		// Add 5 cards
+		for (int i = 0; i < 5; i++) {
 		myHand.addCard(stack.drawTopCard());
-		myHand.addCard(stack.drawTopCard());
-		myHand.addCard(stack.drawTopCard());
-		myHand.addCard(stack.drawTopCard());
-		myHand.addCard(stack.drawTopCard());
+		}
 
 		// Set the Targets
 		String subTarget = Constant.KILOMETER + "_" + Constant.FIVE;
 		String target = Arrays.toString(new String[] {subTarget, subTarget, subTarget, subTarget, subTarget});
+		String test = myHand.getHand().toString();
+
+		assertEquals(target, test);
+	}
+	
+	// Test discard card method
+	public void testDiscardCard() {
+		// Creating variables for the test
+		Hand myHand = new Hand();
+		Stack stack = new Stack();
+
+		// Create stack of cards to test the set up
+		stack.initializeStack();
+
+		// Add 5 cards
+		for (int i = 0; i < 5; i++) {
+		myHand.addCard(stack.drawTopCard());
+		}
+
+		// Set the Targets
+		String subTarget = Constant.KILOMETER + "_" + Constant.FIVE;
+		String target = Arrays.toString(new String[] {subTarget, subTarget, subTarget, subTarget});
+		
+		// Call the discard card method
+		myHand.discardCard(myHand.get(0));
 		String test = myHand.getHand().toString();
 
 		assertEquals(target, test);

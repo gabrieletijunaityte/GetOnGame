@@ -380,7 +380,7 @@ public class GameFrame extends JFrame {
 				lblP1BikeStatus.setText("On bike");
 		}
     	
-    	if(players.get(0).getWindStatus()) {
+    	if(players.get(0).getHasWind()) {
 			lblP1WindStatus.setText("Tailwind");
 		}
 		else {
@@ -399,7 +399,7 @@ public class GameFrame extends JFrame {
 				lblP2BikeStatus.setText("On bike");
 		}
     	
-   	   	if(players.get(1).getWindStatus()) {
+   	   	if(players.get(1).getHasWind()) {
 			lblP2WindStatus.setText("Tailwind");
 		}
 		else {
@@ -418,7 +418,7 @@ public class GameFrame extends JFrame {
 			} else {
 				lblP3BikeStatus.setText("On bike");
 			}
-			if (players.get(2).getWindStatus()) {
+			if (players.get(2).getHasWind()) {
 				lblP3WindStatus.setText("Tailwind");
 			} else {
 				lblP3WindStatus.setText("Headwind");
