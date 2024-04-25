@@ -57,7 +57,6 @@ public class KilometerCard extends Card {
 		}
 	}
 
-	// Implement method for getConsequences
 	/**
 	 * Method to get the Consequences after playing the Kilometer Card
 	 * 
