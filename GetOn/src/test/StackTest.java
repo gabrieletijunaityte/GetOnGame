@@ -28,15 +28,15 @@ public class StackTest extends TestCase {
 		// Initialize test stack
 		Stack testStack = new Stack();
 		testStack.initializeTestStack();
-		
-		//Check the length
-		assertEquals(19,testStack.getStackSize());
+
+		// Check the length
+		assertEquals(19, testStack.getStackSize());
 
 		// Draw the top card and check if it is a Get On card
 		Card card = testStack.drawTopCard();
 		Card topCard = new StatusCard(Constant.GET_ON);
+		
 		assertEquals(card.getCardName(), topCard.getCardName());
-
 	}
 
 	// Test to see if the length of the Stack is equal to 99
@@ -97,15 +97,56 @@ public class StackTest extends TestCase {
 
 	// Test for getting Stack as ArrayList
 	public void testGetStack() {
-		
+
 		// Initialize test stack
 		Stack testStack = new Stack();
-		
-		testStack.addDiscardedCard(new KilometerCard (Constant.FIVE));
-		testStack.addDiscardedCard(new KilometerCard (Constant.SIX));
+
+		// Add Cards to the Stack
+		testStack.addDiscardedCard(new KilometerCard(Constant.FIVE));
+		testStack.addDiscardedCard(new KilometerCard(Constant.SIX));
+
+		// Initalize Test and Target
 		ArrayList<Card> test = testStack.getStack();
-		ArrayList<Card> target = new ArrayList<Card> (Arrays.asList(new KilometerCard (Constant.FIVE), new KilometerCard (Constant.SIX)));
-		
+		ArrayList<Card> target = new ArrayList<Card>(
+				Arrays.asList(new KilometerCard(Constant.FIVE), new KilometerCard(Constant.SIX)));
+
 		assertEquals(target.toString(), test.toString());
+	}
+
+	// Test for adding discarded card to Stack
+	public void testAddDiscardedCard() {
+
+		// Initialize test stack
+		Stack testStack = new Stack();
+
+		// Add Card to the Stack
+		testStack.addDiscardedCard(new KilometerCard(Constant.FIVE));
+
+		// Initalize Test and Target
+		ArrayList<Card> test = testStack.getStack();
+		ArrayList<Card> target = new ArrayList<Card>(Arrays.asList(new KilometerCard(Constant.FIVE)));
+
+		assertEquals(target.toString(), test.toString());
+	}
+
+	// Test for getting a card at a specific index
+	public void testGet() {
+
+		// Initialize test stack
+		Stack testStack = new Stack();
+
+		// Add Cards to the Stack
+		testStack.addDiscardedCard(new KilometerCard(Constant.FIVE));
+		testStack.addDiscardedCard(new KilometerCard(Constant.SIX));
+
+		// Initalize tests and targets
+		Card test1 = testStack.get(0);
+		Card target1 = new KilometerCard(Constant.FIVE);
+
+		Card test2 = testStack.get(1);
+		Card target2 = new KilometerCard(Constant.SIX);
+
+		assertEquals(target1.toString(), test1.toString());
+		assertEquals(target2.toString(), test2.toString());
 	}
 }
