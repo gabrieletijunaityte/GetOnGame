@@ -12,6 +12,10 @@ import logic.Rules;
 import javax.swing.JTextPane;
 import java.awt.GridLayout;
 
+/**
+ * Create Frame to display the rules
+ * 
+ */
 public class RulesFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -19,7 +23,7 @@ public class RulesFrame extends JFrame {
 	private JTextPane textRules;
 
 	/**
-	 * Create the frame.
+	 * Create the Rules Frame.
 	 */
 	public RulesFrame() {
 		this.setSize(781, 410);
