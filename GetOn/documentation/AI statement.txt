@@ -1,0 +1,19 @@
+AI statement
+
+The images for card icons were generated using Microsoft Co-Pilot. 
+These prompts were used:
+
+For Bike Repair card:
+- Can you generate an image in clipart style of a person repairing a flat tire of a bike with a white background
+
+For Get On card:
+- Can you generate me an image of a person getting on their bike in clipart style?
+
+For the Youth Hostel card:
+- Can you generate an image of a youth hostel in clipart style with white background
+
+For Criss Cross card:
+- Can you generate me an image of a train crossing with a train on it in clipart style.
+
+For Barrier open card:
+- Photoshopped version of Criss Cross card.

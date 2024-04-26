@@ -30,13 +30,13 @@ public class PlayerTest extends TestCase {
 		testPlayer.changeName("Gabi");
 		// assert that the object was created
 		String target = "Gabi";
-		assertEquals(target, testPlayer.getName());
+		assertTrue(target.equals(testPlayer.getName()));
 	}
 
 	// Test getName
 	public void testGetName() {
 		Player testPlayer = new Player("Jan");
-		assertEquals("Jan", testPlayer.getName());
+		assertTrue("Jan".equals(testPlayer.getName()));
 	}
 
 	// Test hand creation
@@ -56,7 +56,7 @@ public class PlayerTest extends TestCase {
 		String target = Arrays.toString(new String[] {subTarget, subTarget});
 
 		// Test if 5 cards were drawn
-		assertEquals(target, myPlayer.getHand().toString());
+		assertTrue(target.equals(myPlayer.getHand().toString()));
 
 	}
 
@@ -64,7 +64,7 @@ public class PlayerTest extends TestCase {
 	public void testGetPlayerOnBikeStatuse() {
 		// Creating variables for the test
 		Player testPlayer = new Player("Jan");
-		Boolean target = false;
+		boolean target = false;
 		// assert the method
 		assertEquals(target, testPlayer.getOnBikeStatus());
 	}
@@ -73,7 +73,7 @@ public class PlayerTest extends TestCase {
 	public void testSetPlayerOnBikeStatuse() {
 		// Creating variables for the test
 		Player testPlayer = new Player("Jan");
-		Boolean target = true;
+		boolean target = true;
 		testPlayer.setOnBikeStatus(true);
 		// assert the method
 		assertEquals(target, testPlayer.getOnBikeStatus());
@@ -83,7 +83,7 @@ public class PlayerTest extends TestCase {
 	public void testGetHasWind() {
 		// Creating variables for the test
 		Player testPlayer = new Player("Jan");
-		Boolean target = false;
+		boolean target = false;
 		// assert the method
 		assertEquals(target, testPlayer.getHasWind());
 	}
@@ -92,7 +92,7 @@ public class PlayerTest extends TestCase {
 	public void testSetHasWind() {
 		// Creating variables for the test
 		Player testPlayer = new Player("Jan");
-		Boolean target = true;
+		boolean target = true;
 		testPlayer.setHasWind(target);
 		
 		// assert the method
@@ -102,7 +102,7 @@ public class PlayerTest extends TestCase {
 	// Test to get the bullied status
 	public void testGetBulliedStatus() {
 		Player testPlayer = new Player("Jan");
-		Boolean target = false;
+		boolean target = false;
 		
 		assertEquals(target, testPlayer.getBulliedStatus());
 	}
@@ -111,7 +111,7 @@ public class PlayerTest extends TestCase {
 	public void testSetBulliedStatus() {
 		Player testPlayer = new Player("Jan");
 		testPlayer.setBulliedStatus(true);
-		Boolean target = true;
+		boolean target = true;
 		assertEquals(target, testPlayer.getBulliedStatus());
 	}
 
@@ -141,7 +141,7 @@ public class PlayerTest extends TestCase {
 		myPlayer.setBulliedType(Constant.TAVERN);
 		String bulliedTestTarget = Constant.TAVERN;
 
-		assertEquals(bulliedTestTarget, myPlayer.getBulliedType());
+		assertTrue(bulliedTestTarget.equals(myPlayer.getBulliedType()));
 	}
 
 	// Test getStatuses method
@@ -217,7 +217,7 @@ public class PlayerTest extends TestCase {
 		myPlayer.drawCard(drawnCard);
 
 		// Test if 5 cards were drawn
-		assertEquals(drawnCard.toString(), myPlayer.getCard(0).toString());
+		assertTrue(drawnCard.toString().equals(myPlayer.getCard(0).toString()));
 	}
 
 	// Test get card method
@@ -261,7 +261,7 @@ public class PlayerTest extends TestCase {
 		myPlayer.discardCard(cardToRemove);
 
 		// Test if the only card in the hand is a kilometer five card
-		assertEquals("[" + target+ "]", myPlayer.getHand().toString());
+		assertTrue(("[" + target+ "]").equals(myPlayer.getHand().toString()));
 	}
 
 	// Test add card to player table method and test getPlayedCards
@@ -277,7 +277,7 @@ public class PlayerTest extends TestCase {
 		String target = "[" + Constant.KILOMETER + "_" + Constant.FIVE + "]";
 		String test = playerTable.getPlayedCards().toString();
 
-		assertEquals(target, test);
+		assertTrue(target.equals(test));
 	}
 
 	// Test to set the Kilometer progress

@@ -353,7 +353,7 @@ public class PlayerHand extends JFrame {
 			JOptionPane.showMessageDialog(PlayerHand.this, "Card is Discarded.");
 			break;
 		case 3:
-			JOptionPane.showMessageDialog(PlayerHand.this, "Card is not playable, Discarded instead.");
+			JOptionPane.showMessageDialog(PlayerHand.this, "Card is not playable. Discarded instead.");
 			break;
 		}
 	}

@@ -12,9 +12,9 @@ import utilities.Constant;
  */
 public class Player {
 	private String name;
-	private Boolean onBikeStatus;
-	private Boolean bulliedStatus;
-	private Boolean hasWind;
+	private boolean onBikeStatus;
+	private boolean bulliedStatus;
+	private boolean hasWind;
 	private PlayerTable playerTable;
 	private int kmProgress;
 	private String bulliedType;
@@ -59,7 +59,7 @@ public class Player {
 	 * 
 	 * @return onBikeStatus boolean whether the player is on the bike or not
 	 */
-	public Boolean getOnBikeStatus() {
+	public boolean getOnBikeStatus() {
 		return this.onBikeStatus;
 	}
 
@@ -68,7 +68,7 @@ public class Player {
 	 * 
 	 * @param onBikeStatus - boolean whether the player is on the bike or not
 	 */
-	public void setOnBikeStatus(Boolean onBikeStatus) {
+	public void setOnBikeStatus(boolean onBikeStatus) {
 		this.onBikeStatus = onBikeStatus;
 	}
 
@@ -77,7 +77,7 @@ public class Player {
 	 * 
 	 * @return bulliedStatus - boolean whether the player is bullied or not
 	 */
-	public Boolean getBulliedStatus() {
+	public boolean getBulliedStatus() {
 		return this.bulliedStatus;
 	}
 
@@ -86,7 +86,7 @@ public class Player {
 	 * 
 	 * @param bulliedStatus - boolean whether the player is bullied or not
 	 */
-	public void setBulliedStatus(Boolean bulliedStatus) {
+	public void setBulliedStatus(boolean bulliedStatus) {
 		this.bulliedStatus = bulliedStatus;
 	}
 
@@ -95,7 +95,7 @@ public class Player {
 	 * 
 	 * @return hasWind - boolean if the player has wind or not
 	 */
-	public Boolean getHasWind() {
+	public boolean getHasWind() {
 		return this.hasWind;
 	}
 
@@ -104,7 +104,7 @@ public class Player {
 	 * 
 	 * @param hasWind - boolean whether the player has wind or not
 	 */
-	public void setHasWind(Boolean hasWind) {
+	public void setHasWind(boolean hasWind) {
 		this.hasWind = hasWind;
 	}
 

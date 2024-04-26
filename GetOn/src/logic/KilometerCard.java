@@ -34,23 +34,22 @@ public class KilometerCard extends Card {
 		// Bullied type (-1 - ignore)
 		// Maximum number of the same cards played (-1 for no limit)
 		String value = this.getValue();
+		String[] requirements;
 
 		// To play 5 km: (to be on bike, not bullied and 8 cards max)
 		if (value.equals(Constant.FIVE)) {
-			String[] requirements = { Constant.TRUE, Constant.FALSE, Constant.IGNORE, Constant.IGNORE, "7" };
-			return requirements;
+			requirements = new String[] { Constant.TRUE, Constant.FALSE, Constant.IGNORE, Constant.IGNORE, "7" };
 		}
 		// To play 6 km: (to be on bike, not bullied and 4 cards max)
 		else if (value.equals(Constant.SIX)) {
-			String[] requirements = { Constant.TRUE, Constant.FALSE, Constant.IGNORE, Constant.IGNORE, "3" };
-			return requirements;
+			requirements = new String[]{ Constant.TRUE, Constant.FALSE, Constant.IGNORE, Constant.IGNORE, "3" };
 		}
 		// To play 8 or 10 km: (to be on bike, not bullied, to have wind and 2 cards
 		// max)
 		else {
-			String[] requirements = { Constant.TRUE, Constant.FALSE, Constant.TRUE, Constant.IGNORE, "1" };
-			return requirements;
+			requirements = new String[] { Constant.TRUE, Constant.FALSE, Constant.TRUE, Constant.IGNORE, "1" };
 		}
+		return requirements;
 	}
 
 	/**

@@ -36,7 +36,11 @@ public class StackTest extends TestCase {
 		Card card = testStack.drawTopCard();
 		Card topCard = new StatusCard(Constant.GET_ON);
 		
-		assertEquals(card.getCardName(), topCard.getCardName());
+		// Initialize target and test
+		String target = card.getCardName();
+		String test = topCard.getCardName();
+		
+		assertTrue(target.equals(test));
 	}
 
 	// Test to see if the length of the Stack is equal to 99
@@ -78,8 +82,11 @@ public class StackTest extends TestCase {
 		// topCard is kilometer five because stack is not shuffled
 		Card topCard = new KilometerCard(Constant.FIVE);
 
-		// Assert drawn card is equal to topCard
-		assertEquals(topCard.getCardName(), card.getCardName());
+		// Initialize target and test
+		String target = topCard.getCardName();
+		String test = card.getCardName();
+		
+		assertTrue(target.equals(test));
 	}
 
 	// Test clear
@@ -110,7 +117,10 @@ public class StackTest extends TestCase {
 		ArrayList<Card> target = new ArrayList<Card>(
 				Arrays.asList(new KilometerCard(Constant.FIVE), new KilometerCard(Constant.SIX)));
 
-		assertEquals(target.toString(), test.toString());
+		String testString =  test.toString();
+		String targetString = target.toString();
+		
+		assertTrue(targetString.equals(testString));
 	}
 
 	// Test for adding discarded card to Stack
@@ -125,8 +135,12 @@ public class StackTest extends TestCase {
 		// Initalize Test and Target
 		ArrayList<Card> test = testStack.getStack();
 		ArrayList<Card> target = new ArrayList<Card>(Arrays.asList(new KilometerCard(Constant.FIVE)));
-
-		assertEquals(target.toString(), test.toString());
+		
+		String testString =  test.toString();
+		String targetString = target.toString();
+		
+		assertTrue(targetString.equals(testString));
+		
 	}
 
 	// Test for getting a card at a specific index
@@ -146,7 +160,13 @@ public class StackTest extends TestCase {
 		Card test2 = testStack.get(1);
 		Card target2 = new KilometerCard(Constant.SIX);
 
-		assertEquals(target1.toString(), test1.toString());
-		assertEquals(target2.toString(), test2.toString());
+		String testString1 =  test1.toString();
+		String targetString1 = target1.toString();
+
+		String testString2 =  test2.toString();
+		String targetString2 = target2.toString();
+		
+		assertTrue(targetString1.equals(testString1));
+		assertTrue(targetString2.equals(testString2));	
 	}
 }

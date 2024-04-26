@@ -33,7 +33,7 @@ public class StatusCardTest extends TestCase {
 		// Getting the type
 		String test = statusCard.getType();
 		// Asserting if it is right type
-		assertEquals(target, test);
+		assertTrue(target.equals(test));
 	}
 	
 	// Test getValue() method
@@ -45,7 +45,7 @@ public class StatusCardTest extends TestCase {
 		// Getting the type
 		String test = statusCard.getValue();
 		// Asserting if it is right type
-		assertEquals(target, test);
+		assertTrue(target.equals(test));
 	}
 
 	// Test getCardName() method
@@ -57,7 +57,7 @@ public class StatusCardTest extends TestCase {
 		StatusCard statusCard = new StatusCard(target);
 		// Testing getCardNameMethod
 		String test = statusCard.getCardName();
-		assertEquals(target1, test);
+		assertTrue(target1.equals(test));
 	}
 
 	// Test getPossibleValues() method
@@ -67,7 +67,7 @@ public class StatusCardTest extends TestCase {
 		// Testing getCardNameMethod
 		String test = Arrays.toString(statusCard.getPossibleValues());
 		String target = Arrays.toString(Constant.VALID_STATUS_VALUES);
-		assertEquals(target, test);
+		assertTrue(target.equals(test));
 	}
 
 	// Test getAmounts() method
@@ -77,7 +77,7 @@ public class StatusCardTest extends TestCase {
 		// Testing getAmounts
 		String test = Arrays.toString(card.getAmounts());
 		String target = Arrays.toString(Constant.VALID_STATUS_AMOUNTS);
-		assertEquals(target, test);
+		assertTrue(target.equals(test));
 	}
 
 	// Test getRequirements() method
