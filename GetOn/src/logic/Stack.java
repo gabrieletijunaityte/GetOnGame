@@ -18,7 +18,7 @@ import utilities.Constant;
  */
 public class Stack {
 	private ArrayList<Card> stack;
-	private static final SecureRandom randomNumbers = new SecureRandom();
+	private SecureRandom randomNumbers = new SecureRandom();
 
 	/**
 	 * Constructs a new Stack as an empty array.
