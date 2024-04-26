@@ -5,6 +5,7 @@ Acceptance test:
 1. Do all the steps from ID #4 (Enter the player names).
 2. Click "Start Test Game"
 3. In the bottom right corner click on the button "View Hand" to see your cards.
+- a window showing 5 cards pops up.
 4. Verify that you can see all 5 cards in your hand.
 
 -------------------------------------------------------------------------------------
@@ -18,7 +19,7 @@ Acceptance test:
 3. Verify that the discard pile is empty as you've just started the game. You are always able to observe the last discarded card.
 4. Verify that the card stack has 84 cards left as you've dealth 15 cards to players. 
 5. Verify that at the bottom of the screen you are able to observe the amount and type km cards every player has played is 0. 
-6. Verify that each player onBike status is "Not on the bike.", wind status is "Headwind" and the progessbar is at "0 KM traveld".
+6. Verify that each player onBike status is "Not on the bike.", wind status is "Headwind" and the progressbar is at "0 KM traveld".
 
 -------------------------------------------------------------------------------------
 
@@ -26,7 +27,7 @@ ID #3
 Title: Observe Card Pile
 
 Acceptance test:
-1. Do all the steps from ID #4 (Enter the player names), followed by ID #11 (Start game)
+1. Do all the steps from ID #11 (Start game).
 2. Verify that you are able to observe the remaining amount of cards in the Card Stack. It is the number to the right of the Card Stack Icon.
 3. Verify that as the game has just been started, there are 84 cards left on the card stack.	
 
@@ -38,14 +39,14 @@ Title: Enter the player names
 Acceptance test:
 1. Open the Eclipse directory "group24d"
 2. Run the Game.java class
-3. Enter the first player name in the "Player 1" field (e.g., enter "Gabriele"), the second - in the "Player 2" (e.g., enter "Niels"), and the third - in the "Player 3" (e.g., "Jan").
+3. Enter the first player name "Gabriele" in the "Player 1" field, the second player name "Niels" in the "Player 2", and the third player name "Jan" in the "Player 3".
 4. Verify that the game starts succesfully with the entered player names displayed in the centre of the game table, by clicking the button "Start Test Game" and observing.
 
 
 Exception:
 1. Open the Eclipse directory "group24d"
 2. Run the Game.java class
-3. Enter only the first player name in the "Player 1" field (e.g., enter "Gabriele".
+3. Enter only the first player name "Gabriele" in the "Player 1" field.
 4. Click the "Start Test Game" button.
 5. An error message will pop-up with the text "Enter at least two player names to start!"
 
@@ -57,7 +58,7 @@ Title: View Progress
 Acceptance test:
 1. Do all the steps from ID #4 (Enter the player names).
 3. Observe the progress bar in the middle of the screen that shows how much each player has biked in total. 
-4. Verify that all players have traveld 85 km.
+4. Verify that all players have traveled 85 km.
 
 -------------------------------------------------------------------------------------
 
@@ -66,15 +67,15 @@ Title: Play a kilometer Card
 
 Acceptance test:
 1. Do all the steps from ID #4 (Enter the player names), ID #1 (Show Hand) and ID #13 (Play Get-On card).
-2. As Player 2, click "View Hand" and click the "Cycle 10 KM" card. Click "Discard". A message "Card has been discarded" will pop up. Press the OK button to dismiss.
-3. As Player 3, click "View Hand" and click the "Cycle 5 KM" card. Click "discard". A message "Card has been discarded" will pop up. Press the OK button to dismiss.
-4. As Player 1, click "View Hand" and click the "Cycle 5 KM" card. Click "Play". A message "Card has been played" will pop up. Press the OK button to dismiss.
-5. Verify in the left bottom corner that the 5 KM counter for Player 1 has changed from 0 to 1 and the progessbar shows "90 KM travelled"
+2. As Niels, click "View Hand" and click the "Cycle 10 KM" card. Click "Discard". A message "Card has been discarded" will pop up. Press the OK button to dismiss.
+3. As Jan, click "View Hand" and click the "Cycle 5 KM" card. Click "discard". A message "Card has been discarded" will pop up. Press the OK button to dismiss.
+4. As Gabriele, click "View Hand" and click the "Cycle 5 KM" card. Click "Play". A message "Card has been played" will pop up. Press the OK button to dismiss.
+5. Verify in the left bottom corner that the 5 KM counter for "Gabriele" has changed from 0 to 1 and the progessbar shows "90 KM travelled"
 
 Exception:
 1. Do all the steps from ID #4(Enter the player names), ID #1 (Show Hand).
-2. As Player 1, click the "Cycle 5 KM" card. Click "Play". A message "Card is not playable, Discarded instead." will pop up. Press the OK button to dismiss.
-3. Verify that the 5 KM counter of Player 1 has not changed from 0 and the "Cycle 5 KM" card is now on top of the discard pile. 
+2. As Gabriele, click the "Cycle 5 KM" card. Click "Play". A message "Card is not playable, Discarded instead." will pop up. Press the OK button to dismiss.
+3. Verify that the 5 KM counter of "Gabriele" has not changed from 0 and the "Cycle 5 KM" card is now on top of the discard pile. 
 
 -------------------------------------------------------------------------------------
 
@@ -83,8 +84,8 @@ Title: Discard Card
 
 Acceptance test:
 1. Do all the steps from ID #4 (Enter the player names), ID #1 (Show Hand).
-2. As Player 1, click the "Cycle 5 KM" card. Click "Discard". A message "Card has been discarded" will pop up. Press the OK button to dismiss.
-3. Verify that the card is now on top of the Discard Pile, the amounts of cards on the discard pile has changed to 1 and the 5 KM counter and progressbar of Player 1 has not changed.
+2. As Gabriele, click the "Cycle 5 KM" card. Click "Discard". A message "Card has been discarded" will pop up. Press the OK button to dismiss.
+3. Verify that the card is now on top of the Discard Pile, the amounts of cards on the discard pile has changed to 1 and the 5 KM counter and progressbar of "Gabriele" are still at 0 and at "85 KM travelled".
 
 -------------------------------------------------------------------------------------
 
@@ -95,6 +96,7 @@ Acceptance test:
 1. Open the Eclipse directory "group24d"
 2. Run the Game.java class
 3. In the main menu, click "View Rules" in the bottom right corner.
+- A window showing the rules pops up. 
 4. Verify that you can read the rules in a separate window.
 
 
@@ -105,11 +107,11 @@ Title: Play a bully card
 
 Acceptance test:
 1. Perform all steps from ID #4 (Enter the player names), ID #1 (Show Hand).
-2. As Player 1, click the "bully_railroadCrossing" bully card. 
+2. As Gabriele, click the "bully_railroadCrossing" bully card. 
 3. Click "Play Card". 
-4. In the new window select player 2 to play the bully card on it.A message "Player2 is bullied" will pop up. Press the OK button to dismiss. Another message "Card has been played" will pop up. Press the OK button to dismiss.
-5. Verify that on the game table, the bike status of Player 2 has changed to "CRISS_CROSS".
-6. As Player 2, in the bottom right corner click on the button "View Hand" to see your cards.
+4. In the new window select "Niels" to play the bully card on Niels.A message "Niels is bullied" will pop up. Press the OK button to dismiss. Another message "Card is played" will pop up. Press the OK button to dismiss.
+5. Verify that on the game table, the bike status of "Niels" has changed to "CRISS_CROSS".
+6. As Niels, in the bottom right corner click on the button "View Hand" to see your cards.
 7. Verify that the "Get On" is highlighted in red. 
 
 -------------------------------------------------------------------------------------
@@ -120,10 +122,10 @@ Title: Draw card and Pass turn
 Acceptance test:
 1. Do all the steps from ID #4 (Enter the player names), ID #1 (Show Hand), ID #16 (Pass turn).
 2. A new card has automatically been drawn. Now we need to verify this in the steps below. 
-3. As Player 2, click the "Get On" card. Click "Play". A message "Card has been played" will pop up. Press the OK button to dismiss.
-4. As Player 3, click the "bully_hostel" card. Click "Discard". A message "Card has been discarded" will pop up. Press the OK button to dismiss.
-5. As Player 1, click "View Hand". 
-6. Verify that Player 1 has drawn a new card in the last round. Last round, the first hand of Player 1 was "Get On", "Cycle 5 KM", "bully_railroadCrossing", "status tail wind", "bully_crosswind". Now, the first card of Player 1 has been changed to "Cycle 5 km". 
+3. As Niels, click the "Get On" card. Click "Play". A message "Card is played" will pop up. Press the OK button to dismiss.
+4. As Jan, click on "View Hand", and click the "bully_hostel" card. Click "Discard". A message "Card is discarded" will pop up. Press the OK button to dismiss.
+5. As Gabriele, click "View Hand". 
+6. Verify that Gabriele has drawn a new card in the last round. Last round, the first hand of Gabriele was "Get On", "Cycle 5 KM", "bully_railroadCrossing", "status tail wind", "bully_crosswind". Now, the last card of Gabriele has been changed to "Cycle 5 km". 
 
 
 -------------------------------------------------------------------------------------
@@ -135,14 +137,21 @@ Title: Start game
 Acceptance test:
 1. Open the Eclipse directory "group24d"
 2. Run the Game.java class
-3. Enter the first player name in the "Player 1" field (e.g., enter "Gabriele"), the second - in the "Player 2" (e.g., enter "Niels"), and the third - in the "Player 3" (e.g., "Jan").
-4. Verify that the game starts succesfully with the entered player names displayed in the centre of the game table, by clicking the button "Start Game" and observing.
+3. Enter the first player name "Gabriele" in the "Player 1" field, the second player name "Niels" in the "Player 2", and the third player name "Jan" in the "Player 3".
+4. Click on the "Start Game" button.
+- a window opens with the game table view
+5. Check that the player names are visualised in the middle of the window (next to their statuses). The names have to be in the right order; "Gabriele", "Niels" and "Jan".
+6. Check that there is a "Card Stack" on the top-left corner, this stack has 84 cards. 
+7. Click on "View Hand"
+- a window opens with the card of Gabriele.
+8. Verify that there are 5 cards.
+
 
 
 Exception:
 1. Open the Eclipse directory "group24d"
 2. Run the Game.java class
-3. Enter only the first player name in the "Player 1" field (e.g., enter "Gabriele".
+3. Enter only the first player name "Gabriele" in the "Player 1" field.
 4. Click the "Start Game" button.
 5. An error message will pop-up with the text "Enter at least two player names to start!"
 
@@ -152,17 +161,20 @@ ID #12
 Title: Play a repair card
 
 Acceptance test:
-1. Perform all steps from ID #4 (Enter the player names), ID #1 (Show Hand), ID #13, ID #6 and ID #9.
-2. As Player 3, select to play the repair card "defense_bikeRepair". Click "Play Card". Click "OK". 
-3. Verify that the bike status of Player 3 has now changed to "Not on the bike."
+1. Perform all steps from ID #4 (Enter the player names), ID #1 (Show Hand), ID #13 (Play Get-On card).
+2. As Niels, select to play the bully card saying "Your Tires Look Flat", click on "Play", 
+3. Click "Jan" to bully jan. A message shows up "Jan is bullied". Click "OK" to dismiss. A message "Card is Played" shows up, click "OK" to dismiss.
+4. As Jan, check that the status next to your name has changed into "FLAT_TIRE".
+5. As Jan, select to play the repair card "defense_bikeRepair". Click "Play". A message "Card is Played" shows up. Click "OK". 
+3. Verify that the bike status of Jan has now changed to "Not on the bike."
 
 
 Exception:
-1. Do all the steps from ID #4, ID #13 and ID #6.
-2. As Player 2, click the "Flat Tire" bully card. 
+1. Do all the steps from ID #4 (Enter the player names), ID #13 (Play Get-On card) and ID #6 (Play a Kilometer card).
+2. As Niels, click the "Flat Tire" bully card. 
 3. Click "Discard Card". 
 4. A message will pop up "Card has been discarded". Click "OK". 
-5. As Player 3, select to play the repair card "defense_bikeRepair". Click "Play Card". Click "OK". 
+5. As Jan, select to play the repair card "defense_bikeRepair". Click "Play Card". 
 6. As the card is not playable, a message will pop up saying "Card is not playable, Discarded instead". 
 
 
@@ -174,9 +186,10 @@ Title: Play Get-On card
 
 Acceptance test:
 1. Do all the steps from ID #4 (Enter the player names), ID #1 (Show Hand).
-2. As Player 1, click the "Get On" card. 
-3. Click "Play". A message "Card has been played" will pop up. Press the OK button to dismiss.
-4. Verify that next to the name of Player 1 ("Gabriele") the "Not on the bike" has changed into "On bike".
+2. As Gabriele (Player 1), click the "Get On" card. 
+- A popup message shows up.
+3. Click "Play". A message "Card is played" will pop up. Press the OK button to dismiss.
+4. Verify that next to the name of Player 1 "Gabriele" the "Not on the bike" status has changed into "On bike" status.
 
 
 -------------------------------------------------------------------------------------
@@ -196,12 +209,12 @@ Title: Shuffle the card stack
 Acceptance test:
 1. Open the Eclipse directory "group24d"
 2. Run the Game.java class
-3. Enter the first player name in the "Player 1" field (e.g., enter "Gabriele"), the second - in the "Player 2" (e.g., enter "Niels"), and the third - in the "Player 3" (e.g., "Jan").
+3. Enter the first player name "Gabriele" in the "Player 1" field, the second player name "Niels" in the "Player 2", and the third player name "Jan" in the "Player 3".
 4. Click the button "Start Game".  
-5. Click "View Hand" to observe what the cards are that Player 1 received from the randomly shuffled stack. Remember what cards are in the hand.
+5. Click "View Hand" to observe what the cards are that Gabriele received from the randomly shuffled stack. Remember what cards are in the hand.
 6. Close the  "View Hand" window, the "Game Table" window and the "Main menu" window where you normally enter the Player Names.
 7. Repeat steps 2-5. 
-8. Compare the newly dealt hand with the hand that Player 1 had previously. The cards in the hand should be different. However, there is a very small chance that the exact same cards are dealt in the exact same order. If so, repeat steps 2-5 at most two times more.
+8. Compare the newly dealt hand with the hand that Gabriele had previously. The cards in the hand should be different. However, there is a very small chance that the exact same cards are dealt in the exact same order. If so, repeat steps 2-5 at most two times more.
 
 
 -------------------------------------------------------------------------------------
@@ -211,11 +224,12 @@ Title: Pass turn
 
 Acceptance test:
 1. Do all the steps from ID #4(Enter the player names), ID #1 (Show Hand).
-2. Verify that it is Player 1 turn with the window name "Player 1 hand" at the left top corner of the hand window and the area around player 1 played cards on the game table is outlined in green. 
-3. As Player 1, click the "Get On" card. 
-4. Click "Play". A message "Card has been played" will pop up. 
+2. Verify that it is Gabriele's turn with the window name "Gabriele's hand" at the left top corner of the hand window and the area around Gabriele's played cards on the game table is outlined in green. 
+3. As Gabriele, click the "Get On" card. 
+4. Click "Play". A message "Card is played" will pop up. 
 5. Press the OK button to dismiss. This will pass the turn to the next player.
-6. Verify that the turn has been passed to Player 2, by checking whether the area of cards played by Player 2 is now outlined in green and when clicking "View Hand" the new window name is "Player 2 hand". 
+6. Verify that the hand showing Gabriele's cards has closed automatically.
+7. Verify that the turn has been passed to Niels, by checking whether the area of cards played by Niels is now outlined in green and when clicking "View Hand" the new window name is "Niels's hand". 
 
 -------------------------------------------------------------------------------------
 
@@ -223,10 +237,9 @@ ID #17
 Title: View hand graphically
 
 Acceptance test:
-1. Do all the steps from ID #4.
-2. Click "Start Test Game"
-3. In the bottom right corner click on the button "View Hand" to see your cards.
-4. Verify that you can see all 5 cards in your hand.
+1. Do all the steps from ID #4 (Enter the player names).
+2. In the bottom right corner click on the button "View Hand" to see your cards.
+3. Verify that you can see all 5 cards in your hand.
 
 -------------------------------------------------------------------------------------
 
@@ -234,7 +247,7 @@ ID #18
 Title: Graphical Representation of Kilometer Card
 
 Acceptance test:
-1. Perform all steps from ID #4 and ID #17.
+1. Perform all steps from ID #4 (Enter the player names) and ID #17 (View hand graphically).
 2. Verify that you can observe the second card in your hand, a "Cycle 5 KM" card graphically with a bike symbol in the middle.
 
 
@@ -247,6 +260,7 @@ Acceptance test:
 1. Open the Eclipse directory "group24d"
 2. Run the Game.java class
 3. In the main menu, click "View Rules" in the bottom right corner.
+- A window pops up.
 4. Verify that you can read the formatted rules in a separate window.
 
 
@@ -256,7 +270,8 @@ ID #20
 Title: Reshuffle discardPile
 
 Acceptance test:
-1. Perform all steps from ID #4, ID #1, ID #13 and ID #6 except the last step, clicking "OK". 
+1. Perform all steps from ID #4 (Enter the player names), ID #1 (Show Hand), ID #13 (Play Get-on card).
+2. Perform almost all steps from ID #6 (Play Kilometer card). Do not click "OK" after playing the 5 kilometer card as Gabriele.
 2. Verify that before you click "OK", the Card Stack counter is at 1, and the Discard Pile at 3.
 2. Click "OK". 
 3. Verify that the Card Stack has changed to 3, and the Discard Pile counter is 0. This verifies that the discard pile has been reshuffled and transfered back into the stack. 
@@ -288,13 +303,13 @@ ID #23
 Title: Hide hand while passing turn
 
 Acceptance test:
-1. Do all the steps from ID #4 and ID #1.
-2. Verify that Player 1 is currently at hand, their area of cards played will be outlined in green. 
-3. As Player 1, click the "Get On" card. 
-4. Click "Play". A message "Card has been played" will pop up. 
+1. Do all the steps from ID #4 (Enter the player names) and ID #1 (Show hand).
+2. Verify that Gabriele is currently at hand, their area of cards played will be outlined in green. 
+3. As Gabriele, click the "Get On" card. 
+4. Click "Play". A message "Card is played" will pop up. 
 5. Press the OK button to dismiss. This will pass the turn to the next player.
 6. Verify that after pressing the "OK" button, the "View Hand" screen was automatically closed.
-4. Verify that the turn has been passed to Player 2, by checking whether the area of cards played by Player 2 is now the one outlined in green. 
+7. Verify that the turn has been passed to Niels, by checking whether the area of cards played by Niels is now the one outlined in green. 
 
 
 -------------------------------------------------------------------------------------
@@ -304,7 +319,7 @@ Title: Observer Game View
 
 Acceptance test:
 
-1. Perform steps from ID #4, followed by ID #11
+1. Perform steps from ID #11 (Start game).
 2. Observe the Game table interface. You are now able to observe everything an observer should.
 3. Verify that the discard pile is empty as you've just started the game. You are always able to observe the last discarded card.
 4. Verify that the card stack has 84 cards left as 15 cards have been dealt
@@ -315,12 +330,14 @@ to players.
 -------------------------------------------------------------------------------------
 
 ID #25
-Title: Visually show playability in hand
+Title: Visually show playability in hand 
 
 Acceptance test:
-1. Do all the steps from ID #17
-2. Observe the color of the border of the cards. Because it's the first round, the bully cards, tailwind card, and get on cards should be green. All kilometer cards and repair cards should be red.
-3. (optional) If not every type of card is shown in the first hand, close game and redo steps 1 and 2 until you have seen all card types. 
+1. Do all the steps from  ID #4 (Enter the player names) and ID #17 (View Hand Graphically)
+- Observe the color of the border of the cards. Because it's the first round, the bully cards, tailwind card, and get on cards should be green. All kilometer cards and repair cards should be red.
+2. Verify that the Get On, bully railroad crossing, tail wind and bully crosswind cards have a green border.
+3. Verify that the Cycle 5 km card has a red border.
+
 
 
 -------------------------------------------------------------------------------------
@@ -330,8 +347,8 @@ Title: Playable through GUI
 
 Acceptance test:
 
-1. Perform steps from ID #4, ID #1, ID #13, ID #6, ID #9, ID #12, ID #12, ID #20 and ID #32.
-   Performing these steps has proved every functionality of the game within the GUI. The game is thus playabl through GUI.
+1. Perform acceptance test #ID32 (Win game)
+- Performing these steps has proved every functionality of the game within the GUI. The game is thus playable through GUI.
 
 -------------------------------------------------------------------------------------
 
@@ -339,17 +356,15 @@ ID #27
 Title: Show current player
 
 Acceptance test:
-1. Click on "GET_ON" file.
-2. Enter the first player name in the "Player 1" field (e.g., enter "Gabriele"), the second - in the "Player 2" (e.g., enter "Niels"), and the third - in the "Player 3" (e.g., "Jan").
-3. Click "Start Game".
+1. Do step 1-6 in ID#11 (Start Game).
 4. The names are visible before Bike Status and Wind Status.
-5. Look at the green border around Player 1 on the main game frame, and a red border around Player 2 and Player 3.
+5. Look at the green border around the kilometer cards of Gabriele on the main game frame, and a red border around those of Niels and Jan.
 6. Click on "View Hand" button.
-7. Discard the first card.
-8. Look at the green border around Player 2 on the main game frame, and a red border around Player 1 and Player 3.
+7. Click on the first card, click Discard, and click OK.
+8. Look at the green border around the kilometer cards of Niels on the main game frame, and a red border around Gabriele and Jan.
 9.Click on "View Hand" button.
-10.Discard the first card.
-11.Look at the green border around Player 3 on the main game frame, and a red border around Player 1 and Player 2.
+10.Click on the first card, click Discard, and click OK.
+11.Look at the green border around the kilometer cards of Jan on the main game frame, and a red border around Gabriele and Niels.
 
 
 -------------------------------------------------------------------------------------
@@ -358,14 +373,12 @@ ID #28
 Title: Pre shuffled deck
 
 Acceptance test:
-1. Open the Eclipse directory "group24d"
-2. Run the Game.java class
-3. Enter the first player name in the "Player 1" field (e.g., enter "Gabriele"), the second - in the "Player 2" (e.g., enter "Niels"), and the third - in the "Player 3" (e.g., "Jan").
-4. Click the button "Start Game".  
-5. Click "View Hand" to observe what the cards are that Player 1 received from the randomly shuffled stack. Remember what cards are in the hand.
+1. Do all steps in ID#4 (Enter the player names). 
+5. Click "View Hand" to observe what the cards are that Gabriele received from the randomly shuffled stack. Remember what cards are in the hand.
 6. Close the  "View Hand" window, the "Game Table" window and the "Main menu" window where you normally enter the Player Names.
-7. Repeat steps 2-5. 
-8. Compare the newly dealt hand with the hand that Player 1 had previously. The cards in the hand should be different. However, there is a very small chance that the exact same cards are dealt in the exact same order. If so, repeat steps 2-5 at most two times more.
+7. Repeat step 1-2. 
+8. Compare the newly dealt hand with the hand that Gabriele had previously. The cards in the hand should be the same as there is a predefined stack for the test game.
+
 
 -------------------------------------------------------------------------------------
 
@@ -373,7 +386,7 @@ ID #29
 Title: Selectable Scenarios
 
 Acceptance test:
-1. Perform ID #4 except the last step, don't start the game yet.
+1. Perform ID #4 (Enter the player names) except the last step, don't start the game yet.
 2. Verify that as a Game Master, you have the choice between two selectable scenarios. You can either choose "Start Game" or "Start Test Game".
 
 -------------------------------------------------------------------------------------
@@ -382,10 +395,10 @@ ID #30
 Title: Save game in JSON
 
 Acceptance test:
-1. Perform steps from ID #4, ID #1 and ID #13.
-2. As Player 2, click "View Hand" and click the "Cycle 10 KM" card. Click "Discard". A message "Card has been discarded" will pop up. Press the OK button to dismiss.
-3. Click the "Save & Quit" button in the upper right corner of the screen. A message will pop up that the Game will be ended and saved after finishing the turn.
-4. As Player 3, click "View Hand". Click the "FLAT_TIRE" card and click "Discard Card". Click "OK". 
+1. Perform steps from ID #4 (Enter the player names), ID #1 (Show Hand) ID #13 (Play Get-on card).
+2. As Niels, click "View Hand" and click the "Cycle 10 KM" card. Click "Discard". A message "Card is discarded" will pop up. Press the OK button to dismiss.
+3. Click the "Save & Quit" button in the upper right corner of the screen. A message will pop up that the Game will be ended and saved after finishing the turn, press "OK".
+4. As Jan, click "View Hand". Click the "FLAT_TIRE" card and click "Discard Card". Click "OK". 
 5. Verify that the game has now automatically closed.
 6. Verify that the game has been saved in a JSON file. Open your file explorer on your computer and locate the "group2024d" is located, dependent on where you stored it.
    Open the "Get On" folder, then the "data" folder, then the "outputs" folder. In this folder, there should now be a "saved_game.json" file.
@@ -406,15 +419,15 @@ ID #32
 Title: Win game
 
 Acceptance test:
-1. Perform steps from ID #4, ID #1, ID #13, ID #6, ID #9, ID #12, ID #12, ID #20.
-2. As Player 1, click "View Hand". Click "Cycle 5 KM". Click "Play". A message will pop up: "Card has been played". Click "OK" to dismiss.
-3. As Player 2, click "View Hand". Click "Cycle 5 KM". Click "Discard". Click "OK". 
-4. As Player 3, click "View Hand". Click "Cycle 5 KM". Click "Discard". Click "OK". 
-5. As Player 1, click "View Hand". Click "Status tail wind". Click "Play". Click "OK". 
-6. As Player 2, click "View Hand". Click "Cycle 5 KM". Click "Discard". Click "OK". 
-7. As Player 3, click "View Hand". Click "Cycle 8 KM". Click "Discard". Click "OK".
-8. As Player 1, click "View Hand". Click "Cycle 10 KM". Click "Play". Click "OK" .
-9. Verify that Player 1 has won the game. A Message should pop up: "Congrats: Gabriele has won the game."
+1. Perform steps from ID #4 (Enter the player names), ID #1 (Show Hand) and ID #13 (Play Get-On card) ID #6 (Play Kilometer card), from step 2 ID #12 (Play Repair card).
+2. As Gabriele, click "View Hand". Click "Cycle 5 KM". Click "Play". A message will pop up: "Card is played". Click "OK" to dismiss.
+3. As Niels, click "View Hand". Click "Cycle 5 KM". Click "Discard". Click "OK". 
+4. As Jan, click "View Hand". Click "Cycle 5 KM". Click "Discard". Click "OK". 
+5. As Gabriele, click "View Hand". Click "Status tail wind". Click "Play". Click "OK". 
+6. As Niels, click "View Hand". Click "Cycle 6 KM". Click "Discard". Click "OK". 
+7. As Jan, click "View Hand". Click "Cycle 8 KM". Click "Discard". Click "OK".
+8. As Gabriele, click "View Hand". Click "Cycle 5 KM". Click "Play". Click "OK" .
+9. Verify that Gabriele has won the game. A Message should pop up: "Congrats! Gabriele has won the game."
 
 
 -------------------------------------------------------------------------------------
