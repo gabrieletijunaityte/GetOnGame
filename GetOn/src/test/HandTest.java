@@ -4,7 +4,6 @@ import java.util.Arrays;
 
 import junit.framework.TestCase;
 import logic.Hand;
-import logic.KilometerCard;
 import logic.Stack;
 import utilities.Constant;
 
@@ -47,7 +46,7 @@ public class HandTest extends TestCase {
 
 		String target = Constant.KILOMETER + "_" + Constant.FIVE;
 
-		assertEquals(target, myHand.get(0).toString());
+		assertTrue(target.equals(myHand.get(0).toString()));
 	}
 
 	// Test getting the hand
@@ -69,7 +68,7 @@ public class HandTest extends TestCase {
 		String target = Arrays.toString(new String[] {subTarget, subTarget, subTarget, subTarget, subTarget});
 		String test = myHand.getHand().toString();
 
-		assertEquals(target, test);
+		assertTrue(target.equals(test));
 	}
 	
 	// Test discard card method
@@ -94,6 +93,6 @@ public class HandTest extends TestCase {
 		myHand.discardCard(myHand.get(0));
 		String test = myHand.getHand().toString();
 
-		assertEquals(target, test);
+		assertTrue(target.equals(test));
 	}
 }

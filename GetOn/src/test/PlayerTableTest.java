@@ -60,7 +60,7 @@ public class PlayerTableTest extends TestCase {
 				new String[] { Constant.KILOMETER + "_" + Constant.FIVE, Constant.KILOMETER + "_" + Constant.SIX });
 
 		// Assert if returned card list is as expected
-		assertEquals(target, playerTable.getPlayedCards().toString());
+		assertTrue(target.equals(playerTable.getPlayedCards().toString()));
 
 	}
 }

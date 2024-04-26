@@ -12,7 +12,4 @@ public class GameTest extends TestCase {
 		// asserting if it was created
 		assertNotNull(game1);
 	}
-	
-	
-
 }

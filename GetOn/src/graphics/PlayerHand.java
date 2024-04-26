@@ -8,7 +8,6 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
-// Importing for testing purposes
 import logic.Card;
 import logic.Player;
 import logic.Rules;
@@ -354,7 +353,7 @@ public class PlayerHand extends JFrame {
 			JOptionPane.showMessageDialog(PlayerHand.this, "Card is Discarded.");
 			break;
 		case 3:
-			JOptionPane.showMessageDialog(PlayerHand.this, "Card is not playable, Discarded instead.");
+			JOptionPane.showMessageDialog(PlayerHand.this, "Card is not playable. Discarded instead.");
 			break;
 		}
 	}

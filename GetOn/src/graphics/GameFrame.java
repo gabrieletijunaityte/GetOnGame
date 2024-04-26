@@ -33,26 +33,17 @@ public class GameFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JPanel player1;
-	private JPanel player2;
-	private JPanel player3;
+	private JPanel player1, player2, player3;
 
 	private JLabel lblCardStackCounter;
 	private JLabel lblDiscardCounter;
 	private JLabel lblDiscardedCard;
 
-	private JLabel lblP1BikeStatus;
-	private JLabel lblP2BikeStatus;
-	private JLabel lblP3BikeStatus;
-
-	private JLabel lblP1WindStatus;
-	private JLabel lblP2WindStatus;
-	private JLabel lblP3WindStatus;
+	private JLabel lblP1BikeStatus, lblP2BikeStatus, lblP3BikeStatus;
+	private JLabel lblP1WindStatus, lblP2WindStatus, lblP3WindStatus;
+	private JProgressBar p1Progress, p2Progress, p3Progress;
 
 	private PlayerHand currentPlayerHand;
-	private JProgressBar p1Progress;
-	private JProgressBar p2Progress;
-	private JProgressBar p3Progress;
 
 	private boolean isExit = false;
 
@@ -268,11 +259,9 @@ public class GameFrame extends JFrame {
 		player2.setBounds(316, 430, 306, 152);
 		contentPane.add(player2);
 		
-		if (players.size() == 3) {
-    		
+		if (players.size() == 3) {	
     		player3.setBounds(627, 430, 324, 152);
     		contentPane.add(player3);
-    		
     	}
     	
     	for (int i = 0; i < players.size(); i++) {
@@ -311,6 +300,9 @@ public class GameFrame extends JFrame {
 	public void refreshGameFrame(Stack stack, Stack discardPile, ArrayList<Player> players, Player currentPlayer,
 			Rules rules, int selectedCardIndex, int currentPlayerIndex) {
 
+		JLabel[] bikeStatusLbls = {lblP1BikeStatus, lblP2BikeStatus, lblP3BikeStatus};
+		JLabel[] windStatusLbls = {lblP1WindStatus, lblP2WindStatus, lblP3WindStatus};
+		
 		lblCardStackCounter.setText("" + stack.getStackSize());
 		lblDiscardCounter.setText("" + discardPile.getStackSize());
 		refreshScores(players, currentPlayerIndex);
@@ -324,53 +316,27 @@ public class GameFrame extends JFrame {
 			Image resizedImg = originalImg.getScaledInstance(width, height, Image.SCALE_SMOOTH);
 			lblDiscardedCard.setIcon(new ImageIcon(resizedImg));
 		}
-		// Player1 status update
-		if (!players.get(0).getOnBikeStatus()) {
-			if (players.get(0).getBulliedStatus()) {
-				lblP1BikeStatus.setText("" + players.get(0).getBulliedType());
+		
+		for (int i = 0; i < players.size(); i++) {
+			// Checks the players' bike status and updates labels accordingly
+			if (!players.get(i).getOnBikeStatus()) {
+				if (players.get(i).getBulliedStatus()) {
+					bikeStatusLbls[i].setText("" + players.get(i).getBulliedType());
+				} else {		
+					bikeStatusLbls[i].setText("Not on the bike");
+				}	
 			} else {
-				lblP1BikeStatus.setText("Not on the bike.");
+				bikeStatusLbls[i].setText("On bike");
 			}
-		} else {
-			lblP1BikeStatus.setText("On bike");
-		}
-		if (players.get(0).getHasWind()) {
-			lblP1WindStatus.setText("Tailwind");
-		} else {
-			lblP1WindStatus.setText("Headwind");
-		}
-		// Player2 status update
-		if (!players.get(1).getOnBikeStatus()) {
-			if (players.get(1).getBulliedStatus()) {
-				lblP2BikeStatus.setText("" + players.get(1).getBulliedType());
-			} else {
-				lblP2BikeStatus.setText("Not on the bike.");
-			}
-		} else {
-			lblP2BikeStatus.setText("On bike");
-		}
-		if (players.get(1).getHasWind()) {
-			lblP2WindStatus.setText("Tailwind");
-		} else {
-			lblP2WindStatus.setText("Headwind");
-		}
-		// Player3 status update
-		if (players.size() == 3) {
-			if (!players.get(2).getOnBikeStatus()) {
-				if (players.get(2).getBulliedStatus()) {
-					lblP3BikeStatus.setText("" + players.get(2).getBulliedType());
-				} else {
-					lblP3BikeStatus.setText("Not on the bike.");
-				}
-			} else {
-				lblP3BikeStatus.setText("On bike");
-			}
-			if (players.get(2).getHasWind()) {
-				lblP3WindStatus.setText("Tailwind");
-			} else {
-				lblP3WindStatus.setText("Headwind");
+			
+			// Checks the players' wind status and updates labels accordingly
+			if (players.get(i).getHasWind()) {	
+				windStatusLbls[i].setText("Tailwind");
+			} else {				
+				windStatusLbls[i].setText("Headwind");
 			}
 		}
+
 		contentPane.revalidate();
 		contentPane.repaint();
 	}
