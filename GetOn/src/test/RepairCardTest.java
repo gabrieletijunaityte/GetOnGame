@@ -39,7 +39,7 @@ public class RepairCardTest extends TestCase {
 		String test = repairCard.getType();
 
 		// Asserting if it is right type
-		assertEquals(target, test);
+		assertTrue(target.equals(test));
 	}
 
 	// Test the value retrieval method
@@ -54,7 +54,7 @@ public class RepairCardTest extends TestCase {
 		String test = repairCard.getValue();
 
 		// Asserting if it is right type
-		assertEquals(target, test);
+		assertTrue(target.equals(test));
 	}
 
 // Test the getCardName() method
@@ -69,7 +69,7 @@ public class RepairCardTest extends TestCase {
 		// Testing getCardNameMethod
 		String test = repairCard.getCardName();
 
-		assertEquals(target1, test);
+		assertTrue(target1.equals(test));
 	}
 
 	// Test getPossibleValues
@@ -81,8 +81,7 @@ public class RepairCardTest extends TestCase {
 		String test = Arrays.toString(repairCard.getPossibleValues());
 		String target = Arrays.toString(Constant.VALID_REPAIR_VALUES);
 		
-
-		assertEquals(target, test);
+		assertTrue(target.equals(test));
 	}
 
 	// Test getAmounts
@@ -94,7 +93,7 @@ public class RepairCardTest extends TestCase {
 		String test = Arrays.toString(card.getAmounts());
 		String target = Arrays.toString(Constant.VALID_REPAIR_AMOUNTS);
 
-		assertEquals(target, test);
+		assertTrue(target.equals(test));
 	}
 
 	// Test getRequirements
