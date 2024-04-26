@@ -1,5 +1,7 @@
 package test;
 
+import java.util.Arrays;
+
 import junit.framework.TestCase;
 import logic.Rules;
 import logic.Player;
@@ -56,6 +58,21 @@ public class RulesTest extends TestCase {
 		// Defining test variables
 		Boolean target = true;
 		Boolean test = rules.isPlayble(statusCard, testPlayer);
+		
+		assertEquals(target, test);
+	}
+	
+	// Check if the card is playable caseC (KILIMETER_FIVE with requirement for noBully)
+	public void testIsPlaybleCaseC() {
+		Rules rules = new Rules();
+		
+		// Define required attributes
+		Card kmCard = new KilometerCard(Constant.FIVE);
+		Player testPlayer = new Player("Jan");
+		
+		// Defining test variables
+		boolean target = false;
+		boolean test = rules.isPlayble(kmCard, testPlayer);
 		
 		assertEquals(target, test);
 	}
