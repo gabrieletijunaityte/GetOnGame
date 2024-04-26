@@ -13,7 +13,7 @@ public class CardTest extends TestCase {
 		String target2 = "Sample";
 
 		// Creating Card class
-		Card card = new Card(target1, target2);
+		Card card = new Card(target1, target2, new String [] {}, new int [] {});
 
 		// Asserting if it was created
 		assertNotNull(card);
@@ -26,7 +26,7 @@ public class CardTest extends TestCase {
 		String target2 = "Sample";
 
 		// Creating Card class
-		Card card = new Card(target1, target2);
+		Card card = new Card(target1, target2, new String [] {}, new int [] {});
 
 		// Getting the type
 		String test = card.getType();
@@ -42,7 +42,7 @@ public class CardTest extends TestCase {
 		String target2 = "Sample";
 
 		// Creating Card class
-		Card card = new Card(target1, target2);
+		Card card = new Card(target1, target2, new String [] {}, new int [] {});
 
 		// Getting the type
 		String test = card.getValue();
@@ -58,7 +58,7 @@ public class CardTest extends TestCase {
 		String target2 = "Sample";
 
 		// Creating Card class
-		Card card = new Card(target1, target2);
+		Card card = new Card(target1, target2, new String [] {}, new int [] {});
 
 		// Testing getCardNameMethod
 		String test = card.getCardName();
@@ -73,12 +73,12 @@ public class CardTest extends TestCase {
 		String target2 = "Sample";
 
 		// Creating Card class
-		Card card = new Card(target1, target2);
+		Card card = new Card(target1, target2, new String [] {}, new int [] {});
 
 		// Testing getPossibleValues() method
-		String[] test = card.getPossibleValues();
+		int test = card.getPossibleValues().length;
 
-		assertEquals(null, test);
+		assertEquals(0, test);
 	}
 
 	// Test getRequirements
@@ -86,7 +86,7 @@ public class CardTest extends TestCase {
 		// Creating Card class
 		String typeSample = "Sample";
 		String valueSample = "Sample";
-		Card card = new Card(typeSample, valueSample);
+		Card card = new Card(typeSample, valueSample, new String [] {}, new int [] {});
 
 		// Setting the target
 		String[] target = {};
@@ -102,7 +102,7 @@ public class CardTest extends TestCase {
 		// Creating Card class
 		String typeSample = "Sample";
 		String valueSample = "Sample";
-		Card card = new Card(typeSample, valueSample);
+		Card card = new Card(typeSample, valueSample, new String [] {}, new int [] {});
 
 		// Setting the target
 		String[] target = {};
@@ -120,7 +120,7 @@ public class CardTest extends TestCase {
 		String target2 = "Sample";
 
 		// Creating Card class
-		Card card = new Card(target1, target2);
+		Card card = new Card(target1, target2, new String [] {}, new int [] {});
 
 		// Testing getCardNameMethod
 		String test = card.toString();

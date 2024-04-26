@@ -15,14 +15,10 @@ public class BullyCard extends Card {
 	 * @param value
 	 */
 	public BullyCard(String value) {
-		super(Constant.BULLY, value);
+		super(Constant.BULLY, value, Constant.VALID_BULLY_VALUES, Constant.VALID_BULLY_AMOUNTS);
 
-		// Assign possible Bully values
-		this.pos_values = Constant.VALID_BULLY_VALUES;
+		// Validate the entered value
 		validateValue(value);
-
-		// Assign amount per card
-		this.amount = Constant.VALID_BULLY_AMOUNTS;
 	}
 
 	/**
