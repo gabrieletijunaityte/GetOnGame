@@ -59,17 +59,20 @@ public class Rules {
 	 *
 	 * @param card   The card to evaluate.
 	 * @param player The player attempting to play the card.
-	 * @return {@code true} if the card can be played, {@code false} is the card
+	 * @return return_variable, true if the card can be played, false is the card
 	 *         cannot be played.
 	 */
-	public Boolean isPlayble(Card card, Player player) {
+	public boolean isPlayble(Card card, Player player) {
 		String[] requirements = card.getRequirements();
 		String[] playerStatus = player.getStatuses();
+
+		boolean return_var1 = true;
+		boolean return_var2 = true;
 
 		for (int i = 0; i < playerStatus.length; i++) {
 			if (!requirements[i].equals(Constant.IGNORE)) {
 				if (!requirements[i].equals(playerStatus[i])) {
-					return false;
+					return_var1 = false;
 				}
 			}
 		}
@@ -77,8 +80,11 @@ public class Rules {
 		int maxNum = Integer.parseInt(requirements[4]);
 
 		if (maxNum != -1 && player.getPlayedCards().countCards(card) > maxNum) {
-			return false;
+			return_var2 = false;
+		} else {
+			return_var2 = true;
 		}
-		return true;
+
+		return return_var1 && return_var2;
 	}
 }

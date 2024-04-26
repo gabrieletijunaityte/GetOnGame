@@ -36,17 +36,18 @@ public class RepairCard extends Card {
 			// Bullied type (-1 - ignore)
 			// Maximum number of the same cards played (-1 for no limit)
 		String value = this.getValue();
+		String [] requirements ;
 		
 		// To play BIKE_REPAIR: be bullied with FLAT_TIRE
 		if (value.equals(Constant.BIKE_REPAIR)) {
-			String [] requirements = {Constant.IGNORE,Constant.TRUE, Constant.IGNORE,Constant.FLAT_TIRE,Constant.IGNORE};
-			return requirements;
+			requirements = new String []{Constant.IGNORE,Constant.TRUE, Constant.IGNORE,Constant.FLAT_TIRE,Constant.IGNORE};
+			
 		}
 		// To play BARRIER_OPEN: be bullied with CRISS_CROSS
 		else {
-			String [] requirements = {Constant.IGNORE,Constant.TRUE, Constant.IGNORE, Constant.CRISS_CROSS,Constant.IGNORE};
-			return requirements;
+			requirements = new String [] {Constant.IGNORE,Constant.TRUE, Constant.IGNORE, Constant.CRISS_CROSS,Constant.IGNORE};
 		}
+		return requirements;
 	}
 
 	/**

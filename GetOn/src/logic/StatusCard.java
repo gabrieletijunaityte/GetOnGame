@@ -16,7 +16,7 @@ public class StatusCard extends Card {
 	 */
 	public StatusCard(String value) {
 		super("STATUS", value, Constant.VALID_STATUS_VALUES, Constant.VALID_STATUS_AMOUNTS);
-		
+
 		// Validate the entered value);
 		validateValue(value);
 	}
@@ -31,19 +31,21 @@ public class StatusCard extends Card {
 	 */
 	public String[] getRequirements() {
 		String value = this.getValue();
+		String[] requirements;
 
 		// Condition to play GET_ON: be not bullied
 		if (value.equals(Constant.GET_ON)) {
-			String[] requirements = { Constant.IGNORE, Constant.FALSE, Constant.IGNORE, Constant.IGNORE,
+			requirements = new String[] { Constant.IGNORE, Constant.FALSE, Constant.IGNORE, Constant.IGNORE,
 					Constant.IGNORE };
-			return requirements;
+
 		}
 		// Condition to play TAIL_WIND: always possible
 		else {
-			String[] requirements = { Constant.IGNORE, Constant.IGNORE, Constant.IGNORE, Constant.IGNORE,
+			requirements = new String[] { Constant.IGNORE, Constant.IGNORE, Constant.IGNORE, Constant.IGNORE,
 					Constant.IGNORE };
-			return requirements;
 		}
+		return requirements;
+
 	}
 
 	/**
@@ -56,14 +58,15 @@ public class StatusCard extends Card {
 	 *         bullied type - Index 4: kilometer increase
 	 */
 	public String[] getConsequences() {
+		String[] consequences;
+
 		if (this.getValue().equals(Constant.GET_ON)) {
-			String[] consequences = { Constant.TRUE, Constant.IGNORE, Constant.IGNORE, Constant.IGNORE,
+			consequences = new String[] { Constant.TRUE, Constant.IGNORE, Constant.IGNORE, Constant.IGNORE,
 					Constant.IGNORE };
-			return consequences;
 		} else {
-			String[] consequences = { Constant.IGNORE, Constant.IGNORE, Constant.TRUE, Constant.IGNORE,
+			consequences = new String[] { Constant.IGNORE, Constant.IGNORE, Constant.TRUE, Constant.IGNORE,
 					Constant.IGNORE };
-			return consequences;
 		}
+		return consequences;
 	}
 }
