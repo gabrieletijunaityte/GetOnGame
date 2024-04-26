@@ -39,7 +39,7 @@ public class KilometerCardTest extends TestCase {
 		String test = kmCard.getType();
 
 		// Asserting if it is right type
-		assertEquals(target, test);
+		assertTrue(target.equals(test));
 	}
 
 	// Test the value retrieval method
@@ -54,7 +54,7 @@ public class KilometerCardTest extends TestCase {
 		String test = kmCard.getValue();
 
 		// Asserting if it is right type
-		assertEquals(target, test);
+		assertTrue(target.equals(test));
 	}
 
 	// Test the getCardName() method
@@ -69,7 +69,7 @@ public class KilometerCardTest extends TestCase {
 		// Testing getCardNameMethod
 		String test = kmCard.getCardName();
 
-		assertEquals(target1, test);
+		assertTrue(target1.equals(test));
 	}
 
 	// Test getPossibleValues
@@ -81,7 +81,7 @@ public class KilometerCardTest extends TestCase {
 		String test = Arrays.toString(kmCard.getPossibleValues());
 		String target = Arrays.toString(new String[] { Constant.FIVE, Constant.SIX, Constant.EIGHT, Constant.TEN });
 
-		assertEquals(target, test);
+		assertTrue(target.equals(test));
 	}
 
 	// Test getAmounts
@@ -93,7 +93,7 @@ public class KilometerCardTest extends TestCase {
 		String test = Arrays.toString(kmCard.getAmounts());
 		String target = Arrays.toString(Constant.VALID_KM_AMOUNTS);
 
-		assertEquals(target, test);
+		assertTrue(target.equals(test));
 	}
 
 	// Test getRequirements

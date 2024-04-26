@@ -38,7 +38,7 @@ public class BullyCardTest extends TestCase {
 		String test = bullyCard.getType();
 
 		// Asserting if it is right type
-		assertEquals(target, test);
+		assertTrue(target.equals(test));
 	}
 
 	// Test the value retrieval method
@@ -53,7 +53,7 @@ public class BullyCardTest extends TestCase {
 		String test = bullyCard.getValue();
 
 		// Asserting if it is right type
-		assertEquals(target, test);
+		assertTrue(target.equals(test));
 	}
 
 	// Test the getCardName() method
@@ -68,7 +68,7 @@ public class BullyCardTest extends TestCase {
 		// Testing getCardNameMethod
 		String test = bullyCard.getCardName();
 
-		assertEquals(target1, test);
+		assertTrue(target1.equals(test));
 	}
 
 	// Test getPossibleValues
@@ -77,10 +77,10 @@ public class BullyCardTest extends TestCase {
 		BullyCard bullyCard = new BullyCard(Constant.TAVERN);
 
 		// Testing getCardNameMethod
-		String test = Arrays.toString(bullyCard.getPossibleValues());
-		String target = Arrays.toString(new String [] {Constant.TAVERN, Constant.CROSSWIND, Constant.FLAT_TIRE, Constant.CRISS_CROSS});
+		String[] test = bullyCard.getPossibleValues();
+		String [] target = new String [] {Constant.TAVERN, Constant.CROSSWIND, Constant.FLAT_TIRE, Constant.CRISS_CROSS};
 
-		assertEquals(target, test);
+		assertTrue(Arrays.equals(target, test));
 	}
 
 	// Test getAmounts
@@ -89,8 +89,8 @@ public class BullyCardTest extends TestCase {
 		BullyCard card = new BullyCard(Constant.TAVERN);
 
 		// Testing getAmounts
-		String test = Arrays.toString(card.getAmounts());
-		String target = Arrays.toString(Constant.VALID_BULLY_AMOUNTS);
+        int[] test = card.getAmounts();
+        int[] target = Constant.VALID_BULLY_AMOUNTS;
 		
 
 		assertEquals(target, test);
@@ -118,7 +118,6 @@ public class BullyCardTest extends TestCase {
 		String[] test = bullyCard.getConsequences();
 
 		assertTrue(Arrays.equals(target, test));
-
 	}
 
 	// Test getConsequences for CrossWind

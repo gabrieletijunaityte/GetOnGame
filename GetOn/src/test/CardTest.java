@@ -32,7 +32,7 @@ public class CardTest extends TestCase {
 		String test = card.getType();
 
 		// Asserting if it is right type
-		assertEquals(target1, test);
+		assertTrue(target1.equals(test));
 	}
 
 	// Test the value retrieval method
@@ -48,7 +48,7 @@ public class CardTest extends TestCase {
 		String test = card.getValue();
 
 		// Asserting if it is right value
-		assertEquals(target2, test);
+		assertTrue(target2.equals(test));
 	}
 
 	// Test the getCardName() method
@@ -63,7 +63,7 @@ public class CardTest extends TestCase {
 		// Testing getCardNameMethod
 		String test = card.getCardName();
 
-		assertEquals(target1 + "_" + target2, test);
+		assertTrue((target1 + "_" + target2).equals(test));
 	}
 
 	// Test getPossibleValues
@@ -125,6 +125,6 @@ public class CardTest extends TestCase {
 		// Testing getCardNameMethod
 		String test = card.toString();
 
-		assertEquals(target1 + "_" + target2, test);
+		assertTrue((target1 + "_" + target2).equals(test));
 	}
 }
