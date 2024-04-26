@@ -8,7 +8,6 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
-// Importing for testing purposes
 import logic.Card;
 import logic.Player;
 import logic.Rules;
