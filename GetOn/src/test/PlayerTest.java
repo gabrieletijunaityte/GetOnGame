@@ -64,7 +64,7 @@ public class PlayerTest extends TestCase {
 	public void testGetPlayerOnBikeStatuse() {
 		// Creating variables for the test
 		Player testPlayer = new Player("Jan");
-		Boolean target = false;
+		boolean target = false;
 		// assert the method
 		assertEquals(target, testPlayer.getOnBikeStatus());
 	}
@@ -73,7 +73,7 @@ public class PlayerTest extends TestCase {
 	public void testSetPlayerOnBikeStatuse() {
 		// Creating variables for the test
 		Player testPlayer = new Player("Jan");
-		Boolean target = true;
+		boolean target = true;
 		testPlayer.setOnBikeStatus(true);
 		// assert the method
 		assertEquals(target, testPlayer.getOnBikeStatus());
@@ -83,7 +83,7 @@ public class PlayerTest extends TestCase {
 	public void testGetHasWind() {
 		// Creating variables for the test
 		Player testPlayer = new Player("Jan");
-		Boolean target = false;
+		boolean target = false;
 		// assert the method
 		assertEquals(target, testPlayer.getHasWind());
 	}
@@ -92,7 +92,7 @@ public class PlayerTest extends TestCase {
 	public void testSetHasWind() {
 		// Creating variables for the test
 		Player testPlayer = new Player("Jan");
-		Boolean target = true;
+		boolean target = true;
 		testPlayer.setHasWind(target);
 		
 		// assert the method
@@ -102,7 +102,7 @@ public class PlayerTest extends TestCase {
 	// Test to get the bullied status
 	public void testGetBulliedStatus() {
 		Player testPlayer = new Player("Jan");
-		Boolean target = false;
+		boolean target = false;
 		
 		assertEquals(target, testPlayer.getBulliedStatus());
 	}
@@ -111,7 +111,7 @@ public class PlayerTest extends TestCase {
 	public void testSetBulliedStatus() {
 		Player testPlayer = new Player("Jan");
 		testPlayer.setBulliedStatus(true);
-		Boolean target = true;
+		boolean target = true;
 		assertEquals(target, testPlayer.getBulliedStatus());
 	}
 

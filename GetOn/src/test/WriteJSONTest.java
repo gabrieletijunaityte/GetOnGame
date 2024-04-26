@@ -40,7 +40,7 @@ public class WriteJSONTest extends TestCase {
 		// Write the file
 		writer.writePlayers("TestPlayers", players);
 		
-		Boolean test = new File("data/outputs/TestPlayers.json").isFile();
+		boolean test = new File("data/outputs/TestPlayers.json").isFile();
 		
 		assertTrue(test);
 	}
@@ -55,7 +55,7 @@ public class WriteJSONTest extends TestCase {
 		WriteJSON writer = new WriteJSON();
 		writer.writeCards("TestCards", stack.getStack());	
 		
-		Boolean test = new File("data/outputs/TestCards.json").isFile();
+		boolean test = new File("data/outputs/TestCards.json").isFile();
 		
 		assertTrue(test);
 	}
@@ -94,7 +94,7 @@ public class WriteJSONTest extends TestCase {
 		
 		writer.writeGame("TestGame", stack.getStack(), discardPile.getStack(), players, 2);	
 		
-		Boolean test = new File("data/outputs/TestGame.json").isFile();
+		boolean test = new File("data/outputs/TestGame.json").isFile();
 		
 		assertTrue(test);
 	}
