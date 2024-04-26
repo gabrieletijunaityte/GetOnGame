@@ -113,37 +113,10 @@ public class MainMenu extends JFrame {
 		btnStartGame.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// Starts the game when clicking the button
-				handleStartGame();
-			}
-			private void handleStartGame() {
-				// Saves the entered names
-				if (!player1Name.getText().isBlank() && !player2Name.getText().isBlank()) {
-					names.add(player1Name.getText());
-					names.add(player2Name.getText());
-					if (!player3Name.getText().isBlank()) {
-						names.add(player3Name.getText());
-					}
-				} else {
-					// Warns user that you need at least two players
-					playerLabel.setText("Enter at least two player names to start!");
-					playerLabel.setForeground(Color.RED);
-				}
+				handleStartGame(names);
+				
 				// Notifies game loop that the normal game was started
 				isTestGame = false;
-
-				// Flags the game loop that names have been entered
-				if (names.size() != 0) {
-					receivedNames = true;
-					// Notifies the Game Master that the game has been started and locks the
-					// changing of some settings.
-					playerLabel.setText("The game has been started.");
-					playerLabel.setForeground(Color.BLACK);
-					btnStartGame.setVisible(false);
-					btnTestGame.setVisible(false);
-					player1Name.setEditable(false);
-					player2Name.setEditable(false);
-					player3Name.setEditable(false);
-				}
 			}
 		});
 
@@ -153,39 +126,10 @@ public class MainMenu extends JFrame {
 		btnTestGame.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// Starts the game when clicking the button
-				handleStartGame();
-			}
-			private void handleStartGame() {
-				// Saves the entered names
-				if (!player1Name.getText().isBlank() && !player2Name.getText().isBlank()) {
-					names.add(player1Name.getText());
-					names.add(player2Name.getText());
-					if (!player3Name.getText().isBlank()) {
-						names.add(player3Name.getText());
-					}
-				} else {
-					// Warns user that you need at least two players
-					playerLabel.setText("Enter at least two player names to start!");
-					playerLabel.setForeground(Color.RED);
-				}
-
+				handleStartGame(names);
+				
 				// Notifies game loop that the test game was started
 				isTestGame = true;
-
-				// Flags the game loop that names have been entered
-				if (names.size() != 0) {
-					receivedNames = true;
-
-					// Notifies the Game Master that the game has been started and locks the
-					// changing of some settings.
-					playerLabel.setText("The game has been started.");
-					playerLabel.setForeground(Color.BLACK);
-					btnStartGame.setVisible(false);
-					btnTestGame.setVisible(false);
-					player1Name.setEditable(false);
-					player2Name.setEditable(false);
-					player3Name.setEditable(false);
-				}
 			}
 		});
 		this.setTitle("Get On - The Classic Cycling game");
@@ -232,4 +176,36 @@ public class MainMenu extends JFrame {
 		player3Name.setEditable(true);
 		repaint();
 	}
+	
+	private void handleStartGame(ArrayList<String> names) {
+		// Saves the entered names
+		if (!player1Name.getText().isBlank() && !player2Name.getText().isBlank()) {
+			names.add(player1Name.getText());
+			names.add(player2Name.getText());
+			if (!player3Name.getText().isBlank()) {
+				names.add(player3Name.getText());
+			}
+		} else {
+			// Warns user that you need at least two players
+			playerLabel.setText("Enter at least two player names to start!");
+			playerLabel.setForeground(Color.RED);
+		}
+
+		// Flags the game loop that names have been entered
+		if (names.size() != 0) {
+			receivedNames = true;
+
+			// Notifies the Game Master that the game has been started and locks the
+			// changing of some settings.
+			playerLabel.setText("The game has been started.");
+			playerLabel.setForeground(Color.BLACK);
+			btnStartGame.setVisible(false);
+			btnTestGame.setVisible(false);
+			player1Name.setEditable(false);
+			player2Name.setEditable(false);
+			player3Name.setEditable(false);
+		}
+	}
+	
+	
 }

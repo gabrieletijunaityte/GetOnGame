@@ -258,82 +258,46 @@ public class GameFrame extends JFrame {
      * @param currentPlayerIndex - int of the Player who's turn it is 
      */
     public void refreshScores(ArrayList <Player> players, int currentPlayerIndex) {
+
+    	JPanel[] playerPanels = {player1, player2, player3};
+    	String[] kmLabels = {"| 5 Km cards: ", "| 6 Km cards: ", "| 8 Km cards: ", "| 10 Km cards: "};
+    	String[] kmCards = {"FIVE", "SIX", "EIGHT", "TEN"};
+    	JProgressBar[] progressBars = {p1Progress, p2Progress, p3Progress};
     	
-    	int kmProgress;
+    	for (int i = 0; i < playerPanels.length; i++) {
+    		playerPanels[i].removeAll();
+    		contentPane.remove(playerPanels[i]);
+    	}
     	
-    	contentPane.remove(player1);
-        contentPane.remove(player2);
-        contentPane.remove(player3);
-        
-        Border player1border;
-    	player1 = new JPanel();
 		player1.setBounds(5, 430, 306, 152);
-		if (currentPlayerIndex == 0) {
-			player1border = BorderFactory.createLineBorder(Color.green, 5, true);
-		} else {
-			player1border = BorderFactory.createLineBorder(Color.red, 5, true);
-		}
-		player1.setBorder(player1border);
 		contentPane.add(player1);
 		
-		addCardWithCounter(player1,createCardLabel("| 5 Km cards: "), players.get(0).getPlayedCards().countCards(new KilometerCard("FIVE")));
-        addCardWithCounter(player1, createCardLabel("| 6 Km cards: "),  players.get(0).getPlayedCards().countCards(new KilometerCard("SIX")));
-        addCardWithCounter(player1, createCardLabel("| 8 Km cards: "),  players.get(0).getPlayedCards().countCards(new KilometerCard("EIGHT")));
-        addCardWithCounter(player1, createCardLabel("| 10 Km cards: "),  players.get(0).getPlayedCards().countCards(new KilometerCard("TEN")));        
-        
-              
-        kmProgress = players.get(0).getKmProgress();
-        
-        Border player2border;
-		player2 = new JPanel();
 		player2.setBounds(316, 430, 306, 152);
-		if (currentPlayerIndex == 1) {
-			player2border = BorderFactory.createLineBorder(Color.green, 5, true);
-		} else {
-			player2border = BorderFactory.createLineBorder(Color.red, 5, true);
-		}
-		player2.setBorder(player2border);
 		contentPane.add(player2);
 		
-		addCardWithCounter(player2 ,createCardLabel("| 5 Km cards: "), players.get(1).getPlayedCards().countCards(new KilometerCard("FIVE")));
-		addCardWithCounter(player2, createCardLabel("| 6 Km cards: "), players.get(1).getPlayedCards().countCards(new KilometerCard("SIX")));
-		addCardWithCounter(player2, createCardLabel("| 8 Km cards: "), players.get(1).getPlayedCards().countCards(new KilometerCard("EIGHT")));
-		addCardWithCounter(player2, createCardLabel("| 10 Km cards: "), players.get(1).getPlayedCards().countCards(new KilometerCard("TEN")));
-		
-		kmProgress = players.get(0).getKmProgress();
-        p1Progress.setStringPainted(true);
-        p1Progress.setValue(kmProgress);
-        p1Progress.setString(kmProgress + " KM travelled");
-        
-        kmProgress = players.get(1).getKmProgress();
-		p2Progress.setStringPainted(true);
-		p2Progress.setValue(kmProgress);
-		p2Progress.setString(kmProgress + " KM travelled");
-		
 		if (players.size() == 3) {
-			
-			player3 = new JPanel();
-			player3.setBounds(627, 430, 324, 152);
-			Border player3border;
-			if(currentPlayerIndex == 2) {
-				player3border = BorderFactory.createLineBorder(Color.green, 5, true);
-			} else {
-				player3border = BorderFactory.createLineBorder(Color.red, 5, true);
-			}
-			player3.setBorder(player3border);
-			contentPane.add(player3);
-			
-	        addCardWithCounter(player3 ,createCardLabel("| 5 Km cards: "), players.get(2).getPlayedCards().countCards(new KilometerCard("FIVE")));
-	        addCardWithCounter(player3, createCardLabel("| 6 Km cards: "), players.get(2).getPlayedCards().countCards(new KilometerCard("SIX")));
-	        addCardWithCounter(player3, createCardLabel("| 8 Km cards: "), players.get(2).getPlayedCards().countCards(new KilometerCard("EIGHT")));
-	        addCardWithCounter(player3, createCardLabel("| 10 Km cards: "), players.get(2).getPlayedCards().countCards(new KilometerCard("TEN")));
-			
-	        kmProgress = players.get(2).getKmProgress();     
-	        p3Progress.setStringPainted(true);
-			p3Progress.setValue(kmProgress);
-			p3Progress.setString(kmProgress + " KM travelled");
-			
-		}
+    		
+    		player3.setBounds(627, 430, 324, 152);
+    		contentPane.add(player3);
+    		
+    	}
+    	
+    	for (int i = 0; i < players.size(); i++) {
+    		if (currentPlayerIndex == i) {
+    			playerPanels[i].setBorder(BorderFactory.createLineBorder(Color.green, 5, true));
+    		} else {
+    			playerPanels[i].setBorder(BorderFactory.createLineBorder(Color.red, 5, true));
+    		}
+    	}
+    	
+    	for (int i = 0; i < players.size(); i++) {
+    		for (int j = 0; j < kmCards.length; j++) {
+    			addCardWithCounter(playerPanels[i], createCardLabel(kmLabels[j]), players.get(i).getPlayedCards().countCards(new KilometerCard(kmCards[j])));
+    		}
+    		progressBars[i].setStringPainted(true);
+    		progressBars[i].setValue(players.get(i).getKmProgress());
+    		progressBars[i].setString(players.get(i).getKmProgress() + " KM travelled");
+    	}		
         
         contentPane.revalidate();
         contentPane.repaint();
