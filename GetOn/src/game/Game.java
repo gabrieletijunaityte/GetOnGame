@@ -72,7 +72,7 @@ public class Game {
 			}
 		}
 		// Create gameContinue variable
-		Boolean gameContinue = true;
+		boolean gameContinue = true;
 
 		// Declare the selected card
 		int selectedCardIndex = 0;

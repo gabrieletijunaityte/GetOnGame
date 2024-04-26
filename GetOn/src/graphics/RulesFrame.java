@@ -25,7 +25,6 @@ public class RulesFrame extends JFrame {
 	 */
 	public RulesFrame() {
 		this.setSize(781, 410);
-		this.setVisible(true);
 		this.setAlwaysOnTop(true);
 		this.setResizable(false);
 

@@ -1,7 +1,6 @@
 package graphics;
 
 import java.awt.Color;
-import java.awt.EventQueue;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -11,8 +10,6 @@ import javax.swing.border.EmptyBorder;
 
 // Importing for testing purposes
 import logic.Card;
-// Importing Game Frame
-import graphics.GameFrame;
 import logic.Player;
 import logic.Rules;
 
@@ -21,7 +18,6 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 
 import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
 
 import java.awt.Insets;
 
@@ -34,11 +30,6 @@ import javax.swing.JOptionPane;
 import java.awt.SystemColor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
-//import AtomicInteger in order to be able to override selectedCardIndex
-//https://stackoverflow.com/questions/51686465/local-variable-count-defined-in-an-enclosing-scope-must-be-final-or-effectively
-//https://stackoverflow.com/questions/38402493/local-variable-log-defined-in-an-enclosing-scope-must-be-final-or-effectively-fi
-import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Class to create the GUI for the hand of the player
@@ -56,7 +47,7 @@ public class PlayerHand extends JFrame {
 
 	// Initialize receivedSelectedCard boolean which indicates if a card is chosen
 	// from the hand
-	public boolean receivedSelectedCard = false;
+	private boolean receivedSelectedCard = false;
 
 	// Initialize selectedCardIndex as an AtomicInteger
 	private int selectedCardIndex = 0;

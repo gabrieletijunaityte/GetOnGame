@@ -5,7 +5,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
 import logic.KilometerCard;
@@ -51,12 +50,11 @@ public class GameFrame extends JFrame {
 	private JLabel lblP3WindStatus;
 
 	private PlayerHand currentPlayerHand;
-	private int currentPlayerIndex;
 	private JProgressBar p1Progress;
 	private JProgressBar p2Progress;
 	private JProgressBar p3Progress;
 
-	private Boolean isExit = false;
+	private boolean isExit = false;
 
 	/**
 	 * Constructor for the GameFrame
@@ -75,7 +73,6 @@ public class GameFrame extends JFrame {
 		this.setAlwaysOnTop(true);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setBounds(100, 100, 1238, 625);
-		this.currentPlayerIndex = currentPlayerIndex;
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 

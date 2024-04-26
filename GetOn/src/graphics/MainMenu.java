@@ -65,6 +65,7 @@ public class MainMenu extends JFrame {
 		btnViewRules.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				RulesFrame rulesPopup = new RulesFrame();
+				rulesPopup.setVisible(true);
 			}
 		});
 		btnViewRules.setBounds(565, 326, 149, 23);
