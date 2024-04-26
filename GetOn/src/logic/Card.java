@@ -9,8 +9,8 @@ public class Card {
 
 	private String type; // type of the card e.g. BULLY
 	private String value; // value of the card e.g. TAVERN
-	protected String[] pos_values; // array of possible values for each type
-	protected int[] amount; // array of amounts of each card for stack generation
+	private String[] pos_values; // array of possible values for each type
+	private int[] amount; // array of amounts of each card for stack generation
 
 	/**
 	 * This is the Constructor for Card class.
@@ -18,9 +18,11 @@ public class Card {
 	 * @param type  String
 	 * @param value String
 	 */
-	public Card(String type, String value) {
+	public Card(String type, String value, String [] pos_values, int[] amount) {
 		this.type = type;
 		this.value = value;
+		this.pos_values = pos_values;
+		this.amount = amount;
 	}
 
 	/**

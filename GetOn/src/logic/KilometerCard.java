@@ -15,14 +15,10 @@ public class KilometerCard extends Card {
 	 * @param value
 	 */
 	public KilometerCard(String value) {
-		super("KILOMETER", value);
-
-		// Assign possible km values
-		this.pos_values = Constant.VALID_KM_VALUES;
+		super("KILOMETER", value, Constant.VALID_KM_VALUES, Constant.VALID_KM_AMOUNTS);
+		
+		// Validate the entered value
 		validateValue(value);
-
-		// Assign amount per card
-		this.amount = Constant.VALID_KM_AMOUNTS;
 	}
 
 	/**

@@ -16,14 +16,10 @@ public class RepairCard extends Card {
 	 * @param value The value assigned to the repair card.
 	 */
 	public RepairCard(String value) {
-		super(Constant.REPAIR, value);
-
-		// Assign possible repair values
-		this.pos_values = Constant.VALID_REPAIR_VALUES;
+		super(Constant.REPAIR, value, Constant.VALID_REPAIR_VALUES, Constant.VALID_REPAIR_AMOUNTS);
+		
+		// Validate the entered value);
 		validateValue(value);
-
-		// Assign amount per card
-		this.amount = Constant.VALID_REPAIR_AMOUNTS;
 	}
 
 	/**

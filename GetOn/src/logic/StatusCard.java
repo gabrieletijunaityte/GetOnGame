@@ -15,14 +15,10 @@ public class StatusCard extends Card {
 	 * @param value The value representing the type of status card.
 	 */
 	public StatusCard(String value) {
-		super("STATUS", value);
-
-		// Assign possible status values from constants
-		this.pos_values = Constant.VALID_STATUS_VALUES;
+		super("STATUS", value, Constant.VALID_STATUS_VALUES, Constant.VALID_STATUS_AMOUNTS);
+		
+		// Validate the entered value);
 		validateValue(value);
-
-		// Assign amount per card from constants
-		this.amount = Constant.VALID_STATUS_AMOUNTS;
 	}
 
 	/**
