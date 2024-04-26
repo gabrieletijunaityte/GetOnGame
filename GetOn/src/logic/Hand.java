@@ -33,7 +33,7 @@ public class Hand {
 	 */
 	public void discardCard(Card discardedCard) {
 		// Remove the discarded card from the hand
-		hand.remove(discardedCard);
+		this.hand.remove(discardedCard);
 	}
 
 	/**
@@ -42,7 +42,7 @@ public class Hand {
 	 * @return The hand of the Player.
 	 */
 	public ArrayList<Card> getHand() {
-		return hand;
+		return this.hand;
 	}
 
 	/**

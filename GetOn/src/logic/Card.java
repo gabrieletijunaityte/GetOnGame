@@ -82,7 +82,6 @@ public class Card {
 	 * 
 	 * @param value
 	 */
-
 	public void validateValue(String value) {
 		for (String validValue : getPossibleValues()) {
 			if (validValue.equals(value)) {

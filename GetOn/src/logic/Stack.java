@@ -11,13 +11,14 @@ import utilities.Constant;
  * Stack class creates a stack with all 99 playable cards: 52 kilometer cards
  * (24 five, 12 six, 8 eight, 8 ten, 12 attack cards (4 cross_wind, 3 flat_tire,
  * 3 criss_cross, 2 tavern, 16 defense cards (8 barrier_open, 8 bike_repair), 19
- * status cards (14 get_on, 5 tail_wind). Credits for inspiration on stack creation:
+ * status cards (14 get_on, 5 tail_wind). Credits for inspiration on stack
+ * creation:
  * https://stackoverflow.com/questions/70086453/create-a-stack-of-cards Credits
  * For the shuffle method: "Java How To Program" by Paul Deitel & Harvey Deitel
  */
 public class Stack {
 	private ArrayList<Card> stack;
-	private static final SecureRandom randomNumbers = new SecureRandom();
+	private SecureRandom randomNumbers = new SecureRandom();
 
 	/**
 	 * Constructs a new Stack as an empty array.
@@ -27,23 +28,23 @@ public class Stack {
 	}
 
 	/**
-	 * This method initializes the stack with a predefined set of cards for testing purposes.
+	 * This method initializes the stack with a predefined set of cards for testing
+	 * purposes.
 	 */
 	public void initializeTestStack() {
-
 		// Create objects of each different card needed for testing:
 		BullyCard flatTireCard = new BullyCard(Constant.FLAT_TIRE);
 		BullyCard crisCrossCard = new BullyCard(Constant.CRISS_CROSS);
 		BullyCard tavernCard = new BullyCard(Constant.TAVERN);
 		BullyCard crossWindCard = new BullyCard(Constant.CROSSWIND);
-		
+
 		KilometerCard fiveKilometerCard = new KilometerCard(Constant.FIVE);
 		KilometerCard sixKilometerCard = new KilometerCard(Constant.SIX);
 		KilometerCard eightKilometerCard = new KilometerCard(Constant.EIGHT);
 		KilometerCard tenKilometerCard = new KilometerCard(Constant.TEN);
 
 		RepairCard bikeRepairCard = new RepairCard(Constant.BIKE_REPAIR);
-		
+
 		StatusCard getOnCard = new StatusCard(Constant.GET_ON);
 		StatusCard tailWindCard = new StatusCard(Constant.TAIL_WIND);
 
@@ -68,12 +69,12 @@ public class Stack {
 	 * defined qualities and types. This stack is not is a random order.
 	 */
 	public void initializeStack() {
-		// initialize KilometerCard to get its methods
+		// Initialize KilometerCard to get its methods
 		KilometerCard kilometerCard = new KilometerCard(Constant.FIVE);
 		String[] valuesKM = kilometerCard.getPossibleValues();
 		int[] amountKM = kilometerCard.getAmounts();
 
-		// iterate through all values and add the amount of this value to the stack
+		// Iterate through all values and add the amount of this value to the stack
 		for (int i = 0; i < valuesKM.length; i++) {
 			int times = amountKM[i];
 			for (int j = 0; j < times; j++) {
@@ -81,13 +82,12 @@ public class Stack {
 				stack.add(card);
 			}
 		}
-
-		// initialize BullyCard to get its methods
+		// Initialize BullyCard to get its methods
 		BullyCard bullyCard = new BullyCard(Constant.CROSSWIND);
 		String[] valuesBully = bullyCard.getPossibleValues();
 		int[] amountBully = bullyCard.getAmounts();
 
-		// iterate through all values and add the amount of this value to the stack
+		// Iterate through all values and add the amount of this value to the stack
 		for (int i = 0; i < valuesBully.length; i++) {
 			int times = amountBully[i];
 			for (int j = 0; j < times; j++) {
@@ -95,13 +95,12 @@ public class Stack {
 				stack.add(card);
 			}
 		}
-
-		// initialize RepairCard to get its methods
+		// Initialize RepairCard to get its methods
 		RepairCard repairCard = new RepairCard(Constant.BARRIER_OPEN);
 		String[] valuesRepair = repairCard.getPossibleValues();
 		int[] amountRepair = repairCard.getAmounts();
 
-		// iterate through all values and add the amount of this value to the stack
+		// Iterate through all values and add the amount of this value to the stack
 		for (int i = 0; i < valuesRepair.length; i++) {
 			int times = amountRepair[i];
 			for (int j = 0; j < times; j++) {
@@ -109,13 +108,12 @@ public class Stack {
 				stack.add(card);
 			}
 		}
-
-		// initialize StatusCard to get its methods
+		// Initialize StatusCard to get its methods
 		StatusCard statusCard = new StatusCard(Constant.GET_ON);
 		String[] valuesStatus = statusCard.getPossibleValues();
 		int[] amountStatus = statusCard.getAmounts();
 
-		// iterate through all values and add the amount of this value to the stack
+		// Iterate through all values and add the amount of this value to the stack
 		for (int i = 0; i < valuesStatus.length; i++) {
 			int times = amountStatus[i];
 			for (int j = 0; j < times; j++) {
@@ -136,8 +134,9 @@ public class Stack {
 
 	/**
 	 * This method shuffles the cards in the stack randomly. It takes a random index
-	 * with randomNumbers() in the range of the stack size. It then iterates through the
-	 * original stack based on its index and swaps the card with the random index.
+	 * with randomNumbers() in the range of the stack size. It then iterates through
+	 * the original stack based on its index and swaps the card with the random
+	 * index.
 	 */
 	public void shuffle() {
 		for (int first = 0; first < stack.size(); first++) {
@@ -149,15 +148,18 @@ public class Stack {
 	}
 
 	/**
-	 * This method draws the top card from the stack and then removes it from the stack.
+	 * This method draws the top card from the stack and then removes it from the
+	 * stack.
 	 * 
 	 * @return The card that was on top of the stack.
 	 */
 	public Card drawTopCard() {
 		// Draw the top card from the stack
 		Card topCard = stack.get(0);
+
 		// Remove the topCard from the stack
 		stack.remove(stack.get(0));
+
 		// Return the topCard
 		return topCard;
 	}
@@ -168,19 +170,19 @@ public class Stack {
 	 * @param discardedCard The card to be added back to the stack.
 	 */
 	public void addDiscardedCard(Card discardedCard) {
-		// add a discardedCard to the discardPile
+		// Add a discardedCard to the discardPile
 		stack.add(discardedCard);
-
 	}
 
 	/**
-	 * This method retrieves a card from the stack at a specified index without removing it.
+	 * This method retrieves a card from the stack at a specified index without
+	 * removing it.
 	 * 
 	 * @param i The index of the card to be retrieved.
 	 * @return The card at a specified index.
 	 */
 	public Card get(int i) {
-		// add method to get a card at a specific index
+		// Add method to get a card at a specific index
 		return stack.get(i);
 	}
 

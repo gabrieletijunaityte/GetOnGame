@@ -23,20 +23,21 @@ public class MainMenu extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private boolean receivedNames = false;
 	private boolean isTestGame = false;
+
 	private JTextField player1Name;
 	private JTextField player2Name;
 	private JTextField player3Name;
+
 	private JButton btnTestGame;
 	private JButton btnStartGame;
 	private JLabel playerLabel;
 
 	/**
-	 * Constructor for Main
+	 * Constructor for Main Menu
 	 * 
 	 * @param names - Names of the Players
 	 */
 	public MainMenu(ArrayList<String> names) {
-
 		this.setVisible(true);
 		this.setAlwaysOnTop(true);
 		this.setResizable(false);
@@ -47,7 +48,6 @@ public class MainMenu extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		this.setContentPane(contentPane);
-
 		contentPane.setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("GET ON");
@@ -67,7 +67,6 @@ public class MainMenu extends JFrame {
 				RulesFrame rulesPopup = new RulesFrame();
 			}
 		});
-
 		btnViewRules.setBounds(565, 326, 149, 23);
 		contentPane.add(btnViewRules);
 
@@ -111,25 +110,28 @@ public class MainMenu extends JFrame {
 		contentPane.add(btnTestGame);
 
 		btnStartGame.addActionListener(new ActionListener() {
+			/**
+			 * Action listener that starts the game when the button is clicked
+			 */
 			public void actionPerformed(ActionEvent e) {
-				// Starts the game when clicking the button
-				handleStartGame(names);
-				
 				// Notifies game loop that the normal game was started
 				isTestGame = false;
+				// Handles the start of the game
+				handleStartGame(names);
 			}
 		});
-
 		btnStartGame.setBounds(230, 264, 128, 38);
 		contentPane.add(btnStartGame);
 
 		btnTestGame.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// Starts the game when clicking the button
-				handleStartGame(names);
-				
+			/**
+			 * Action listener that starts the test game when the button is clicked
+			 */
+			public void actionPerformed(ActionEvent e) {				
 				// Notifies game loop that the test game was started
 				isTestGame = true;
+				// Starts the game when clicking the button
+				handleStartGame(names);
 			}
 		});
 		this.setTitle("Get On - The Classic Cycling game");
@@ -177,6 +179,10 @@ public class MainMenu extends JFrame {
 		repaint();
 	}
 	
+	/**
+	 * Method to save the names or warn the user that at least player 1 and 2 are
+	 * needed. Starts the game
+	 */
 	private void handleStartGame(ArrayList<String> names) {
 		// Saves the entered names
 		if (!player1Name.getText().isBlank() && !player2Name.getText().isBlank()) {
