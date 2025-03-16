@@ -1,6 +1,6 @@
 # GetOnGame
 
-GetOnGame is a Java-based recreation of the classic Dutch card game "Stap Op" developed as a Software Engineering course project. The game simulates a 100 km cycling journey where players aim to complete specific routes while hindering their opponents' progress.D
+GetOnGame is a Java-based recreation of the classic Dutch card game "Stap Op" developed as a Software Engineering course project. The game simulates a 100 km cycling journey where players aim to complete specific routes while hindering their opponents' progress.
 
 ![Game_demo](GetOn/documentation/Demo.png)
 
